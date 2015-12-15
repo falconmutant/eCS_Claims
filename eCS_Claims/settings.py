@@ -24,6 +24,10 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
+from unipath import path
+RUTA_PROYECTO = Path(__file__).ancestor(1)
+
+
 ALLOWED_HOSTS = []
 
 
@@ -37,6 +41,11 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 )
+
+from django.core.urlresolvers import reverse_lazy
+LOGIN_URL = reverse_lazy('login')
+LOGIN_REDIRECT_URL = reverse_lazy('login')
+LOGOUT_URL = reverse_lazy('logout')
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -52,7 +61,9 @@ ROOT_URLCONF = 'eCS_Claims.urls'
 
 WSGI_APPLICATION = 'eCS_Claims.wsgi.application'
 
-
+TEMPLATE_DIRS = (
+    RUTA_PROYECTO.child('templates'),
+)
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
@@ -60,10 +71,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'ecs',
-	'USER': 'root',
-	'PASSWORD': 'rpina0109',
-	'HOST': '127.0.0.1',
-	'PORT': '',
+    	'USER': 'root',
+    	'PASSWORD': 'rpina0109',
+    	'HOST': '127.0.0.1',
+    	'PORT': '',
     }
 }
 
@@ -84,4 +95,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/static_media/files/'
+
+
