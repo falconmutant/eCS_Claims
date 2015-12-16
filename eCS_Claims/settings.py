@@ -57,19 +57,19 @@ ROOT_URLCONF = 'eCS_Claims.urls'
 
 WSGI_APPLICATION = 'eCS_Claims.wsgi.application'
 
-TEMPLATE_DIRS = (
-    
-)
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'mysql_pymysql',
         'NAME': 'ecs',
-        'HOST': 'localhost',
+        'ENGINE': 'django.db.backends.mysql',
         'USER': 'root',
         'PASSWORD': 'rpina0109',
+        "HOST": '/var/run/mysql',
+        'OPTIONS': {
+          'autocommit': True,
+        },
     }
 }
 
