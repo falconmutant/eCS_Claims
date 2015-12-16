@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Login</title>
-<link href="{%MEDIA_ROOT%}css/styles.css" rel="stylesheet" type="text/css">
+<link href="{{ STATIC_URL }}css/styles.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -13,7 +13,7 @@
     <div class="login-block">
       <form id="login-form" class="orb-form" method="POST">{% csrf_token %}
         <header>
-          <div class="image-block"><img src="{%MEDIA_ROOT%}images/logo.png" alt="User" /></div></header>
+          <div class="image-block"><img src="{{ STATIC_URL }}images/logo.png" alt="User" /></div></header>
         <fieldset>
           <section>
             <div class="row">
