@@ -65,12 +65,11 @@ TEMPLATE_DIRS = (
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'mysql_pymysql',
         'NAME': 'ecs',
-    	'USER': 'root',
-    	'PASSWORD': 'rpina0109',
-    	'HOST': '127.0.0.1',
-    	'PORT': '',
+        'HOST': 'localhost',
+        'USER': 'root',
+        'PASSWORD': 'rpina0109',
     }
 }
 
