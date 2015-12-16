@@ -24,10 +24,6 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-from unipath import path
-RUTA_PROYECTO = os.path(__file__).ancestor(1)
-
-
 ALLOWED_HOSTS = []
 
 
@@ -62,7 +58,7 @@ ROOT_URLCONF = 'eCS_Claims.urls'
 WSGI_APPLICATION = 'eCS_Claims.wsgi.application'
 
 TEMPLATE_DIRS = (
-    RUTA_PROYECTO.child('templates'),
+    
 )
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
