@@ -73,6 +73,16 @@ DATABASES = {
     }
 }
 
+PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
+
+MEDIA_ROOT = PROJECT_PATH + '/static_media/'
+
+TEMPLATE_DIRS = (
+    PROJECT_PATH + '/templates/',
+)
+
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
