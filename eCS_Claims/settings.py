@@ -73,15 +73,11 @@ DATABASES = {
     }
 }
 
-PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
-
-MEDIA_ROOT = PROJECT_PATH + '/static_media/files/'
-
 SETTINGS_PATH = os.path.dirname(__file__)
 PROJECT PATH = os.path.join(SETTINGS_PATH, os.pardir)
 PROJECT_PATH = os.path.abspath(PROJECT_PATH)
 TEMPLATES_PATH = os.path.join(PROJECT_PATH, "templates")
-
+MEDIA_ROOT = os.path.join(PROJECT_PATH, "static_media/files")
 TEMPLATE_DIRS = (
     TEMPLATES_PATH,
 )
