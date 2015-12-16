@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.contrib.auth.decorators import login_required
-from django.template import RequestContext
+from django.template import RequestContext, loader, Context
 
 @login_required
 def logged_in(request):
