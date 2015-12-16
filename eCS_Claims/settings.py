@@ -78,7 +78,8 @@ PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
 MEDIA_ROOT = PROJECT_PATH + '/static_media/files/'
 
 TEMPLATE_DIRS = (
-    os.path.join(os.path.dirname(__file__), 'templates').replace('\\', '/'),
+    os.path.join(PROJECT_PATH, 'templates').replace('\\', '/'),
+    
 )
 
 
