@@ -75,7 +75,7 @@ DATABASES = {
 
 PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
 
-MEDIA_ROOT = PROJECT_PATH + '/static_media/'
+MEDIA_ROOT = PROJECT_PATH + '/static_media/files/'
 
 TEMPLATE_DIRS = (
     PROJECT_PATH + '/templates/',
@@ -100,6 +100,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
-STATIC_URL = '/static_media/files/'
+STATIC_URL = '/static/'
 
 
