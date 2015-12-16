@@ -66,7 +66,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'USER': 'root',
         'PASSWORD': 'rpina0109',
-        "HOST": '/var/run/mysql',
+        "HOST": '/var/lib/mysql/',
         'OPTIONS': {
           'autocommit': True,
         },
