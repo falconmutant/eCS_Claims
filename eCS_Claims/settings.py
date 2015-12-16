@@ -78,7 +78,9 @@ TEMPLATE_DIRS = (
 
 )
 
-
+STATICFILES_DIRS = [
+    'static',
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
