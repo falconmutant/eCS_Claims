@@ -60,18 +60,17 @@ WSGI_APPLICATION = 'eCS_Claims.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'NAME': 'ecs',
-        'ENGINE': 'django.db.backends.mysql',
-        'USER': 'root',
-        'PASSWORD': 'rpina0109',
-        "HOST": 'localhost',
-        'OPTIONS': {
-          'autocommit': True,
-        },
-    }
-}
+DATABASES = {  
+    'default': {  
+        'ENGINE': 'django_mongodb_engine',  
+        'NAME': 'ecs_claims',  
+        'USER': '',  
+        'PASSWORD': '',  
+        'HOST': '127.0.0.1',  
+        'PORT': '27017',  
+        'SUPPORTS_TRANSACTIONS': False,  
+    },  
+}  
 
 TEMPLATE_DIRS = (
     'templates',
