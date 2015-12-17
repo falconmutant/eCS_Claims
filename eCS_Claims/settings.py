@@ -60,14 +60,17 @@ WSGI_APPLICATION = 'eCS_Claims.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
-DATABASES = {  
-    'default': {  
-        'ENGINE': 'django.db.backends.dummy',
-    },  
-}  
-
-from mongoengine import connect
-connect('project1')
+DATABASES = {
+    'default' : {
+        'ENGINE' : 'django_mongodb_engine',
+        'NAME' : 'ecs_claims',
+        ...
+        'OPTIONS' : {
+            'socketTimeoutMS' : 500,
+            ...
+        }
+    }
+}
 
 TEMPLATE_DIRS = (
     'templates',
