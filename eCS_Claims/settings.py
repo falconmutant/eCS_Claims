@@ -61,11 +61,14 @@ WSGI_APPLICATION = 'eCS_Claims.wsgi.application'
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 DATABASES = {
-    'default' : {
-        'ENGINE' : 'django_mongodb_engine',
-        'NAME' : 'ecs_claims',
-        'OPTIONS' : {
-            'socketTimeoutMS' : 500,
+    'default': {
+        'NAME': 'ecs',
+        'ENGINE': 'django.db.backends.mysql',
+        'USER': 'root',
+        'PASSWORD': 'rpina0109',
+        "HOST": 'localhost',
+        'OPTIONS': {
+          'autocommit': True,
         },
     }
 }
