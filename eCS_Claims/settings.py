@@ -64,11 +64,9 @@ DATABASES = {
     'default' : {
         'ENGINE' : 'django_mongodb_engine',
         'NAME' : 'ecs_claims',
-        ...
         'OPTIONS' : {
             'socketTimeoutMS' : 500,
-            ...
-        }
+        },
     }
 }
 
