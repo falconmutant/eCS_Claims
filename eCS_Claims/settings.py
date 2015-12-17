@@ -62,7 +62,7 @@ WSGI_APPLICATION = 'eCS_Claims.wsgi.application'
 
 DATABASES = {  
     'default': {  
-        'ENGINE': '',  
+        'ENGINE': 'django.db.backends.dummy',
     },  
 }  
 
