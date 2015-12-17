@@ -62,15 +62,12 @@ WSGI_APPLICATION = 'eCS_Claims.wsgi.application'
 
 DATABASES = {  
     'default': {  
-        'ENGINE': 'django_mongodb_engine',  
-        'NAME': 'ecs_claims',  
-        'USER': '',  
-        'PASSWORD': '',  
-        'HOST': '127.0.0.1',  
-        'PORT': '27017',  
-        'SUPPORTS_TRANSACTIONS': False,  
+        'ENGINE': '',  
     },  
 }  
+
+from mongoengine import connect
+connect('project1')
 
 TEMPLATE_DIRS = (
     'templates',
