@@ -9,3 +9,8 @@ def logged_in(request):
         context_instance=RequestContext(request)
     )
 
+def detalle(request):
+    return render_to_response('detalles.html',
+        context_instance=RequestContext(request)
+    )
+
