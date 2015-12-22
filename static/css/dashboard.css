@@ -105,11 +105,16 @@ body {
 
 .bar_menu{
   width:98%;
-  height: 50px;
+  height: 35px;
   border-color: black;
   border-style: solid;
   border-width: medium;
   margin-top: 30px;
   margin-left: 1%;
 
+}
+.a-modal{
+  font-size: 20px;
+  color: black;
+  margin-left: 90%;
 }
