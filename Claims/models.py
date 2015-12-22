@@ -26,6 +26,7 @@ class Paciente(models.Model):
    fichaEmp = models.CharField(max_length=6, null=False)
    numCod = models.CharField(max_length=2, null=False)
    numEmpresa = models.CharField(max_length=6, null=False)
+   nombre = models.TextField( null=False)
 
 class Proveedor(models.Model):
    rfc = models.CharField(max_length=13, null=False)
