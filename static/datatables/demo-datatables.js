@@ -3,7 +3,7 @@
 // -------------------------------
 
 $(document).ready(function() {
-    $('#tabletools').dataTable({
+    var table = $('#tabletools').dataTable({
         "language": {
             "lengthMenu": "_MENU_",
             "sProcessing":     "Procesando...",
