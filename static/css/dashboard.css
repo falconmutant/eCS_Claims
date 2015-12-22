@@ -7,17 +7,6 @@ body {
   padding-top: 50px;
 }
 
-
-.fa{
-    display: inline-block;
-    font-family: FontAwesome;
-    font-style: normal;
-    font-weight: normal;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
 /*
  * Global add-ons
  */
@@ -122,5 +111,5 @@ body {
   border-width: medium;
   margin-top: 30px;
   margin-left: 1%;
-  
+
 }
