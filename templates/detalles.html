@@ -44,7 +44,7 @@ eCS_Claims
 {% block menu %}
 <div class="bar_menu">
   <a class="a-modal" href="/claims/"><i class="fa  fa-arrow-circle-o-left"></i></a>
-  <a style="margin-left:20px !important;" class="a-modal" id="modal"><i class="fa fa-rotate-right"></i></a>
+  <a style="margin-left:20px !important;" class="a-modal" id="modal"><i class="fa fa-list-ul"></i></a>
 </div>
 {% endblock menu %}
 
@@ -154,45 +154,22 @@ eCS_Claims
       <div class="modal-body">
         <form id="form" class="form-horizontal">
           <div class="form-group">
-              <label class="col-md-2 control-label">Tipo</label>
+            <label class="col-md-2 control-label">Estatus</label>
               <div class="col-xs-2">
                 <div class="input-icon">
-                  <select class="form-control"><option value=""></option></select>
-                </div>
-              </div>
-              <style type="text/css">
-                .col-md-2{width:9.666667%;}
-              </style>
-              <label class="col-md-2 control-label">Localidad</label>
-              <div class="col-xs-2">
-                <div class="input-icon">
-                  <select class="form-control"></select>
-                </div>
-              </div>
-
-              <label class="col-md-2 control-label">Rango de Fechas</label>
-              <div class="col-xs-2">
-                <div class="input-icon">
-                  <input class="input-error form-control" type="date">
-                </div>
-              </div>
-              <div class="col-xs-2">
-                <div class="input-icon">
-                  <input class="input-error form-control" type="date">
+                  <select class="form-control">
+                    <option>Aprobar</option>
+                    <option>Rechazar</option>
+                    <option>A Revisión</option>
+                  </select>
                 </div>
               </div>
           </div>
           <div class="form-group">
-            <label class="col-md-2 control-label">Cliente</label>
+            <label class="col-md-2 control-label">Comentarios</label>
               <div class="col-xs-2">
                 <div class="input-icon">
-                  <input class="input-error form-control" type="text">
-                </div>
-              </div>
-              <label class="col-md-2 control-label">Estatus</label>
-              <div class="col-xs-2">
-                <div class="input-icon">
-                  <select class="form-control"></select>
+                  <textarea class="input-error form-control" type="text"></textarea>
                 </div>
               </div>
           </div>
