@@ -63,11 +63,12 @@ eCS_Claims
         <th>Aprobación</th>
         <th>Fecha Solicitud</th>
         <th>Costo</th>
+        <th>Detalles</th>
       </tr>
     </thead>
     <tbody id="tb">
       {% for dato in eventos %}
-        <a href="/detalle/{{dato.id}}"><tr>
+        <tr>
           <td>{{dato.folioAut}}</td>
           {% if dato.tipo == "P" %}
             <td>Profesional</td>
@@ -82,7 +83,8 @@ eCS_Claims
           <td>Intervencion</td>
           <td>{{dato.fechaAdm}}</td>
           <td></td>
-        </tr></a>
+          <th><a class="a-modal" href="/detalle/{{dato.id}}"><i class="fa fa-mail-forward"></i></a></th>
+        </tr>
       {% empty %}
 
       {% endfor %}
