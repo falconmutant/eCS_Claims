@@ -132,3 +132,8 @@ body {
     margin-top: 120px;
   }
 }
+
+.a-pantalla, .a-pantalla:hover{
+  text-decoration:none;   
+  color: black;
+}
