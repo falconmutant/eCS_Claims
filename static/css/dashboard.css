@@ -104,21 +104,16 @@ body {
 }
 
 .bar_menu{
-  width:98%;
+  width:90%;
   height: 35px;
   border-color: black;
   border-style: solid;
   border-width: medium;
   margin-top: 30px;
-  margin-left: 1%;
+  margin-left: 5%;
 
 }
-.a-modal{
-  font-size: 20px;
-  color: black;
-  margin-left: 90%;
-}
-.a-modal:hover{
+.a-modal,.a-modal:hover{
   font-size: 20px;
   color: black;
   margin-left: 90%;
