@@ -8,6 +8,9 @@ eCS_Claims
 <link href="{% static "css/font-awesome.css" %}" rel="stylesheet">
 <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
 <link href="{% static "css/dashboard.css" %}" rel="stylesheet">
+<link href="{% static "datatables/dataTables.css" %}" rel="stylesheet">
+<link href="{% static "datatables/dataTables.bootstrap.css" %}" rel="stylesheet">
+<link href="{% static "datatables/dataTables.font-awesome.css" %}" rel="stylesheet">
 <style type="text/css">
   .dataTables_filter {
     display: none; 
@@ -71,13 +74,13 @@ eCS_Claims
           {% endif %}
           <td>{{dato.nombre}}</td>
           <td>{{dato.medico}}</td>
-          <td>Monterrey</td>
+          <td></td>
           <td>Traumatologia</td>
           {% if dato.estatus == "A" %}
             <td>Recibido</td>
           {% endif %}
           <td>Intervencion</td>
-          <td>{{dato.fechaAlta}}</td>
+          <td>{{dato.fechaAdm}}</td>
           <td></td>
         </tr>
       {% empty %}
@@ -155,13 +158,9 @@ eCS_Claims
 {% block javascript %}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
   <script src="{% static "js/bootstrap.min.js" %}"></script>
-  <script src="{% static "datatables/jquery.dataTables.js" %}"></script>
-  <script src="{% static "datatables/TableTools/js/dataTables.tableTools.js" %}"></script>
-  <script src="{% static "datatables/ColReorder/js/dataTables.colReorder.min.js" %}"></script>
-  <script src="{% static "datatables/KeyTable/js/dataTables.keyTable.js" %}"></script>
-  <script src="{% static "datatables/dataTables.bootstrap.js" %}"></script>
-  <script src="{% static "datatables/wijets.js" %}"></script>
-  <script src="{% static "datatables/demo-tables-advanceddatatables.js" %}"></script>
+  <script type="text/javascript" src="{% static "datatables/jquery.dataTables.js" %}"></script>
+  <script type="text/javascript" src="{% static "datatables/dataTables.bootstrap.js" %}"></script>
+  <script type="text/javascript" src="{% static "datatables/demo-datatables.js" %}"></script>
   <script>
     $('#modal').on('click',function(){
       $('#modal-form').modal('show'); 
