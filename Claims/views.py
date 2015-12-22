@@ -16,8 +16,7 @@ def detalle(request):
     )
 
 def claims(request):
-	datos = Evento.objects.all()
     return render_to_response('claims.html',
-        context_instance=RequestContext(request,locals())
+        context_instance=RequestContext(request)
     )
 
