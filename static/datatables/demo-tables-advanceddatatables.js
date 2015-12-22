@@ -43,16 +43,12 @@ $(document).ready(function() {
 
 
     //DOM Manipulation to move datatable elements integrate to panel
-    $('#panel-tabletools .panel-ctrls').append($('.dataTables_filter').addClass("pull-right"));
-    $('#panel-tabletools .panel-ctrls .dataTables_filter').find("label").addClass("panel-ctrls-center");
 
     $('#panel-tabletools .panel-ctrls').append("<i class='separator pull-right '></i>");
 
     $('#panel-tabletools .panel-ctrls').append($('.dataTables_length').addClass("pull-right"));
     $('#panel-tabletools .panel-ctrls .dataTables_length label').addClass("mb0");
 
-    $('#panel-tabletools .panel-ctrls').append("<i class='separator pull-right '></i>");
-	$( tableTools.fnContainer()).appendTo('#panel-tabletools .panel-ctrls').addClass("pull-right mt10");
 
     $('#panel-tabletools .panel-footer').append($(".dataTable+.row"));
     $('.dataTables_paginate>ul.pagination').addClass("pull-right");
