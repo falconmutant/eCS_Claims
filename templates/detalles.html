@@ -122,26 +122,22 @@ eCS_Claims
       </tr>
     </thead>
     <tbody id="tb">
-      {% for dato in detalle %}
         <tr>
-          <td>{{dato.folioAut}}</td>
-          {% if dato.tipo == "P" %}
+          <td>{{detalle.folioAut}}</td>
+          {% if detalle.tipo == "P" %}
             <td>Profesional</td>
           {% endif %}
-          <td>{{dato.paciente.nombre}}</td>
-          <td>{{dato.medico}}</td>
+          <td>{{detalle.paciente.nombre}}</td>
+          <td>{{detalle.medico}}</td>
           <td></td>
           <td>Traumatologia</td>
-          {% if dato.estatus == "A" %}
+          {% if detalle.estatus == "A" %}
             <td>Recibido</td>
           {% endif %}
           <td>Intervencion</td>
-          <td>{{dato.fechaAdm}}</td>
+          <td>{{detalle.fechaAdm}}</td>
           <td></td>
         </tr>
-      {% empty %}
-
-      {% endfor %}
     </tbody>
   </table>
 </div>
