@@ -65,7 +65,7 @@ eCS_Claims
         <th>Costo</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody id="tb">
       {% for dato in eventos %}
         <tr>
           <td>{{dato.folioAut}}</td>
@@ -164,6 +164,16 @@ eCS_Claims
   <script>
     $('#modal').on('click',function(){
       $('#modal-form').modal('show'); 
+    });
+    $('#tb').on( 'click', 'tr', function () {
+        if ( $(this).hasClass('selected') ) {
+            $(this).removeClass('selected');
+        }
+        else {
+            table.$('tr.selected').removeClass('selected');
+            $(this).addClass('selected');
+            
+        }
     });
   </script>
 {% endblock javascript %}
