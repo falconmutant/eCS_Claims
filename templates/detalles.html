@@ -8,11 +8,45 @@ eCS_Claims
 <link href="{% static "css/font-awesome.css" %}" rel="stylesheet">
 <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
 <link href="{% static "css/dashboard.css" %}" rel="stylesheet">
+<link href="{% static "datatables/dataTables.css" %}" rel="stylesheet">
+<link href="{% static "datatables/dataTables.bootstrap.css" %}" rel="stylesheet">
+<link href="{% static "datatables/dataTables.fontAwesome.css" %}" rel="stylesheet">
+<style type="text/css">
+  .dataTables_filter {
+    display: none; 
+  }
+</style>
 {% endblock css %}
 
-{% block user %}
-{{user.first_name}}
-{% endblock user %}
+{% block nav %}
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/logged_in/">Nombre / Logo Proyecto</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a style="color:green;" href="#"><i style="color:white !important; font-size:18px;margin-right:10px;" class="icon-append fa fa-user"></i>{{user.first_name}}</a></li>
+        <li><a href="#">Hospital Demo</a></li>
+        <li><a href="/cerrar/">Salir</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+{% endblock nav %}
+
+{% block menu %}
+<div class="bar_menu">
+  <a class="a-modal" id="modal"><i class="fa fa-search"></i></a>
+  <a style="margin-left:20px !important;" class="a-modal"><i class="fa fa-rotate-right"></i></a>
+</div>
+{% endblock menu %}
 
 {% block content %}
 <form id="form" class="form-horizontal" style="width:90%;margin-left:3%;margin-top:30px;">
@@ -87,7 +121,27 @@ eCS_Claims
         <th>Costo</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody id="tb">
+      {% for dato in eventos %}
+        <tr>
+          <td>{{dato.folioAut}}</td>
+          {% if dato.tipo == "P" %}
+            <td>Profesional</td>
+          {% endif %}
+          <td>{{dato.nombre}}</td>
+          <td>{{dato.medico}}</td>
+          <td></td>
+          <td>Traumatologia</td>
+          {% if dato.estatus == "A" %}
+            <td>Recibido</td>
+          {% endif %}
+          <td>Intervencion</td>
+          <td>{{dato.fechaAdm}}</td>
+          <td></td>
+        </tr>
+      {% empty %}
+
+      {% endfor %}
     </tbody>
   </table>
 </div>
@@ -104,22 +158,45 @@ eCS_Claims
       <div class="modal-body">
         <form id="form" class="form-horizontal">
           <div class="form-group">
-            <label class="col-md-2 control-label">Estatus</label>
+              <label class="col-md-2 control-label">Tipo</label>
               <div class="col-xs-2">
                 <div class="input-icon">
-                  <select class="form-control">
-                    <option>Aprobar</option>
-                    <option>Rechazar</option>
-                    <option>A Revisión</option>
-                  </select>
+                  <select class="form-control"><option value=""></option></select>
+                </div>
+              </div>
+              <style type="text/css">
+                .col-md-2{width:9.666667%;}
+              </style>
+              <label class="col-md-2 control-label">Localidad</label>
+              <div class="col-xs-2">
+                <div class="input-icon">
+                  <select class="form-control"></select>
+                </div>
+              </div>
+
+              <label class="col-md-2 control-label">Rango de Fechas</label>
+              <div class="col-xs-2">
+                <div class="input-icon">
+                  <input class="input-error form-control" type="date">
+                </div>
+              </div>
+              <div class="col-xs-2">
+                <div class="input-icon">
+                  <input class="input-error form-control" type="date">
                 </div>
               </div>
           </div>
           <div class="form-group">
-            <label class="col-md-2 control-label">Comentarios</label>
+            <label class="col-md-2 control-label">Cliente</label>
               <div class="col-xs-2">
                 <div class="input-icon">
-                  <textarea class="input-error form-control" type="text"></textarea>
+                  <input class="input-error form-control" type="text">
+                </div>
+              </div>
+              <label class="col-md-2 control-label">Estatus</label>
+              <div class="col-xs-2">
+                <div class="input-icon">
+                  <select class="form-control"></select>
                 </div>
               </div>
           </div>
@@ -137,13 +214,9 @@ eCS_Claims
 {% block javascript %}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
   <script src="{% static "js/bootstrap.min.js" %}"></script>
-  <script src="{% static "datatables/jquery.dataTables.js" %}"></script>
-  <script src="{% static "datatables/TableTools/js/dataTables.tableTools.js" %}"></script>
-  <script src="{% static "datatables/ColReorder/js/dataTables.colReorder.min.js" %}"></script>
-  <script src="{% static "datatables/KeyTable/js/dataTables.keyTable.js" %}"></script>
-  <script src="{% static "datatables/dataTables.bootstrap.js" %}"></script>
-  <script src="{% static "datatables/wijets.js" %}"></script>
-  <script src="{% static "datatables/demo-tables-advanceddatatables.js" %}"></script>
+  <script type="text/javascript" src="{% static "datatables/jquery.dataTables.js" %}"></script>
+  <script type="text/javascript" src="{% static "datatables/dataTables.bootstrap.js" %}"></script>
+  <script type="text/javascript" src="{% static "datatables/demo-datatables.js" %}"></script>
   <script>
     $('#modal').on('click',function(){
       $('#modal-form').modal('show'); 

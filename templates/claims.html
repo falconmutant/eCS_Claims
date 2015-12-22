@@ -83,7 +83,7 @@ eCS_Claims
           <td>Intervencion</td>
           <td>{{dato.fechaAdm}}</td>
           <td></td>
-          <th><a class="a-modal" href="/detalles/{{dato.id}}/"><i class="fa fa-mail-forward"></i></a></th>
+          <th><a class="a-details" href="/detalles/{{dato.id}}/"><i class="fa fa-mail-forward"></i></a></th>
         </tr>
       {% empty %}
 
@@ -166,17 +166,6 @@ eCS_Claims
   <script>
     $('#modal').on('click',function(){
       $('#modal-form').modal('show'); 
-    });
-
-    $('#tb').on( 'click', 'tr', function () {
-        if ( $(this).hasClass('selected') ) {
-            $(this).removeClass('selected');
-        }
-        else {
-            $('tr.selected').removeClass('selected');
-            $(this).addClass('selected');
-            
-        }
     });
   </script>
 {% endblock javascript %}
