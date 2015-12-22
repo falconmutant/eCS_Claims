@@ -65,19 +65,20 @@ eCS_Claims
     <tbody>
       {% for dato in eventos %}
         <tr>
-          <td>dato.folioAut</td>
+          <td>{{dato.folioAut}}</td>
           {% if dato.tipo == "P" %}
             <td>Profesional</td>
           {% endif %}
-          <td>dato.nombre</td>
-          <td>dato.medico</td>
+          <td>{{dato.nombre}}</td>
+          <td>{{dato.medico}}</td>
           <td>Monterrey</td>
           <td>Traumatologia</td>
           {% if dato.estatus == "A" %}
             <td>Recibido</td>
           {% endif %}
           <td>Intervencion</td>
-          <td>dato.fechaAlta</td>
+          <td>{{dato.fechaAlta}}</td>
+          <td></td>
         </tr>
       {% empty %}
 
