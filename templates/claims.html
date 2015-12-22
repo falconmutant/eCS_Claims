@@ -10,10 +10,6 @@ eCS_Claims
 <link href="{% static "css/dashboard.css" %}" rel="stylesheet">
 {% endblock css %}
 
-{% block user %}
-Rodrigo Piña Enriquez
-{% endblock user %}
-
 {% block nav %}
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
@@ -28,7 +24,7 @@ Rodrigo Piña Enriquez
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a style="color:green;" href="#"><i style="color:white !important; font-size:18px;margin-right:10px;" class="icon-append fa fa-user"></i>{% block user %}{% endblock %}</a></li>
+        <li><a style="color:green;" href="#"><i style="color:white !important; font-size:18px;margin-right:10px;" class="icon-append fa fa-user"></i>{{user.first_name}}</a></li>
         <li><a href="#">Hospital Demo</a></li>
         <li><a href="/cerrar/">Salir</a></li>
       </ul>
