@@ -43,19 +43,31 @@ eCS Claims
             <label class="col-md-2 control-label">Nombre</label>
             <div class="col-xs-2">
               <div class="input-icon">
-                <input class="input-error form-control" type="text" value="{{detalle.Paciente.Nombre}}">
+                {% for pa in paciente %}
+                  {% if pa.id == detalle.IdPaciente_id %}
+                    <input class="input-error form-control" type="text" value="{{pa.Nombre}}">
+                  {% endif %}
+                {% endfor %}
               </div>
             </div>
             <label class="col-md-2 control-label">Fecha de Nacimiento</label>
             <div class="col-xs-2">
               <div class="input-icon">
-                <input class="input-error form-control" type="date">
+                {% for pa in paciente %}
+                  {% if pa.id == detalle.IdPaciente_id %}
+                    <input class="input-error form-control" type="date" value="{{pa.FechaNacimiento}}">
+                  {% endif %}
+                {% endfor %}
               </div>
             </div>
             <label class="col-md-2 control-label">Sexo</label>
             <div class="col-xs-2">
               <div class="input-icon">
-                <input class="input-error form-control" type="text">
+                {% for pa in paciente %}
+                  {% if pa.id == detalle.IdPaciente_id %}
+                    <input class="input-error form-control" type="text" value="{{pa.Sexo}}">
+                  {% endif %}
+                {% endfor %}
               </div>
             </div>
           </div>
@@ -63,19 +75,21 @@ eCS Claims
             <label class="col-md-2 control-label">Peso / Estatura</label>
             <div class="col-xs-2">
               <div class="input-icon">
-                <input class="input-error form-control" type="text">
+                {% for pa in paciente %}
+                  {% if pa.id == detalle.IdPaciente_id %}
+                    <input class="input-error form-control" type="text" value="{{pa.PesoEstatura}}">
+                  {% endif %}
+                {% endfor %}
               </div>
             </div>
             <label class="col-md-2 control-label">Médico</label>
             <div class="col-xs-2">
               <div class="input-icon">
-                <input class="input-error form-control" type="date" value="{{detalle.medico}}">
-              </div>
-            </div>
-            <label class="col-md-2 control-label">Tipo</label>
-            <div class="col-xs-2">
-              <div class="input-icon">
-                <input class="input-error form-control" type="text" value="{{detalle.tipo}}">
+                {% for me in medico %}
+                  {% if me.id == detalle.IdMedico_id %}
+                    <input class="input-error form-control" type="text" value="{{me.Nombre}}">
+                  {% endif %}
+                {% endfor %}
               </div>
             </div>
           </div>
@@ -83,13 +97,13 @@ eCS Claims
             <label class="col-md-2 control-label">Numero de Evento</label>
             <div class="col-xs-2">
               <div class="input-icon">
-                <input class="input-error form-control" type="text">
+                <input class="input-error form-control" type="text" value="{{detalle.id}}">
               </div>
             </div>
             <label class="col-md-2 control-label">Diagnostico</label>
             <div class="col-xs-6">
               <div class="input-icon">
-                <input class="input-error form-control" type="text">
+                <input class="input-error form-control" type="text" value="{{detalle.Diagnostico}}">
               </div>
             </div>
           </div>
