@@ -9,7 +9,7 @@ class Paciente(models.Model):
    PesoEstatura = models.CharField(max_length=255, null=False)
    FechanNacimiento = models.DateTimeField()
    Sexo = models.CharField(max_length=255, null=False)
-
+   NumEmpleado = models.CharField(max_length=255, null=False)
 class Medico(models.Model):
    Nombre = models.CharField(max_length=255, null=False)
    Especialidad = models.CharField(max_length=255, null=False)

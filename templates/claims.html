@@ -54,20 +54,39 @@ eCS_Claims
     <thead>
       <tr>
         <th>Folio</th>
-        <th>Tipo</th>
-        <th>Paciente</th>
-        <th>Médico</th>
-        <th>Localidad</th>
-        <th>Especialidad</th>
-        <th>Estatus</th>
-        <th>Aprobación</th>
+        <th>Empresa</th>
+        <th>Numero Empleado</th>
+        <th>Nombre</th>
         <th>Fecha Solicitud</th>
         <th>Costo</th>
         <th>Detalles</th>
       </tr>
     </thead>
     <tbody id="tb">
+      {% for dato in autorizacion %}
+        <tr>
+          <td>{{dato.Folio}}</td>
+          {% for item in evento %}
+            {% if item.id == dato.IdEvento_id %}
 
+              {% for pro in proveedor %}
+                {% if pro.id == item.IdProveedor_id %}
+                  <th>pro.Proveedor</th>
+                {% endif %}
+              {% endfor %}
+              {% for pac in paciente %}
+                {% if pac.id == item.IdPaciente_id %}
+                  <th>pac.NumEmpleado</th>
+                  <th>pac.Nombre</th>
+                {% endif %}
+              {% endfor %}
+              <td>{{dato.FechaSolicitud}}</td>
+              <td></td>
+            {% endif %}
+          {% endfor %}
+          <th><a class="a-details" href="/detalles/{{dato.id}}/"><i class="fa fa-mail-forward"></i></a></th>
+        </tr>
+      {% endfor %}
     </tbody>
   </table>
 </div>
