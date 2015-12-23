@@ -5,10 +5,11 @@ eCS Claims
 {% endblock title %}
 
 {% block css %}
-  <link href="{% static "css/main.css" %}" rel="stylesheet">
+  
   <link href="{% static "css/font-awesome.css" %}" rel="stylesheet">
   <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
   <link href="{% static "css/dashboard.css" %}" rel="stylesheet">
+  <link href="{% static "css/main.css" %}" rel="stylesheet">
   <link href="{% static "datatables/dataTables.css" %}" rel="stylesheet">
   <link href="{% static "datatables/dataTables.bootstrap.css" %}" rel="stylesheet">
   <link href="{% static "datatables/dataTables.fontAwesome.css" %}" rel="stylesheet">
@@ -23,9 +24,9 @@ eCS Claims
 <header id="header">
   <nav id="nav">
     <ul>
-      <li><a href="index.html">Inicio</a></li>
-      <li><a href="index.html">Aprobaciones</a></li>
-      <li><a href="index.html">Historial</a></li>
+      <li><a href="/index/">Inicio</a></li>
+      <li><a href="/claims/">Aprobaciones</a></li>
+      <li><a href="/historial/">Historial</a></li>
       <li>
         <a href="#" class="icon fa-user">{{nombre}}</a>
         <ul>
