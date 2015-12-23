@@ -4,69 +4,58 @@ from django.db import models
 
 # Create your models here.
 
-EVENT_TIPO = (
-('C', 'Cita'),
-('A', 'Ambulatorio'),
-('H', 'Hospitalizacion'),
-('U', 'Urgencia'),
-)
-
-EVENT_ESTATUS = (
-('A', 'Abierto'),
-('C', 'Cerrado'),
-)
-
-DX_ESTATUS = (
-('Y', 'Activo'),
-('N', 'Inactivo'),
-)
+class Autorizaciones(models.Model):
+   Folio = models.CharField(max_length=255)
+   IdEvento = models.ForeignKey(Evento)
+   Estatus = models.CharField(max_length=255, null=False)
+   FechaSolicitud = models.DateTimeField()
+   TipoAprobacion = models.CharField(max_length=255)
+   Comentarios = models.CharField(max_length=255, null=False)
 
 class Paciente(models.Model):
-   curp = models.CharField(max_length=18, null=False)
-   fichaEmp = models.CharField(max_length=6, null=False)
-   numCod = models.CharField(max_length=2, null=False)
-   numEmpresa = models.CharField(max_length=6, null=False)
-   nombre = models.CharField(max_length=255, null=False)
+   Nombre = models.CharField(max_length=255, null=False)
+   PesoEstatura = models.CharField(max_length=255, null=False)
+   FechanNacimiento = models.DateTimeField()
+   Sexo = models.CharField(max_length=255, null=False)
 
-class Proveedor(models.Model):
-   rfc = models.CharField(max_length=13, null=False)
-   cliente = models.CharField(max_length=255, null=False)
-   org = models.CharField(max_length=255, null=False)
+class Medico(models.Model):
+   Nombre = models.CharField(max_length=255, null=False)
+   Especialidad = models.CharField(max_length=255, null=False)
+   Cedula = models.CharField(max_length=255, null=False)
+
 
 class Evento(models.Model):
-   folioAut = models.CharField(max_length=255)
-   numEvento = models.CharField(max_length=255)
-   fechaAdm = models.DateTimeField()
-   fechaAlta = models.DateTimeField()
-   cedula = models.CharField(max_length=50)
-   medico = models.CharField(max_length=255)
-   tipo = models.CharField(choices=EVENT_TIPO, max_length=1)
-   estatus = models.CharField(choices= EVENT_ESTATUS, max_length=1)
-   paciente = models.ForeignKey(Paciente)
-   proveedor = models.ForeignKey(Proveedor)
+   IdPaciente = models.ForeignKey(Paciente)
+   IdMedico = models.ForeignKey(Medico)
+   Diagnostico = models.CharField(max_length=255, null=False)
+   IdCargo = models.ForeignKey(Cargo)
+   IdTipoServicio = models.ForeignKey(TipoServicio)
+   IdProveedor = models.ForeignKey(Proveedor)
+   FechaAdmision = models.DateTimeField()
+   FechaSalida = models.DateTimeField()
 
+class Cargo(models.Model):
+   Descripcion = models.CharField(max_length=255, null=False)
+   IdTipoCargo = models.ForeignKey(TipoCargo)
+   Cantidad = models.IntegerField(null=False)
+   PrecioUnitario = models.DecimalField(null=False)
+   Descuento = models.DecimalField(null=False)
+   PrecioNeto = models.DecimalField(null=False)
+   Impuesto = models.DecimalField(null=False)
+   FechaAplicación = models.DateTimeField()
+   HoraAplicación = models.CharField(max_length=255, null=False)
 
-class Dx(models.Model):
+class CargoPorEvento(models.Model):
+   IdEvento = models.ForeignKey(Evento)
+   IdCargo = models.ForeignKey(Cargo)
 
-   secuencia = models.PositiveSmallIntegerField()
-   sistema = models.CharField(max_length=255)
-   dxvalue = models.CharField(max_length=255)
-   estatus = models.CharField(choices= DX_ESTATUS, max_length=1)
-   evento = models.ForeignKey(Evento)
+class Proveedor(models.Model):
+   Proveedor = models.CharField(max_length=255, null=False)
+   Localidad = models.CharField(max_length=255, null=False)
 
-class Cargos(models.Model):
-   evento = models.ForeignKey(Evento)
-   secuencia = models.PositiveSmallIntegerField()
-   fechaApli = models.DateTimeField()
-   codigo = models.CharField(max_length=255)
-   descripcion = models.CharField(max_length=255) 
-   udm = models.CharField(max_length=255)
-   sistemaCodificacion = models.CharField(max_length=255)
-   cantidad = models.PositiveSmallIntegerField()
-   precio = models.DecimalField(max_digits=7, decimal_places=2)
-   subtotal = models.DecimalField(max_digits=7, decimal_places=2)
-   iva = models.DecimalField(max_digits=7, decimal_places=2)
-   descuento = models.DecimalField(max_digits=7, decimal_places=2)
-   total = models.DecimalField(max_digits=7, decimal_places=2)
-   dx = models.ForeignKey(Dx)
+class TipoServicio(models.Model):
+   Nombre = models.CharField(max_length=255, null=False)
+
+class TipoCargo(models.Model):
+   Nombre = models.CharField(max_length=255, null=False)
 
