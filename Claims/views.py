@@ -12,16 +12,20 @@ def index(request):
 
 @login_required
 def logged_in(request):
-    return render_to_response('pantallas.html',
-        context_instance=RequestContext(request)
-    )
+	nombre = request.user.get_full_name()
+	    return render_to_response('pantallas.html',
+	        context_instance=RequestContext(request)
+	    )
 
+@login_required
 def detalle(request, id):
+	nombre = request.user.get_full_name()
 	detalle = get_object_or_404(Evento, id=id)
-    	return render_to_response('detalles.html',
-        	context_instance=RequestContext(request,locals())
-    	)
+	    	return render_to_response('detalles.html',
+	        	context_instance=RequestContext(request,locals())
+	    	)
 
+@login_required
 def claims(request):
 	nombre = request.user.get_full_name()
 	autorizacion = Autorizaciones.objects.all()
