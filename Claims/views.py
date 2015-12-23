@@ -3,6 +3,7 @@ from django.shortcuts import render_to_response, get_object_or_404, get_list_or_
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from Claims.models import *
+from django.contrib.auth.models.User import *
 
 def index(request):
     return render_to_response('index.html',
@@ -23,6 +24,7 @@ def detalle(request, id):
     	)
 
 def claims(request):
+	nombre = user.get_full_name()
 	autorizacion = Autorizaciones.objects.all()
 	evento = Evento.objects.all()
 	paciente = Paciente.objects.all()
