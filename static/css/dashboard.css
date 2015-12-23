@@ -120,6 +120,8 @@ body {
 }
 
 .a-details,.a-details:hover{
-  font-size: 20px;
+  font-size: 30px;
   color: black;
+  margin-left: 93% !important;
+  border: none !important;
 }
