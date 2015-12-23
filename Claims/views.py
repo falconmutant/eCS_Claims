@@ -41,4 +41,4 @@ def historial(request):
 	proveedor = Proveedor.objects.all()
 	cargo = CargoPorEvento.objects.all()
 	costo = Cargo.objects.all()
-    	return render_to_response('claims.html',RequestContext(request,locals()))
+    	return render_to_response('historial.html',RequestContext(request,locals()))
