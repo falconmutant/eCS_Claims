@@ -8481,7 +8481,7 @@ opacity: 1;
 	bottom: 0;
 	left: 0;
 	padding: 0;
-	background-image: url(../images/gallery/2.png);
+	background-image: url(../images/banner-03.jpg);
 	/* try 2.png,3.png...12.png */
 	background-size: 30%;
 }
@@ -8489,7 +8489,7 @@ opacity: 1;
 	width: 100%;
 	padding: 20px;
 	height: 245px;
-	background-image: url(../images/gallery/2.png);
+	background-image: url(../images/banner-03.jpg);
 	/* try 2.png,3.png...12.png */
 	background-size: 30%;
 }
