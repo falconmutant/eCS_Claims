@@ -67,21 +67,17 @@ eCS_Claims
       </tr>
     </thead>
     <tbody id="tb">
-      {% for dato in eventos %}
+      {% for dato in autorizacion %}
         <tr>
-          <td>{{dato.folioAut}}</td>
-          {% if dato.tipo == "P" %}
-            <td>Profesional</td>
-          {% endif %}
-          <td>{{dato.nombre}}</td>
-          <td>{{dato.medico}}</td>
-          <td></td>
-          <td>Traumatologia</td>
-          {% if dato.estatus == "A" %}
-            <td>Recibido</td>
-          {% endif %}
-          <td>Intervencion</td>
-          <td>{{dato.fechaAdm}}</td>
+          <td>{{dato.Folio}}</td>
+          <td>{{tipo.Nombre}}</td>
+          <td>{{paciente.Nombre}}</td>
+          <td>{{medico.Nombre}}</td>
+          <td>{{proveedor.Localidad}}</td>
+          <td>{{medico.Especialidad}}</td>
+          <td>{{dato.Estatus}}</td>
+          <td>{{dato.TipoAprobacion}}</td>
+          <td>{{dato.FechaSolicitud}}</td>
           <td></td>
           <th><a class="a-details" href="/detalles/{{dato.id}}/"><i class="fa fa-mail-forward"></i></a></th>
         </tr>

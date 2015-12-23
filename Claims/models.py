@@ -40,7 +40,6 @@ class Evento(models.Model):
    IdPaciente = models.ForeignKey(Paciente)
    IdMedico = models.ForeignKey(Medico)
    Diagnostico = models.CharField(max_length=255, null=False)
-   IdCargo = models.ForeignKey(Cargo)
    IdTipoServicio = models.ForeignKey(TipoServicio)
    IdProveedor = models.ForeignKey(Proveedor)
    FechaAdmision = models.DateTimeField()
