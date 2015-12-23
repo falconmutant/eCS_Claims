@@ -132,7 +132,7 @@ eCS Claims
                       <td>{{item.Descripcion}}</td>
                       {% for tpc in tipocargo %}
                         {% if tpc.id == item.IdTipoCargo_id %}
-                          <td>{{tipocargo.Nombre}}</td>
+                          <td>{{tpc.Nombre}}</td>
                         {% endif %}
                       {% endfor %}
                       <td>{{item.Cantidad}}</td>
