@@ -23,7 +23,7 @@ def detalle(request, id):
     	)
 
 def claims(request):
-	nombre = user.get_full_name()
+	nombre = request.user.get_full_name()
 	autorizacion = Autorizaciones.objects.all()
 	evento = Evento.objects.all()
 	paciente = Paciente.objects.all()
