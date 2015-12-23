@@ -7,7 +7,7 @@ from django.db import models
 class Paciente(models.Model):
    Nombre = models.CharField(max_length=255, null=False)
    PesoEstatura = models.CharField(max_length=255, null=False)
-   FechanNacimiento = models.DateTimeField()
+   FechaNacimiento = models.DateTimeField()
    Sexo = models.CharField(max_length=255, null=False)
    NumEmpleado = models.CharField(max_length=255, null=False)
 class Medico(models.Model):
