@@ -10,5 +10,5 @@ urlpatterns = patterns('',
 	url(r'^detalles/(?P<id>\d+)/$', 'Claims.views.detalle'),
 	url(r'^claims/$', 'Claims.views.claims'),
 	url(r'^cerrar/$' , 'django.contrib.auth.views.logout_then_login',
-		 name='logout')
+		 name='logout',{'next_page': '/index/'})
 )
