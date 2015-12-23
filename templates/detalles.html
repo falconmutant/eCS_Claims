@@ -130,9 +130,11 @@ eCS Claims
                     <tr>
                       <td>{{item.id}}</td>
                       <td>{{item.Descripcion}}</td>
-                      {% if tipocargo.id == item.IdTipoCargo_id %}
-                        <td>{{tipocargo.Nombre}}</td>
-                      {% endif %}
+                      {% for tpc in tipocargo %}
+                        {% if tpc.id == item.IdTipoCargo_id %}
+                          <td>{{tipocargo.Nombre}}</td>
+                        {% endif %}
+                      {% endfor %}
                       <td>{{item.Cantidad}}</td>
                       <td>{{item.PrecioUnitario}}</td>
                       <td>{{item.Descuento}}</td>
