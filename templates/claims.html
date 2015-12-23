@@ -71,13 +71,13 @@ eCS_Claims
 
               {% for pro in proveedor %}
                 {% if pro.id == item.IdProveedor_id %}
-                  <th>pro.Proveedor</th>
+                  <th>{{pro.Proveedor}}</th>
                 {% endif %}
               {% endfor %}
               {% for pac in paciente %}
                 {% if pac.id == item.IdPaciente_id %}
-                  <th>pac.NumEmpleado</th>
-                  <th>pac.Nombre</th>
+                  <th>{{pac.NumEmpleado}}</th>
+                  <th>{{pac.Nombre}}</th>
                 {% endif %}
               {% endfor %}
               <td>{{dato.FechaSolicitud}}</td>
