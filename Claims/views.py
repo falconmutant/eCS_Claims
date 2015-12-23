@@ -3,7 +3,6 @@ from django.shortcuts import render_to_response, get_object_or_404, get_list_or_
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from Claims.models import *
-from django.contrib.auth.models.User import *
 
 def index(request):
     return render_to_response('index.html',
