@@ -55,7 +55,7 @@ eCS Claims
               <div class="input-icon">
                 {% for pa in paciente %}
                   {% if pa.id == detalle.IdPaciente_id %}
-                    <input class="input-error form-control" type="date" value="{{pa.FechaNacimiento}}">
+                    <input class="input-error form-control" type="datetime" value="{{pa.FechaNacimiento}}">
                   {% endif %}
                 {% endfor %}
               </div>
