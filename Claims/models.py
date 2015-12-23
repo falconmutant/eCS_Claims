@@ -42,8 +42,8 @@ class Cargo(models.Model):
    Descuento = models.DecimalField(null=False)
    PrecioNeto = models.DecimalField(null=False)
    Impuesto = models.DecimalField(null=False)
-   FechaAplicación = models.DateTimeField()
-   HoraAplicación = models.CharField(max_length=255, null=False)
+   FechaAplicacion = models.DateTimeField()
+   HoraAplicacion = models.CharField(max_length=255, null=False)
 
 class CargoPorEvento(models.Model):
    IdEvento = models.ForeignKey(Evento)
