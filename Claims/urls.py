@@ -9,6 +9,7 @@ urlpatterns = patterns('',
 	url(r'^logged_in/$', 'Claims.views.logged_in'),
 	url(r'^detalles/(?P<id>\d+)/$', 'Claims.views.detalle'),
 	url(r'^claims/$', 'Claims.views.claims'),
+	url(r'^historial/$', 'Claims.views.historial'),
 	url(r'^cerrar/$' , 'django.contrib.auth.views.logout',
 						{'next_page': 'Claims.views.index'})
 )

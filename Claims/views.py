@@ -31,3 +31,14 @@ def claims(request):
 	cargo = CargoPorEvento.objects.all()
 	costo = Cargo.objects.all()
     	return render_to_response('claims.html',RequestContext(request,locals()))
+
+@login_required
+def historial(request):
+	nombre = request.user.get_full_name()
+	autorizacion = Autorizaciones.objects.all()
+	evento = Evento.objects.all()
+	paciente = Paciente.objects.all()
+	proveedor = Proveedor.objects.all()
+	cargo = CargoPorEvento.objects.all()
+	costo = Cargo.objects.all()
+    	return render_to_response('claims.html',RequestContext(request,locals()))
