@@ -70,7 +70,11 @@ eCS_Claims
       {% for dato in autorizacion %}
         <tr>
           <td>{{dato.Folio}}</td>
-          <td>{{tipo.Nombre}}</td>
+          {% for item in tipo %}
+            {% if dato.IdTipo_id= item.id %}
+            <td>{{tipo.Nombre}}</td>
+            {% endif %}
+          {% endfor %}
           <td>{{paciente.Nombre}}</td>
           <td>{{medico.Nombre}}</td>
           <td>{{proveedor.Localidad}}</td>
@@ -81,8 +85,6 @@ eCS_Claims
           <td></td>
           <th><a class="a-details" href="/detalles/{{dato.id}}/"><i class="fa fa-mail-forward"></i></a></th>
         </tr>
-      {% empty %}
-
       {% endfor %}
     </tbody>
   </table>

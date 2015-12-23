@@ -24,9 +24,11 @@ def detalle(request, id):
 
 def claims(request):
 	autorizacion = Autorizaciones.objects.all()
-	evento = get_object_or_404(Evento, autorizacion.IdEvento_id=id)
-	paciente = get_object_or_404(Paciente, evento.IdPaciente_id=id)
-	medico = get_object_or_404(Medico, evento.IdMedico_id=id)
-	proveedor = get_object_or_404(Proveedor, evento.IdProveedor_id=id)
-	tipo =get_object_or_404(TipoServicio, evento.IdTipoServicio_id=id)
+	evento = Evento.objects.all()
+	paciente = Paciente.objects.all()
+	medico = Medico.objects.all()
+	proveedor = Proveedor.objects.all()
+	tipo = TipoServicio.objects.all()
+	cargo = CargoPorEvento.objects.all()
+	costo = Cargo.objects.all()
     	return render_to_response('claims.html',RequestContext(request,locals()))
