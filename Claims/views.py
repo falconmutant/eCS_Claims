@@ -21,6 +21,9 @@ def detalle(request, id):
 	detalle = get_object_or_404(Evento, id=id)
 	paciente = Paciente.objects.all()
 	medico = Medico.objects.all()
+	cargo = CargoPorEvento.objects.all()
+	costo = Cargo.objects.all()
+	tipocargo = TipoCargo.objects.all()
 	return render_to_response('detalles.html',RequestContext(request,locals()))
 
 @login_required
