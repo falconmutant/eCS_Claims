@@ -67,25 +67,7 @@ eCS_Claims
       </tr>
     </thead>
     <tbody id="tb">
-      {% for dato in autorizacion %}
-        <tr>
-          <td>{{dato.Folio}}</td>
-          {% for item in tipo %}
-            {% if dato.IdTipo_id= item.id %}
-            <td>{{tipo.Nombre}}</td>
-            {% endif %}
-          {% endfor %}
-          <td>{{paciente.Nombre}}</td>
-          <td>{{medico.Nombre}}</td>
-          <td>{{proveedor.Localidad}}</td>
-          <td>{{medico.Especialidad}}</td>
-          <td>{{dato.Estatus}}</td>
-          <td>{{dato.TipoAprobacion}}</td>
-          <td>{{dato.FechaSolicitud}}</td>
-          <td></td>
-          <th><a class="a-details" href="/detalles/{{dato.id}}/"><i class="fa fa-mail-forward"></i></a></th>
-        </tr>
-      {% endfor %}
+
     </tbody>
   </table>
 </div>
