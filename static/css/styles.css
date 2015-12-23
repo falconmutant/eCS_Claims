@@ -8482,8 +8482,10 @@ opacity: 1;
 	left: 0;
 	padding: 0;
 	background-image: url(../images/banner-03.jpg);
+	background-position:center center;
+	background-repeat:no-repeat;
+	background-size: cover;
 	/* try 2.png,3.png...12.png */
-	background-size: 30%;
 }
 .error-top-block {
 	width: 100%;
@@ -8491,7 +8493,9 @@ opacity: 1;
 	height: 245px;
 	background-image: url(../images/banner-03.jpg);
 	/* try 2.png,3.png...12.png */
-	background-size: 30%;
+	background-position:center center;
+	background-repeat:no-repeat;
+	background-size: cover;
 }
 .error-bottom-block {
 	padding-top: 10px;
