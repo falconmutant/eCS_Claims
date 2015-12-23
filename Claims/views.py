@@ -4,6 +4,12 @@ from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from Claims.models import *
 
+def index(request):
+    return render_to_response('index.html',
+        context_instance=RequestContext(request)
+    )
+
+
 @login_required
 def logged_in(request):
     return render_to_response('pantallas.html',
