@@ -58,6 +58,7 @@ eCS_Claims
         <th>Numero Empleado</th>
         <th>Nombre</th>
         <th>Fecha Solicitud</th>
+        <th>Estatus</th>
         <th>Costo</th>
         <th>Detalles</th>
       </tr>
@@ -81,6 +82,7 @@ eCS_Claims
                 {% endif %}
               {% endfor %}
               <td>{{dato.FechaSolicitud}}</td>
+              <td>{{dato.Estatus}}</td>
               <td></td>
             {% endif %}
           {% endfor %}
