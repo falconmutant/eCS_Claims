@@ -165,13 +165,13 @@ eCS Claims
         <h4 class="modal-title" id="myModalLabel">Busqueda</h4>
       </div>
       <div class="modal-body">
-        <form id="form" class="form-horizontal">
+        <form id="form" class="form-horizontal" method="POST">{% csrf_token %}
           <div class="form-group">
              <div class="form-group">
               <label class="col-md-2 control-label">Tipo</label>
               <div class="col-xs-2">
                 <div class="input-icon">
-                  <select class="form-control">
+                  <select name="estatus" class="form-control">
                     <option value="Aprobar">Aprobar</option>
                     <option value="Rechazar">Rechazar</option>
                     <option value="A revision">A revisión</option>
@@ -183,7 +183,7 @@ eCS Claims
               <label class="col-md-2 control-label">Comentarios</label>
               <div class="col-xs-2">
                 <div class="input-icon">
-                  <textarea row="6"></textarea>
+                  <textarea name="descripcion" row="6"></textarea>
                 </div>
               </div>
             </div>
