@@ -212,16 +212,33 @@ eCS Claims
     $('#modal').on('click',function(){
       $('#modal-form').modal('show'); 
     });
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    var csrftoken = getCookie('csrftoken');
     function jax() {
         console.log("ajax!") // sanity check
         $.ajax({
             url : "/claims/", // the endpoint
             type : "POST", // http method
-            data : { {% csrf_token %}
-                     cliente : $('#cliente').val(),
+            data : { cliente : $('#cliente').val(),
                      tipo : $('#tipo').val(),
                      inicio : $('#inicio').val(),
-                     fin : $('#fin').val() }, // data sent with the post request
+                     fin : $('#fin').val(),
+                     csrfmiddlewaretoken: csrftoken },
+                      // data sent with the post request
 
             // handle a successful response
             success : function(json) {
