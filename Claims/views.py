@@ -3,6 +3,7 @@ from django.shortcuts import render_to_response, get_object_or_404, get_list_or_
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from Claims.models import *
+import datetime
 
 def index(request):
     return render_to_response('index.html',
@@ -30,6 +31,7 @@ def detalle(request, id):
 @login_required
 def claims(request):
 	bandera=0
+	now = datetime.datetime.now()
 	if request.POST:
 		idd = request.POST.get('id')
 		estatus = request.POST.get('estatus')
