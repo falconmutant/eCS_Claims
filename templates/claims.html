@@ -48,7 +48,7 @@ eCS Claims
               <label class="col-md-2 control-label">Tipo</label>
               <div class="col-xs-2">
                 <div class="input-icon">
-                  <select name="tipo" id="tipo" onchange="tipo()" class="form-control">
+                  <select name="tipo" id="tipo" onchange="jax()" class="form-control">
                     <option value="vacio"></option>
                     <option value="2">Institucional</option>
                     <option value="1">Profesional</option>
@@ -61,7 +61,7 @@ eCS Claims
               <label class="col-md-2 control-label">Cliente</label>
               <div class="col-xs-2">
                 <div class="input-icon">
-                  <select name="cliente" id="cliente" onchange="tipo()" class="form-control">
+                  <select name="cliente" id="cliente" onchange="jax()" class="form-control">
                     <option value="vacio"></option>
                     {% for datos in proveedor %}
                       <option value="{{datos.id}}">{{datos.Proveedor}}</option>
@@ -72,12 +72,12 @@ eCS Claims
               <label class="col-md-2 control-label">Rango de Fechas</label>
               <div class="col-xs-2">
                 <div class="input-icon">
-                  <input onchange="tipo()" name="inicio" id="inicio" class="input-error form-control" type="date" value="{{inicio}}">
+                  <input onchange="jax()" name="inicio" id="inicio" class="input-error form-control" type="date" value="{{inicio}}">
                 </div>
               </div>
               <div class="col-xs-2">
                 <div class="input-icon">
-                  <input onchange="tipo()" name="fin" id="fin" class="input-error form-control" type="date" value="{{fin}}">
+                  <input onchange="jax()" name="fin" id="fin" class="input-error form-control" type="date" value="{{fin}}">
                 </div>
               </div>
           </div>
@@ -212,7 +212,7 @@ eCS Claims
     $('#modal').on('click',function(){
       $('#modal-form').modal('show'); 
     });
-    function tipo() {
+    function jax() {
         console.log("ajax!") // sanity check
         $.ajax({
             url : "/claims/", // the endpoint
