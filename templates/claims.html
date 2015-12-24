@@ -215,7 +215,7 @@ eCS Claims
     function tipo() {
         console.log("ajax!") // sanity check
         $.ajax({
-            url : "claims/", // the endpoint
+            url : "/claims/", // the endpoint
             type : "POST", // http method
             data : { cliente : $('#cliente').val(),
                      tipo : $('#tipo').val(),
