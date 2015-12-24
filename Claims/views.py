@@ -31,7 +31,7 @@ def detalle(request, id):
 @login_required
 def claims(request):
 	bandera=0
-	now = time.strftime("%x")
+	now = "%s/%s/%s"% (x.year, x.month, x.day)
 	if request.POST:
 		idd = request.POST.get('id')
 		estatus = request.POST.get('estatus')
