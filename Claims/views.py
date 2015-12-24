@@ -58,7 +58,7 @@ def claims(request):
 		if request.POST.get("tipo") != 'vacio':
 			evento = Evento.objects.all().filter(IdTipoServicio_id=request.POST.get("tipo"))
 		if request.POST.get("cliente") != 'vacio':
-			proveedor = Proveedor.objects.all().filter(Proveedor=request.POST.get("cliente"))
+			proveedor = Proveedor.objects.all().filter(id=request.POST.get("cliente"))
 		#autorizacion = Autorizaciones.objects.all().filter(Estatus='Recibido',FechaSolicitud >= request.POST.get("inicio"),FechaSolicitud <= request.POST.get("fin"))
 		inicio = request.POST.get("inicio")
 		fin = request.POST.get("fin")
