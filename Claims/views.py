@@ -55,7 +55,7 @@ def claims(request):
 	cargo = CargoPorEvento.objects.all()
 	costo = Cargo.objects.all()
 	if request.POST:
-		autorizacion = Autorizaciones.objects.all().filter(Estatus='Recibido',FechaSolicitud__range=[request.POST.get("inicio"), request.POST.get("fin")])
+		#autorizacion = Autorizaciones.objects.all().filter(Estatus='Recibido',FechaSolicitud__range=[request.POST.get("inicio"), request.POST.get("fin")])
 		if request.POST.get("tipo") != 'vacio':
 			evento = Evento.objects.all().filter(IdTipoServicio_id=request.POST.get("tipo"))
 		if request.POST.get("cliente") != 'vacio':
