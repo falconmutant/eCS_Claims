@@ -164,8 +164,9 @@ eCS Claims
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Busqueda</h4>
       </div>
+      <form action="" id="form" class="form-horizontal" method="POST">{% csrf_token %}
       <div class="modal-body">
-        <form action="" id="form" class="form-horizontal" method="POST">{% csrf_token %}
+        
           <div class="form-group">
              <div class="form-group">
               <label class="col-md-2 control-label">Tipo</label>
@@ -188,12 +189,13 @@ eCS Claims
               </div>
             </div>
           </div>
-        </form>
+        
       </div>
       <div id="btnmodal" class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-        <button type="submit" class="btn btn-default">Autorizar</button>
+        <button type="submit" class="btn btn-default" data-dismiss="modal">Autorizar</button>
       </div>
+      </form>
     </div>
   </div>
 </div>
