@@ -17,10 +17,6 @@ def logged_in(request):
 
 @login_required
 def detalle(request, id):
-	if request.POST:
-		estatus = request.POST.get('estatus')
-		descripcion = request.POST.get('descripcion')
-		Autorizaciones.objects.filter(id=id).update(Estatus=estatus,Comentarios=descripcion)
 	nombre = request.user.get_full_name()
 	nombre = request.user.get_full_name()
 	detalle = get_object_or_404(Evento, id=id)
@@ -33,6 +29,12 @@ def detalle(request, id):
 
 @login_required
 def claims(request):
+	bandera=0
+	if request.POST:
+		estatus = request.POST.get('estatus')
+		descripcion = request.POST.get('descripcion')
+		Autorizaciones.objects.filter(id=id).update(Estatus=estatus,Comentarios=descripcion)
+		bandera=1
 	nombre = request.user.get_full_name()
 	autorizacion = Autorizaciones.objects.all().filter(Estatus='Recibido')
 	evento = Evento.objects.all()

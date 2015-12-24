@@ -34,6 +34,9 @@ eCS Claims
 {% endblock header %}
 
 {% block content %}
+  {% if bandera == 1%}
+    <script>alert(Autorizacion+" "+{{estatus}});</script>
+  {% endif %}
 <section id="main" class="container">
   <div class="row">
     <div class="12u">
