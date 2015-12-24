@@ -64,7 +64,7 @@ def claims(request):
 															FechaSolicitud < request.POST.get("fin"))
 		inicio = request.POST.get("inicio")
 		fin = request.POST.get("fin")
-    return render_to_response('claims.html',RequestContext(request,locals()))
+    	return render_to_response('claims.html',RequestContext(request,locals()))
 
 @login_required
 def historial(request):
