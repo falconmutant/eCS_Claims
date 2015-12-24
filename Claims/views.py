@@ -17,7 +17,7 @@ def logged_in(request):
 
 @login_required
 def detalle(request, id):
-	nombre = request.user.get_full_name()
+	idd = id
 	nombre = request.user.get_full_name()
 	detalle = get_object_or_404(Evento, id=id)
 	paciente = Paciente.objects.all()
@@ -31,9 +31,10 @@ def detalle(request, id):
 def claims(request):
 	bandera=0
 	if request.POST:
+		idd = request.POST.get('id')
 		estatus = request.POST.get('estatus')
 		descripcion = request.POST.get('descripcion')
-		Autorizaciones.objects.filter(id=id).update(Estatus=estatus,Comentarios=descripcion)
+		Autorizaciones.objects.filter(id=idd).update(Estatus=estatus,Comentarios=descripcion)
 		bandera=1
 	nombre = request.user.get_full_name()
 	autorizacion = Autorizaciones.objects.all().filter(Estatus='Recibido')
