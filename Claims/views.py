@@ -17,6 +17,10 @@ def logged_in(request):
 
 @login_required
 def detalle(request, id):
+	estatus = request.POST.get('estatus')
+	descripcion = request.POST.get('descripcion')
+	nombre = request.user.get_full_name()
+	Autorizaciones.objects.filter(id=id).update(Estatus=estatus,Descripcion=descripcion)
 	nombre = request.user.get_full_name()
 	detalle = get_object_or_404(Evento, id=id)
 	paciente = Paciente.objects.all()
