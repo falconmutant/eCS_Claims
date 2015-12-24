@@ -29,7 +29,7 @@ def detalle(request, id):
 @login_required
 def claims(request):
 	nombre = request.user.get_full_name()
-	autorizacion = Autorizaciones.objects.all().filter(estatus='Recibido')
+	autorizacion = Autorizaciones.objects.all().filter(Estatus='Recibido')
 	evento = Evento.objects.all()
 	paciente = Paciente.objects.all()
 	proveedor = Proveedor.objects.all()
