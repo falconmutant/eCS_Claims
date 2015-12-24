@@ -100,8 +100,9 @@ eCS Claims
           <tbody id="tb">
             {% for dato in autorizacion %}
               <tr>
-                <td>{{dato.Folio}}</td>
+                
                 {% for item in evento %}
+                  <td>{{dato.Folio}}</td>
                   {% if item.id == dato.IdEvento_id %}
                     {% for pro in proveedor %}
                       {% if pro.id == item.IdProveedor_id %}
@@ -117,13 +118,14 @@ eCS Claims
                     <td>{{dato.FechaSolicitud}}</td>
                     <td>{{dato.Estatus}}</td>
                     <td></td>
+
                   {% endif %}
+                  <th>
+                    <a style="margin-left:0 !important;" class="a-details" href="/detalles/{{dato.IdEvento_id}}/">
+                      <i class="fa fa-eye"></i>
+                    </a>
+                  </th>
                 {% endfor %}
-                <th>
-                  <a style="margin-left:0 !important;" class="a-details" href="/detalles/{{dato.IdEvento_id}}/">
-                    <i class="fa fa-eye"></i>
-                  </a>
-                </th>
               </tr>
             {% endfor %}
           </tbody>
