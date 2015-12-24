@@ -43,13 +43,13 @@ eCS Claims
       <section class="box">
         <center><h3>Lista de Reclamos Pendientes</h3></center>
         <hr />
-        <form id="form" class="form-horizontal">
+        <form action="" class="form-horizontal" method="POST">{% csrf_token %}
           <div class="form-group">
               <label class="col-md-2 control-label">Tipo</label>
               <div class="col-xs-2">
                 <div class="input-icon">
-                  <select class="form-control">
-                    <option value=""></option>
+                  <select onchange="tipo(this.value)" class="form-control">
+                    <option value="vacio"></option>
                     <option value="Institucional">Institucional</option>
                     <option value="Profesional">Profesional</option>
                   </select>
@@ -62,6 +62,10 @@ eCS Claims
               <div class="col-xs-2">
                 <div class="input-icon">
                   <select class="form-control">
+                    <option value="vacio"></option>
+                    {% for datos in proveedor %}
+                      <option value="{{datos.id}}">{{datos.Proveedor}}</option>
+                    {% endfor %}
                   </select>
                 </div>
               </div>
