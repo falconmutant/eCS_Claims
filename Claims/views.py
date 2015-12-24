@@ -32,7 +32,7 @@ def detalle(request, id):
 def claims(request):
 	bandera=0
 	x = datetime.datetime.now()
-	now = "%s/%s/%s"% (x.year, x.month, x.day)
+	now = "%s/%s/%s"% (x.day, x.month, x.year)
 	if request.POST:
 		idd = request.POST.get('id')
 		estatus = request.POST.get('estatus')
