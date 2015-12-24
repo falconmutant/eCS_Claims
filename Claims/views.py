@@ -55,11 +55,11 @@ def claims(request):
 	cargo = CargoPorEvento.objects.all()
 	costo = Cargo.objects.all()
 	if request.POST:
+		autorizacion = Autorizaciones.objects.all().filter(Estatus='Recibido',FechaSolicitud__range=[request.POST.get("inicio"), request.POST.get("fin")])
 		if request.POST.get("tipo") != 'vacio':
 			evento = Evento.objects.all().filter(IdTipoServicio_id=request.POST.get("tipo"))
 		if request.POST.get("cliente") != 'vacio':
 			evento = Evento.objects.all().filter(IdProveedor_id=request.POST.get("cliente"))
-		autorizacion = Autorizaciones.objects.all().filter(Estatus='Recibido',FechaSolicitud__range=[request.POST.get("inicio"), request.POST.get("fin")])
 		inicio = request.POST.get("inicio")
 		fin = request.POST.get("fin")
     	return render_to_response('claims.html',RequestContext(request,locals()))
