@@ -59,9 +59,8 @@ def claims(request):
 			evento = Evento.objects.all().filter(IdTipoServicio_id=request.POST.get("tipo"))
 		if request.POST.get("cliente") != 'vacio':
 			proveedor = Proveedor.objects.all().filter(Proveedor=request.POST.get("cliente"))
-		autorizacion = Autorizaciones.objects.all().filter(Estatus='Recibido',
-															FechaSolicitud > request.POST.get("inicio"),
-															FechaSolicitud < request.POST.get("fin"))
+		autorizacion = Autorizaciones.objects.all().filter(Estatus='Recibido',FechaSolicitud >= request.POST.get("inicio"),
+															FechaSolicitud <= request.POST.get("fin"))
 		inicio = request.POST.get("inicio")
 		fin = request.POST.get("fin")
     	return render_to_response('claims.html',RequestContext(request,locals()))
