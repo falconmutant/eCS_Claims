@@ -48,10 +48,10 @@ eCS Claims
               <label class="col-md-2 control-label">Tipo</label>
               <div class="col-xs-2">
                 <div class="input-icon">
-                  <select onchange="tipo(this.value)" class="form-control">
+                  <select name="tipo" id="tipo" onchange="tipo()" class="form-control">
                     <option value="vacio"></option>
-                    <option value="Institucional">Institucional</option>
-                    <option value="Profesional">Profesional</option>
+                    <option value="2">Institucional</option>
+                    <option value="1">Profesional</option>
                   </select>
                 </div>
               </div>
@@ -61,7 +61,7 @@ eCS Claims
               <label class="col-md-2 control-label">Cliente</label>
               <div class="col-xs-2">
                 <div class="input-icon">
-                  <select class="form-control">
+                  <select name="cliente" id="cliente" onchange="tipo()" class="form-control">
                     <option value="vacio"></option>
                     {% for datos in proveedor %}
                       <option value="{{datos.id}}">{{datos.Proveedor}}</option>
@@ -72,12 +72,12 @@ eCS Claims
               <label class="col-md-2 control-label">Rango de Fechas</label>
               <div class="col-xs-2">
                 <div class="input-icon">
-                  <input class="input-error form-control" type="date" value="{{now}}">
+                  <input onchange="tipo()" name="inicio" id="inicio" class="input-error form-control" type="date" value="{{inicio}}">
                 </div>
               </div>
               <div class="col-xs-2">
                 <div class="input-icon">
-                  <input class="input-error form-control" type="date" value="{{now}}">
+                  <input onchange="tipo()" name="fin" id="fin" class="input-error form-control" type="date" value="{{fin}}">
                 </div>
               </div>
           </div>
@@ -102,7 +102,6 @@ eCS Claims
                 <td>{{dato.Folio}}</td>
                 {% for item in evento %}
                   {% if item.id == dato.IdEvento_id %}
-
                     {% for pro in proveedor %}
                       {% if pro.id == item.IdProveedor_id %}
                         <td>{{pro.Proveedor}}</td>
@@ -213,5 +212,29 @@ eCS Claims
     $('#modal').on('click',function(){
       $('#modal-form').modal('show'); 
     });
+    function tipo() {
+        console.log("ajax!") // sanity check
+        $.ajax({
+            url : "claims/", // the endpoint
+            type : "POST", // http method
+            data : { cliente : $('#cliente').val(),
+                     tipo : $('#tipo').val(),
+                     inicio : $('#inicio').val(),
+                     fin : $('#fin').val() }, // data sent with the post request
+
+            // handle a successful response
+            success : function(json) {
+                console.log(json); // log the returned json to the console
+                console.log("success"); // another sanity check
+            },
+
+            // handle a non-successful response
+            error : function(xhr,errmsg,err) {
+                $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+                    " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+                console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+            }
+        });
+    };
   </script>
 {% endblock javascript %}

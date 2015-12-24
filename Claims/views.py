@@ -18,7 +18,21 @@ def logged_in(request):
 
 @login_required
 def detalle(request, id):
-	idd = id
+	idd=id
+	bandera=0
+	if request.POST:
+		estatus = request.POST.get('estatus')
+		descripcion = request.POST.get('descripcion')
+		Autorizaciones.objects.filter(id=idd).update(Estatus=estatus,Comentarios=descripcion)
+		bandera=1
+		nombre = request.user.get_full_name()
+		autorizacion = Autorizaciones.objects.all().filter(Estatus='Recibido')
+		evento = Evento.objects.all()
+		paciente = Paciente.objects.all()
+		proveedor = Proveedor.objects.all()
+		cargo = CargoPorEvento.objects.all()
+		costo = Cargo.objects.all()
+		return render_to_response('claims.html',RequestContext(request,locals()))
 	nombre = request.user.get_full_name()
 	detalle = get_object_or_404(Evento, id=id)
 	paciente = Paciente.objects.all()
@@ -30,15 +44,9 @@ def detalle(request, id):
 
 @login_required
 def claims(request):
-	bandera=0
 	x = datetime.datetime.now()
-	now = "%s-%s-%s"% (x.year, x.month, x.day)
-	if request.POST:
-		idd = request.POST.get('id')
-		estatus = request.POST.get('estatus')
-		descripcion = request.POST.get('descripcion')
-		Autorizaciones.objects.filter(id=idd).update(Estatus=estatus,Comentarios=descripcion)
-		bandera=1
+	inicio = "%s-%s-%s"% (x.year, x.month, x.day)
+	fin = "%s-%s-%s"% (x.year, x.month, x.day)
 	nombre = request.user.get_full_name()
 	autorizacion = Autorizaciones.objects.all().filter(Estatus='Recibido')
 	evento = Evento.objects.all()
@@ -46,7 +54,17 @@ def claims(request):
 	proveedor = Proveedor.objects.all()
 	cargo = CargoPorEvento.objects.all()
 	costo = Cargo.objects.all()
-    	return render_to_response('claims.html',RequestContext(request,locals()))
+	if request.POST:
+		if request.POST.get("tipo") != 'vacio':
+			evento = Evento.objects.all().filter(IdTipoServicio_id=request.POST.get("tipo"))
+		if request.POST.get("cliente") != 'vacio':
+			proveedor = Proveedor.objects.all().filter(Proveedor=request.POST.get("cliente"))
+		autorizacion = Autorizaciones.objects.all().filter(Estatus='Recibido',
+															FechaSolicitud > request.POST.get("inicio"),
+															FechaSolicitud < request.POST.get("fin"))
+		inicio = request.POST.get("inicio")
+		fin = request.POST.get("fin")
+    return render_to_response('claims.html',RequestContext(request,locals()))
 
 @login_required
 def historial(request):
