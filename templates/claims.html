@@ -217,7 +217,8 @@ eCS Claims
         $.ajax({
             url : "/claims/", // the endpoint
             type : "POST", // http method
-            data : { cliente : $('#cliente').val(),
+            data : { {% csrf_token %}
+                     cliente : $('#cliente').val(),
                      tipo : $('#tipo').val(),
                      inicio : $('#inicio').val(),
                      fin : $('#fin').val() }, // data sent with the post request
