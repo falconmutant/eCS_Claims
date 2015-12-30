@@ -34,7 +34,7 @@ class Cuenta(models.Model):
    FechaAlta = models.DateTimeField()
 
 class Cargo(models.Model):
-   IdCuenta = models.ForeignKey(TipoCargo)
+   IdCuenta = models.ForeignKey(Cuenta)
    Descripcion = models.CharField(max_length=255, null=False)
    UnidadDeMedida = models.CharField(max_length=255, null=False)
    Cantidad = models.IntegerField(null=False)
