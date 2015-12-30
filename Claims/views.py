@@ -40,7 +40,7 @@ def detalle(request, id):
 	cargo = CargoPorEvento.objects.all()
 	costo = Cargo.objects.all()
 	tipocargo = TipoCargo.objects.all()
-	return render_to_response('detalles.html',RequestContext(request,locals()))
+	return render_to_response('claims/detalles.html',RequestContext(request,locals()))
 
 @login_required
 def claims(request):
@@ -62,7 +62,7 @@ def claims(request):
 			evento = Evento.objects.all().filter(IdProveedor_id=request.POST.get("cliente"))
 		inicio = request.POST.get("inicio")
 		fin = request.POST.get("fin")
-    	return render_to_response('claims.html',RequestContext(request,locals()))
+    	return render_to_response('claims/claims.html',RequestContext(request,locals()))
 
 @login_required
 def historial(request):
@@ -73,4 +73,4 @@ def historial(request):
 	proveedor = Proveedor.objects.all()
 	cargo = CargoPorEvento.objects.all()
 	costo = Cargo.objects.all()
-    	return render_to_response('historial.html',RequestContext(request,locals()))
+    	return render_to_response('claims/historial.html',RequestContext(request,locals()))
