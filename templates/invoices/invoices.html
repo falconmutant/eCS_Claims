@@ -104,9 +104,14 @@ eCS Invoices
                     {% if item.id == dato.IdCuenta_id %}
                       <td>{{dato.Folio}}</td>
                       
+                      {% for me in medico %}
+                        {% if me.id == item.IdMedico_id %}
+                          <td>{{me.Nombre}}</td>
+                        {% endif %}
+                      {% endfor %}
+
                       {% for pro in proveedor %}
                         {% if pro.id == item.IdProveedor_id %}
-                          <td>{{pro.Cliente}}</td>
                           <td>{{pro.Localidad}}</td>
                         {% endif %}
                       {% endfor %}
