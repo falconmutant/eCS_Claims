@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Claims',
+    'Invoices',
 )
 
 from django.core.urlresolvers import reverse_lazy
