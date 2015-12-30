@@ -65,7 +65,7 @@ def claims(request):
 def historial(request):
 	nombre = request.user.get_full_name()
 	autorizacion = Autorizacion.objects.all()
-	evento = Cuenta.objects.all()
+	cuenta = Cuenta.objects.all()
 	paciente = Paciente.objects.all()
 	proveedor = Proveedor.objects.all()
 	cargo = Cargo.objects.all()
