@@ -99,7 +99,6 @@ eCS Claims
           </thead>
           <tbody id="tb">
             {% for dato in autorizacion %}
-              {% if dato.TipoAprobacion == 1 %}
                 <tr>
                   {% for item in cuenta %}
                     {% if item.id == dato.IdCuenta_id %}
@@ -126,7 +125,6 @@ eCS Claims
                     {% endif %}
                   {% endfor %}
                 </tr>
-              {% endif %}
             {% endfor %}
           </tbody>
         </table>

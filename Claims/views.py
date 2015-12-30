@@ -45,7 +45,7 @@ def claims(request):
 	inicio = "%s-%s-%s"% (x.year, x.month, x.day)
 	fin = "%s-%s-%s"% (x.year, x.month, x.day)
 	nombre = request.user.get_full_name()
-	autorizacion = Autorizacion.objects.all().filter(Estatus='Recibido')
+	autorizacion = Autorizacion.objects.all().filter(Estatus='Recibido',TipoAprobacion='1')
 	cuenta = Cuenta.objects.all()
 	paciente = Paciente.objects.all()
 	proveedor = Proveedor.objects.all()
