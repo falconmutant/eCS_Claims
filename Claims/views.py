@@ -51,7 +51,7 @@ def claims(request):
 	proveedor = Proveedor.objects.all()
 	cargo = Cargo.objects.all()
 	if request.POST:
-		autorizacion = Autorizacion.objects.all().filter(Estatus='Recibido',,TipoAprobacion='1',FechaSolicitud__range=[request.POST.get("inicio"), request.POST.get("fin")])
+		autorizacion = Autorizacion.objects.all().filter(Estatus='Recibido',TipoAprobacion='1',FechaSolicitud__range=[request.POST.get("inicio"), request.POST.get("fin")])
 		if request.POST.get("tipo") != 'vacio':
 			autorizacion = Autorizacion.objects.all().filter(Sistema=request.POST.get("tipo"),,TipoAprobacion='1')
 		if request.POST.get("cliente") != 'vacio':
