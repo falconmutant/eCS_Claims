@@ -55,29 +55,40 @@ eCS Claims
           </thead>
           <tbody id="tb">
             {% for dato in autorizacion %}
-              <tr>
-                <td>{{dato.Folio}}</td>
-                {% for item in evento %}
-                  {% if item.id == dato.IdEvento_id %}
-
-                    {% for pro in proveedor %}
-                      {% if pro.id == item.IdProveedor_id %}
-                        <td>{{pro.Proveedor}}</td>
-                      {% endif %}
-                    {% endfor %}
-                    {% for pac in paciente %}
-                      {% if pac.id == item.IdPaciente_id %}
-                        <td>{{pac.NumEmpleado}}</td>
-                        <td>{{pac.Nombre}}</td>
-                      {% endif %}
-                    {% endfor %}
-                    <td>{{dato.FechaSolicitud}}</td>
-                    <td>{{dato.Estatus}}</td>
-                    <td></td>
-                  {% endif %}
-                {% endfor %}
-                <th><a style="margin-left:0 !important;" class="a-details" href="/detalles/{{dato.id}}/"><i class="fa fa-eye"></i></a></th>
-              </tr>
+              {% if dato.TipoAprobacion == 1 %}
+                <tr>
+                  {% for item in cuenta %}
+                    {% if item.id == dato.IdCuenta %}
+                      <td>{{dato.Folio}}</td>
+                      {% for pro in proveedor %}
+                        {% if pro.id == item.IdProveedor %}
+                          <td>{{pro.Cliente}}</td>
+                        {% endif %}
+                      {% endfor %}
+                      {% for pa in paciente %}
+                        {% if pa.id == item.IdPaciente %}
+                          <td>{{pa.FichaEmpleado}}</td>
+                          <td>{{pa.Nombre}}</td>
+                        {% endif %}
+                      {% endfor %}
+                      <td>{{dato.FechaSolicitud}}</td>
+                      <td>{{dato.Estatus}}</td>
+                      {{ total=0 }}
+                      {% for ca in cargo %}
+                        {% if ca.IdCargo_id == item.id %}
+                          {{total += ca.PrecioNeto+ca.Impuesto}}
+                        {% endif %}
+                      {% endfor %}
+                      <td>{{total}}</td>
+                      <th>
+                        <a style="margin-left:0 !important;" class="a-details" href="/detalles/{{dato.IdCuenta_id}}/">
+                          <i class="fa fa-eye"></i>
+                        </a>
+                      </th>
+                    {% endif %}
+                  {% endfor %}
+                </tr>
+              {% endif %}
             {% endfor %}
           </tbody>
         </table>

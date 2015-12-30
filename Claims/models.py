@@ -6,53 +6,49 @@ from django.db import models
 
 class Paciente(models.Model):
    Nombre = models.CharField(max_length=255, null=False)
+   CURP = models.CharField(max_length=18, null=False)
+   FichaEmpleado = models.CharField(max_length=255, null=False)
+   NumeroEmpresa = models.CharField(max_length=255, null=False)
    PesoEstatura = models.CharField(max_length=255, null=False)
-   FechaNacimiento = models.DateTimeField()
+   FechaNacimiento = models.TimeField()
    Sexo = models.CharField(max_length=255, null=False)
-   NumEmpleado = models.CharField(max_length=255, null=False)
+
 class Medico(models.Model):
    Nombre = models.CharField(max_length=255, null=False)
    Especialidad = models.CharField(max_length=255, null=False)
    Cedula = models.CharField(max_length=255, null=False)
+   RFC = models.CharField(max_length=13, null=False)
 
-class TipoCargo(models.Model):
-   Nombre = models.CharField(max_length=255, null=False)
+class Proveedor(models.Model):
+   RFC = models.CharField(max_length=13, null=False)
+   Cliente = models.CharField(max_length=255, null=False)
+   Organización = models.CharField(max_length=255, null=False)
+   Localidad = models.CharField(max_length=255, null=False)
+
+class Cuenta(models.Model):
+   IdPaciente = models.ForeignKey(Paciente)
+   IdMedico = models.ForeignKey(Medico)
+   IdProveedor = models.ForeignKey(Proveedor)
+   Diagnostico = models.CharField(max_length=255, null=False)
+   FechaAdmision = models.DateTimeField()
+   FechaAlta = models.DateTimeField()
 
 class Cargo(models.Model):
+   IdCuenta = models.ForeignKey(TipoCargo)
    Descripcion = models.CharField(max_length=255, null=False)
-   IdTipoCargo = models.ForeignKey(TipoCargo)
+   UnidadDeMedida = models.CharField(max_length=255, null=False)
    Cantidad = models.IntegerField(null=False)
    PrecioUnitario = models.DecimalField(max_digits=10, decimal_places=2)
    Descuento = models.DecimalField(max_digits=10, decimal_places=2)
    PrecioNeto = models.DecimalField(max_digits=10, decimal_places=2)
    Impuesto = models.DecimalField(max_digits=10, decimal_places=2)
    FechaAplicacion = models.DateTimeField()
-   HoraAplicacion = models.CharField(max_length=255, null=False)
 
-class TipoServicio(models.Model):
-   Nombre = models.CharField(max_length=255, null=False)
-
-class Proveedor(models.Model):
-   Proveedor = models.CharField(max_length=255, null=False)
-   Localidad = models.CharField(max_length=255, null=False)
-
-class Evento(models.Model):
-   IdPaciente = models.ForeignKey(Paciente)
-   IdMedico = models.ForeignKey(Medico)
-   Diagnostico = models.CharField(max_length=255, null=False)
-   IdTipoServicio = models.ForeignKey(TipoServicio)
-   IdProveedor = models.ForeignKey(Proveedor)
-   FechaAdmision = models.DateTimeField()
-   FechaSalida = models.DateTimeField()
-
-class Autorizaciones(models.Model):
-   Folio = models.CharField(max_length=255)
-   IdEvento = models.ForeignKey(Evento)
+class Autorizacion(models.Model):
+   Folio = models.CharField(max_length=255, null=False)
+   IdCuenta = models.ForeignKey(Cuenta)
    Estatus = models.CharField(max_length=255, null=False)
-   FechaSolicitud = models.DateTimeField()
+   FechaSolicitud = models.TimeField()
+   Comentarios  = models.CharField(max_length=255)
    TipoAprobacion = models.CharField(max_length=255)
-   Comentarios = models.CharField(max_length=255, null=False)
-
-class CargoPorEvento(models.Model):
-   IdEvento = models.ForeignKey(Evento)
-   IdCargo = models.ForeignKey(Cargo)
+   Sistema = models.CharField(max_length=255, null=False)

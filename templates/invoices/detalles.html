@@ -20,8 +20,8 @@ eCS Claims
   <nav id="nav">
     <ul>
       <li><a href="/logged_in/">Inicio</a></li>
-      <li class="active"><a href="/claims/">Reclamos</a></li>
-      <li><a href="/historial/">Historial</a></li>
+      <li class="active"><a href="/invoices/">Reclamos</a></li>
+      <li><a href="/historial_invoices/">Historial</a></li>
       <li>
         <a href="#" class="icon fa-user">{{nombre}}</a>
         <ul>
@@ -38,54 +38,12 @@ eCS Claims
   <div class="row">
     <div class="12u">
       <section class="box">
-        <a class="a-details" href="/claims/"><i class="fa fa-long-arrow-left"></i></a>
+        <a class="a-details" href="/invoices/"><i class="fa fa-long-arrow-left"></i></a>
         <a style="margin-left:60px !important;" class="a-details" id="modal"><i class="fa fa-check-square-o"></i></a>
         <hr />
         <form id="form" class="form-horizontal">
           <div class="form-group">
-            <label class="col-md-2 control-label">Nombre</label>
-            <div class="col-xs-2">
-              <div class="input-icon">
-                {% for pa in paciente %}
-                  {% if pa.id == detalle.IdPaciente_id %}
-                    <input class="input-error form-control" type="text" value="{{pa.Nombre}}">
-                  {% endif %}
-                {% endfor %}
-              </div>
-            </div>
-            <label class="col-md-2 control-label">Fecha de Nacimiento</label>
-            <div class="col-xs-2">
-              <div class="input-icon">
-                {% for pa in paciente %}
-                  {% if pa.id == detalle.IdPaciente_id %}
-                    <input class="input-error form-control" type="datetime" value="{{pa.FechaNacimiento}}">
-                  {% endif %}
-                {% endfor %}
-              </div>
-            </div>
-            <label class="col-md-2 control-label">Sexo</label>
-            <div class="col-xs-2">
-              <div class="input-icon">
-                {% for pa in paciente %}
-                  {% if pa.id == detalle.IdPaciente_id %}
-                    <input class="input-error form-control" type="text" value="{{pa.Sexo}}">
-                  {% endif %}
-                {% endfor %}
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-md-2 control-label">Peso / Estatura</label>
-            <div class="col-xs-2">
-              <div class="input-icon">
-                {% for pa in paciente %}
-                  {% if pa.id == detalle.IdPaciente_id %}
-                    <input class="input-error form-control" type="text" value="{{pa.PesoEstatura}}">
-                  {% endif %}
-                {% endfor %}
-              </div>
-            </div>
-            <label class="col-md-2 control-label">Médico</label>
+            <label class="col-md-2 control-label">Medico</label>
             <div class="col-xs-2">
               <div class="input-icon">
                 {% for me in medico %}
@@ -95,18 +53,58 @@ eCS Claims
                 {% endfor %}
               </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label class="col-md-2 control-label">Numero de Evento</label>
+            <label class="col-md-2 control-label">RFC</label>
             <div class="col-xs-2">
               <div class="input-icon">
-                <input class="input-error form-control" type="text" value="{{detalle.id}}">
+                {% for me in medico %}
+                  {% if me.id == detalle.IdMedico_id %}
+                    <input class="input-error form-control" type="text" value="{{me.RFC}}">
+                  {% endif %}
+                {% endfor %}
               </div>
             </div>
-            <label class="col-md-2 control-label">Diagnostico</label>
-            <div class="col-xs-6">
+            <label class="col-md-2 control-label">Localidad</label>
+            <div class="col-xs-2">
               <div class="input-icon">
-                <input class="input-error form-control" type="text" value="{{detalle.Diagnostico}}">
+                {% for pro in proveedor %}
+                  {% if pro.id == detalle.IdProveedor_id %}
+                    <input class="input-error form-control" type="text" value="{{pro.Localidad}}">
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-2 control-label">Total Servicios</label>
+            <div class="col-xs-2">
+              <div class="input-icon">
+                {{total=0}}
+                {% for me in medico %}
+                  {% if me.id == detalle.IdMedico_id %}
+                    {% for ca in cargo %}
+                      {% if ca.IdCuenta_id == detalle.id %}
+                        {{total++}}
+                      {% endif %}
+                    {% endfor %}
+                  {% endif %}
+                {% endfor %}
+                <input class="input-error form-control" type="text" value="{{total}}">
+              </div>
+            </div>
+            <label class="col-md-2 control-label">Total de Factura</label>
+            <div class="col-xs-2">
+              <div class="input-icon">
+                {{total=0}}
+                {% for me in medico %}
+                  {% if me.id == detalle.IdMedico_id %}
+                    {% for ca in cargo %}
+                      {% if ca.IdCuenta_id == detalle.id %}
+                        {{total+=ca.PrecioUnitario}}
+                      {% endif %}
+                    {% endfor %}
+                  {% endif %}
+                {% endfor %}
+                <input class="input-error form-control" type="text" value="{{total}}">
               </div>
             </div>
           </div>
@@ -116,13 +114,13 @@ eCS Claims
           <thead>
             <tr>
               <th>Concepto</th>
-              <th>Descripción</th>
-              <th>Unidad de Medida</th>
+              <th>Paciente</th>
+              <th>Descripción del Evento</th>
               <th>Cantidad</th>
               <th>Precio Unitario</th>
-              <th>Descuento</th>
-              <th>Precio Neto</th>
-              <th>Impuesto</th>
+              <th>Fecha</th>
+              <th>CAP</th>
+              <th>Tope máximo a cubrir</th>
             </tr>
           </thead>
           <tbody id="tb">
