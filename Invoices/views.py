@@ -36,9 +36,8 @@ def invoices(request):
 	nombre = request.user.get_full_name()
 	autorizacion = Autorizacion.objects.all().filter(Estatus='Recibido',TipoAprobacion='2')
 	cuenta = Cuenta.objects.all()
-	paciente = Paciente.objects.all()
 	proveedor = Proveedor.objects.all()
-	cargo = Cargo.objects.all()
+	medico = Medico.objects.all()
 	if request.POST:
 		autorizacion = Autorizacion.objects.all().filter(Estatus='Recibido',TipoAprobacion='2',FechaSolicitud__range=[request.POST.get("inicio"), request.POST.get("fin")])
 		if request.POST.get("tipo") != 'vacio':
