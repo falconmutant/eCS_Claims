@@ -119,13 +119,7 @@ eCS Invoices
                       {% endfor %}
 
                       <td>{{dato.Estatus}}</td>
-                      {{total=0}}
-                      {% for me in medico %}
-                        {% if me.id == item.IdMedico_id %}
-                          {{total++}}
-                        {% endif %}
-                      {% endfor %}
-                      <td>{{total}}</td>
+                      <td></td>
                       <th>
                         <a style="margin-left:0 !important;" class="a-details" href="/detalle_invoices/{{dato.IdCuenta_id}}/">
                           <i class="fa fa-eye"></i>
