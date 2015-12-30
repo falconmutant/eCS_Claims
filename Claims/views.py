@@ -30,7 +30,7 @@ def detalle(request, id):
 		cuenta = Cuenta.objects.all()
 		paciente = Paciente.objects.all()
 		proveedor = Proveedor.objects.all()
-		Cargo = Cargo.objects.all()
+		cargo = Cargo.objects.all()
 		return render_to_response('claims/claims.html',RequestContext(request,locals()))
 	nombre = request.user.get_full_name()
 	detalle = get_object_or_404(Cuenta, id=id)
