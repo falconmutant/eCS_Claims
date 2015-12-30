@@ -125,3 +125,29 @@ body {
   margin-left: 80%;
   border: none !important;
 }
+
+.img-claims{
+  width: 250px;
+  height: 250px;
+  margin-left: 100px;
+  float: left;
+  overflow: hidden;
+  background: url('../images/claims.png') top left no-repeat;
+  text-decoration: none;
+}
+.img-claims:hover{
+  background-position: 0 -250px;
+}
+
+.img-invoice{
+  width: 250px;
+  height: 250px;
+  margin-left: 200px;
+  float: left;
+  overflow: hidden;
+  background: url('../images/invoice.png') top left no-repeat;
+  text-decoration: none;
+}
+.img-invoice:hover{
+  background-position: 0 -250px;
+}
