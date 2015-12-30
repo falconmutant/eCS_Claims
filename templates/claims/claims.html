@@ -117,12 +117,7 @@ eCS Claims
                       {% endfor %}
                       <td>{{dato.FechaSolicitud}}</td>
                       <td>{{dato.Estatus}}</td>
-                      {% for ca in cargo %}
-                        {% if ca.IdCargo_id == item.id %}
-                          {% total += ca.PrecioNeto+ca.Impuesto %}
-                        {% endif %}
-                      {% endfor %}
-                      <td>{{total}}</td>
+                      <td></td>
                       <th>
                         <a style="margin-left:0 !important;" class="a-details" href="/detalles/{{dato.IdCuenta_id}}/">
                           <i class="fa fa-eye"></i>
