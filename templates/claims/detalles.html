@@ -126,26 +126,19 @@ eCS Claims
             </tr>
           </thead>
           <tbody id="tb">
+
             {% for dato in cargo %}
-              {% if detalle.id == dato.IdEvento_id %}
-                {% for item in costo %}
-                  {% if item.id == dato.IdCargo_id %}
-                    <tr>
-                      <td>{{item.id}}</td>
-                      <td>{{item.Descripcion}}</td>
-                      {% for tpc in tipocargo %}
-                        {% if tpc.id == item.IdTipoCargo_id %}
-                          <td>{{tpc.Nombre}}</td>
-                        {% endif %}
-                      {% endfor %}
-                      <td>{{item.Cantidad}}</td>
-                      <td>{{item.PrecioUnitario}}</td>
-                      <td>{{item.Descuento}}</td>
-                      <td>{{item.PrecioNeto}}</td>
-                      <td>{{item.Impuesto}}</td>
-                    </tr>
-                  {% endif %}
-                {% endfor %}
+              {% if detalle.id == dato.IdCuenta_id %}
+                <tr>
+                  <td>{{dato.id}}</td>
+                  <td>{{dato.Descripcion}}</td>
+                  <td>{{dato.UnidadMedida}}</td>
+                  <td>{{dato.Cantidad}}</td>
+                  <td>{{dato.PrecioUnitario}}</td>
+                  <td>{{dato.Descuento}}</td>
+                  <td>{{dato.PrecioNeto}}</td>
+                  <td>{{dato.Impuesto}}</td>
+                </tr>
               {% endif %}
             {% endfor %}
           </tbody>
