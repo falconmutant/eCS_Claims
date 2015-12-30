@@ -15,7 +15,7 @@ def detalle(request, id):
 		Autorizacion.objects.filter(id=idd).update(Estatus=estatus,Comentarios=descripcion)
 		bandera=1
 		nombre = request.user.get_full_name()
-		autorizacion = Autorizacion.objects.all().filter(Estatus='Recibido')
+		autorizacion = Autorizacion.objects.all().filter(Estatus='Recibido',TipoAprobacion='2')
 		cuenta = Cuenta.objects.all()
 		paciente = Paciente.objects.all()
 		proveedor = Proveedor.objects.all()
@@ -34,15 +34,15 @@ def invoices(request):
 	inicio = "%s-%s-%s"% (x.year, x.month, x.day)
 	fin = "%s-%s-%s"% (x.year, x.month, x.day)
 	nombre = request.user.get_full_name()
-	autorizacion = Autorizacion.objects.all().filter(Estatus='Recibido')
+	autorizacion = Autorizacion.objects.all().filter(Estatus='Recibido',TipoAprobacion='2')
 	cuenta = Cuenta.objects.all()
 	paciente = Paciente.objects.all()
 	proveedor = Proveedor.objects.all()
 	cargo = Cargo.objects.all()
 	if request.POST:
-		autorizacion = Autorizacion.objects.all().filter(Estatus='Recibido',FechaSolicitud__range=[request.POST.get("inicio"), request.POST.get("fin")])
+		autorizacion = Autorizacion.objects.all().filter(Estatus='Recibido',TipoAprobacion='2',FechaSolicitud__range=[request.POST.get("inicio"), request.POST.get("fin")])
 		if request.POST.get("tipo") != 'vacio':
-			autorizacion = Autorizacion.objects.all().filter(Sistema=request.POST.get("tipo"))
+			autorizacion = Autorizacion.objects.all().filter(Sistema=request.POST.get("tipo"),TipoAprobacion='2')
 		if request.POST.get("cliente") != 'vacio':
 			cuenta = Cuenta.objects.all().filter(IdProveedor_id=request.POST.get("cliente"))
 		inicio = request.POST.get("inicio")
@@ -52,7 +52,7 @@ def invoices(request):
 @login_required
 def historial(request):
 	nombre = request.user.get_full_name()
-	autorizacion = Autorizacion.objects.all()
+	autorizacion = Autorizacion.objects.all().filter(TipoAprobacion='2')
 	cuenta = Cuenta.objects.all()
 	paciente = Paciente.objects.all()
 	proveedor = Proveedor.objects.all()

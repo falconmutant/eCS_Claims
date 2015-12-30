@@ -99,7 +99,6 @@ eCS Invoices
           </thead>
           <tbody id="tb">
             {% for dato in autorizacion %}
-              {% if dato.TipoAprobacion == 2 %}
                 <tr>
                   {% for item in cuenta %}
                     {% if item.id == dato.IdCuenta_id %}
@@ -128,7 +127,6 @@ eCS Invoices
                     {% endif %}
                   {% endfor %}
                 </tr>
-              {% endif %}
             {% endfor %}
           </tbody>
         </table>
