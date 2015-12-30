@@ -55,31 +55,24 @@ eCS Claims
           </thead>
           <tbody id="tb">
             {% for dato in autorizacion %}
-              {% if dato.TipoAprobacion == 1 %}
                 <tr>
                   {% for item in cuenta %}
-                    {% if item.id == dato.IdCuenta %}
+                    {% if item.id == dato.IdCuenta_id %}
                       <td>{{dato.Folio}}</td>
                       {% for pro in proveedor %}
-                        {% if pro.id == item.IdProveedor %}
+                        {% if pro.id == item.IdProveedor_id %}
                           <td>{{pro.Cliente}}</td>
                         {% endif %}
                       {% endfor %}
                       {% for pa in paciente %}
-                        {% if pa.id == item.IdPaciente %}
+                        {% if pa.id == item.IdPaciente_id %}
                           <td>{{pa.FichaEmpleado}}</td>
                           <td>{{pa.Nombre}}</td>
                         {% endif %}
                       {% endfor %}
                       <td>{{dato.FechaSolicitud}}</td>
                       <td>{{dato.Estatus}}</td>
-                      {{ total=0 }}
-                      {% for ca in cargo %}
-                        {% if ca.IdCargo_id == item.id %}
-                          {{total += ca.PrecioNeto+ca.Impuesto}}
-                        {% endif %}
-                      {% endfor %}
-                      <td>{{total}}</td>
+                      <td></td>
                       <th>
                         <a style="margin-left:0 !important;" class="a-details" href="/detalles/{{dato.IdCuenta_id}}/">
                           <i class="fa fa-eye"></i>
@@ -88,7 +81,6 @@ eCS Claims
                     {% endif %}
                   {% endfor %}
                 </tr>
-              {% endif %}
             {% endfor %}
           </tbody>
         </table>
