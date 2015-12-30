@@ -117,10 +117,9 @@ eCS Claims
                       {% endfor %}
                       <td>{{dato.FechaSolicitud}}</td>
                       <td>{{dato.Estatus}}</td>
-                      {{ total=0 }}
                       {% for ca in cargo %}
                         {% if ca.IdCargo_id == item.id %}
-                          {{total += ca.PrecioNeto+ca.Impuesto}}
+                          {% total += ca.PrecioNeto+ca.Impuesto %}
                         {% endif %}
                       {% endfor %}
                       <td>{{total}}</td>

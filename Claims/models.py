@@ -10,7 +10,7 @@ class Paciente(models.Model):
    FichaEmpleado = models.CharField(max_length=255, null=False)
    NumeroEmpresa = models.CharField(max_length=255, null=False)
    PesoEstatura = models.CharField(max_length=255, null=False)
-   FechaNacimiento = models.TimeField()
+   FechaNacimiento = models.DateField()
    Sexo = models.CharField(max_length=255, null=False)
 
 class Medico(models.Model):
@@ -48,7 +48,7 @@ class Autorizacion(models.Model):
    Folio = models.CharField(max_length=255, null=False)
    IdCuenta = models.ForeignKey(Cuenta)
    Estatus = models.CharField(max_length=255, null=False)
-   FechaSolicitud = models.TimeField()
+   FechaSolicitud = models.DateField()
    Comentarios  = models.CharField(max_length=255)
    TipoAprobacion = models.CharField(max_length=255)
    Sistema = models.CharField(max_length=255, null=False)
