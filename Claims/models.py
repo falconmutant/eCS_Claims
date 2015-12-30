@@ -22,7 +22,7 @@ class Medico(models.Model):
 class Proveedor(models.Model):
    RFC = models.CharField(max_length=13, null=False)
    Cliente = models.CharField(max_length=255, null=False)
-   Organización = models.CharField(max_length=255, null=False)
+   Organizacion = models.CharField(max_length=255, null=False)
    Localidad = models.CharField(max_length=255, null=False)
 
 class Cuenta(models.Model):
