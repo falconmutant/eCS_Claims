@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% load set_var %}
 {% block title %}
 eCS Invoices
 {% endblock title %}
@@ -125,10 +126,10 @@ eCS Invoices
                       <td>{{dato.Estatus}}</td>
                       {% for ca in cargo %}
                         {% if ca.IdCuenta_id == item.id %}
-                          {{forloop.counter}}
+                          {% set valor = forloop.counter %}
                         {% endif %}
                       {% endfor %}
-                      <td>{{forloop.parentloop.counter}}</td>
+                      <td>{{valor}}</td>
                       <td></td>
                       <th>
                         <a style="margin-left:0 !important;" class="a-details" href="/detalle_invoices/{{dato.IdCuenta_id}}/">
