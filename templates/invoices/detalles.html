@@ -109,7 +109,7 @@ eCS Claims
                     <tr>
                       <td>{{dato.id}}</td>
                       {% for pa in paciente %}
-                        {% if pa.id == dato.IdPaciente_id %}
+                        {% if pa.id == detalle.IdPaciente_id %}
                           <td>{{pa.Nombre}}</td>
                         {% endif %}
                       {% endfor %}
