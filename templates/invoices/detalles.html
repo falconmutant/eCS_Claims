@@ -78,33 +78,13 @@ eCS Claims
             <label class="col-md-2 control-label">Total Servicios</label>
             <div class="col-xs-2">
               <div class="input-icon">
-                {{total=0}}
-                {% for me in medico %}
-                  {% if me.id == detalle.IdMedico_id %}
-                    {% for ca in cargo %}
-                      {% if ca.IdCuenta_id == detalle.id %}
-                        {{total++}}
-                      {% endif %}
-                    {% endfor %}
-                  {% endif %}
-                {% endfor %}
-                <input class="input-error form-control" type="text" value="{{total}}">
+                <input class="input-error form-control" type="text" value="2">
               </div>
             </div>
             <label class="col-md-2 control-label">Total de Factura</label>
             <div class="col-xs-2">
               <div class="input-icon">
-                {{total=0}}
-                {% for me in medico %}
-                  {% if me.id == detalle.IdMedico_id %}
-                    {% for ca in cargo %}
-                      {% if ca.IdCuenta_id == detalle.id %}
-                        {{total+=ca.PrecioUnitario}}
-                      {% endif %}
-                    {% endfor %}
-                  {% endif %}
-                {% endfor %}
-                <input class="input-error form-control" type="text" value="{{total}}">
+                <input class="input-error form-control" type="text" value="8000.00">
               </div>
             </div>
           </div>

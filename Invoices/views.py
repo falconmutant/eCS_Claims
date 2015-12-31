@@ -56,5 +56,6 @@ def historial(request):
 	cuenta = Cuenta.objects.all()
 	paciente = Paciente.objects.all()
 	proveedor = Proveedor.objects.all()
+	medico = Medico.objects.all()
 	cargo = Cargo.objects.all()
     	return render_to_response('invoices/historial.html',RequestContext(request,locals()))
