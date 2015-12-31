@@ -123,11 +123,11 @@ eCS Invoices
                       {% endfor %}
 
                       <td>{{dato.Estatus}}</td>
-                      {% set valor=0 %}
+                      {% with valor=0 %}
                       {% for ca in cargo %}
                         {% if ca.IdCuenta_id == item.id %}
                           
-                          {% set valor=forloop.counter %}
+                          {% with valor=forloop.counter %}
                         {% endif %}
                       {% endfor %}
                       <td>{{ valor }}</td>
