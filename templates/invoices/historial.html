@@ -20,7 +20,7 @@ eCS Claims
   <nav id="nav">
     <ul>
       <li><a href="/logged_in/">Inicio</a></li>
-      <li><a href="/invoices/">Facturas</a></li>
+      <li><a href="/invoice/">Facturas</a></li>
       <li class="active"><a href="/historial_invoices/">Historial</a></li>
       <li>
         <a href="#" class="icon fa-user">{{nombre}}</a>
@@ -55,7 +55,6 @@ eCS Claims
           </thead>
           <tbody id="tb">
             {% for dato in autorizacion %}
-              {% if dato.TipoAprobacion == 2 %}
                 <tr>
                   {% for item in cuenta %}
                     {% if item.id == dato.IdCuenta_id %}
@@ -84,7 +83,6 @@ eCS Claims
                     {% endif %}
                   {% endfor %}
                 </tr>
-              {% endif %}
             {% endfor %}
           </tbody>
         </table>
