@@ -126,10 +126,10 @@ eCS Invoices
                       {% with valor=0 %}
                       {% for ca in cargo %}
                         {% if ca.IdCuenta_id == item.id %}
-                          
-                          {% with valor=forloop.counter %}
+                          {{forloop.counter}}
                         {% endif %}
                       {% endfor %}
+                      {% with valor=forloop.parentloop.counter %}
                       <td>{{ valor }}</td>
                       <td></td>
                       <th>
