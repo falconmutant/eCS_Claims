@@ -122,14 +122,9 @@ eCS Invoices
                           <td>{{me.Especialidad}}</td>
                         {% endif %}
                       {% endfor %}
-
                       <td>{{dato.Estatus}}</td>
-                      {% for ca in cargo %}
-                        {% if ca.IdCuenta_id == item.id %}
-                          <td>2</td>
-                          <td>{{ca.PrecioNeto}}</td>
-                        {% endif %}
-                      {% endfor %}
+                      <td>2</td>
+                      <td>7500</td>
                       
                       <th>
                         <a style="margin-left:0 !important;" class="a-details" href="/detalle_invoices/{{dato.IdCuenta_id}}/">
