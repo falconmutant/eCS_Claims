@@ -64,14 +64,12 @@ WSGI_APPLICATION = 'eCS_Claims.wsgi.application'
 
 DATABASES = {
     'default': {
-        'NAME': 'ecs',
-        'ENGINE': 'django.db.backends.mysql',
-        'USER': 'root',
-        'PASSWORD': 'rpina0109',
-        "HOST": 'localhost',
-        'OPTIONS': {
-          'autocommit': True,
-        },
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'ecs',                      
+        'USER': 'cirrus',
+        'PASSWORD': '5tr4tu5',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
