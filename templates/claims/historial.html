@@ -56,7 +56,7 @@ eCS Claims
             {% for dato in autorizacion %}
                 <tr>
                   {% for item in evento %}
-                    {% if item.id == dato.evento_id %}
+                    {% if item.id == dato.evento_id  && dato.Estatus != 'R' %}
                       <td>{{item.folioAut}}</td>
                       {% for pro in proveedor %}
                         {% if pro.id == item.proveedor_id %}
