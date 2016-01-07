@@ -54,40 +54,40 @@ eCS Claims
           </thead>
           <tbody id="tb">
             {% for dato in autorizacion %}
-                <tr>
-                  {% for item in evento %}
-                    {% if item.id == dato.evento_id %}
-                      {% if dato.Estatus != 'R' %}
-                        <td>{{item.folioAut}}</td>
-                        {% for pro in proveedor %}
-                          {% if pro.id == item.proveedor_id %}
-                            <td>{{pro.hospital}}</td>
-                          {% endif %}
-                        {% endfor %}
-                        {% for pa in paciente %}
-                          {% if pa.evento_id == item.id %}
-                            <td>{{pa.fichaEmp}}</td>
-                            <td>{{pa.nombre}}</td>
-                          {% endif %}
-                        {% endfor %}
-                        <td>{{dato.FechaSolicitud}}</td>
-                        {% if dato.Estatus == 'R' %}
-                          <td>Recibido</td>
+              {% for item in evento %}
+                {% if item.id == dato.evento_id %}
+                  {% if dato.Estatus != 'R' %}
+                    <tr>
+                      <td>{{item.folioAut}}</td>
+                      {% for pro in proveedor %}
+                        {% if pro.id == item.proveedor_id %}
+                          <td>{{pro.hospital}}</td>
                         {% endif %}
-                        {% if dato.Estatus == 'V' %}
-                          <td>A Revisión</td>
+                      {% endfor %}
+                      {% for pa in paciente %}
+                        {% if pa.evento_id == item.id %}
+                          <td>{{pa.fichaEmp}}</td>
+                          <td>{{pa.nombre}}</td>
                         {% endif %}
-                        {% if dato.Estatus == 'X' %}
-                          <td>Rechazado</td>
-                        {% endif %}
-                        {% if dato.Estatus == 'A' %}
-                          <td>Aprobado</td>
-                        {% endif %}
-                        <td>{{item.total}}</td>
+                      {% endfor %}
+                      <td>{{dato.FechaSolicitud}}</td>
+                      {% if dato.Estatus == 'R' %}
+                        <td>Recibido</td>
                       {% endif %}
-                    {% endif %}
-                  {% endfor %}
-                </tr>
+                      {% if dato.Estatus == 'V' %}
+                        <td>A Revisión</td>
+                      {% endif %}
+                      {% if dato.Estatus == 'X' %}
+                        <td>Rechazado</td>
+                      {% endif %}
+                      {% if dato.Estatus == 'A' %}
+                        <td>Aprobado</td>
+                      {% endif %}
+                      <td>{{item.total}}</td>
+                    </tr>
+                  {% endif %}
+                {% endif %}
+              {% endfor %}  
             {% endfor %}
           </tbody>
         </table>
