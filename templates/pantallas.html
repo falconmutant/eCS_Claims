@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+eCS Claims
+{% endblock title %}
+
+{% block css %}
+  
+  <link href="{% static "css/font-awesome.css" %}" rel="stylesheet">
+  <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
+  <link href="{% static "css/dashboard.css" %}" rel="stylesheet">
+  <link href="{% static "css/main.css" %}" rel="stylesheet">
+  <link href="{% static "datatables/dataTables.css" %}" rel="stylesheet">
+  <link href="{% static "datatables/dataTables.bootstrap.css" %}" rel="stylesheet">
+  <link href="{% static "datatables/dataTables.fontAwesome.css" %}" rel="stylesheet">
+  <style type="text/css">
+    .dataTables_filter {
+      display: none; 
+    }
+  </style>
+{% endblock css %}
+
+{% block header %}
+<header id="header">
+  <nav id="nav">
+    <ul>
+      <li>
+        <a href="#" class="icon fa-user">{{nombre}}</a>
+        <ul>
+          <li><a href="/cerrar/">Salir</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</header>
+{% endblock header %}
+
+{% block content %}
+<section id="main" class="container">
+  <div class="row">
+    <div class="12u">
+      <section class="box" style="height:350px;">
+        <a class="img-claims" href="/claims/"></a>
+        <a class="img-invoice" href="/invoice/"></a>
+      </section>
+    </div>
+  </div>
+</section>
+{% endblock content %}
+
+
+{% block javascript %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+  <script src="{% static "js/jquery.dropotron.min.js" %}"></script>
+  <script src="{% static "js/jquery.scrollgress.min.js" %}"></script>
+  <script src="{% static "js/skel.min.js" %}"></script>
+  <script src="{% static "js/util.js" %}"></script>
+  <script src="{% static "js/main.js" %}"></script>
+{% endblock javascript %}

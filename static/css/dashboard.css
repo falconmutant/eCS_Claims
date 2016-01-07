@@ -1,0 +1,153 @@
+/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+}
+
+/*
+ * Global add-ons
+ */
+
+.sub-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+.navbar-fixed-top {
+  border: 0;
+}
+
+/*
+ * Sidebar
+ */
+
+/* Hide for mobile, show later */
+.sidebar {
+  display: none;
+}
+@media (min-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    background-color: #f5f5f5;
+    border-right: 1px solid #eee;
+  }
+}
+
+/* Sidebar navigation */
+.nav-sidebar {
+  margin-right: -21px; /* 20px padding + 1px border */
+  margin-bottom: 20px;
+  margin-left: -20px;
+}
+.nav-sidebar > li > a {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+  color: #fff;
+  background-color: #428bca;
+}
+
+
+/*
+ * Main content
+ */
+
+.main {
+  padding: 20px;
+}
+@media (min-width: 768px) {
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+.main .page-header {
+  margin-top: 0;
+}
+
+
+/*
+ * Placeholder dashboard ideas
+ */
+
+.placeholders {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.placeholders h4 {
+  margin-bottom: 0;
+}
+.placeholder {
+  margin-bottom: 20px;
+}
+.placeholder img {
+  display: inline-block;
+  border-radius: 50%;
+}
+
+.bar_menu{
+  width:90%;
+  height: 35px;
+  border-color: black;
+  border-style: solid;
+  border-width: medium;
+  margin-top: 30px;
+  margin-left: 5%;
+
+}
+.a-modal,.a-modal:hover{
+  font-size: 20px;
+  color: black;
+  margin-left: 93%;
+}
+
+.a-details,.a-details:hover{
+  font-size: 30px;
+  color: black;
+  margin-left: 80%;
+  border: none !important;
+}
+
+.img-claims{
+  width: 250px;
+  height: 250px;
+  margin-left: 100px;
+  float: left;
+  overflow: hidden;
+  background: url('../images/claims.png') top left no-repeat;
+  text-decoration: none;
+}
+.img-claims:hover{
+  background-position: 0 -250px;
+}
+
+.img-invoice{
+  width: 250px;
+  height: 250px;
+  margin-left: 200px;
+  float: left;
+  overflow: hidden;
+  background: url('../images/invoice.png') top left no-repeat;
+  text-decoration: none;
+}
+.img-invoice:hover{
+  background-position: 0 -250px;
+}

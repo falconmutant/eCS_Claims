@@ -1,0 +1,211 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+eCS Invoices
+{% endblock title %}
+
+{% block css %}
+  
+  <link href="{% static "css/font-awesome.css" %}" rel="stylesheet">
+  <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
+  <link href="{% static "css/dashboard.css" %}" rel="stylesheet">
+  <link href="{% static "css/main.css" %}" rel="stylesheet">
+  <link href="{% static "datatables/dataTables.css" %}" rel="stylesheet">
+  <link href="{% static "datatables/dataTables.bootstrap.css" %}" rel="stylesheet">
+  <link href="{% static "datatables/dataTables.fontAwesome.css" %}" rel="stylesheet">
+{% endblock css %}
+
+{% block header %}
+<header id="header">
+  <nav id="nav">
+    <ul>
+      <li><a href="/logged_in/">Inicio</a></li>
+      <li class="active"><a href="/invoices/">Facturas</a></li>
+      <li><a href="/historial_invoices/">Historial</a></li>
+      <li>
+        <a href="#" class="icon fa-user">{{nombre}}</a>
+        <ul>
+          <li><a href="/cerrar/">Salir</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</header>
+{% endblock header %}
+
+{% block content %}
+  {% if bandera == 1%}
+    <script>alert("Autorizacion {{estatus}}");</script>
+  {% endif %}
+<section id="main" class="container">
+  <div class="row">
+    <div class="12u">
+      <section class="box">
+        <center><h3>Lista de Facturas Pendientes</h3></center>
+        <hr />
+        <form action="" class="form-horizontal" method="POST">{% csrf_token %}
+          <button style="margin-left:95%;margin-bottom:20px;" type="submit"><i class="fa fa-refresh"></i></button>
+          <div class="form-group">
+              <label class="col-md-2 control-label">Tipo</label>
+              <div class="col-xs-2">
+                <div class="input-icon">
+                  <select name="tipo" id="tipo" class="form-control">
+                    <option value="vacio"></option>
+                    <option value="2">Institucional</option>
+                    <option value="1">Profesional</option>
+                  </select>
+                </div>
+              </div>
+              <style type="text/css">
+                .col-md-2{width:9.666667%;}
+              </style>
+              <label class="col-md-2 control-label">Cliente</label>
+              <div class="col-xs-2">
+                <div class="input-icon">
+                  <select name="cliente" id="cliente" class="form-control">
+                    <option value="vacio"></option>
+                    {% for datos in proveedor %}
+                      <option value="{{datos.id}}">{{datos.Cliente}}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+              <label class="col-md-2 control-label">Rango de Fechas</label>
+              <div class="col-xs-2">
+                <div class="input-icon">
+                  <input name="inicio" id="inicio" class="input-error form-control" type="date" value="{{inicio}}">
+                </div>
+              </div>
+              <div class="col-xs-2">
+                <div class="input-icon">
+                  <input name="fin" id="fin" class="input-error form-control" type="date" value="{{fin}}">
+                </div>
+              </div>
+          </div>
+        </form>
+        <hr />
+        <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="tabletools">
+          <thead>
+            <tr>
+              <th>Folio</th>
+              <th>Cliente</th>
+              <th>Localidad</th>
+              <th>Estatus</th>
+              <th>Servicios</th>
+              <th>Total</th>
+              <th>Detalle</th>
+            </tr>
+          </thead>
+          <tbody id="tb">
+            {% for dato in autorizacion %}
+                <tr>
+                  {% for item in evento %}
+                    {% if item.id = dato.evento_id %}
+                      <td>{{item.foliAut}}</td>
+                      {% for pro in proveedor %}
+                        {% if pro.id == item.proveedor_id %}
+                          <td>{{pro.hospital}}</td>
+                          <td>{{pro.localidad}}</td>
+                        {% endif %}
+                      {% endfor %}
+                      <td>{{dato.estatus}}</td>
+                      <td></td>
+                      <td>{{item.total}}</td>
+                      <th>
+                        <a style="margin-left:0 !important;" class="a-details" href="/detalle_invoices/{{dato.evento_id}}/">
+                          <i class="fa fa-eye"></i>
+                        </a>
+                      </th>
+                    {% endif %}
+                  {% endfor %}
+                </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </div>
+</section>
+{% endblock content %}
+
+{% block modal %}
+<div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" style="z-index:2000;width:90%;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Busqueda</h4>
+      </div>
+      <div class="modal-body">
+        <form id="form" class="form-horizontal">
+          <div class="form-group">
+              <label class="col-md-2 control-label">Tipo</label>
+              <div class="col-xs-2">
+                <div class="input-icon">
+                  <select class="form-control"><option value=""></option></select>
+                </div>
+              </div>
+              <style type="text/css">
+                .col-md-2{width:9.666667%;}
+              </style>
+              <label class="col-md-2 control-label">Localidad</label>
+              <div class="col-xs-2">
+                <div class="input-icon">
+                  <select class="form-control"></select>
+                </div>
+              </div>
+
+              <label class="col-md-2 control-label">Rango de Fechas</label>
+              <div class="col-xs-2">
+                <div class="input-icon">
+                  <input class="input-error form-control" type="date">
+                </div>
+              </div>
+              <div class="col-xs-2">
+                <div class="input-icon">
+                  <input class="input-error form-control" type="date">
+                </div>
+              </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-2 control-label">Cliente</label>
+              <div class="col-xs-2">
+                <div class="input-icon">
+                  <input class="input-error form-control" type="text">
+                </div>
+              </div>
+              <label class="col-md-2 control-label">Estatus</label>
+              <div class="col-xs-2">
+                <div class="input-icon">
+                  <select class="form-control"></select>
+                </div>
+              </div>
+          </div>
+        </form>
+      </div>
+      <div id="btnmodal" class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Buscar</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock modal %}
+
+{% block javascript %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+  <script src="{% static "js/bootstrap.min.js" %}"></script>
+  <script type="text/javascript" src="{% static "datatables/jquery.dataTables.js" %}"></script>
+  <script type="text/javascript" src="{% static "datatables/dataTables.bootstrap.js" %}"></script>
+  <script type="text/javascript" src="{% static "datatables/demo-datatables.js" %}"></script>
+  <script src="{% static "js/jquery.dropotron.min.js" %}"></script>
+  <script src="{% static "js/jquery.scrollgress.min.js" %}"></script>
+  <script src="{% static "js/skel.min.js" %}"></script>
+  <script src="{% static "js/util.js" %}"></script>
+  <script src="{% static "js/main.js" %}"></script>
+  <script>
+    $('#modal').on('click',function(){
+      $('#modal-form').modal('show'); 
+    });
+  </script>
+{% endblock javascript %}
