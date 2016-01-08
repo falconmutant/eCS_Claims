@@ -8,21 +8,21 @@
         {% endblock %}
     </head>
     <body>
-        <div id="page-wrapper">
 
-            {% block header %}
-            {% endblock %}  
+    {% block header %}
+    {% endblock %}  
 
-            {% block content %}
-            {% endblock %}
+    {% block sidebar %}
+    {% endblock %}
 
-            <footer id="footer">
-              <ul class="copyright">
-                <li>&copy; Todos los derechos reservados eCareSoft México.
-              </ul>
-            </footer>
+    {% block content %}
+    {% endblock %}
 
-        </div>
+    <footer id="footer">
+        <ul class="copyright">
+            <li>&copy; Todos los derechos reservados eCareSoft México.
+        </ul>
+    </footer>
 
     {% block modal %}
     {% endblock %}
