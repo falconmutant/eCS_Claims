@@ -84,21 +84,21 @@ eCS Claims
               <hr />
               <form id="form" class="form-horizontal">
                 <div class="form-group">
-                  <label class="col-md-2 control-label">Nombre</label>
+                  <label class="col-md-4 control-label">Nombre</label>
                   <div class="col-xs-2">
                     <div class="input-icon">
                       {% for pa in paciente %}
                         {% if pa.evento_id == detalle.id %}
-                          <input class="input-error form-control" type="text" value="{{pa.nombre}}">
+                          <input class="input-error form-control" type="text" value="{{pa.nombre}}" disabled>
                         {% endif %}
                       {% endfor %}
                     </div>
                   </div>
                   
-                  <label class="col-md-2 control-label">Médico</label>
+                  <label class="col-md-4 control-label">Médico</label>
                   <div class="col-xs-2">
                     <div class="input-icon">
-                      <input class="input-error form-control" type="text" value="{{detalle.medico}}">
+                      <input class="input-error form-control" type="text" value="{{detalle.medico}}" disabled>
                     </div>
                   </div>
                 </div>
@@ -106,7 +106,7 @@ eCS Claims
                   <label class="col-md-2 control-label">Numero de Evento</label>
                   <div class="col-xs-2">
                     <div class="input-icon">
-                      <input class="input-error form-control" type="text" value="{{detalle.folioAut}}">
+                      <input class="input-error form-control" type="text" value="{{detalle.folioAut}}" disabled>
                     </div>
                   </div>
                   <label class="col-md-2 control-label">Diagnostico</label>
@@ -124,7 +124,7 @@ eCS Claims
                     <div class="input-icon">
                       {% for pro in proveedor %}
                         {% if pro.id == detalle.proveedor_id %}
-                          <input class="input-error form-control" type="text" value="{{pro.hospital}}">
+                          <input class="input-error form-control" type="text" value="{{pro.hospital}}" disabled>
                         {% endif %}
                       {% endfor %}
                     </div>
@@ -134,7 +134,7 @@ eCS Claims
                     <div class="input-icon">
                       {% for pro in proveedor %}
                         {% if pro.id == detalle.proveedor_id %}
-                          <input class="input-error form-control" type="text" value="{{pro.localidad}}">
+                          <input class="input-error form-control" type="text" value="{{pro.localidad}}" disabled>
                         {% endif %}
                       {% endfor %}
                     </div>
