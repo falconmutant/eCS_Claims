@@ -84,8 +84,8 @@ eCS Claims
               <hr />
               <form id="form" class="form-horizontal">
                 <div class="form-group">
-                  <label class="col-md-4 control-label">Nombre</label>
-                  <div class="col-xs-2">
+                  <label class="col-md-2 control-label">Nombre</label>
+                  <div class="col-xs-4">
                     <div class="input-icon">
                       {% for pa in paciente %}
                         {% if pa.evento_id == detalle.id %}
@@ -95,8 +95,8 @@ eCS Claims
                     </div>
                   </div>
                   
-                  <label class="col-md-4 control-label">Médico</label>
-                  <div class="col-xs-2">
+                  <label class="col-md-2 control-label">Médico</label>
+                  <div class="col-xs-4">
                     <div class="input-icon">
                       <input class="input-error form-control" type="text" value="{{detalle.medico}}" disabled>
                     </div>
