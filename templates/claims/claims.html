@@ -279,13 +279,10 @@ eCS Claims
   <script src="{% static "admin/lib/UItoTop/jquery.ui.totop.min.js" %}"></script>
   <script src="{% static "admin/js/selectNav.js" %}"></script>
   <script src="{% static "admin/js/pages/gebo_common.js" %}"></script>
+  <script type="text/javascript" src="{% static "datatables/jquery.dataTables.js" %}"></script>
+  <script type="text/javascript" src="{% static "datatables/dataTables.bootstrap.js" %}"></script>
+  <script type="text/javascript" src="{% static "datatables/demo-datatables.js" %}"></script>
 {% endblock javascript %}
-
-
-{% block content %}
-  
-
-{% endblock content %}
 
 {% block modal %}
 <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-hidden="true">
@@ -350,21 +347,3 @@ eCS Claims
   </div>
 </div>
 {% endblock modal %}
-
-{% block javascript %}
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-  <script src="{% static "js/bootstrap.min.js" %}"></script>
-  <script type="text/javascript" src="{% static "datatables/jquery.dataTables.js" %}"></script>
-  <script type="text/javascript" src="{% static "datatables/dataTables.bootstrap.js" %}"></script>
-  <script type="text/javascript" src="{% static "datatables/demo-datatables.js" %}"></script>
-  <script src="{% static "js/jquery.dropotron.min.js" %}"></script>
-  <script src="{% static "js/jquery.scrollgress.min.js" %}"></script>
-  <script src="{% static "js/skel.min.js" %}"></script>
-  <script src="{% static "js/util.js" %}"></script>
-  <script src="{% static "js/main.js" %}"></script>
-  <script>
-    $('#modal').on('click',function(){
-      $('#modal-form').modal('show'); 
-    });
-  </script>
-{% endblock javascript %}
