@@ -200,21 +200,22 @@ class EventoDetailView(EventoView):
         evento = self.get_evento(evento_id)
 
         evento_json = EventoSerializer(evento).data
-        evento_json['claimEstatus']=Autorizacion.objects.get(evento=evento).Estatus
+	evento_json['claimEstatus']=Autorizacion.objects.get(evento=evento).Estatus
+        evento_json['claimEstatusDisplay']=Autorizacion.objects.get(evento=evento).get_Estatus_display()
         # paciente
         pac_json = PacienteSerializer(Paciente.objects.get(evento=evento)).data
         evento_json['Paciente'] = pac_json
         # diagnosticos
-        dx_json = DxSerializer(Dx.objects.filter(evento=evento), many=True).data
-        evento_json['listaDx'] = dx_json
+        #dx_json = DxSerializer(Dx.objects.filter(evento=evento), many=True).data
+        #evento_json['listaDx'] = dx_json
         # cargos
-        cargos_json = CargosSerializer(Cargos.objects.filter(evento=evento), many=True).data
+        #cargos_json = CargosSerializer(Cargos.objects.filter(evento=evento), many=True).data
         # cargos vs dx
-        for cargo_json in cargos_json:
-            cargosDxDict = CargosDx.objects.filter(cargo=cargo_json['id'])
-            cargosDx_json = CargosDxSerializer(cargosDxDict, many=True).data
-            cargo_json['listDx'] = cargosDx_json
-        evento_json['cargos'] = cargos_json
+        #for cargo_json in cargos_json:
+        #    cargosDxDict = CargosDx.objects.filter(cargo=cargo_json['id'])
+        #    cargosDx_json = CargosDxSerializer(cargosDxDict, many=True).data
+        #    cargo_json['listDx'] = cargosDx_json
+        #evento_json['cargos'] = cargos_json
 
         return Response(evento_json, status=status.HTTP_200_OK)
 
