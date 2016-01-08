@@ -1,0 +1,40 @@
+{% extends 'base_app.html' %}
+
+{% block 'sidebar' %}
+<div id="sidebar-wrapper">
+  <ul class="sidebar-nav">
+    <li class="sidebar-brand">
+      {{app.app}}
+      <span class="pull-right app-select">
+        <i class="glyphicon glyphicon-chevron-down"></i>
+      </span>
+    </li>
+    <li class="active"><a href="#">Admins</a></li>
+    <li><a href="key">Keys</a></li>
+  </ul>
+</div>
+{% endblock %}
+
+{% block 'page_content' %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1>Admins</h1>
+      <table class="table">
+        <tr>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Last Login</th>
+        </tr>
+        {% for admin in app.admins.all %}
+        <tr>
+          <td>{{admin.username}}</td>
+          <td>{{admin.email}}</td>
+          <td>{{admin.last_login}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

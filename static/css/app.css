@@ -1,0 +1,20 @@
+.app-select {
+  color: #999999;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.app-select:hover {
+  color: #fff;
+}
+
+.sidebar-nav .active {
+  color: #fff;
+  background-color: #333;
+}
+
+.abs-center {
+  display: table-cell;
+  vertical-align: middle;
+  width: 100%;
+}

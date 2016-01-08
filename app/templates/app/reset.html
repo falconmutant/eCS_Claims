@@ -1,0 +1,32 @@
+{% extends 'base_app.html' %}
+
+{% block 'sidebar' %}
+<div id="sidebar-wrapper">
+  <ul class="sidebar-nav">
+    <li class="sidebar-brand">
+      {{app.app}}
+      <span class="pull-right app-select">
+        <i class="glyphicon glyphicon-chevron-down"></i>
+      </span>
+    </li>
+    <li><a href="admins">Admins</a></li>
+    <li class="active"><a href="key">Keys</a></li>
+  </ul>
+</div>
+{% endblock %}
+
+{% block 'page_content' %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1>Api Key</h1>
+      <form action="" method="post">
+        <p><strong>App ID:</strong> {{app.id}}</p>
+        <p><strong>Secret Key:</strong> {% if key %}{{key}}{% else %}... <a href="key?show=yes">Show</a>{% endif%}</p>
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Reset Key</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
