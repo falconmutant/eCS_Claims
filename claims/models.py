@@ -23,6 +23,13 @@ DX_ESTATUS = (
 ('R', 'Resuelto'),
 )
 
+AUTH_ESTATUS =(
+('R', 'Recibido'),
+('A', 'Aceptado'),
+('X', 'Rechazado'),
+('E', 'En Revision'),
+)
+
 class Proveedor(models.Model):
    owner = models.OneToOneField(User, null=True)
    rfc = models.CharField(max_length=13, null=False)
@@ -83,7 +90,7 @@ class CargosDx(models.Model):
    cargo = models.ForeignKey(Cargos)
 
 class Autorizacion(models.Model):
-   Estatus = models.CharField(max_length=255, null=False)
+   Estatus = models.CharField(choices= AUTH_ESTATUS, max_length=255, null=False)
    FechaSolicitud = models.DateField()
    Comentarios  = models.CharField(max_length=255,null=True)
    TipoAprobacion = models.CharField(max_length=255)
