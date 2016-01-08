@@ -200,6 +200,7 @@ class EventoDetailView(EventoView):
         evento = self.get_evento(evento_id)
 
         evento_json = EventoSerializer(evento).data
+        evento_json['claimEstatus']=Autorizacion.objects.get(evento=evento).Estatus
         # paciente
         pac_json = PacienteSerializer(Paciente.objects.get(evento=evento)).data
         evento_json['Paciente'] = pac_json
