@@ -27,7 +27,7 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('claims_Web.urls')),
     url(r'^proveedores', include('claims.urls')),
-    url(r'^apps/', include(app_urls)),
+    url(r'^apps/', include("app.urls")),
     url(r'^auth/login$', login, name='login'),
     url(r'^accounts/', include('django.contrib.auth.urls')),
     #url(r'^api-token-auth/', 'rest_framework_jwt.views.obtain_jwt_token'),
