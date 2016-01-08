@@ -33,6 +33,7 @@ urlpatterns = [
     #url(r'^api-token-auth/', 'rest_framework_jwt.views.obtain_jwt_token'),
     url(r'^$', routes, name='routes'),
     url(r'^', include('invoices_Web.urls')),
+    url(r'^explorer/', include('explorer.urls')),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
