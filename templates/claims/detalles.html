@@ -5,138 +5,290 @@ eCS Claims
 {% endblock title %}
 
 {% block css %}
-  
   <link href="{% static "css/font-awesome.css" %}" rel="stylesheet">
-  <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
-  <link href="{% static "css/dashboard.css" %}" rel="stylesheet">
-  <link href="{% static "css/main.css" %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static "admin/bootstrap/css/bootstrap.min.css" %}" />
+  <link rel="stylesheet" href="{% static "admin/lib/jquery-ui/css/Aristo/Aristo.css" %}" />
+  <link rel="stylesheet" href="{% static "admin/lib/jBreadcrumbs/css/BreadCrumb.css" %}" />
+  <link rel="stylesheet" href="{% static "admin/img/font-awesome/css/font-awesome.min.css" %}" />
+  <link rel="stylesheet" href="{% static "admin/css/style.css" %}" />
+  <link rel="stylesheet" href="{% static "admin/css/blue.css" %}" id="link_theme" />
+  <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
   <link href="{% static "datatables/dataTables.css" %}" rel="stylesheet">
   <link href="{% static "datatables/dataTables.bootstrap.css" %}" rel="stylesheet">
   <link href="{% static "datatables/dataTables.fontAwesome.css" %}" rel="stylesheet">
+  <style type="text/css">
+    #footer {
+        padding: 4em 0 6em 0;
+        text-align: center;
+    }
+    #footer .copyright {
+        color: #999;
+        font-size: 0.9em;
+        line-height: 1em;
+        margin: 2em 0 0 0;
+        padding: 0;
+        text-align: center;
+    }
+    #footer .copyright li {
+        display: inline-block;
+        list-style: none;
+        margin-left: 1em;
+        padding-left: 1em;
+    }
+  </style>
 {% endblock css %}
 
 {% block header %}
-<header id="header">
-  <nav id="nav">
-    <ul>
-      <li><a href="/logged_in/">Inicio</a></li>
-      <li class="active"><a href="/claims/">Reclamos</a></li>
-      <li><a href="/historial/">Historial</a></li>
-      <li>
-        <a href="#" class="icon fa-user">{{nombre}}</a>
+<div id="maincontainer" class="clearfix">
+  <header>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="brand pull-left" href="dashboard.html">eCareSoft</a>
+          <ul class="nav navbar-nav user_menu pull-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <img src="{% static "admin/img/user_avatar.png" %}" alt="" class="user_avatar">
+                {{nombre}}
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-right">
+                <li><a href="/logout/">Salir</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div id="contentwrapper">
+    <div style="background-image: url({% static "admin/img/bg_c.png" %});" class="main_content">
+      <div id="jCrumbs" class="breadCrumb module">
         <ul>
-          <li><a href="/cerrar/">Salir</a></li>
+          <li>
+            <a href="/logged_in/"><i class="glyphicon glyphicon-home"></i></a>
+          </li>
+          <li>
+            <a href="">Reclamos</a>
+        </li>
+        <li>
+            <a href="">Pendientes</a>
+        </li>
         </ul>
-      </li>
-    </ul>
-  </nav>
-</header>
-{% endblock header %}
-
-{% block content %}
-<section id="main" class="container">
-  <div class="row">
-    <div class="12u">
-      <section class="box">
-        <a class="a-details" href="/claims/"><i class="fa fa-long-arrow-left"></i></a>
-        <a style="margin-left:60px !important;" class="a-details" id="modal"><i class="fa fa-check-square-o"></i></a>
-        <hr />
-        <form id="form" class="form-horizontal">
-          <div class="form-group">
-            <label class="col-md-2 control-label">Nombre</label>
-            <div class="col-xs-2">
-              <div class="input-icon">
-                {% for pa in paciente %}
-                  {% if pa.evento_id == detalle.id %}
-                    <input class="input-error form-control" type="text" value="{{pa.nombre}}">
-                  {% endif %}
-                {% endfor %}
-              </div>
-            </div>
-            
-            <label class="col-md-2 control-label">Médico</label>
-            <div class="col-xs-2">
-              <div class="input-icon">
-                <input class="input-error form-control" type="text" value="{{detalle.medico}}">
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-md-2 control-label">Numero de Evento</label>
-            <div class="col-xs-2">
-              <div class="input-icon">
-                <input class="input-error form-control" type="text" value="{{detalle.folioAut}}">
-              </div>
-            </div>
-            <label class="col-md-2 control-label">Diagnostico</label>
-            <div class="col-xs-6">
-              <div class="input-icon">
+      </div>
+      <div class="row">
+          <div class="12u">
+            <section class="box">
+              <a class="a-details" href="/claims/"><i class="fa fa-long-arrow-left"></i></a>
+              <a style="margin-left:60px !important;" class="a-details" id="modal"><i class="fa fa-check-square-o"></i></a>
+              <hr />
+              <form id="form" class="form-horizontal">
+                <div class="form-group">
+                  <label class="col-md-2 control-label">Nombre</label>
+                  <div class="col-xs-2">
+                    <div class="input-icon">
+                      {% for pa in paciente %}
+                        {% if pa.evento_id == detalle.id %}
+                          <input class="input-error form-control" type="text" value="{{pa.nombre}}">
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                  </div>
                   
-                  <input class="input-error form-control" type="text" value="">
-           
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-md-2 control-label">Hospital</label>
-            <div class="col-xs-2">
-              <div class="input-icon">
-                {% for pro in proveedor %}
-                  {% if pro.id == detalle.proveedor_id %}
-                    <input class="input-error form-control" type="text" value="{{pro.hospital}}">
-                  {% endif %}
-                {% endfor %}
-              </div>
-            </div>
-            <label class="col-md-2 control-label">Localidad</label>
-            <div class="col-xs-6">
-              <div class="input-icon">
-                {% for pro in proveedor %}
-                  {% if pro.id == detalle.proveedor_id %}
-                    <input class="input-error form-control" type="text" value="{{pro.localidad}}">
-                  {% endif %}
-                {% endfor %}
-              </div>
-            </div>
-          </div>
-        </form>
-        <hr />
-        <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="tabletools">
-          <thead>
-            <tr>
-              <th>Concepto</th>
-              <th>Descripción</th>
-              <th>Unidad de Medida</th>
-              <th>Cantidad</th>
-              <th>Precio Unitario</th>
-              <th>Descuento</th>
-              <th>Precio Neto</th>
-              <th>Impuesto</th>
-            </tr>
-          </thead>
-          <tbody id="tb">
+                  <label class="col-md-2 control-label">Médico</label>
+                  <div class="col-xs-2">
+                    <div class="input-icon">
+                      <input class="input-error form-control" type="text" value="{{detalle.medico}}">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-2 control-label">Numero de Evento</label>
+                  <div class="col-xs-2">
+                    <div class="input-icon">
+                      <input class="input-error form-control" type="text" value="{{detalle.folioAut}}">
+                    </div>
+                  </div>
+                  <label class="col-md-2 control-label">Diagnostico</label>
+                  <div class="col-xs-6">
+                    <div class="input-icon">
+                        
+                        <input class="input-error form-control" type="text" value="">
+                 
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-2 control-label">Hospital</label>
+                  <div class="col-xs-2">
+                    <div class="input-icon">
+                      {% for pro in proveedor %}
+                        {% if pro.id == detalle.proveedor_id %}
+                          <input class="input-error form-control" type="text" value="{{pro.hospital}}">
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                  </div>
+                  <label class="col-md-2 control-label">Localidad</label>
+                  <div class="col-xs-6">
+                    <div class="input-icon">
+                      {% for pro in proveedor %}
+                        {% if pro.id == detalle.proveedor_id %}
+                          <input class="input-error form-control" type="text" value="{{pro.localidad}}">
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <hr />
+              <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="tabletools">
+                <thead>
+                  <tr>
+                    <th>Concepto</th>
+                    <th>Descripción</th>
+                    <th>Unidad de Medida</th>
+                    <th>Cantidad</th>
+                    <th>Precio Unitario</th>
+                    <th>Descuento</th>
+                    <th>Precio Neto</th>
+                    <th>Impuesto</th>
+                  </tr>
+                </thead>
+                <tbody id="tb">
 
-            {% for dato in cargo %}
-              {% if detalle.id == dato.evento_id %}
-                <tr>
-                  <td>{{dato.codigo}}</td>
-                  <td>{{dato.descripcion}}</td>
-                  <td>{{dato.udm}}</td>
-                  <td>{{dato.cantidad}}</td>
-                  <td>{{dato.precio}}</td>
-                  <td>{{dato.descuento}}</td>
-                  <td>{{dato.subtotal}}</td>
-                  <td>{{dato.iva}}</td>
-                </tr>
-              {% endif %}
-            {% endfor %}
-          </tbody>
-        </table>
-      </section>
+                  {% for dato in cargo %}
+                    {% if detalle.id == dato.evento_id %}
+                      <tr>
+                        <td>{{dato.codigo}}</td>
+                        <td>{{dato.descripcion}}</td>
+                        <td>{{dato.udm}}</td>
+                        <td>{{dato.cantidad}}</td>
+                        <td>{{dato.precio}}</td>
+                        <td>{{dato.descuento}}</td>
+                        <td>{{dato.subtotal}}</td>
+                        <td>{{dato.iva}}</td>
+                      </tr>
+                    {% endif %}
+                  {% endfor %}
+                </tbody>
+              </table>
+            </section>
+          </div>
+      </div>
+      <footer id="footer">
+        <ul class="copyright">
+            <li>&copy; Todos los derechos reservados eCareSoft México.
+        </ul>
+      </footer>  
     </div>
   </div>
-</section>
-{% endblock content %}
+</div>
+{% endblock header %}
+
+{% block sidebar %}
+<div class="sidebar">
+  <div class="sidebar_inner_scroll">
+    <div class="sidebar_inner">
+      <div id="side_accordion" class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <a href="#collapseTwo" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle">
+              <i class="glyphicon glyphicon-th"></i> Reclamos
+            </a>
+          </div>
+          <div class="accordion-body collapse" id="collapseTwo">
+            <div class="panel-body">
+              <ul class="nav nav-pills nav-stacked">
+                <li><a href="/claims/">Pendientes</a></li>
+                <li><a href="javascript:void(0)">Historial</a></li>
+                <li><a href="javascript:void(0)">Reclamos</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <a href="#collapseTwo" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle">
+                <i class="glyphicon glyphicon-th"></i> Facturación
+            </a>
+          </div>
+          <div class="accordion-body collapse" id="collapseTwo">
+            <div class="panel-body">
+              <ul class="nav nav-pills nav-stacked">
+                <li><a href="javascript:void(0)">Pendientes</a></li>
+                <li><a href="javascript:void(0)">Historial</a></li>
+                <li><a href="javascript:void(0)">Reclamos</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <a href="#collapseThree" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle">
+              <i class="glyphicon glyphicon-user"></i> Usuarios
+            </a>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <a href="#collapseFour" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle">
+              <i class="glyphicon glyphicon-cog"></i> Administración
+            </a>
+          </div>
+          <div class="accordion-body collapse" id="collapseFour">
+            <div class="panel-body">
+              <ul class="nav nav-pills nav-stacked">
+                <li><a href="javascript:void(0)">Clientes</a></li>
+                <li><a href="javascript:void(0)">Zonas</a></li>
+                <li><a href="javascript:void(0)">Hospitales</a></li>
+                <li><a href="javascript:void(0)">Localidades</a></li>
+                <li><a href="javascript:void(0)">Usuarios</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <a href="#collapseLong" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle">
+              <i class="glyphicon glyphicon-leaf"></i> PEMEX
+            </a>
+          </div>
+          <div class="accordion-body collapse" id="collapseLong">
+              <div class="panel-body">
+                <ul class="nav nav-pills nav-stacked">
+                  <li><a href="javascript:void(0)">Facturación</a></li>
+                  <li><a href="javascript:void(0)">Reporte</a></li>
+                </ul>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock sidebar %}
+
+{% block javascript %}
+  <script src="{% static "admin/js/jquery.min.js" %}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+  <script src="{% static "admin/js/jquery-migrate.min.js" %}"></script>
+  <script src="{% static "admin/js/jquery.easing.1.3.min.js" %}"></script>
+  <script src="{% static "admin/js/jquery_cookie_min.js" %}"></script>
+  <script src="{% static "admin/bootstrap/js/bootstrap.min.js" %}"></script>
+  <script src="{% static "admin/js/bootstrap.plugins.min.js" %}"></script>
+  <script src="{% static "admin/lib/typeahead/typeahead.min.js" %}"></script>
+  <script src="{% static "admin/lib/google-code-prettify/prettify.min.js" %}"></script>
+  <script src="{% static "admin/lib/jBreadcrumbs/js/jquery.jBreadCrumb.1.1.min.js" %}"></script>
+  <script src="{% static "admin/js/jquery.actual.min.js" %}"></script>
+  <script src="{% static "admin/lib/slimScroll/jquery.slimscroll.js" %}"></script>
+  <script src="{% static "admin/lib/UItoTop/jquery.ui.totop.min.js" %}"></script>
+  <script src="{% static "admin/js/selectNav.js" %}"></script>
+  <script src="{% static "admin/js/pages/gebo_common.js" %}"></script>
+  <script type="text/javascript" src="{% static "datatables/jquery.dataTables.js" %}"></script>
+  <script type="text/javascript" src="{% static "datatables/dataTables.bootstrap.js" %}"></script>
+  <script type="text/javascript" src="{% static "datatables/demo-datatables.js" %}"></script>
+{% endblock javascript %}
 
 {% block modal %}
 <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-hidden="true">
@@ -144,59 +296,60 @@ eCS Claims
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Autorizar</h4>
+        <h4 class="modal-title" id="myModalLabel">Busqueda</h4>
       </div>
-      <form action="" class="form-horizontal" method="POST">{% csrf_token %}
       <div class="modal-body">
-        
+        <form id="form" class="form-horizontal">
           <div class="form-group">
-             <div class="form-group">
               <label class="col-md-2 control-label">Tipo</label>
               <div class="col-xs-2">
                 <div class="input-icon">
-                  <select name="estatus" class="form-control">
-                    <option value="A">Aprobar</option>
-                    <option value="X">Rechazar</option>
-                    <option value="V">A revisión</option>
-                  </select>
+                  <select class="form-control"><option value=""></option></select>
                 </div>
               </div>
-            </div>
-            <div class="form-group">
-              <label class="col-md-2 control-label">Comentarios</label>
+              <style type="text/css">
+                .col-md-2{width:9.666667%;}
+              </style>
+              <label class="col-md-2 control-label">Localidad</label>
               <div class="col-xs-2">
                 <div class="input-icon">
-                  <textarea name="descripcion" row="6"></textarea>
+                  <select class="form-control"></select>
                 </div>
               </div>
-            </div>
+
+              <label class="col-md-2 control-label">Rango de Fechas</label>
+              <div class="col-xs-2">
+                <div class="input-icon">
+                  <input class="input-error form-control" type="date">
+                </div>
+              </div>
+              <div class="col-xs-2">
+                <div class="input-icon">
+                  <input class="input-error form-control" type="date">
+                </div>
+              </div>
           </div>
-          <input type="hidden" name="id" value="{{idd}}">
+          <div class="form-group">
+            <label class="col-md-2 control-label">Cliente</label>
+              <div class="col-xs-2">
+                <div class="input-icon">
+                  <input class="input-error form-control" type="text">
+                </div>
+              </div>
+              <label class="col-md-2 control-label">Estatus</label>
+              <div class="col-xs-2">
+                <div class="input-icon">
+                  <select class="form-control"></select>
+                </div>
+              </div>
+          </div>
+        </form>
       </div>
       <div id="btnmodal" class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-        <input type="submit" class="btn btn-default" value="Actualizar">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Buscar</button>
       </div>
-      </form>
     </div>
   </div>
 </div>
 {% endblock modal %}
-
-{% block javascript %}
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-  <script src="{% static "js/bootstrap.min.js" %}"></script>
-  <script type="text/javascript" src="{% static "datatables/jquery.dataTables.js" %}"></script>
-  <script type="text/javascript" src="{% static "datatables/dataTables.bootstrap.js" %}"></script>
-  <script type="text/javascript" src="{% static "datatables/demo-datatables.js" %}"></script>
-  <script src="{% static "js/jquery.dropotron.min.js" %}"></script>
-  <script src="{% static "js/jquery.scrollgress.min.js" %}"></script>
-  <script src="{% static "js/skel.min.js" %}"></script>
-  <script src="{% static "js/util.js" %}"></script>
-  <script src="{% static "js/main.js" %}"></script>
-  <script>
-    $('#modal').on('click',function(){
-      $('#modal-form').modal('show'); 
-    });
-  </script>
-{% endblock javascript %}
