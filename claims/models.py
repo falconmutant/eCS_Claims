@@ -23,6 +23,9 @@ DX_ESTATUS = (
 ('R', 'Resuelto'),
 )
 
+class Motivos(models.Model):
+   motivo = models.CharField(max_length=255, null=False)
+
 class Proveedor(models.Model):
    owner = models.OneToOneField(User, null=True)
    rfc = models.CharField(max_length=13, null=False)
@@ -89,3 +92,4 @@ class Autorizacion(models.Model):
    TipoAprobacion = models.CharField(max_length=255)
    Sistema = models.CharField(max_length=255, null=False)
    evento = models.ForeignKey(Evento)
+   motivo = models.ForeignKey(Motivos, blank=True, null=True)

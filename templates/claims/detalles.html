@@ -300,6 +300,11 @@ eCS Claims
     $('#modal').on('click',function(){
       $('#modal-form').modal('show'); 
     });
+    function motivos(value){
+      if(value == 'X'){
+        $('#motivo').css('display','block');
+      }
+    }
   </script>
 {% endblock javascript %}
 
@@ -317,6 +322,18 @@ eCS Claims
           <div class="form-group">
              <div class="form-group">
               <label class="col-md-2 control-label">Tipo</label>
+              <div class="col-xs-6">
+                <div class="input-icon">
+                  <select onchange="motivos(this.value);" name="estatus" class="form-control">
+                    <option value="A">Aprobar</option>
+                    <option value="X">Rechazar</option>
+                    <option value="V">A revisión</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div style="display:none;" id="motivo" class="form-group">
+              <label class="col-md-2 control-label">Motivo</label>
               <div class="col-xs-6">
                 <div class="input-icon">
                   <select name="estatus" class="form-control">
