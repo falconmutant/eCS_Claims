@@ -2,7 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404, get_list_or_404
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
-from invoices_Web.models import *
+from claims.models import *
 import datetime
 
 @login_required
