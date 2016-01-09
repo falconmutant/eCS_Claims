@@ -21,9 +21,9 @@ def detalle(request, id):
 	idd=id
 	bandera=0
 	if request.POST:
-		estatus = request.POST.POST('estatus')
-		descripcion = request.POST.POST('descripcion')
-		motivo = request.POST.POST('motivo')
+		estatus = request.POST.get('estatus')
+		descripcion = request.POST.get('descripcion')
+		motivo = request.POST.get('motivo')
 		Autorizacion.objects.filter(evento_id=idd).update(Estatus=estatus,Comentarios=descripcion,motivo=motivo)
 		bandera=1
 		nombre = request.user.get_full_name()
