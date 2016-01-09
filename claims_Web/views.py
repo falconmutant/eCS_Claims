@@ -21,9 +21,10 @@ def detalle(request, id):
 	idd=id
 	bandera=0
 	if request.POST:
-		estatus = request.POST.get('estatus')
-		descripcion = request.POST.get('descripcion')
-		Autorizacion.objects.filter(evento_id=idd).update(Estatus=estatus,Comentarios=descripcion)
+		estatus = request.POST.POST('estatus')
+		descripcion = request.POST.POST('descripcion')
+		motivo = request.POST.POST('motivo')
+		Autorizacion.objects.filter(evento_id=idd).update(Estatus=estatus,Comentarios=descripcion,motivo=motivo)
 		bandera=1
 		nombre = request.user.get_full_name()
 		autorizacion = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='1')
@@ -38,6 +39,7 @@ def detalle(request, id):
 	paciente = Paciente.objects.all()
 	cargo = Cargos.objects.all()
 	proveedor = Proveedor.objects.all()
+	motivo = Motivos.objects.all()
 	return render_to_response('claims/detalles.html',RequestContext(request,locals()))
 
 @login_required

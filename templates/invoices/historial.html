@@ -5,93 +5,250 @@ eCS Claims
 {% endblock title %}
 
 {% block css %}
-  
   <link href="{% static "css/font-awesome.css" %}" rel="stylesheet">
-  <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
-  <link href="{% static "css/dashboard.css" %}" rel="stylesheet">
-  <link href="{% static "css/main.css" %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static "admin/bootstrap/css/bootstrap.min.css" %}" />
+  <link rel="stylesheet" href="{% static "admin/lib/jquery-ui/css/Aristo/Aristo.css" %}" />
+  <link rel="stylesheet" href="{% static "admin/lib/jBreadcrumbs/css/BreadCrumb.css" %}" />
+  <link rel="stylesheet" href="{% static "admin/img/font-awesome/css/font-awesome.min.css" %}" />
+  <link rel="stylesheet" href="{% static "admin/css/style.css" %}" />
+  <link rel="stylesheet" href="{% static "admin/css/blue.css" %}" id="link_theme" />
+  <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
   <link href="{% static "datatables/dataTables.css" %}" rel="stylesheet">
   <link href="{% static "datatables/dataTables.bootstrap.css" %}" rel="stylesheet">
   <link href="{% static "datatables/dataTables.fontAwesome.css" %}" rel="stylesheet">
+  <style type="text/css">
+    #footer {
+        padding: 4em 0 6em 0;
+        text-align: center;
+    }
+    #footer .copyright {
+        color: #999;
+        font-size: 0.9em;
+        line-height: 1em;
+        margin: 2em 0 0 0;
+        padding: 0;
+        text-align: center;
+    }
+    #footer .copyright li {
+        display: inline-block;
+        list-style: none;
+        margin-left: 1em;
+        padding-left: 1em;
+    }
+    .a-details,.a-details:hover{
+      font-size: 30px;
+      margin-left: 80%;
+      border: none !important;
+    }
+  </style>
 {% endblock css %}
 
 {% block header %}
-<header id="header">
-  <nav id="nav">
-    <ul>
-      <li><a href="/logged_in/">Inicio</a></li>
-      <li><a href="/invoice/">Facturas</a></li>
-      <li class="active"><a href="/historial_invoices/">Historial</a></li>
-      <li>
-        <a href="#" class="icon fa-user">{{nombre}}</a>
+<div id="maincontainer" class="clearfix">
+  <header>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="brand pull-left" href="/logged_in/">eCareSoft</a>
+          <ul class="nav navbar-nav user_menu pull-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <img src="{% static "admin/img/user_avatar.png" %}" alt="" class="user_avatar">
+                {{nombre}}
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-right">
+                <li><a href="/cerrar/">Salir</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div id="contentwrapper">
+    <div style="background-image: url({% static "admin/img/bg_c.png" %});" class="main_content">
+      <div id="jCrumbs" class="breadCrumb module">
         <ul>
-          <li><a href="/cerrar/">Salir</a></li>
+          <li>
+            <a href="/logged_in/"><i class="glyphicon glyphicon-home"></i></a>
+          </li>
+          <li>
+            <a href="">Facturas</a>
+        </li>
+        <li>
+            <a href="">Historial</a>
+        </li>
         </ul>
-      </li>
-    </ul>
-  </nav>
-</header>
-{% endblock header %}
-
-{% block content %}
-<section id="main" class="container">
-  <div class="row">
-    <div class="12u">
-      <section class="box">
-        <center><h3>Lista de Facturas</h3></center>
-        <hr />
-        <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="tabletools">
-          <thead>
-            <tr>
-              <th>Folio</th>
-              <th>Cliente</th>
-              <th>Localidad</th>
-              <th>Especialidad</th>
-              <th>Estatus</th>
-              <th>Numero de Servicios</th>
-              <th>Total</th>
-              <th>Detalle</th>
-            </tr>
-          </thead>
-          <tbody id="tb">
-            {% for dato in autorizacion %}
+      </div>
+      <div class="row">
+        <div class="12u">
+          <section class="box">
+            <center><h3>Lista de Facturas</h3></center>
+            <hr />
+            <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="tabletools">
+              <thead>
                 <tr>
-                  {% for item in cuenta %}
-                    {% if item.id == dato.IdCuenta_id %}
-                      <td>{{dato.Folio}}</td>
-                      
-                      {% for pro in proveedor %}
-                        {% if pro.id == item.IdProveedor_id %}
-                          <td>{{pro.Cliente}}</td>
-                          <td>{{pro.Localidad}}</td>
-                        {% endif %}
-                      {% endfor %}
-
-                      {% for me in medico %}
-                        {% if me.id == item.IdMedico_id %}
-                          <td>{{me.Especialidad}}</td>
-                        {% endif %}
-                      {% endfor %}
-
-                      <td>{{dato.Estatus}}</td>
-                      <td></td>
-                      <td></td>
-                      <th>
-                        <a style="margin-left:0 !important;" class="a-details" href="/detalle_invoices/{{dato.IdCuenta_id}}/">
-                          <i class="fa fa-eye"></i>
-                        </a>
-                      </th>
-                    {% endif %}
-                  {% endfor %}
+                  <th>Folio</th>
+                  <th>Cliente</th>
+                  <th>Localidad</th>
+                  <th>Especialidad</th>
+                  <th>Estatus</th>
+                  <th>Numero de Servicios</th>
+                  <th>Total</th>
+                  <th>Detalle</th>
                 </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      </section>
+              </thead>
+              <tbody id="tb">
+                {% for dato in autorizacion %}
+                    <tr>
+                      {% for item in cuenta %}
+                        {% if item.id == dato.IdCuenta_id %}
+                          <td>{{dato.Folio}}</td>
+                          
+                          {% for pro in proveedor %}
+                            {% if pro.id == item.IdProveedor_id %}
+                              <td>{{pro.Cliente}}</td>
+                              <td>{{pro.Localidad}}</td>
+                            {% endif %}
+                          {% endfor %}
+
+                          {% for me in medico %}
+                            {% if me.id == item.IdMedico_id %}
+                              <td>{{me.Especialidad}}</td>
+                            {% endif %}
+                          {% endfor %}
+
+                          <td>{{dato.Estatus}}</td>
+                          <td></td>
+                          <td></td>
+                          <th>
+                            <a style="margin-left:0 !important;" class="a-details" href="/detalle_invoices/{{dato.IdCuenta_id}}/">
+                              <i class="fa fa-eye"></i>
+                            </a>
+                          </th>
+                        {% endif %}
+                      {% endfor %}
+                    </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </section>
+        </div>
+      </div>
+      <footer id="footer">
+        <ul class="copyright">
+            <li>&copy; Todos los derechos reservados eCareSoft México.
+        </ul>
+      </footer>  
     </div>
   </div>
-</section>
-{% endblock content %}
+</div>
+{% endblock header %}
+
+{% block sidebar %}
+<div class="sidebar">
+  <div class="sidebar_inner_scroll">
+    <div class="sidebar_inner">
+      <div id="side_accordion" class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <a href="#collapseTwo" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle">
+              <i class="glyphicon glyphicon-th"></i> Reclamos
+            </a>
+          </div>
+          <div class="accordion-body collapse" id="collapseTwo">
+            <div class="panel-body">
+              <ul class="nav nav-pills nav-stacked">
+                <li><a href="/claims/">Pendientes</a></li>
+                <li><a href="/historial/">Historial</a></li>
+                <li><a href="/explorer/">Reportes</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <a href="#collapseOne" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle">
+                <i class="glyphicon glyphicon-th"></i> Facturación
+            </a>
+          </div>
+          <div class="accordion-body collapse" id="collapseOne">
+            <div class="panel-body">
+              <ul class="nav nav-pills nav-stacked">
+                <li><a href="/invoice/">Pendientes</a></li>
+                <li><a href="/historial_invoices/">Historial</a></li>
+                <li><a href="/explorer/">Reportes</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <a href="#collapseThree" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle">
+              <i class="glyphicon glyphicon-user"></i> Usuarios
+            </a>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <a href="#collapseFour" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle">
+              <i class="glyphicon glyphicon-cog"></i> Administración
+            </a>
+          </div>
+          <div class="accordion-body collapse" id="collapseFour">
+            <div class="panel-body">
+              <ul class="nav nav-pills nav-stacked">
+                <li><a href="javascript:void(0)">Clientes</a></li>
+                <li><a href="javascript:void(0)">Zonas</a></li>
+                <li><a href="javascript:void(0)">Hospitales</a></li>
+                <li><a href="javascript:void(0)">Localidades</a></li>
+                <li><a href="javascript:void(0)">Usuarios</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <a href="#collapseLong" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle">
+              <i class="glyphicon glyphicon-leaf"></i> PEMEX
+            </a>
+          </div>
+          <div class="accordion-body collapse" id="collapseLong">
+              <div class="panel-body">
+                <ul class="nav nav-pills nav-stacked">
+                  <li><a href="javascript:void(0)">Facturación</a></li>
+                  <li><a href="javascript:void(0)">Reporte</a></li>
+                </ul>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock sidebar %}
+
+{% block javascript %}
+  <script src="{% static "admin/js/jquery.min.js" %}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+  <script src="{% static "admin/js/jquery-migrate.min.js" %}"></script>
+  <script src="{% static "admin/js/jquery.easing.1.3.min.js" %}"></script>
+  <script src="{% static "admin/js/jquery_cookie_min.js" %}"></script>
+  <script src="{% static "admin/bootstrap/js/bootstrap.min.js" %}"></script>
+  <script src="{% static "admin/js/bootstrap.plugins.min.js" %}"></script>
+  <script src="{% static "admin/lib/typeahead/typeahead.min.js" %}"></script>
+  <script src="{% static "admin/lib/google-code-prettify/prettify.min.js" %}"></script>
+  <script src="{% static "admin/lib/jBreadcrumbs/js/jquery.jBreadCrumb.1.1.min.js" %}"></script>
+  <script src="{% static "admin/js/jquery.actual.min.js" %}"></script>
+  <script src="{% static "admin/lib/slimScroll/jquery.slimscroll.js" %}"></script>
+  <script src="{% static "admin/lib/UItoTop/jquery.ui.totop.min.js" %}"></script>
+  <script src="{% static "admin/js/selectNav.js" %}"></script>
+  <script src="{% static "admin/js/pages/gebo_common.js" %}"></script>
+  <script type="text/javascript" src="{% static "datatables/jquery.dataTables.js" %}"></script>
+  <script type="text/javascript" src="{% static "datatables/dataTables.bootstrap.js" %}"></script>
+  <script type="text/javascript" src="{% static "datatables/demo-datatables.js" %}"></script>
+{% endblock javascript %}
 
 {% block modal %}
 <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-hidden="true">
@@ -156,21 +313,3 @@ eCS Claims
   </div>
 </div>
 {% endblock modal %}
-
-{% block javascript %}
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-  <script src="{% static "js/bootstrap.min.js" %}"></script>
-  <script type="text/javascript" src="{% static "datatables/jquery.dataTables.js" %}"></script>
-  <script type="text/javascript" src="{% static "datatables/dataTables.bootstrap.js" %}"></script>
-  <script type="text/javascript" src="{% static "datatables/demo-datatables.js" %}"></script>
-  <script src="{% static "js/jquery.dropotron.min.js" %}"></script>
-  <script src="{% static "js/jquery.scrollgress.min.js" %}"></script>
-  <script src="{% static "js/skel.min.js" %}"></script>
-  <script src="{% static "js/util.js" %}"></script>
-  <script src="{% static "js/main.js" %}"></script>
-  <script>
-    $('#modal').on('click',function(){
-      $('#modal-form').modal('show'); 
-    });
-  </script>
-{% endblock javascript %}
