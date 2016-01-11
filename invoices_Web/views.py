@@ -40,8 +40,8 @@ def save_ligar(request):
         comprobante = request.POST.get('comprobante')
         liga = ComprobanteEvento(comprobante=comprobante, evento=evento)
         response_data = {}
-        response_data['result'] = 'Create post successful!'
         liga.save()
+        response_data['result'] = 'Create post successful!'
         return HttpResponse(
             json.dumps(response_data),
             content_type="application/json"

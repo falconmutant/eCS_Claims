@@ -297,13 +297,13 @@ eCS Claims
         return cookieValue;
     }
     var csrftoken = getCookie('csrftoken');
-    function create_post(value,value2) {
+    function create_post(value,comp) {
         console.log("create post is working!") // sanity check
         $.ajax({
             url : "/ligar/", // the endpoint
             type : "POST", // http method
             data : { evento : value,
-                     comprobante : value2, 
+                     comprobante : comp, 
                      csrfmiddlewaretoken : csrftoken
                     }, // data sent with the post request
 
