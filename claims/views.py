@@ -200,8 +200,17 @@ class EventoDetailView(EventoView):
         evento = self.get_evento(evento_id)
 
         evento_json = EventoSerializer(evento).data
-	evento_json['claimEstatus']=Autorizacion.objects.get(evento=evento).Estatus
-        evento_json['claimEstatusDisplay']=Autorizacion.objects.get(evento=evento).get_Estatus_display()
+        autObj=Autorizacion.objects.get(evento=evento)
+        claim_json={}
+	claim_json['Estatus']=autObj.Estatus #Autorizacion.objects.get(evento=evento).Estatus
+        claim_json['Display']=autObj.get_Estatus_display() #Autorizacion.objects.get(evento=evento).get_Estatus_display()
+        if autObj.Estatus == "X":
+	#     x=1
+	    claim_json['Motivo']=Motivos.objects.get(id=autObj.motivo_id).motivo
+	else:
+	    claim_json['Motivo']='N/A'
+        claim_json['Comentarios']=autObj.Comentarios
+	evento_json['claim']=claim_json
         # paciente
         pac_json = PacienteSerializer(Paciente.objects.get(evento=evento)).data
         evento_json['Paciente'] = pac_json
