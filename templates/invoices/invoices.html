@@ -145,8 +145,8 @@ eCS Claims
                     <td>{{co.folio}}</td>
                     {% for ci in cliente %}
                       {% if co.emisor_id == ci.id %}
-                        <td>{{cliente.nombre}}</td>
-                        <td>{{cliente.municipio}}</td>
+                        <td>{{ci.nombre}}</td>
+                        <td>{{ci.municipio}}</td>
                       {% endif %}
                     {% endfor %}
                     <td>Recibido</td>
