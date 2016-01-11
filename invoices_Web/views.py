@@ -23,11 +23,9 @@ def detalle(request, id):
 		cargo = Cargos.objects.all()
 		return render_to_response('claims/claims.html',RequestContext(request,locals()))
 	nombre = request.user.get_full_name()
-	dx = Dx.objects.all()
-	detalle = get_object_or_404(Evento, id=id)
-	paciente = Paciente.objects.all()
-	cargo = Cargos.objects.all()
-	proveedor = Proveedor.objects.all()
+
+	detalle = get_object_or_404(Comprobante, id=id)
+	conceptos = Conceptos.objects.all()
 	return render_to_response('invoices/detalles.html',RequestContext(request,locals()))
 
 @login_required

@@ -92,12 +92,12 @@ eCS Claims
             <hr />
             <form id="form" class="form-horizontal">
               <div class="form-group">
-                <label class="col-md-2 control-label">Medico</label>
+                <label class="col-md-2 control-label">Emisor</label>
                 <div class="col-xs-2">
                   <div class="input-icon">
-                    {% for me in medico %}
-                      {% if me.id == detalle.IdMedico_id %}
-                        <input class="input-error form-control" type="text" value="{{me.Nombre}}">
+                    {% for em in emisor %}
+                      {% if em.id == detalle.emisor_id %}
+                        <input class="input-error form-control" type="text" value="{{em.nombre}">
                       {% endif %}
                     {% endfor %}
                   </div>
@@ -105,9 +105,9 @@ eCS Claims
                 <label class="col-md-2 control-label">RFC</label>
                 <div class="col-xs-2">
                   <div class="input-icon">
-                    {% for me in medico %}
-                      {% if me.id == detalle.IdMedico_id %}
-                        <input class="input-error form-control" type="text" value="{{me.RFC}}">
+                    {% for em in emisor %}
+                      {% if em.id == detalle.emisor_id %}
+                        <input class="input-error form-control" type="text" value="{{em.rfc}">
                       {% endif %}
                     {% endfor %}
                   </div>
@@ -115,25 +115,19 @@ eCS Claims
                 <label class="col-md-2 control-label">Localidad</label>
                 <div class="col-xs-2">
                   <div class="input-icon">
-                    {% for pro in proveedor %}
-                      {% if pro.id == detalle.IdProveedor_id %}
-                        <input class="input-error form-control" type="text" value="{{pro.Localidad}}">
+                    {% for em in emisor %}
+                      {% if em.id == detalle.emisor_id %}
+                        <input class="input-error form-control" type="text" value="{{em.localidad}">
                       {% endif %}
                     {% endfor %}
                   </div>
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-md-2 control-label">Total Servicios</label>
-                <div class="col-xs-2">
-                  <div class="input-icon">
-                    <input class="input-error form-control" type="text" value="2">
-                  </div>
-                </div>
                 <label class="col-md-2 control-label">Total de Factura</label>
                 <div class="col-xs-2">
                   <div class="input-icon">
-                    <input class="input-error form-control" type="text" value="8000.00">
+                    <input class="input-error form-control" type="text" value="{{detalle.total}}">
                   </div>
                 </div>
               </div>
@@ -142,32 +136,24 @@ eCS Claims
             <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="tabletools">
               <thead>
                 <tr>
+                  <th>folio</th>
                   <th>Concepto</th>
-                  <th>Paciente</th>
-                  <th>Descripción del Evento</th>
                   <th>Cantidad</th>
-                  <th>Precio Unitario</th>
-                  <th>Fecha</th>
-                  <th>CAP</th>
-                  <th>Tope máximo a cubrir</th>
+                  <th>Unidad</th>
+                  <th>Descripción</th>
+                  <th>Importe</th>
                 </tr>
               </thead>
               <tbody id="tb">
-                {% for dato in cargo %}
-                  {% if detalle.id == dato.IdCuenta_id %}
+                {% for co in conceptos %}
+                  {% if co.comprobante_id == detalle.id %}
                         <tr>
-                          <td>{{dato.id}}</td>
-                          {% for pa in paciente %}
-                            {% if pa.id == detalle.IdPaciente_id %}
-                              <td>{{pa.Nombre}}</td>
-                            {% endif %}
-                          {% endfor %}
-                          <td>{{dato.Descripcion}}</td>
-                          <td>{{dato.Cantidad}}</td>
-                          <td>{{dato.PrecioUnitario}}</td>
-                          <td>{{dato.FechaAplicacion}}</td>
-                          <td>-</td>
-                          <td>{{dato.PrecioUnitario}}</td>
+                          <td>{{detalle.folio}}</td>
+                          <td>{{co.concepto}}</td>
+                          <td>{{co.cantidad}}</td>
+                          <td>{{co.unidad}}</td>
+                          <td>{{co.descripcion}}</td>
+                          <td>{{co.importe}}</td>
                         </tr>
                   {% endif %}
                 {% endfor %}
