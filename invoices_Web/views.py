@@ -34,7 +34,7 @@ def detalle(request, id):
 	autorizacion = Autorizacion.objects.filter(Estatus="R")
 	return render_to_response('invoices/detalles.html',RequestContext(request,locals()))
 
-def save_liga(request):
+def save_ligar(request):
     if request.method == 'POST':
         evento = request.POST.get('evento')
         comprobante = request.POST.get('comprobante')
