@@ -79,5 +79,5 @@ class Autorizacion(models.Model):
    comprobante = models.ForeignKey(Comprobante)
 
 class ComprobanteEvento(models.Model):
-	comprobante = models.ForeignKey(Comprobante)
-	evento = models.ForeignKey(Evento)
+	comprobante = models.IntegerField()
+	evento = models.IntegerField()
