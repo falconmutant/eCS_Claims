@@ -36,8 +36,8 @@ def detalle(request, id):
 
 def save_ligar(request):
     if request.method == 'POST':
-        evento = request.POST.get('evento')
-        comprobante = request.POST.get('comprobante')
+        evento = int(request.POST.get('evento'))
+        comprobante = int(request.POST.get('comprobante'))
         liga = ComprobanteEvento(comprobante=comprobante, evento=evento)
         response_data = {}
         liga.save()
