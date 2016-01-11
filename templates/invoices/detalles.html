@@ -95,31 +95,19 @@ eCS Claims
                 <label class="col-md-2 control-label">Emisor</label>
                 <div class="col-xs-2">
                   <div class="input-icon">
-                    {% for em in emisor %}
-                      {% if em.id == detalle.emisor_id %}
-                        <input class="input-error form-control" type="text" value="{{em.nombre}}">
-                      {% endif %}
-                    {% endfor %}
+                    <input class="input-error form-control" type="text" value="{{emisor.nombre}}">
                   </div>
                 </div>
                 <label class="col-md-2 control-label">RFC</label>
                 <div class="col-xs-2">
                   <div class="input-icon">
-                    {% for em in emisor %}
-                      {% if em.id == detalle.emisor_id %}
-                        <input class="input-error form-control" type="text" value="{{em.rfc}}">
-                      {% endif %}
-                    {% endfor %}
+                    <input class="input-error form-control" type="text" value="{{emisor.rfc}}">
                   </div>
                 </div>
                 <label class="col-md-2 control-label">Localidad</label>
                 <div class="col-xs-2">
                   <div class="input-icon">
-                    {% for em in emisor %}
-                      {% if em.id == detalle.emisor_id %}
-                        <input class="input-error form-control" type="text" value="{{em.municipio}}">
-                      {% endif %}
-                    {% endfor %}
+                    <input class="input-error form-control" type="text" value="{{emisor.municipio}}">
                   </div>
                 </div>
               </div>
