@@ -55,7 +55,7 @@ def invoices(request):
 @login_required
 def historial(request):
 	nombre = request.user.get_full_name()
-		x = datetime.datetime.now()
+	x = datetime.datetime.now()
 	inicio = "%s-%s-%s"% (x.year, x.month, x.day)
 	fin = "%s-%s-%s"% (x.year, x.month, x.day)
 	nombre = request.user.get_full_name()
