@@ -28,8 +28,8 @@ def detalle(request, id):
 	detalle = get_object_or_404(Comprobante, id=id)
 	conceptos = Conceptos.objects.all()
 	emisor = Emisor.objects.all()
-	proveedor = Proveedor.objects.all()
-	evento = Evento.objects.all()
+	proveedor = get_object_or_404(Proveedor, rfc=detalle.rfc)
+	evento = get_object_or_404(Evento, proveedor_id=proveedor.id)
 	autorizacion = Autorizacion.objects.filter(Estatus="R")
 	return render_to_response('invoices/detalles.html',RequestContext(request,locals()))
 
