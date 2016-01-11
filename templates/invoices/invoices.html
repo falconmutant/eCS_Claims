@@ -150,8 +150,8 @@ eCS Claims
                       {% endif %}
                     {% endfor %}
                     <td>Recibido</td>
-                    <td>servicios[forloop.counter].number_of_concepts</td>
-                    <td>co.total</td>
+                    <td>{{servicios[forloop.counter].number_of_concepts}}</td>
+                    <td>{{co.total}}</td>
                     <th>
                       <a style="margin-left:0 !important;" class="a-details" href="/detalle_invoices/{{co.id}}/">
                         <i class="fa fa-eye"></i>
