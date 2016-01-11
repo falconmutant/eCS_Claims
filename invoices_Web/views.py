@@ -30,7 +30,7 @@ def detalle(request, id):
 	emisor = Emisor.objects.all()
 	proveedor = Proveedor.objects.all()
 	evento = Evento.objects.all()
-	autorizacion = Autorizacion.objects.get(Estatus="R")
+	autorizacion = Autorizacion.objects.filter(Estatus="R")
 	return render_to_response('invoices/detalles.html',RequestContext(request,locals()))
 
 
