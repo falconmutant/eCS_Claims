@@ -425,7 +425,7 @@ eCS Claims
                             <td>Urgencia</td>
                           {% endif %}
                           <td>{{eve.total}}</td>
-                          <td><input type="checkbox" onchange="create_post({{eve.id}}{{detalle.id}});" name="check"></td>
+                          <td><input type="checkbox" onchange="create_post({{eve.id}},{{detalle.id}});" name="check"></td>
                         {% endif %}
                       {% endfor %}
                     </tr>
