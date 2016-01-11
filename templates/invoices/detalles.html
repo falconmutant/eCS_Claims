@@ -122,32 +122,34 @@ eCS Claims
             </form>
             <hr />
             <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Simple collapsible</button>
-            <table id="demo" cellpadding="0" cellspacing="0" border="0" class="collapse table table-striped table-bordered datatables" id="tabletools">
-              <thead>
-                <tr>
-                  <th>folio</th>
-                  <th>Concepto</th>
-                  <th>Cantidad</th>
-                  <th>Unidad</th>
-                  <th>Descripción</th>
-                  <th>Importe</th>
-                </tr>
-              </thead>
-              <tbody id="tb">
-                {% for co in conceptos %}
-                  {% if co.comprobante_id == detalle.id %}
-                        <tr>
-                          <td>{{detalle.folio}}</td>
-                          <td>{{detalle.fecha}}</td>
-                          <td>{{co.cantidad}}</td>
-                          <td>{{co.unidad}}</td>
-                          <td>{{co.descripcion}}</td>
-                          <td>{{co.importe}}</td>
-                        </tr>
-                  {% endif %}
-                {% endfor %}
-              </tbody>
-            </table>
+            <div id="demo" class="collapse" >
+              <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="tabletools">
+                <thead>
+                  <tr>
+                    <th>folio</th>
+                    <th>Concepto</th>
+                    <th>Cantidad</th>
+                    <th>Unidad</th>
+                    <th>Descripción</th>
+                    <th>Importe</th>
+                  </tr>
+                </thead>
+                <tbody id="tb">
+                  {% for co in conceptos %}
+                    {% if co.comprobante_id == detalle.id %}
+                          <tr>
+                            <td>{{detalle.folio}}</td>
+                            <td>{{detalle.fecha}}</td>
+                            <td>{{co.cantidad}}</td>
+                            <td>{{co.unidad}}</td>
+                            <td>{{co.descripcion}}</td>
+                            <td>{{co.importe}}</td>
+                          </tr>
+                    {% endif %}
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
           </section>
         </div>
       </div>
