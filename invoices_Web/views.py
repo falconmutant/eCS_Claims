@@ -34,6 +34,26 @@ def detalle(request, id):
 	autorizacion = Autorizacion.objects.filter(Estatus="R")
 	return render_to_response('invoices/detalles.html',RequestContext(request,locals()))
 
+def save_liga(request):
+    if request.method == 'POST':
+        evento = request.POST.get('evento')
+        comprobante = request.POST.get('comprobante')
+        liga = ComprobanteEvento(comprobante=comprobante, evento=evento)
+		liga.save()
+        response_data = {}
+        response_data['result'] = 'Create post successful!'
+        return HttpResponse(
+            json.dumps(response_data),
+            content_type="application/json"
+        )
+    else:
+        return HttpResponse(
+            json.dumps({"nothing to see": "this isn't happening"}),
+            content_type="application/json"
+        )
+
+
+
 
 @login_required
 def invoices(request):

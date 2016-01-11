@@ -281,6 +281,30 @@ eCS Claims
         $('#motivo').css('display','block');
       }
     }
+    function create_post(value,value2) {
+        console.log("create post is working!") // sanity check
+        $.ajax({
+            url : "save_ligar/", // the endpoint
+            type : "POST", // http method
+            data : { evento : value,
+                     comprobante : value2 
+                    }, // data sent with the post request
+
+            // handle a successful response
+            success : function(json) {
+                //$('#check'+value).css('display','none'); // remove the value from the input
+                console.log(json); // log the returned json to the console
+                console.log("success"); // another sanity check
+            },
+
+            // handle a non-successful response
+            error : function(xhr,errmsg,err) {
+                $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+                    " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+                console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+            }
+        });
+    };
   </script>
 {% endblock javascript %}
 
@@ -345,7 +369,7 @@ eCS Claims
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Claims</h4>
+        <h4 class="modal-title" id="myModalLabel">Reclamos</h4>
       </div>
       <div class="modal-body">
         <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="tabletools">
@@ -384,7 +408,7 @@ eCS Claims
                             <td>Urgencia</td>
                           {% endif %}
                           <td>{{eve.total}}</td>
-                          <td><input type="checkbox" value=""></td>
+                          <td><input type="checkbox" onchange="create_post({{eve.id}}{{detalle.id}});" name="check"></td>
                         {% endif %}
                       {% endfor %}
                     </tr>
@@ -393,7 +417,7 @@ eCS Claims
         </table>
         <div id="btnmodal" class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-          <input type="submit" class="btn btn-default" value="Actualizar">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Guardar</button>
         </div>
       </div>
     </div>
