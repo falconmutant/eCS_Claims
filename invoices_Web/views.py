@@ -55,9 +55,13 @@ def invoices(request):
 @login_required
 def historial(request):
 	nombre = request.user.get_full_name()
-	autorizacion = Autorizacion.objects.all().filter(TipoAprobacion='2')
-	evento = Evento.objects.all()
-	paciente = Paciente.objects.all()
-	proveedor = Proveedor.objects.all()
-	cargo = Cargos.objects.all()
+		x = datetime.datetime.now()
+	inicio = "%s-%s-%s"% (x.year, x.month, x.day)
+	fin = "%s-%s-%s"% (x.year, x.month, x.day)
+	nombre = request.user.get_full_name()
+
+	comprobante = Comprobante.objects.all()
+	cliente = Emisor.objects.all()
+	conceptos = Conceptos.objects.all()
+	servicios = Conceptos.objects.annotate(number_of_concepts=Count('comprobante_id'))
     	return render_to_response('invoices/historial.html',RequestContext(request,locals()))

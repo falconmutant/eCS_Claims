@@ -35,11 +35,6 @@ eCS Claims
         margin-left: 1em;
         padding-left: 1em;
     }
-    .a-details,.a-details:hover{
-      font-size: 30px;
-      margin-left: 80%;
-      border: none !important;
-    }
   </style>
 {% endblock css %}
 
@@ -77,10 +72,13 @@ eCS Claims
             <a href="">Facturas</a>
         </li>
         <li>
-            <a href="">Historial</a>
+            <a href="">Pendientes</a>
         </li>
         </ul>
       </div>
+      {% if bandera == 1%}
+        <script>alert("Autorizacion {{estatus}}");</script>
+      {% endif %}
       <div class="row">
         <div class="12u">
           <section class="box">
@@ -92,44 +90,44 @@ eCS Claims
                   <th>Folio</th>
                   <th>Cliente</th>
                   <th>Localidad</th>
-                  <th>Especialidad</th>
                   <th>Estatus</th>
-                  <th>Numero de Servicios</th>
+                  <th>Servicios</th>
                   <th>Total</th>
                   <th>Detalle</th>
+                  <th>xml</th>
+                  <th>pdf</th>
                 </tr>
               </thead>
               <tbody id="tb">
-                {% for dato in autorizacion %}
-                    <tr>
-                      {% for item in cuenta %}
-                        {% if item.id == dato.IdCuenta_id %}
-                          <td>{{dato.Folio}}</td>
-                          
-                          {% for pro in proveedor %}
-                            {% if pro.id == item.IdProveedor_id %}
-                              <td>{{pro.Cliente}}</td>
-                              <td>{{pro.Localidad}}</td>
-                            {% endif %}
-                          {% endfor %}
-
-                          {% for me in medico %}
-                            {% if me.id == item.IdMedico_id %}
-                              <td>{{me.Especialidad}}</td>
-                            {% endif %}
-                          {% endfor %}
-
-                          <td>{{dato.Estatus}}</td>
-                          <td></td>
-                          <td></td>
-                          <th>
-                            <a style="margin-left:0 !important;" class="a-details" href="/detalle_invoices/{{dato.IdCuenta_id}}/">
-                              <i class="fa fa-eye"></i>
-                            </a>
-                          </th>
-                        {% endif %}
-                      {% endfor %}
-                    </tr>
+                {% for co in comprobante %}
+                  <tr>
+                    <td>{{co.folio}}</td>
+                    {% for ci in cliente %}
+                      {% if co.emisor_id == ci.id %}
+                        <td>{{ci.nombre}}</td>
+                        <td>{{ci.municipio}}</td>
+                      {% endif %}
+                    {% endfor %}
+                    <td>Recibido</td>
+                    <td></td>
+                    
+                    <td>{{co.total}}</td>
+                    <th>
+                      <a style="margin-left:0 !important;" class="a-details" href="/detalle_invoices/{{co.id}}/">
+                        <i class="fa fa-eye"></i>
+                      </a>
+                    </th>
+                    <th>
+                      <a style="margin-left:0 !important;" class="a-details" href="{% static "167856_10001326.xml" %}">
+                        <i class="fa fa-file-excel-o"></i>
+                      </a>
+                    </th>
+                    <th>
+                      <a style="margin-left:0 !important;" class="a-details" href="{% static "167856_10001326.pdf" %}">
+                        <i class="fa fa-file-pdf-o"></i>
+                      </a>
+                    </th>
+                  </tr>
                 {% endfor %}
               </tbody>
             </table>
