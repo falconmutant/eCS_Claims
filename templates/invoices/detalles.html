@@ -368,7 +368,6 @@ eCS Claims
                       <tr>
                         {% for item in evento %}
                           {% if item.id == dato.evento_id %}
-                            {% if item.fechaAdm < detalle.fecha %}
                               <td>{{item.folioAut}}</td>
                               <td>{{item.fechaAdm}}</td>
                               <td>{{item.medico}}</td>
@@ -385,7 +384,6 @@ eCS Claims
                                 <td>Urgencia</td>
                               {% endif %}
                               <td>{{item.total}}</td>
-                            {% endif %}
                           {% endif %}
                         {% endfor %}
                       </tr>
