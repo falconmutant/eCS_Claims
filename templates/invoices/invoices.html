@@ -150,7 +150,12 @@ eCS Claims
                       {% endif %}
                     {% endfor %}
                     <td>Recibido</td>
-                    <td>{{servicios[forloop.counter].number_of_concepts}}</td>
+                    {% for se in servicios %}
+                      {% if co.id == se.comprobante_id %}
+                        <td>{{servicios.number_of_concepts}}</td>
+                      {% endif %}
+                    {% endfor %}
+                    
                     <td>{{co.total}}</td>
                     <th>
                       <a style="margin-left:0 !important;" class="a-details" href="/detalle_invoices/{{co.id}}/">
