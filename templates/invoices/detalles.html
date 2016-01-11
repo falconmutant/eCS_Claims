@@ -367,25 +367,37 @@ eCS Claims
                 <tbody id="tb">
                   {% for dato in autorizacion %}
                     <tr>
-                      {% if evento.id == dato.evento_id %}
-                        <td>{{evento.folioAut}}</td>
-                        <td>{{evento.fechaAdm}}</td>
-                        <td>{{evento.medico}}</td>
-                        {% if evento.tipo == 'C' %}
-                          <td>Cita</td>
+                      {% for em in emisor %}
+                        {% if em.id == detalle.emisor_id %}
+                          {% for pro in proveedor %}
+                            {% if pro.rfc == em.rfc %}
+                              {% for eve in evento %}
+                                {% if eve.proveedor_id == pro.id %}
+                                  {% if eve.id == dato.evento_id %}
+                                    <td>{{eve.folioAut}}</td>
+                                    <td>{{eve.fechaAdm}}</td>
+                                    <td>{{eve.medico}}</td>
+                                    {% if eve.tipo == 'C' %}
+                                      <td>Cita</td>
+                                    {% endif %}
+                                    {% if eve.tipo == 'A' %}
+                                      <td>Ambulatorio</td>
+                                    {% endif %}
+                                    {% if eve.tipo == 'H' %}
+                                      <td>Hospitalizacion</td>
+                                    {% endif %}
+                                    {% if eve.tipo == 'U' %}
+                                      <td>Urgencia</td>
+                                    {% endif %}
+                                    <td>{{eve.total}}</td>
+                                    <td><input type="checkbox" value=""></td>
+                                  {% endif %}
+                                {% endif %}
+                              {% endfor %}
+                            {% endif %}
+                          {% endfor %}
                         {% endif %}
-                        {% if evento.tipo == 'A' %}
-                          <td>Ambulatorio</td>
-                        {% endif %}
-                        {% if evento.tipo == 'H' %}
-                          <td>Hospitalizacion</td>
-                        {% endif %}
-                        {% if evento.tipo == 'U' %}
-                          <td>Urgencia</td>
-                        {% endif %}
-                        <td>{{evento.total}}</td>
-                        <td><input type="checkbox" value=""></td>
-                      {% endif %}
+                      {% endfor %}
                     </tr>
                 {% endfor %}
                 </tbody>
