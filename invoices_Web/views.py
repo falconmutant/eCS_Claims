@@ -37,7 +37,7 @@ def detalle(request, id):
 def save_ligar(request):
     if request.method == 'POST':
         eve = int(request.POST.get('evento'))
-        co = int(request.POST.get('comprobante'))
+        co = int(request.POST.get('comprobante')+2)
         liga = ComprobanteEvento(comprobante=co, evento=eve)
         response_data = {}
         liga.save()
