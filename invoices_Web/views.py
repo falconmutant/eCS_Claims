@@ -39,7 +39,7 @@ def invoices(request):
 
 	comprobante = Comprobante.objects.all()
 	cliente = Emisor.objects.all()
-	conceptos = Conseptos.objects.all()
+	conceptos = Conceptos.objects.all()
 	servicios = Conceptos.objects.annotate(number_of_concepts=Count('comprobante_id'))
 
 	if request.POST:
