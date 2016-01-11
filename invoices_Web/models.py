@@ -77,7 +77,6 @@ class Autorizacion(models.Model):
    TipoAprobacion = models.CharField(max_length=255)
    Sistema = models.CharField(max_length=255, null=False)
    comprobante = models.ForeignKey(Comprobante)
-   motivo = models.ForeignKey(Motivos, blank=True, null=True)
 
 class ComprobanteEvento(models.Model):
 	comprobante = models.ForeignKey(Comprobante)
