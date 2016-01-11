@@ -2,8 +2,9 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404, get_list_or_404
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
-from claims.models import *
+from invoices_Web.models import *
 import datetime
+from django.db.models import Count
 
 @login_required
 def detalle(request, id):
@@ -36,17 +37,17 @@ def invoices(request):
 	fin = "%s-%s-%s"% (x.year, x.month, x.day)
 	nombre = request.user.get_full_name()
 
-	autorizacion = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='2')
-	evento = Evento.objects.all()
-	paciente = Paciente.objects.all()
-	proveedor = Proveedor.objects.all()
-	cargo = Cargos.objects.all()
+	comprobante = Comprobante.objects.all()
+	cliente = Emisor.objects.all()
+	conceptos = Conseptos.objects.all()
+	servicios = Conceptos.objects.annotate(number_of_concepts=Count('comprobante_id'))
+
 	if request.POST:
 		autorizacion = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='2',FechaSolicitud__range=[request.POST.get("inicio"), request.POST.get("fin")])
 		if request.POST.get("tipo") != 'vacio':
 			autorizacion = Autorizacion.objects.all().filter(Sistema=request.POST.get("tipo"),TipoAprobacion='2')
 		if request.POST.get("cliente") != 'vacio':
-			evento = Evento.objects.all().filter(proveedor_id=request.POST.get("cliente"))
+			Autorizacion = Autorizacion.objects.all().filter(cliente_id=request.POST.get("cliente"))
 		inicio = request.POST.get("inicio")
 		fin = request.POST.get("fin")
 

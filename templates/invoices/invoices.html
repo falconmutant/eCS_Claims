@@ -135,31 +135,37 @@ eCS Claims
                   <th>Servicios</th>
                   <th>Total</th>
                   <th>Detalle</th>
+                  <th>xml</th>
+                  <th>pdf</th>
                 </tr>
               </thead>
               <tbody id="tb">
-                {% for dato in autorizacion %}
-                    <tr>
-                      {% for item in evento %}
-                        {% if item.id = dato.evento_id %}
-                          <td>{{item.foliAut}}</td>
-                          {% for pro in proveedor %}
-                            {% if pro.id == item.proveedor_id %}
-                              <td>{{pro.hospital}}</td>
-                              <td>{{pro.localidad}}</td>
-                            {% endif %}
-                          {% endfor %}
-                          <td>{{dato.estatus}}</td>
-                          <td></td>
-                          <td>{{item.total}}</td>
-                          <th>
-                            <a style="margin-left:0 !important;" class="a-details" href="/detalle_invoices/{{dato.evento_id}}/">
-                              <i class="fa fa-eye"></i>
-                            </a>
-                          </th>
-                        {% endif %}
-                      {% endfor %}
-                    </tr>
+                {% for co in comprobante %}
+                  <tr>
+                    <td>co.folio</td>
+                    {% if co.emisor_id == cliente.id %}
+                      <td>cliente.nombre</td>
+                      <td>cliente.municipio</td>
+                    {% endif %}
+                    <td>Recibido</td>
+                    <td>servicios[forloop.counter].number_of_concepts</td>
+                    <td>co.total</td>
+                    <th>
+                      <a style="margin-left:0 !important;" class="a-details" href="/detalle_invoices/{{co.id}}/">
+                        <i class="fa fa-eye"></i>
+                      </a>
+                    </th>
+                    <th>
+                      <a style="margin-left:0 !important;" class="a-details" href="/detalle_invoices/{{co.id}}/">
+                        <i class="fa fa-eye"></i>
+                      </a>
+                    </th>
+                    <th>
+                      <a style="margin-left:0 !important;" class="a-details" href="/detalle_invoices/{{co.id}}/">
+                        <i class="fa fa-eye"></i>
+                      </a>
+                    </th>
+                  </tr>
                 {% endfor %}
               </tbody>
             </table>
