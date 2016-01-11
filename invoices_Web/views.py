@@ -39,7 +39,7 @@ def save_liga(request):
         evento = request.POST.get('evento')
         comprobante = request.POST.get('comprobante')
         liga = ComprobanteEvento(comprobante=comprobante, evento=evento)
-		liga.save()
+			liga.save()
         response_data = {}
         response_data['result'] = 'Create post successful!'
         return HttpResponse(
