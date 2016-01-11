@@ -367,25 +367,31 @@ eCS Claims
                 <tbody id="tb">
                   {% for dato in autorizacion %}
                     <tr>
-                      {% if evento.id == dato.evento_id %}
-                        <td>{{evento.numEvento}}</td>
-                        <td>{{evento.folioAut}}</td>
-                        <td>{{paciente.nombre}}</td>
-                        {% if evento.tipo == 'C' %}
-                          <td>Cita</td>
+                      {% for eve in evento %}
+                        {% if eve.id == dato.evento_id %}
+                          <td>{{eve.numEvento}}</td>
+                          <td>{{eve.folioAut}}</td>
+                          {% for pa in paciente %}
+                            {% if pa.evento_id == eve.id %}
+                              <td>{{pa.nombre}}</td>
+                            {% endif %}
+                          {% endfor %}
+                          {% if eve.tipo == 'C' %}
+                            <td>Cita</td>
+                          {% endif %}
+                          {% if eve.tipo == 'A' %}
+                            <td>Ambulatorio</td>
+                          {% endif %}
+                          {% if eve.tipo == 'H' %}
+                            <td>Hospitalizacion</td>
+                          {% endif %}
+                          {% if eve.tipo == 'U' %}
+                            <td>Urgencia</td>
+                          {% endif %}
+                          <td>{{eve.total}}</td>
+                          <td><input type="checkbox" value=""></td>
                         {% endif %}
-                        {% if evento.tipo == 'A' %}
-                          <td>Ambulatorio</td>
-                        {% endif %}
-                        {% if evento.tipo == 'H' %}
-                          <td>Hospitalizacion</td>
-                        {% endif %}
-                        {% if evento.tipo == 'U' %}
-                          <td>Urgencia</td>
-                        {% endif %}
-                        <td>{{evento.total}}</td>
-                        <td><input type="checkbox" value=""></td>
-                      {% endif %}
+                      {% endfor %}
                     </tr>
                 {% endfor %}
                 </tbody>
