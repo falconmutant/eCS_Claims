@@ -26,6 +26,7 @@ def detalle(request, id):
 
 	detalle = get_object_or_404(Comprobante, id=id)
 	conceptos = Conceptos.objects.all()
+	emisor = Emisor.objects.all()
 	return render_to_response('invoices/detalles.html',RequestContext(request,locals()))
 
 @login_required
