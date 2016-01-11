@@ -150,11 +150,7 @@ eCS Claims
                       {% endif %}
                     {% endfor %}
                     <td>Recibido</td>
-                    {% for se in servicios %}
-                      {% if co.id == se.comprobante_id %}
-                        <td>{{servicios.number_of_concepts}}</td>
-                      {% endif %}
-                    {% endfor %}
+                    <td></td>
                     
                     <td>{{co.total}}</td>
                     <th>
