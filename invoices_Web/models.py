@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
-
+from claims.models import *
 # Create your models here.
 
 class Emisor(models.Model):
@@ -70,5 +70,15 @@ class Impuesto(models.Model):
 	importe = models.DecimalField(max_digits=10, decimal_places=2)
 	comprobante = models.ForeignKey(Comprobante)
 
+class Autorizacion(models.Model):
+   Estatus = models.CharField(choices= AUTH_ESTATUS, max_length=255, null=False)
+   FechaSolicitud = models.DateField()
+   Comentarios  = models.CharField(max_length=255,null=True)
+   TipoAprobacion = models.CharField(max_length=255)
+   Sistema = models.CharField(max_length=255, null=False)
+   comprobante = models.ForeignKey(Comprobante)
+   motivo = models.ForeignKey(Motivos, blank=True, null=True)
 
-
+class ComprobanteEvento(models.Model):
+	comprobante = models.ForeignKey(comprobante)
+	evento = models.ForeignKey(Evento)
