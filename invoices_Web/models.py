@@ -80,5 +80,5 @@ class Autorizacion(models.Model):
    motivo = models.ForeignKey(Motivos, blank=True, null=True)
 
 class ComprobanteEvento(models.Model):
-	comprobante = models.ForeignKey(comprobante)
+	comprobante = models.ForeignKey(Comprobante)
 	evento = models.ForeignKey(Evento)
