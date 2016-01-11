@@ -142,10 +142,12 @@ eCS Claims
               <tbody id="tb">
                 {% for co in comprobante %}
                   <tr>
-                    <td>co.folio</td>
-                    {% if co.emisor_id == cliente.id %}
-                      <td>cliente.nombre</td>
-                      <td>cliente.municipio</td>
+                    <td>{{co.folio}}</td>
+                    {% for ci in cliente %}
+                      {% if co.emisor_id == cliente.id %}
+                        <td>{{cliente.nombre}}</td>
+                        <td>{{cliente.municipio}}</td>
+                      {% endif %}
                     {% endif %}
                     <td>Recibido</td>
                     <td>servicios[forloop.counter].number_of_concepts</td>
