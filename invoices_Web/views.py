@@ -3,6 +3,7 @@ from django.shortcuts import render_to_response, get_object_or_404, get_list_or_
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from invoices_Web.models import *
+from claims.models import *
 import datetime
 from django.db.models import Count
 
@@ -27,7 +28,11 @@ def detalle(request, id):
 	detalle = get_object_or_404(Comprobante, id=id)
 	conceptos = Conceptos.objects.all()
 	emisor = Emisor.objects.all()
+	proveedor = Proveedor.objects.all()
+	evento = Evento.objects.all()
+	autorizacion = Autorizacion.objects.get(Estatus="R")
 	return render_to_response('invoices/detalles.html',RequestContext(request,locals()))
+
 
 @login_required
 def invoices(request):
@@ -40,6 +45,8 @@ def invoices(request):
 	cliente = Emisor.objects.all()
 	conceptos = Conceptos.objects.all()
 	servicios = Conceptos.objects.annotate(number_of_concepts=Count('comprobante_id'))
+
+
 
 	if request.POST:
 		autorizacion = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='2',FechaSolicitud__range=[request.POST.get("inicio"), request.POST.get("fin")])
