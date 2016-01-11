@@ -154,7 +154,11 @@ eCS Claims
                     
                     <td>{{co.total}}</td>
                     <th>
-                      <a style="margin-left:0 !important;" class="a-details" href="/detalle_invoices/{{co.id}}/">
+                      <a style="margin-left:0 !important;" class="a-details" href="/home/gerri/{% for ci in cliente %}
+                      {% if co.emisor_id == ci.id %}
+                        {{ci.rfc}}
+                      {% endif %}
+                    {% endfor %}/167856_10001326.pdf">
                         <i class="fa fa-eye"></i>
                       </a>
                     </th>
@@ -164,7 +168,11 @@ eCS Claims
                       </a>
                     </th>
                     <th>
-                      <a style="margin-left:0 !important;" class="a-details" href="/detalle_invoices/{{co.id}}/">
+                      <a style="margin-left:0 !important;" class="a-details" href="/home/gerri/{% for ci in cliente %}
+                      {% if co.emisor_id == ci.id %}
+                        {{ci.rfc}}
+                      {% endif %}
+                    {% endfor %}/167856_10001326.pdf">
                         <i class="fa fa-file-pdf-o"></i>
                       </a>
                     </th>
