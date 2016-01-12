@@ -38,17 +38,14 @@ def save_ligar(request):
     if request.method == 'POST':
         evento = int(request.POST.get('evento'))
         comprobante = int(request.POST.get('comprobante'))
-        CE = ComprobanteEvento.objects.all()
+        CE = ComprobanteEvento.objects.filter(evento=evento, comprobante=comprobante)
         Almacenar = True
         for x in CE:
-        	if x.comprobante == comprobante:
-        		if x.evento == evento:
-        			Almacenar == False
+        	CE.delete()
+        	Almacenar = False
         if Almacenar:
         	liga = ComprobanteEvento(evento=evento, comprobante=comprobante)
         	liga.save()
-        else:
-        	ComprobanteEvento.objects.filter(evento=evento, comprobante=comprobante).delete()
         response_data = {}
         response_data['result'] = 'Create post successful!'
         return HttpResponse(
