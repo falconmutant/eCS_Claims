@@ -147,7 +147,7 @@ eCS Claims
                             <td>{{ci.municipio}}</td>
                           {% endif %}
                         {% endfor %}
-                        <td>{{aut.Estatus}}</td>
+                        <td>{{aut.get_Estatus_display()}}</td>
                         <td>{{co.total}}</td>
                         <th>
                           <a style="margin-left:0 !important;" class="a-details" href="/detalle_invoices/{{co.id}}/">
