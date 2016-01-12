@@ -3,7 +3,7 @@ from django.shortcuts import render_to_response, get_object_or_404, get_list_or_
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from invoices_Web.models import *
-from claims.models import *
+from claims.models import proveedor,evento,paciente
 import datetime
 from django.db.models import Count
 
@@ -18,11 +18,11 @@ def detalle(request, id):
 		bandera=1
 		nombre = request.user.get_full_name()
 		autorizacion = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='2')
-		evento = Evento.objects.all()
-		paciente = Paciente.objects.all()
-		proveedor = Proveedor.objects.all()
-		cargo = Cargos.objects.all()
-		return render_to_response('claims/claims.html',RequestContext(request,locals()))
+		comprobante = Comprobante.objects.all()
+		cliente = Emisor.objects.all()
+		conceptos = Conceptos.objects.all()
+		servicios = Conceptos.objects.annotate(number_of_concepts=Count('comprobante_id'))
+		return render_to_response('invoices/invoices.html',RequestContext(request,locals()))
 	nombre = request.user.get_full_name()
 
 	detalle = get_object_or_404(Comprobante, id=id)
@@ -68,7 +68,7 @@ def invoices(request):
 	inicio = "%s-%s-%s"% (x.year, x.month, x.day)
 	fin = "%s-%s-%s"% (x.year, x.month, x.day)
 	nombre = request.user.get_full_name()
-
+	autorizacion = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='2')
 	comprobante = Comprobante.objects.all()
 	cliente = Emisor.objects.all()
 	conceptos = Conceptos.objects.all()

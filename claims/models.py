@@ -100,5 +100,6 @@ class Autorizacion(models.Model):
    Comentarios  = models.CharField(max_length=255,null=True)
    TipoAprobacion = models.CharField(max_length=255)
    Sistema = models.CharField(max_length=255, null=False)
-   evento = models.ForeignKey(Evento)
+   evento = models.ForeignKey(Evento,null=True)
+   comprobante = models.ForeignKey(Comprobante,null=True)
    motivo = models.ForeignKey(Motivos, blank=True, null=True)

@@ -70,14 +70,6 @@ class Impuesto(models.Model):
 	importe = models.DecimalField(max_digits=10, decimal_places=2)
 	comprobante = models.ForeignKey(Comprobante)
 
-class Autorizacion(models.Model):
-   Estatus = models.CharField(choices= AUTH_ESTATUS, max_length=255, null=False)
-   FechaSolicitud = models.DateField()
-   Comentarios  = models.CharField(max_length=255,null=True)
-   TipoAprobacion = models.CharField(max_length=255)
-   Sistema = models.CharField(max_length=255, null=False)
-   comprobante = models.ForeignKey(Comprobante)
-
 class ComprobanteEvento(models.Model):
 	comprobante = models.IntegerField()
 	evento = models.IntegerField()
