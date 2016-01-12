@@ -97,29 +97,33 @@ eCS Claims
                 </tr>
               </thead>
               <tbody id="tb">
-                {% for co in comprobante %}
-                  <tr>
-                    <td>{{co.folio}}</td>
-                    {% for ci in cliente %}
-                      {% if co.emisor_id == ci.id %}
-                        <td>{{ci.nombre}}</td>
-                        <td>{{ci.municipio}}</td>
-                      {% endif %}
-                    {% endfor %}
-                    <td>Recibido</td>
-                    
-                    <td>{{co.total}}</td>
-                    <th>
-                      <a style="margin-left:0 !important;" class="a-details" href="{% static "167856_10001326.xml" %}">
-                        <i class="fa fa-file-excel-o"></i>
-                      </a>
-                    </th>
-                    <th>
-                      <a style="margin-left:0 !important;" class="a-details" href="{% static "167856_10001326.pdf" %}">
-                        <i class="fa fa-file-pdf-o"></i>
-                      </a>
-                    </th>
-                  </tr>
+                {% for aut in autorizacion %}
+                  {% for co in comprobante %}
+                    {% if aut.comprobante_id == co.id %}
+                      <tr>
+                        <td>{{co.folio}}</td>
+                        {% for ci in cliente %}
+                          {% if co.emisor_id == ci.id %}
+                            <td>{{ci.nombre}}</td>
+                            <td>{{ci.municipio}}</td>
+                          {% endif %}
+                        {% endfor %}
+                        <td>Recibido</td>
+                        
+                        <td>{{co.total}}</td>
+                        <th>
+                          <a style="margin-left:0 !important;" class="a-details" href="{% static "167856_10001326.xml" %}">
+                            <i class="fa fa-file-excel-o"></i>
+                          </a>
+                        </th>
+                        <th>
+                          <a style="margin-left:0 !important;" class="a-details" href="{% static "167856_10001326.pdf" %}">
+                            <i class="fa fa-file-pdf-o"></i>
+                          </a>
+                        </th>
+                      </tr>
+                    {% endif %}
+                  {% endfor %}
                 {% endfor %}
               </tbody>
             </table>

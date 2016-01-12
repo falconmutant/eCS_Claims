@@ -138,7 +138,7 @@ eCS Claims
               <tbody id="tb">
                 {% for aut in autorizacion %}
                   {% for co in comprobante %}
-                    {% if aut.comprobante == co.id %}
+                    {% if aut.comprobante_id == co.id %}
                       <tr>
                         <td>{{co.folio}}</td>
                         {% for ci in cliente %}
