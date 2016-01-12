@@ -444,6 +444,9 @@ eCS Claims
                   </tr>
                 </thead>
                 <tbody id="tb">
+                {% for x in CE %}
+                  {% for eve in evento %}
+                  {% if eve.id != x.evento %}
                   {% for dato in autorizacion %}
                     {% for eve in evento %}
                       {% if eve.id == dato.evento_id %}
@@ -473,6 +476,9 @@ eCS Claims
                       {% endif %}
                     {% endfor %}
                   {% endfor %}
+                  {% endif %}
+                  {% endfor %}
+                {% endfor %}
                 </tbody>
         </table>
         <div id="btnmodal" class="modal-footer">
