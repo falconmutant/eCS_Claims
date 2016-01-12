@@ -3,7 +3,7 @@ from django.shortcuts import render_to_response, get_object_or_404, get_list_or_
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from invoices_Web.models import *
-from claims.models import proveedor,evento,paciente
+from claims.models import *
 import datetime
 from django.db.models import Count
 
