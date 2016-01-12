@@ -31,7 +31,7 @@ def detalle(request, id):
 	proveedor = get_object_or_404(Proveedor, rfc=emisor.rfc)
 	evento = Evento.objects.filter(proveedor_id=proveedor.id)
 	paciente =  Paciente.objects.all()
-	autorizacion = claims.models.Autorizacion.objects.filter(Estatus="R")
+	autorizacion = Autorizacion.objects.filter(Estatus="R")
 	CE = ComprobanteEvento.objects.filter(comprobante=id)
 	return render_to_response('invoices/detalles.html',RequestContext(request,locals()))
 
