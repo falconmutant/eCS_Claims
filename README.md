@@ -41,6 +41,13 @@ Enviar un reclamo desde las aplicaciones autorizadas a la plataforma
 <tr><td> numEmpresa </td><td> String </td><td> Numero de empresa del empleado [PEMEX] </td></tr>
 <tr><td> folioVigencia </td><td> String </td><td> Folio de consulta de vigencia de derechos [PEMEX]  </td></tr>
 <tr><td> nombre </td><td> String </td><td> Nombre  del empleado [PEMEX] </td></tr>
+<tr><td colspan="3"> listaDx </td></tr>
+<tr><td> sistema </td><td> String </td><td> Sistema de codificacion utilizado (CIE-9, CIE10, etc)</td></tr>
+<tr><td colspan="3"> dx [LISTA .. N] </td></tr>
+<tr><td> curp </td><td> String </td><td> CURP del Paciente</td></tr>
+<tr><td> curp </td><td> String </td><td> CURP del Paciente</td></tr>
+<tr><td> curp </td><td> String </td><td> CURP del Paciente</td></tr>
+<tr><td> curp </td><td> String </td><td> CURP del Paciente</td></tr>
 
 </table>
 
