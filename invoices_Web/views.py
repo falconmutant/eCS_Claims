@@ -75,6 +75,7 @@ def invoices(request):
 	x = datetime.datetime.now()
 	inicio = "%s-%s-%s"% (x.year, x.month, x.day)
 	fin = "%s-%s-%s"% (x.year, x.month, x.day)
+	date = "/%s/%s/"% (x.year, x.month)
 	nombre = request.user.get_full_name()
 	autorizacion = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='2')
 	comprobante = Comprobante.objects.all()
