@@ -76,7 +76,7 @@ def invoices(request):
 	if x.month < 10:
 		inicio = "%s-0%s-%s"% (x.year, x.month, x.day)
 		fin = "%s-0%s-%s"% (x.year, x.month, x.day)
-	else
+	else:
 		inicio = "%s-%s-%s"% (x.year, x.month, x.day)
 		fin = "%s-%s-%s"% (x.year, x.month, x.day)
 
