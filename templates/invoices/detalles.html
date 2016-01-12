@@ -404,7 +404,6 @@ eCS Claims
                   {% for dato in autorizacion %}
                     {% for eve in evento %}
                       {% if eve.id == dato.evento_id %}
-                        {% if CE.evento != eve.id %}
                         <tr>
                           <td>{{eve.numEvento}}</td>
                           <td>{{eve.folioAut}}</td>
@@ -428,7 +427,6 @@ eCS Claims
                           <td>{{eve.total}}</td>
                           <td><input type="checkbox" onchange="create_post({{eve.id}},{{detalle.id}});" name="check"></td>
                         </tr>
-                        {% endif %}
                       {% endif %}
                     {% endfor %}
                   {% endfor %}
