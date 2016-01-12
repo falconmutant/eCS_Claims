@@ -157,7 +157,7 @@ eCS Claims
                         {% for ci in cliente %}
                           {% if co.emisor_id == ci.id %}
                             <th>
-                              <a style="margin-left:0 !important;" class="a-details" href="{% static {{ci.rfc}}{{date}}{{co.file_xml}}" %}">
+                              <a style="margin-left:0 !important;" class="a-details" href="{% static {{ci.rfc date co.file_xml}}" %}">
                                 <i class="fa fa-file-excel-o"></i>
                               </a>
                             </th>
