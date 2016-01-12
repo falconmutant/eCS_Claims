@@ -110,18 +110,7 @@ eCS Claims
                                 <td>{{pro.hospital}}</td>
                               {% endif %}
                             {% endfor %}                            
-                            {% if dato.Estatus == 'R' %}
-                              <td>Recibido</td>
-                            {% endif %}
-                            {% if dato.Estatus == 'V' %}
-                              <td>A Revisión</td>
-                            {% endif %}
-                            {% if dato.Estatus == 'X' %}
-                              <td>Rechazado</td>
-                            {% endif %}
-                            {% if dato.Estatus == 'A' %}
-                              <td>Aprobado</td>
-                            {% endif %}
+                            <td>{{dato.get_Estatus_display}}</td>
                             <td>{{item.folioAut}}</td>
                             <td>{{item.total}}</td>
                             <th>

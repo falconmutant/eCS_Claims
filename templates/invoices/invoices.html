@@ -104,10 +104,10 @@ eCS Claims
             <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="tabletools">
               <thead>
                 <tr>
+                  <th>Fecha</th>
                   <th>Folio</th>
                   <th>Cliente</th>
                   <th>Localidad</th>
-                  <th>Estatus</th>
                   <th>Total</th>
                   <th>Detalle</th>
                   <th>xml</th>
@@ -119,6 +119,7 @@ eCS Claims
                   {% for co in comprobante %}
                     {% if aut.comprobante_id == co.id %}
                       <tr>
+                        <td>{{co.fecha}}</td>
                         <td>{{co.folio}}</td>
                         {% for ci in cliente %}
                           {% if co.emisor_id == ci.id %}
@@ -126,7 +127,6 @@ eCS Claims
                             <td>{{ci.municipio}}</td>
                           {% endif %}
                         {% endfor %}
-                        <td>{{aut.get_Estatus_display}}</td>
                         <td>{{co.total}}</td>
                         <th>
                           <a style="margin-left:0 !important;" class="a-details" href="/detalle_invoices/{{co.id}}/">
@@ -135,21 +135,21 @@ eCS Claims
                         </th>
                         {% for ci in cliente %}
                           {% if co.emisor_id == ci.id %}
-			    {% with co.fecha|date:"Y" as anio %}
-			    {% with co.fecha|date:"m" as mes %}
+			                      {% with co.fecha|date:"Y" as anio %}
+			                      {% with co.fecha|date:"m" as mes %}
                             {% with "cfdi/"|add:ci.rfc|add:"/"|add:anio|add:"/"|add:mes|add:"/" as ruta %}
                               <th>
                                 <a style="margin-left:0 !important;" class="a-details" href="{% static ruta|add:co.file_xml %}">
                                   <i class="fa fa-file-excel-o"></i>
                                 </a>
                               </th>
- 			      <th>
-                              <a style="margin-left:0 !important;" class="a-details" href="{% static ruta|add:co.file_pdf %}">
-                                <i class="fa fa-file-pdf-o"></i>
-                              </a>
-                            </th>
+   			                      <th>
+                                <a style="margin-left:0 !important;" class="a-details" href="{% static ruta|add:co.file_pdf %}">
+                                  <i class="fa fa-file-pdf-o"></i>
+                                </a>
+                              </th>
                             {% endwith %}
-			    {% endwith %}
+			                       {% endwith %}
                             {% endwith %}
                           {% endif %}
                         {% endfor %}
