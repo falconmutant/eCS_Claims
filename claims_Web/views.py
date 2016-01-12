@@ -72,7 +72,7 @@ def claims(request):
 @login_required
 def historial(request):
 	nombre = request.user.get_full_name()
-	autorizacion = Autorizacion.objects.all().filter(TipoAprobacion='1')
+	autorizacion = Autorizacion.objects.all().filter(TipoAprobacion='1').exclude(Estatus='R')
 	evento = Evento.objects.all()
 	paciente = Paciente.objects.all()
 	proveedor = Proveedor.objects.all()
