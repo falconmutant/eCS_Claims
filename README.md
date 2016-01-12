@@ -1,27 +1,6 @@
 # eCS_Claims
 Plataforma de Facturacion 
 
-## Instalacion
-1. Instalar Python 2.7+
-2. Intalar pip + virtualenv
-3. Crear un nuevo virtualenv
-```sh
-$ virtualenv ENV
-```
-4. Activar el virtualenv
-```sh
-$ source ENV/bin/activate
-```
-5. Instalar dependencias de python
-```sh
-$ pip install -r requirements.txt
-```
-6. Actualizar el archivo Settings.py con los valores de conexion para BD [Pendiente automatizar por script]
-7. Iniciar  servidor
-```sh
-$ ./manage.py runserver 0.0.0.0:[PORT]
-```
-
 ## Definicion de Endpoints
 <table>
 <tr><th> Metodo </th><th> Endpoint </th><th> Uso </th><th> Retorno </th></tr>
@@ -46,39 +25,22 @@ Enviar un reclamo desde las aplicaciones autorizadas a la plataforma
 <tr><td> org </td><td> String</td><td> Zona geografica del Proveedor (Zona Centro, Zona Sur, etc)</td></tr>
 <tr><td> hospital </td><td> String </td><td> Nombre de Unidad Medica donde se realizo el evento </td></tr>
 <tr><td> localidad </td><td> String</td><td> Localidad donde se realizo el evento </td></tr>
-<tr><td> motivo </td><td> String </td><td> Una descripcion breve del motivo del evento </td></tr>
-<tr><td> tomas </td><td> N cantidad con la siguiente informacion </td><td> Tomas de signos vitales que se realizaron a lo largo del evento </td></tr>
-<tr><td> • fecha </td><td> String, formato “yyyy-mm-ddTHH:MM:SSZ” </td><td> Fecha en que se realizo la toma de signos vitales </td></tr>
-<tr><td> • signos </td><td> N cantidad con la siguiente informacion </td><td> Lista de los signos vitales tomados durante esta fecha </td></tr>
-<tr><td> &nbsp; ° valor </td><td> Float </td><td> Valor obtenido en la toma de signo vital </td></tr>
-<tr><td> &nbsp; ° unidad </td><td> String </td><td> Unidad de la toma de signo vital, ej. "KG" </td></tr>
-<tr><td> &nbsp; ° nombre </td><td> String </td><td> Nombre del signo vital, ej "Peso" </td></tr>
-<tr><td> intervenciones </td><td> N cantidad con la siguiente informacion </td><td> Lista de intervenciones medicas, ej. Cirujias </td></tr>
-<tr><td> • fecha </td><td> String, formato “yyyy-mm-ddTHH:MM:SSZ” </td><td> Fecha en que se realizo la intervencion medica </td></tr>
-<tr><td> • nombre </td><td> String </td><td> Nombre de la intervencion </td></tr>
-<tr><td> • codigo </td><td> String </td><td> Codigo CIE9V3 (ICD9V3) de la intervencion </td></tr>
-<tr><td> recetas </td><td> N cantidad con la siguiente informacion </td><td> Recetas medicas  </td></tr>
-<tr><td> • fecha </td><td> String, formato “yyyy-mm-ddTHH:MM:SSZ” </td><td> Fecha en que se recetaron los medicamentos </td></tr>
-<tr><td> • nota </td><td> String </td><td> Indicaciones extra sobre la receta medica </td></tr>
-<tr><td> • medicamentos </td><td> N cantidad con la siguiente informacion </td><td> Lista de medicamentos de la Receta </td></tr>
-<tr><td> &nbsp; ° nombre </td><td> String </td><td> Nombre de medicamento </td></tr>
-<tr><td> &nbsp; ° codigo </td><td> String </td><td> Codigo de indentificacion del medicamento </td></tr>
-<tr><td> &nbsp; ° clasificacion </td><td> String </td><td> Clasificacion del codigo, ej. "GPI" o "NDC" </td></tr>
-<tr><td> &nbsp; ° indicacion </td><td> String </td><td> Indiicaciones sobre frequencia </td></tr>
-<tr><td> &nbsp; ° via </td><td> String </td><td> Via de adminstracion </td></tr>
-<tr><td> &nbsp; ° dosis </td><td> String </td><td> Dosis del medicamento </td></tr>
-<tr><td> diagnosticos </td><td> N cantidad con la siguiente informacion </td><td> Diagnosticos del Paciente </td></tr>
-<tr><td> • fecha </td><td> String, formato “yyyy-mm-ddTHH:MM:SSZ” </td><td> Fecha en que se realizo el diagnostico </td></tr>
-<tr><td> • nombre </td><td> String </td><td> Nombre del diagnostico </td></tr>
-<tr><td> • codigo </td><td> String </td><td> Codigo de CIE10 (ICD10CM6) del padecimiento </td></tr>
-<tr><td> cuestionarios </td><td> N cantidad con la siguiente informacion </td><td> Cuestionarios del paciente </td></tr>
-<tr><td> • titulo </td><td> String </td><td> Titulo del cuestionario, las preguntas se agrupan mediante esto </td></tr>
-<tr><td> • fecha </td><td> String, formato “yyyy-mm-ddTHH:MM:SSZ” </td><td> Titulo del cuestionario </td></tr>
-<tr><td> • preguntas </td><td> N cantidad con la siguiente informacion </td><td> Lista de preguntas del cuestionario </td></tr>
-<tr><td> &nbsp; ° titulo </td><td> String </td><td> Titulo especifico de la pregunta </td></tr>
-<tr><td> &nbsp; ° pregunta </td><td> String </td><td> Pregunta </td></tr>
-<tr><td> &nbsp; ° respuesta </td><td> String </td><td> Respuesta </td></tr>
-<tr><td> &nbsp; ° descripcion </td><td> String </td><td> Detalles extra de la respuesta a la pregunta </td></tr>
+<tr><td colspan="3"> Cuenta </td></tr>
+<tr><td> numEvento </td><td> String </td><td> Una descripcion breve del motivo del evento </td></tr>
+<tr><td> fechaAdm </td><td> String, formato “yyyy-mm-ddTHH:MM:SSZ” </td><td> Fecha en que inicio el evento </td></tr>
+<tr><td> fechaAlta </td><td> String, formato “yyyy-mm-ddTHH:MM:SSZ” </td><td> Fecha en que termino el evento </td></tr>
+<tr><td> Total </td><td> Number </td><td> Total del evento (hasta 2 decimales)</td></tr>
+<tr><td> cedula </td><td> String </td><td> Cedula del medico responsable del evento </td></tr>
+<tr><td> medico </td><td> String </td><td> Nombre del medico responsable del evento </td></tr>
+<tr><td> tipo </td><td> String, “C”, “A”, “H”</td><td> Tipo de evento: <b>C</b>onsulta, <b>A</b>mbulatoriom <b>H</b>ospitalizacion </td></tr>
+<tr><td> estatus </td><td> String, “A”, “C”</td><td> Estatus del evento: <b>A</b>bierto, <b>C</b>errado </td></tr>
+<tr><td colspan="3"> Paciente </td></tr>
+<tr><td> curp </td><td> String </td><td> CURP del Paciente</td></tr>
+<tr><td> fichaEmp </td><td> String </td><td> Ficha del empleado [PEMEX] </td></tr>
+<tr><td> numCod </td><td> String </td><td> Numero de codificacion del empleado [PEMEX] </td></tr>
+<tr><td> numEmpresa </td><td> String </td><td> Numero de empresa del empleado [PEMEX] </td></tr>
+<tr><td> folioVigencia </td><td> String </td><td> Folio de consulta de vigencia de derechos [PEMEX]  </td></tr>
+<tr><td> nombre </td><td> String </td><td> Nombre  del empleado [PEMEX] </td></tr>
 
 </table>
 
