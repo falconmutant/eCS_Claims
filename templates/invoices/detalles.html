@@ -402,34 +402,40 @@ eCS Claims
                 </thead>
                 <tbody id="tb">
                   {% for dato in autorizacion %}
-                    <tr>
-                      {% for eve in evento %}
-                        {% if eve.id == dato.evento_id %}
-                          <td>{{eve.numEvento}}</td>
-                          <td>{{eve.folioAut}}</td>
-                          {% for pa in paciente %}
-                            {% if pa.evento_id == eve.id %}
-                              <td>{{pa.nombre}}</td>
+                    {% for eve in evento %}
+                      {% if eve.id == dato.evento_id %}
+                        {% for x in CE %}
+                          {% if x.comprobante == detalle.id %}
+                            {% if x.evento != eve.id %}
+                              <tr>
+                                <td>{{eve.numEvento}}</td>
+                                <td>{{eve.folioAut}}</td>
+                                {% for pa in paciente %}
+                                  {% if pa.evento_id == eve.id %}
+                                    <td>{{pa.nombre}}</td>
+                                  {% endif %}
+                                {% endfor %}
+                                {% if eve.tipo == 'C' %}
+                                  <td>Cita</td>
+                                {% endif %}
+                                {% if eve.tipo == 'A' %}
+                                  <td>Ambulatorio</td>
+                                {% endif %}
+                                {% if eve.tipo == 'H' %}
+                                  <td>Hospitalizacion</td>
+                                {% endif %}
+                                {% if eve.tipo == 'U' %}
+                                  <td>Urgencia</td>
+                                {% endif %}
+                                <td>{{eve.total}}</td>
+                                <td><input type="checkbox" onchange="create_post({{eve.id}},{{detalle.id}});" name="check"></td>
+                              </tr>
                             {% endif %}
-                          {% endfor %}
-                          {% if eve.tipo == 'C' %}
-                            <td>Cita</td>
                           {% endif %}
-                          {% if eve.tipo == 'A' %}
-                            <td>Ambulatorio</td>
-                          {% endif %}
-                          {% if eve.tipo == 'H' %}
-                            <td>Hospitalizacion</td>
-                          {% endif %}
-                          {% if eve.tipo == 'U' %}
-                            <td>Urgencia</td>
-                          {% endif %}
-                          <td>{{eve.total}}</td>
-                          <td><input type="checkbox" onchange="create_post({{eve.id}},{{detalle.id}});" name="check"></td>
-                        {% endif %}
-                      {% endfor %}
-                    </tr>
-                {% endfor %}
+                        {% endfor %}
+                      {% endif %}
+                    {% endfor %}
+                  {% endfor %}
                 </tbody>
         </table>
         <div id="btnmodal" class="modal-footer">

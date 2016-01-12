@@ -32,6 +32,7 @@ def detalle(request, id):
 	evento = Evento.objects.filter(proveedor_id=proveedor.id)
 	paciente =  Paciente.objects.all()
 	autorizacion = Autorizacion.objects.filter(Estatus="R")
+	CE = ComprobanteEvento.objects.all()
 	return render_to_response('invoices/detalles.html',RequestContext(request,locals()))
 
 def save_ligar(request):
