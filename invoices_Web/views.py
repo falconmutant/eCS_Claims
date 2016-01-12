@@ -36,11 +36,20 @@ def detalle(request, id):
 
 def save_ligar(request):
     if request.method == 'POST':
-        eve = int(request.POST.get('evento'))
-        co = int(request.POST.get('comprobante'))
-        liga = ComprobanteEvento(evento=eve, comprobante=co)
+        evento = int(request.POST.get('evento'))
+        comprobante = int(request.POST.get('comprobante'))
+        CE = ComprobanteEvento.objects.all()
+        Almacenar = True
+        for x in CE:
+        	if x.comprobante == comprobante
+        		if x.evento == evento
+        			Almacenar == False
+        if Almacenar:
+        	liga = ComprobanteEvento(evento=evento, comprobante=comprobante)
+        	liga.save()
+        else:
+        	ComprobanteEvento.objects.filter(evento=evento, comprobante=comprobante).delete()
         response_data = {}
-        liga.save()
         response_data['result'] = 'Create post successful!'
         return HttpResponse(
             json.dumps(response_data),
