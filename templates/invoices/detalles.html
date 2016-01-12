@@ -174,11 +174,13 @@ eCS Claims
                             <td>{{proveedor.rfc}}</td>
                             {% for A in autorizacion %}
                               {% if A.evento_id == eve.id %}
-                                <td>{{A.Estatus}}</td>
+                                {% if dato.Estatus == 'R' %}
+                                  <td>Recibido</td>
+                                {% endif %}
                               {% endif %}
                             {% endfor %}
                             <td>{{eve.id}}</td>
-                            <td>{{detalle.folioAut}}</td>
+                            <td>{{eve.folioAut}}</td>
                             <td>{{eve.total}}</td>
                           </tr>
                       {% endif %}
