@@ -28,7 +28,7 @@ $(document).ready(function() {
             }
         }
     });
-    //$('.dataTables_filter input').attr('placeholder','Search...');
+    $('.dataTables_filter input').attr('placeholder','Buscar');
     $('#example_length').hide();
 
     //DOM Manipulation to move datatable elements integrate to panel
