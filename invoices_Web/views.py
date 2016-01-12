@@ -72,10 +72,6 @@ def invoices(request):
 	autorizacion = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='2')
 	comprobante = Comprobante.objects.all()
 	cliente = Emisor.objects.all()
-	conceptos = Conceptos.objects.all()
-	servicios = Conceptos.objects.annotate(number_of_concepts=Count('comprobante_id'))
-
-
 
 	if request.POST:
 		autorizacion = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='2',FechaSolicitud__range=[request.POST.get("inicio"), request.POST.get("fin")])
