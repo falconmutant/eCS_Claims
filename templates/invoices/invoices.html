@@ -155,12 +155,14 @@ eCS Claims
                           </a>
                         </th>
                         <th>
-                          <a style="margin-left:0 !important;" class="a-details" href="{% static rfc/ "167856_10001326.xml" %}">
+                          <a style="margin-left:0 !important;" class="a-details" href="{% static "{% for emisor in cliente %}
+                          {% if co.emisor_id == ci.id %}{{emisor.rfc}}{% endif %}{% endfor %}/{{x.year}}/{{x.month}}/{{detalle.file_xml}}" %}">
                             <i class="fa fa-file-excel-o"></i>
                           </a>
                         </th>
                         <th>
-                          <a style="margin-left:0 !important;" class="a-details" href="{% static "167856_10001326.pdf" %}">
+                          <a style="margin-left:0 !important;" class="a-details" href="{% static "{% for emisor in cliente %}
+                          {% if co.emisor_id == ci.id %}{{emisor.rfc}}{% endif %}{% endfor %}/{{x.year}}/{{x.month}}/{{detalle.file_pdf}}" %}">
                             <i class="fa fa-file-pdf-o"></i>
                           </a>
                         </th>

@@ -79,7 +79,6 @@ def invoices(request):
 	autorizacion = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='2')
 	comprobante = Comprobante.objects.all()
 	cliente = Emisor.objects.all()
-
 	if request.POST:
 		autorizacion = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='2',FechaSolicitud__range=[request.POST.get("inicio"), request.POST.get("fin")])
 		if request.POST.get("tipo") != 'vacio':
