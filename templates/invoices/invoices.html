@@ -156,7 +156,7 @@ eCS Claims
                         </th>
                         {% for ci in cliente %}
                           {% if co.emisor_id == ci.id %}
-                            {% with ci.rfc|add:date|add:co.file_xml as xml %}
+                            {% with "cfdi/"|add:ci.rfc|add:co.fecha:"Y"|add:co.file_xml as xml %}
                               <th>
                                 <a style="margin-left:0 !important;" class="a-details" href="{% static xml %}">
                                   <i class="fa fa-file-excel-o"></i>
