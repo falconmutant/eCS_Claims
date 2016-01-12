@@ -444,8 +444,8 @@ eCS Claims
                   </tr>
                 </thead>
                 <tbody id="tb">
-                {% for eve in evento %}
-                  {% for x in CE %}
+                {% for x in CE %}
+                  {% for eve in evento %}
                     {% if x.evento != eve.id %}
                       {% for dato in autorizacion %}
                         {% if eve.id == dato.evento_id %}
