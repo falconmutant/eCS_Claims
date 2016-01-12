@@ -81,7 +81,7 @@ def invoices(request):
 		fin = "%s-%s-%s"% (x.year, x.month, x.day)
 
 	nombre = request.user.get_full_name()
-	autorizacion = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='2')
+	autorizacion = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='2',FechaSolicitud__range=[inicio, fin])
 	comprobante = Comprobante.objects.all()
 	cliente = Emisor.objects.all()
 	if request.POST:
