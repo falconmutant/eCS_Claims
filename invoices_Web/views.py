@@ -36,10 +36,10 @@ def detalle(request, id):
 		conceptos = Conceptos.objects.all()
 		emisor = get_object_or_404(Emisor, id=detalle.emisor_id)
 		proveedor = get_object_or_404(Proveedor, rfc=emisor.rfc)
-		evento = Evento.objects.filter(proveedor_id=proveedor.id)
 		paciente =  Paciente.objects.all()
 		autorizacion = Autorizacion.objects.filter(Estatus="R",TipoAprobacion='1')
 		CE = ComprobanteEvento.objects.all().filter(comprobante=id)
+		evento = Evento.objects.filter(proveedor_id=proveedor.id).exclude(id__in=[evento.evento for evento in CE])
 		return render_to_response('invoices/detalles.html',RequestContext(request,locals()))
 	except Exception, e:
 		return render_to_response('invoices/detalles.html',RequestContext(request,locals()))
