@@ -29,14 +29,13 @@ $ ./manage.py runserver 0.0.0.0:[PORT]
 <tr><td> GET </td><td><a href="#consultarclaim">/proveedores/{RFC}/eventos/{claimID}</a> </td><td> Consultar Reclamacion </td><td> Estatus de la reclamacion </td></tr>
 </table>
 
-* POST _Crear un evento al Paciente_
+* POST _Recibir Reclamacion_
 ##EnviarClaim
-Parametros
+#Parametros
 
-Tabla
 <table>
-<tr><th> Parametro </th><th> Tipo </th><th> Descripcion </th></tr>
-<tr><td> medico </td><td> String </td><td> Nombre completo del Medico </td></tr>
+<tr><th> Parametro </th><th> Tipo </th><th> Valor </th></tr>
+<tr><td colspan="3"> Proveedor </td></tr>
 <tr><td> cedula </td><td> String </td><td> Cedula profesional del Medico </td></tr>
 <tr><td> especialidad </td><td> String </td><td> Especialidad del Medico </td></tr>
 <tr><td> tipo </td><td> String, “C”, “A”, “H” o "U" </td><td> Tipo de evento: <b>C</b>onsulta, <b>A</b>mbulatorio, <b>H</b>ospitalizacion o <b>U</b>rgencia </td></tr>
