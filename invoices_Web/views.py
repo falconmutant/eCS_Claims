@@ -24,16 +24,22 @@ def detalle(request, id):
 		servicios = Conceptos.objects.annotate(number_of_concepts=Count('comprobante_id'))
 		return render_to_response('invoices/invoices.html',RequestContext(request,locals()))
 	nombre = request.user.get_full_name()
-
-	detalle = get_object_or_404(Comprobante, id=id)
-	conceptos = Conceptos.objects.all()
-	emisor = get_object_or_404(Emisor, id=detalle.emisor_id)
-	proveedor = get_object_or_404(Proveedor, rfc=emisor.rfc)
-	evento = Evento.objects.filter(proveedor_id=proveedor.id)
-	paciente =  Paciente.objects.all()
-	autorizacion = Autorizacion.objects.filter(Estatus="R")
-	CE = ComprobanteEvento.objects.filter(comprobante=id)
-	return render_to_response('invoices/detalles.html',RequestContext(request,locals()))
+	try:
+		detalle = get_object_or_404(Comprobante, id=id)
+		conceptos = Conceptos.objects.all()
+		emisor = get_object_or_404(Emisor, id=detalle.emisor_id)
+		proveedor = get_object_or_404(Proveedor, rfc=emisor.rfc)
+		evento = Evento.objects.filter(proveedor_id=proveedor.id)
+		paciente =  Paciente.objects.all()
+		autorizacion = Autorizacion.objects.filter(Estatus="R")
+		CE = ComprobanteEvento.objects.filter(comprobante=id)
+		return render_to_response('invoices/detalles.html',RequestContext(request,locals()))
+	except Exception, e:
+		return render_to_response('invoices/detalles.html',RequestContext(request,locals()))
+	else:
+		pass
+	finally:
+		pass
 
 def save_ligar(request):
     if request.method == 'POST':
