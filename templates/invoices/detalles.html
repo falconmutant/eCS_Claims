@@ -448,7 +448,7 @@ eCS Claims
                     {% for eve in evento %}
                       {% if eve.id == dato.evento_id %}
                         {% for x in CE %}
-                          {% if x.evento == eve.id %}
+                          {% if x.evento != eve.id %}
                             <tr>
                               <td>{{eve.numEvento}}</td>
                               <td>{{eve.folioAut}}</td>
