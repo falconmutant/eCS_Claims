@@ -45,12 +45,12 @@ def detalle(request, id):
 @login_required
 def claims(request):
 	x = datetime.datetime.now()
-		if x.month < 10:
-			inicio = "%s-0%s-%s"% (x.year, x.month, x.day)
-			fin = "%s-0%s-%s"% (x.year, x.month, x.day)
-		else:
-			inicio = "%s-%s-%s"% (x.year, x.month, x.day)
-			fin = "%s-%s-%s"% (x.year, x.month, x.day)
+	if x.month < 10:
+		inicio = "%s-0%s-%s"% (x.year, x.month, x.day)
+		fin = "%s-0%s-%s"% (x.year, x.month, x.day)
+	else:
+		inicio = "%s-%s-%s"% (x.year, x.month, x.day)
+		fin = "%s-%s-%s"% (x.year, x.month, x.day)
 	nombre = request.user.get_full_name()
 
 	autorizacion = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='1')
