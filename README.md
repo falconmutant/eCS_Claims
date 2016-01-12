@@ -29,18 +29,23 @@ $ ./manage.py runserver 0.0.0.0:[PORT]
 <tr><td> GET </td><td><a href="#consultarclaim">/proveedores/{RFC}/eventos/{claimID}</a> </td><td> Consultar Reclamacion </td><td> Estatus de la reclamacion </td></tr>
 </table>
 
-* POST _Recibir Reclamacion_
-##EnviarClaim
-#Parametros
 
+##EnviarClaim
+Enviar un reclamo desde las aplicaciones autorizadas a la plataforma
+
+###Endpoint
+```
+/proveedores/{RFC}/eventos
+```
+####Parametros
 <table>
 <tr><th> Parametro </th><th> Tipo </th><th> Valor </th></tr>
 <tr><td colspan="3"> Proveedor </td></tr>
-<tr><td> cedula </td><td> String </td><td> Cedula profesional del Medico </td></tr>
-<tr><td> especialidad </td><td> String </td><td> Especialidad del Medico </td></tr>
-<tr><td> tipo </td><td> String, “C”, “A”, “H” o "U" </td><td> Tipo de evento: <b>C</b>onsulta, <b>A</b>mbulatorio, <b>H</b>ospitalizacion o <b>U</b>rgencia </td></tr>
-<tr><td> fechaInicio </td><td> String, formato “yyyy-mm-ddTHH:MM:SSZ” </td><td> Fecha en que se comenzo el evento </td></tr>
-<tr><td> fechaFin </td><td> String, formato “yyyy-mm-ddTHH:MM:SSZ” </td><td> Fecha en que se finalizo el evento </td></tr>
+<tr><td> rfc </td><td> String </td><td> RFC del Proveedor de la RED Medica que envia. </td></tr>
+<tr><td> cliente </td><td> String </td><td> RED Medica {PEMEX por default} </td></tr>
+<tr><td> org </td><td> String</td><td> Zona geografica del Proveedor (Zona Centro, Zona Sur, etc)</td></tr>
+<tr><td> hospital </td><td> String </td><td> Nombre de Unidad Medica donde se realizo el evento </td></tr>
+<tr><td> localidad </td><td> String</td><td> Localidad donde se realizo el evento </td></tr>
 <tr><td> motivo </td><td> String </td><td> Una descripcion breve del motivo del evento </td></tr>
 <tr><td> tomas </td><td> N cantidad con la siguiente informacion </td><td> Tomas de signos vitales que se realizaron a lo largo del evento </td></tr>
 <tr><td> • fecha </td><td> String, formato “yyyy-mm-ddTHH:MM:SSZ” </td><td> Fecha en que se realizo la toma de signos vitales </td></tr>
