@@ -41,8 +41,8 @@ def save_ligar(request):
         CE = ComprobanteEvento.objects.all()
         Almacenar = True
         for x in CE:
-        	if x.comprobante == comprobante
-        		if x.evento == evento
+        	if x.comprobante == comprobante:
+        		if x.evento == evento:
         			Almacenar == False
         if Almacenar:
         	liga = ComprobanteEvento(evento=evento, comprobante=comprobante)
