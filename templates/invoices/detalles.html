@@ -404,7 +404,7 @@ eCS Claims
                   {% for dato in autorizacion %}
                     {% for eve in evento %}
                       {% if eve.id == dato.evento_id %}
-                        {% if CE[forloop.counter].evento != eve.id %}
+                        {% if CE.evento[0] != eve.id %}
                         <tr>
                           <td>{{eve.numEvento}}</td>
                           <td>{{eve.folioAut}}</td>
