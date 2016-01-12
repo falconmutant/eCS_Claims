@@ -55,6 +55,8 @@ class Comprobante(models.Model):
 	emisor = models.ForeignKey(Emisor)
 	receptor = models.ForeignKey(Receptor)
 	timbreFiscal = models.ForeignKey(TimbreFiscal)
+	file_xml = models.CharField(max_length=255, null=False)
+	file_pdf = models.CharField(max_length=255, null=False)
 
 class Conceptos(models.Model):
 	cantidad = models.IntegerField()
