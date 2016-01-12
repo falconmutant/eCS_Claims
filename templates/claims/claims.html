@@ -87,37 +87,13 @@ eCS Claims
               <form action="" class="form-horizontal" method="POST">{% csrf_token %}
                 <button style="margin-left:95%;margin-bottom:20px;" type="submit"><i class="fa fa-refresh"></i></button>
                 <div class="form-group">
-                    <label class="col-md-2 control-label">Tipo</label>
-                    <div class="col-xs-2">
-                      <div class="input-icon">
-                        <select name="tipo" id="tipo" class="form-control">
-                          <option value="vacio"></option>
-                          <option value="2">Institucional</option>
-                          <option value="1">Profesional</option>
-                        </select>
-                      </div>
-                    </div>
-                    <style type="text/css">
-                      .col-md-2{width:9.666667%;}
-                    </style>
-                    <label class="col-md-2 control-label">Cliente</label>
-                    <div class="col-xs-2">
-                      <div class="input-icon">
-                        <select name="cliente" id="cliente" class="form-control">
-                          <option value="vacio"></option>
-                          {% for datos in proveedor %}
-                            <option value="{{datos.id}}">{{datos.Cliente}}</option>
-                          {% endfor %}
-                        </select>
-                      </div>
-                    </div>
-                    <label class="col-md-2 control-label">Rango de Fechas</label>
-                    <div class="col-xs-2">
+                    <label class="col-md-3 control-label">Rango de Fechas</label>
+                    <div class="col-xs-4">
                       <div class="input-icon">
                         <input name="inicio" id="inicio" class="input-error form-control" type="date" value="{{inicio}}">
                       </div>
                     </div>
-                    <div class="col-xs-2">
+                    <div class="col-xs-4">
                       <div class="input-icon">
                         <input name="fin" id="fin" class="input-error form-control" type="date" value="{{fin}}">
                       </div>
@@ -128,13 +104,12 @@ eCS Claims
               <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="tabletools">
                 <thead>
                   <tr>
-                    <th>Folio</th>
-                    <th>Hospital</th>
-                    <th>Numero Empleado</th>
-                    <th>Nombre</th>
                     <th>Fecha Solicitud</th>
-                    <th>Estatus</th>
-                    <th>Costo</th>
+                    <th>Localidad</th>
+                    <th>Hospital</th>
+                    <th>Paciente</th>
+                    <th>Folio</th>
+                    <th>Total</th>
                     <th>Detalle</th>
                   </tr>
                 </thead>
@@ -143,22 +118,19 @@ eCS Claims
                       <tr>
                         {% for item in evento %}
                           {% if item.id == dato.evento_id %}
-                            <td>{{item.folioAut}}</td>
+                            <td>{{dato.FechaSolicitud}}</td>
                             {% for pro in proveedor %}
                               {% if pro.id == item.proveedor_id %}
+                                <td>{{pro.localidad}}</td>
                                 <td>{{pro.hospital}}</td>
                               {% endif %}
-                            {% endfor %}
+                            {% endfor %}                            
                             {% for pa in paciente %}
                               {% if pa.evento_id == item.id %}
-                                <td>{{pa.fichaEmp}}</td>
                                 <td>{{pa.nombre}}</td>
                               {% endif %}
                             {% endfor %}
-                            <td>{{dato.FechaSolicitud}}</td>
-                            {% if dato.Estatus == 'R' %}
-                              <td>Recibido</td>
-                            {% endif %}
+                            <td>{{item.folioAut}}</td>
                             <td>{{item.total}}</td>
                             <th>
                               <a style="margin-left:0 !important;" class="a-details" href="/detalles/{{dato.evento_id}}/">
