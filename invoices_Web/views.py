@@ -23,15 +23,16 @@ def detalle(request, id):
 		conceptos = Conceptos.objects.all()
 		servicios = Conceptos.objects.annotate(number_of_concepts=Count('comprobante_id'))
 		return render_to_response('invoices/invoices.html',RequestContext(request,locals()))
-	nombre = request.user.get_full_name()
+	
 	try:
+		nombre = request.user.get_full_name()
 		detalle = get_object_or_404(Comprobante, id=id)
 		conceptos = Conceptos.objects.all()
 		emisor = get_object_or_404(Emisor, id=detalle.emisor_id)
 		proveedor = get_object_or_404(Proveedor, rfc=emisor.rfc)
 		evento = Evento.objects.filter(proveedor_id=proveedor.id)
 		paciente =  Paciente.objects.all()
-		autorizacion = Autorizacion.objects.filter(Estatus="R")
+		autorizacion = Autorizacion.objects.filter(Estatus="R",TipoAprobacion='1')
 		CE = ComprobanteEvento.objects.filter(comprobante=id)
 		return render_to_response('invoices/detalles.html',RequestContext(request,locals()))
 	except Exception, e:
