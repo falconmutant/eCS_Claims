@@ -40,6 +40,7 @@ def detalle(request, id):
 		autorizacion = Autorizacion.objects.filter(Estatus="R",TipoAprobacion='1')
 		CE = ComprobanteEvento.objects.all().filter(comprobante=id)
 		evento = Evento.objects.filter(proveedor_id=proveedor.id).exclude(id__in=[evento.evento for evento in CE])
+		event = Evento.objects.filter(proveedor_id=proveedor.id)
 		return render_to_response('invoices/detalles.html',RequestContext(request,locals()))
 	except Exception, e:
 		return render_to_response('invoices/detalles.html',RequestContext(request,locals()))
