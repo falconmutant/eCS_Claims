@@ -431,7 +431,7 @@ eCS Claims
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Autorizar</h4>
       </div>
-      <form action="/claims/" class="form-horizontal" method="POST">{% csrf_token %}
+      <form action="" class="form-horizontal" method="POST">{% csrf_token %}
       <div class="modal-body">
         
           <div class="form-group">
@@ -501,31 +501,33 @@ eCS Claims
                 <tbody id="tb">
                   {% for dato in autorizacion %}
                     {% for eve in evento %}
-                      {% if eve.id == dato.evento_id %}
-                        <tr>
-                          <td>{{eve.numEvento}}</td>
-                          <td>{{eve.folioAut}}</td>
-                          {% for pa in paciente %}
-                            {% if pa.evento_id == eve.id %}
-                              <td>{{pa.nombre}}</td>
+                      {% for ce in CE %}
+                        {% if eve.id == dato.evento_id and ce.evento != eve.id %}
+                          <tr>
+                            <td>{{eve.numEvento}}</td>
+                            <td>{{eve.folioAut}}</td>
+                            {% for pa in paciente %}
+                              {% if pa.evento_id == eve.id %}
+                                <td>{{pa.nombre}}</td>
+                              {% endif %}
+                            {% endfor %}
+                            {% if eve.tipo == 'C' %}
+                              <td>Cita</td>
                             {% endif %}
-                          {% endfor %}
-                          {% if eve.tipo == 'C' %}
-                            <td>Cita</td>
-                          {% endif %}
-                          {% if eve.tipo == 'A' %}
-                            <td>Ambulatorio</td>
-                          {% endif %}
-                          {% if eve.tipo == 'H' %}
-                            <td>Hospitalizacion</td>
-                          {% endif %}
-                          {% if eve.tipo == 'U' %}
-                            <td>Urgencia</td>
-                          {% endif %}
-                          <td>{{eve.total}}</td>
-                          <td><input type="checkbox" onchange="create_post({{eve.id}},{{detalle.id}});" name="check"></td>
-                        </tr>
-                      {% endif %}
+                            {% if eve.tipo == 'A' %}
+                              <td>Ambulatorio</td>
+                            {% endif %}
+                            {% if eve.tipo == 'H' %}
+                              <td>Hospitalizacion</td>
+                            {% endif %}
+                            {% if eve.tipo == 'U' %}
+                              <td>Urgencia</td>
+                            {% endif %}
+                            <td>{{eve.total}}</td>
+                            <td><input type="checkbox" onchange="create_post({{eve.id}},{{detalle.id}});" name="check"></td>
+                          </tr>
+                        {% endif %}
+                      {% endfor %}
                     {% endfor %}
                   {% endfor %}
                 </tbody>

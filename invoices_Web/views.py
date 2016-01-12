@@ -14,14 +14,20 @@ def detalle(request, id):
 	if request.POST:
 		estatus = request.POST.get('estatus')
 		descripcion = request.POST.get('descripcion')
-		Autorizacion.objects.filter(evento_id=idd).update(Estatus=estatus,Comentarios=descripcion)
+		Autorizacion.objects.filter(comprobante_id=idd).update(Estatus=estatus,Comentarios=descripcion)
 		bandera=1
+		x = datetime.datetime.now()
+		if x.month < 10:
+			inicio = "%s-0%s-%s"% (x.year, x.month, x.day)
+			fin = "%s-0%s-%s"% (x.year, x.month, x.day)
+		else:
+			inicio = "%s-%s-%s"% (x.year, x.month, x.day)
+			fin = "%s-%s-%s"% (x.year, x.month, x.day)
+
 		nombre = request.user.get_full_name()
-		autorizacion = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='2')
+		autorizacion = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='2',FechaSolicitud__range=[inicio, fin])
 		comprobante = Comprobante.objects.all()
 		cliente = Emisor.objects.all()
-		conceptos = Conceptos.objects.all()
-		servicios = Conceptos.objects.annotate(number_of_concepts=Count('comprobante_id'))
 		return render_to_response('invoices/invoices.html',RequestContext(request,locals()))
 	
 	try:
@@ -33,7 +39,7 @@ def detalle(request, id):
 		evento = Evento.objects.filter(proveedor_id=proveedor.id)
 		paciente =  Paciente.objects.all()
 		autorizacion = Autorizacion.objects.filter(Estatus="R",TipoAprobacion='1')
-		CE = ComprobanteEvento.objects.filter(comprobante=id)
+		CE = ComprobanteEvento.objects.all().filter(comprobante=id)
 		return render_to_response('invoices/detalles.html',RequestContext(request,locals()))
 	except Exception, e:
 		return render_to_response('invoices/detalles.html',RequestContext(request,locals()))
