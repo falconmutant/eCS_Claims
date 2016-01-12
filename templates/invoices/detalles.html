@@ -187,7 +187,7 @@ eCS Claims
                                 {% endif %}
                               {% endif %}
                             {% endfor %}
-                            <td>{{eve.id}}</td>
+                            <td>{{eve.numEvento}}</td>
                             <td>{{eve.folioAut}}</td>
                             <td>{{eve.total}}</td>
                           </tr>
@@ -447,29 +447,34 @@ eCS Claims
                   {% for dato in autorizacion %}
                     {% for eve in evento %}
                       {% if eve.id == dato.evento_id %}
-                        <tr>
-                          <td>{{eve.numEvento}}</td>
-                          <td>{{eve.folioAut}}</td>
-                          {% for pa in paciente %}
-                            {% if pa.evento_id == eve.id %}
-                              <td>{{pa.nombre}}</td>
+                        {% for x in CE %}
+                          {% if x.evento == eve.id %}
+                            <tr>
+                              <td>{{eve.numEvento}}</td>
+                              <td>{{eve.folioAut}}</td>
+                              {% for pa in paciente %}
+                                {% if pa.evento_id == eve.id %}
+                                  <td>{{pa.nombre}}</td>
+                                {% endif %}
+                              {% endfor %}
+                              {% if eve.tipo == 'C' %}
+                                <td>Cita</td>
+                              {% endif %}
+                              {% if eve.tipo == 'A' %}
+                                <td>Ambulatorio</td>
+                              {% endif %}
+                              {% if eve.tipo == 'H' %}
+                                <td>Hospitalizacion</td>
+                              {% endif %}
+                              {% if eve.tipo == 'U' %}
+                                <td>Urgencia</td>
+                              {% endif %}
+                              <td>{{eve.total}}</td>
+                              <td><input type="checkbox" onchange="create_post({{eve.id}},{{detalle.id}});" name="check"></td>
+                            </tr>
                             {% endif %}
-                          {% endfor %}
-                          {% if eve.tipo == 'C' %}
-                            <td>Cita</td>
-                          {% endif %}
-                          {% if eve.tipo == 'A' %}
-                            <td>Ambulatorio</td>
-                          {% endif %}
-                          {% if eve.tipo == 'H' %}
-                            <td>Hospitalizacion</td>
-                          {% endif %}
-                          {% if eve.tipo == 'U' %}
-                            <td>Urgencia</td>
-                          {% endif %}
-                          <td>{{eve.total}}</td>
-                          <td><input type="checkbox" onchange="create_post({{eve.id}},{{detalle.id}});" name="check"></td>
-                        </tr>
+                            {{break}}
+                        {% endfor %}
                       {% endif %}
                     {% endfor %}
                   {% endfor %}
