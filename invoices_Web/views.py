@@ -3,7 +3,7 @@ from django.shortcuts import render_to_response, get_object_or_404, get_list_or_
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from invoices_Web.models import *
-from claims.models import *
+from claims.models import Autorizacion
 import datetime
 from django.db.models import Count
 
@@ -64,6 +64,7 @@ def save_ligar(request):
 
 @login_required
 def invoices(request):
+        global Autorizacion
 	x = datetime.datetime.now()
 	inicio = "%s-%s-%s"% (x.year, x.month, x.day)
 	fin = "%s-%s-%s"% (x.year, x.month, x.day)
