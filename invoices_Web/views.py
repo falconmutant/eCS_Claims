@@ -97,7 +97,7 @@ def historial(request):
 	inicio = "%s-%s-%s"% (x.year, x.month, x.day)
 	fin = "%s-%s-%s"% (x.year, x.month, x.day)
 	nombre = request.user.get_full_name()
-
+	date = "/%s/%s/"% (x.year, x.month)
 	comprobante = Comprobante.objects.all()
 	cliente = Emisor.objects.all()
 	conceptos = Conceptos.objects.all()
