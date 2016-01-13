@@ -44,7 +44,9 @@
         <a href="/explorer/">Reportes</a>
     </li>
     <li>
-        <a href="">Detalles</a>
+        {% with "Detalle Reporte -"|add:query.title as detalle %}
+            <a href="">{% if query %}{{ detalle }}{% if shared %}<small>&nbsp;&nbsp;Compartido</small>{% endif %}{% else %}Nuevo Reporte{% endif %}</a>
+        {% endwith %}
     </li>
     </ul>
   </div>
