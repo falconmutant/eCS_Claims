@@ -228,5 +228,13 @@
         $('#motivo').css('display','block');
       }
     }
+    $(document).ready(function(){
+      new PNotify({
+              title: 'Exito',
+              text: 'El reclamo seleccionado se actualizo con exito!',
+              type: 'success',
+              styling: 'fontawesome'
+            });
+    });
   </script>
 {% endblock javascript %}
