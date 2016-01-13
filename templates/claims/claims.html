@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
-
+{% load staticfiles %}
 {% block title %}
   eCS Claims
 {% endblock title %}
 
 {% block css %}
+  <link type="text/css" href="{% static "css/pnotify.css" %}" rel="stylesheet">
   <style type="text/css">
     #footer {
         padding: 4em 0 6em 0;
@@ -109,3 +110,16 @@
     </div>
   </div>
 {% endblock header %}
+{% block javascript %}
+  <script type="text/javascript" src="{% static "js/pnotify.min.js" %}"></script>
+  <script>
+    $(document).ready(function(){
+      new PNotify({
+              title: 'Exito',
+              text: 'El reclamo seleccionado se actualizo con exito!',
+              type: 'success',
+              styling: 'fontawesome'
+            });
+    });
+  </script>
+{% endblock javascript %}
