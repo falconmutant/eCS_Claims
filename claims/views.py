@@ -176,7 +176,7 @@ class EventosView(ProveedorView):
         autorizacion= Autorizacion.objects.create(Estatus="R", 
             FechaSolicitud=datetime.datetime.now(), TipoAprobacion="1",
             Sistema="Cirrus",evento_id=evento.id)
-        print(user)
+        print(request.user)
         
 
         response = {
