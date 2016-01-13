@@ -44,6 +44,17 @@ def detalle(request, id):
 	return render_to_response('claims/detalles.html',RequestContext(request,locals()))
 
 @login_required
+def detalle_historial(request, id):
+	nombre = request.user.get_full_name()
+	dx = Dx.objects.all()
+	detalle = get_object_or_404(Evento, id=id)
+	paciente = Paciente.objects.all()
+	cargo = Cargos.objects.all()
+	proveedor = Proveedor.objects.all()
+	motivo = Motivos.objects.all()
+	return render_to_response('claims/historial_detalles.html',RequestContext(request,locals()))
+
+@login_required
 def claims(request):
 	x = datetime.datetime.now()
 	if x.month < 10:
