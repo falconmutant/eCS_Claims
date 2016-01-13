@@ -193,8 +193,28 @@ eCS Claims
                   </form>
                 </div>
                 <div id="clinicos" class="tab-pane fade">
-                  <h3>Menu 2</h3>
-                  <p>Some content in menu 2.</p>
+                  <div>
+                    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="tabletools">
+                    <thead>
+                      <tr>
+                        <th>Secuencia</th>
+                        <th>Sistema</th>
+                        <th>Codigo</th>
+                      </tr>
+                    </thead>
+                    <tbody id="tb">
+                      {% for dato in dx %}
+                        {% if detalle.id == dato.evento_id %}
+                          <tr>
+                            <td>{{dato.secuencia}}</td>
+                            <td>{{dato.sistema}}</td>
+                            <td>{{dato.codigo}}</td>
+                          </tr>
+                        {% endif %}
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                  </div>
                 </div>
               </div>
               <hr />

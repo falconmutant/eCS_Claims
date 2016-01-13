@@ -32,6 +32,7 @@ def detalle(request, id):
 		paciente = Paciente.objects.all()
 		proveedor = Proveedor.objects.all()
 		cargo = Cargos.objects.all()
+		dx = Dx.objects.all()
 		return render_to_response('claims/claims.html',RequestContext(request,locals()))
 	nombre = request.user.get_full_name()
 	dx = Dx.objects.all()

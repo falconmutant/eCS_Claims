@@ -25,7 +25,7 @@ def detalle(request, id):
 			fin = "%s-%s-%s"% (x.year, x.month, x.day)
 
 		nombre = request.user.get_full_name()
-		autorizacion = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='2',FechaSolicitud__range=[inicio, fin])
+		autorizacion = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='2')
 		comprobante = Comprobante.objects.all()
 		cliente = Emisor.objects.all()
 		return render_to_response('invoices/invoices.html',RequestContext(request,locals()))
@@ -88,7 +88,7 @@ def invoices(request):
 		fin = "%s-%s-%s"% (x.year, x.month, x.day)
 
 	nombre = request.user.get_full_name()
-	autorizacion = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='2',FechaSolicitud__range=[inicio, fin])
+	autorizacion = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='2')
 	comprobante = Comprobante.objects.all()
 	cliente = Emisor.objects.all()
 	if request.POST:
