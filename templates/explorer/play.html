@@ -1,18 +1,51 @@
-{% extends "explorer/base.html" %}
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+  eCS Claims
+{% endblock title %}
 
-{% block sql_explorer_navlinks %}
-    {% if can_change %}
-      <li><a href="{% url "query_create" %}">Nuevo Reporte</a></li>
-      <li class="active"><a href="">Playground</a></li>
-      <li><a href="{% url "explorer_logs" %}">Logs</a></li>
-    {% endif %}
-{% endblock %}
+{% block css %}
+  <style type="text/css">
+    #footer {
+        padding: 4em 0 6em 0;
+        text-align: center;
+    }
+    #footer .copyright {
+        color: #999;
+        font-size: 0.9em;
+        line-height: 1em;
+        margin: 2em 0 0 0;
+        padding: 0;
+        text-align: center;
+    }
+    #footer .copyright li {
+        display: inline-block;
+        list-style: none;
+        margin-left: 1em;
+        padding-left: 1em;
+    }
+  </style>
+{% endblock css %}
 
-{% block sql_explorer_content %}
-<div class="row">
-    <div id="query_area" class="col-md-12">
-        <h2>Playground</h2>
-        <p>The playground is for experimenting and writing ad-hoc queries. By default, nothing you do here will be saved.</p>
+{% block header %}
+  <div id="jCrumbs" class="breadCrumb module">
+    <ul>
+      <li>
+        <a href="/logged_in/"><i class="glyphicon glyphicon-home"></i></a>
+      </li>
+      <li>
+        <a href="">Facturas</a>
+    </li>
+    <li>
+        <a href="">Pendientes</a>
+    </li>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="12u">
+      <section class="box">
+        <h3>Playground</h3>
+        <hr />
         <form role="form" action="{% url "explorer_playground" %}" method="post" id="editor">{% csrf_token %}
             {% if error %}
                 <div class="alert alert-danger">{{ error|escape }}</div>
@@ -48,21 +81,17 @@
             </div>
             <input type="hidden" value="Playground Query" name="title" />
         </form>
+        <hr />
+        {% include 'explorer/preview_pane.html' %}
+      </section>
     </div>
-    <div id="schema" style="display: none;">
-        <iframe src="" height="630px" frameBorder="0" id="schema_frame"></iframe>
-    </div>
-</div>
-{% include 'explorer/preview_pane.html' %}
+  </div>
+{% endblock header %}
 
-{% endblock %}
-
-{% block sql_explorer_scripts %}
-    <script>
+{% block javascript %}
+  <script>
         $(function() {
             var e = new ExplorerEditor(queryId, dataUrl);
         });
     </script>
-{% endblock %}
-
-
+{% endblock javascript %}
