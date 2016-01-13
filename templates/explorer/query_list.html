@@ -79,7 +79,7 @@
                 <th>Email</th>
                 <th>CSV</th>
                 {% if can_change %}
-                    <th>Ejecutar</th>
+                    <!--<th>Ejecutar</th>-->
                     <th>Borrar</th>
                 {% endif %}
                 <th>No. Ejecuciones</th>
@@ -112,9 +112,9 @@
                         <a href="{% url "query_download" object.id %}"><i class="glyphicon glyphicon-download"></i></a>
                     </td>
                     {% if can_change %}
-                        <td class="text-center">
+                        <!--<td class="text-center">
                             <a href="{% url "explorer_playground" %}?query_id={{ object.id }}"><i class="glyphicon glyphicon-new-window"></i></a>
-                        </td>
+                        </td>-->
                         <td class="text-center">
                             <a href="{% url "query_delete" object.id %}"><i class="glyphicon glyphicon-trash"></i></a>
                         </td>
