@@ -36,7 +36,7 @@
         <a href="/logged_in/"><i class="glyphicon glyphicon-home"></i></a>
       </li>
       <li>
-        <a href="">Reportes</a>
+        <a href="/explorer/">Reportes</a>
     </li>
     <li>
         <a href="">Detalles</a>
@@ -47,6 +47,8 @@
     <div class="12u">
       <section class="box">
         <div id="query_area" class="col-md-12 query-area">
+        <a class="a-details" href="/explorer/"><i class="fa fa-long-arrow-left"></i></a>
+        <hr>
         <h3>{% if query %}{{ query.title }}{% if shared %}<small>&nbsp;&nbsp;Compartido</small>{% endif %}{% else %}Nuevo Reporte{% endif %}</h3>
         <hr>
         {% if message %}
