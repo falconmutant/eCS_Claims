@@ -147,11 +147,3 @@
     </div>
   </div>
 {% endblock header %}
-
-{% block javascript %}
-  <script>
-      $(function() {
-          var e = new ExplorerEditor(queryId, dataUrl);
-      });
-  </script>
-{% endblock javascript%}
