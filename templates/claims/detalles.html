@@ -99,44 +99,46 @@ eCS Claims
               <div class="tab-content">
                 <div id="general" class="tab-pane fade in active">
                   <div class="form-group">
-                    <label class="col-md-1 control-label">Proveedor</label>
-                    <div class="col-xs-4">
-                      <div class="input-icon">
-                        {% for pro in proveedor %}
-                          {% if pro.id == detalle.proveedor_id %}
-                            <input class="input-error form-control" type="text" value="{{pro.hospital}}" disabled>
-                          {% endif %}
-                        {% endfor %}
+                    <div class="form-group">
+                      <label class="col-md-1 control-label">Proveedor</label>
+                      <div class="col-xs-4">
+                        <div class="input-icon">
+                          {% for pro in proveedor %}
+                            {% if pro.id == detalle.proveedor_id %}
+                              <input class="input-error form-control" type="text" value="{{pro.hospital}}" disabled>
+                            {% endif %}
+                          {% endfor %}
+                        </div>
+                      </div>
+                      
+                      <label class="col-md-1 control-label">Localidad</label>
+                      <div class="col-xs-4">
+                        <div class="input-icon">
+                          {% for pro in proveedor %}
+                            {% if pro.id == detalle.proveedor_id %}
+                              <input class="input-error form-control" type="text" value="{{pro.localidad}}" disabled>
+                            {% endif %}
+                          {% endfor %}
+                        </div>
                       </div>
                     </div>
-                    
-                    <label class="col-md-1 control-label">Localidad</label>
-                    <div class="col-xs-4">
-                      <div class="input-icon">
-                        {% for pro in proveedor %}
-                          {% if pro.id == detalle.proveedor_id %}
-                            <input class="input-error form-control" type="text" value="{{pro.localidad}}" disabled>
-                          {% endif %}
-                        {% endfor %}
+                    <div class="form-group">
+                      <label class="col-md-1 control-label">Paciente</label>
+                      <div class="col-xs-4">
+                        <div class="input-icon">
+                          {% for pa in paciente %}
+                            {% if pa.evento_id == detalle.id %}
+                              <input class="input-error form-control" type="text" value="{{pa.nombre}}" disabled>
+                            {% endif %}
+                          {% endfor %}
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-md-1 control-label">Paciente</label>
-                    <div class="col-xs-4">
-                      <div class="input-icon">
-                        {% for pa in paciente %}
-                          {% if pa.evento_id == detalle.id %}
-                            <input class="input-error form-control" type="text" value="{{pa.nombre}}" disabled>
-                          {% endif %}
-                        {% endfor %}
-                      </div>
-                    </div>
-                    
-                    <label class="col-md-1 control-label">Total</label>
-                    <div class="col-xs-4">
-                      <div class="input-icon">
-                        <input class="input-error form-control" type="text" value="{{detalle.total}}" disabled>
+                      
+                      <label class="col-md-1 control-label">Total</label>
+                      <div class="col-xs-4">
+                        <div class="input-icon">
+                          <input class="input-error form-control" type="text" value="{{detalle.total}}" disabled>
+                        </div>
                       </div>
                     </div>
                   </div>
