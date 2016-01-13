@@ -105,7 +105,7 @@ def historial(request):
 	inicio = "%s-%s-%s"% (x.year, x.month, x.day)
 	fin = "%s-%s-%s"% (x.year, x.month, x.day)
 	nombre = request.user.get_full_name()
-	autorizacion = Autorizacion.objects.all().filter(TipoAprobacion='2')
+	autorizacion = Autorizacion.objects.all().filter(TipoAprobacion='2').exclude(Estatus='R')
 	comprobante = Comprobante.objects.all()
 	cliente = Emisor.objects.all()
     	return render_to_response('invoices/historial.html',RequestContext(request,locals()))
