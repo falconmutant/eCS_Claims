@@ -145,51 +145,53 @@ eCS Claims
                   </form>
                 </div>
                 <div id="evento" class="tab-pane fade">
-                  <div class="form-group">
-                    <label class="col-md-1 control-label">Evento</label>
-                    <div class="col-xs-4">
-                      <div class="input-icon">
-                        <input class="input-error form-control" type="text" value="{{detalle.numEvento}}" disabled>
+                  <form class="form-horizontal">
+                    <div class="form-group">
+                      <label class="col-md-1 control-label">Evento</label>
+                      <div class="col-xs-4">
+                        <div class="input-icon">
+                          <input class="input-error form-control" type="text" value="{{detalle.numEvento}}" disabled>
+                        </div>
+                      </div>
+                      
+                      <label class="col-md-1 control-label">Folio Autorización</label>
+                      <div class="col-xs-4">
+                        <div class="input-icon">
+                          <input class="input-error form-control" type="text" value="{{detalle.folioAut}}" disabled>
+                        </div>
                       </div>
                     </div>
-                    
-                    <label class="col-md-1 control-label">Folio Autorización</label>
-                    <div class="col-xs-4">
-                      <div class="input-icon">
-                        <input class="input-error form-control" type="text" value="{{detalle.folioAut}}" disabled>
+                    <div class="form-group">
+                      <label class="col-md-1 control-label">Admisión</label>
+                      <div class="col-xs-4">
+                        <div class="input-icon">
+                          <input class="input-error form-control" type="text" value="{{detalle.fechaAdm}}" disabled>
+                        </div>
+                      </div>
+                      
+                      <label class="col-md-1 control-label">Alta</label>
+                      <div class="col-xs-4">
+                        <div class="input-icon">
+                          <input class="input-error form-control" type="text" value="{{detalle.fechaAlta}}" disabled>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-md-1 control-label">Admisión</label>
-                    <div class="col-xs-4">
-                      <div class="input-icon">
-                        <input class="input-error form-control" type="text" value="{{detalle.fechaAdm}}" disabled>
+                    <div class="form-group">
+                      <label class="col-md-1 control-label">Medico</label>
+                      <div class="col-xs-4">
+                        <div class="input-icon">
+                          <input class="input-error form-control" type="text" value="{{detalle.medico}}" disabled>
+                        </div>
+                      </div>
+                      
+                      <label class="col-md-1 control-label">Tipo</label>
+                      <div class="col-xs-4">
+                        <div class="input-icon">
+                          <input class="input-error form-control" type="text" value="{{detalle.get_tipo_display}}" disabled>
+                        </div>
                       </div>
                     </div>
-                    
-                    <label class="col-md-1 control-label">Alta</label>
-                    <div class="col-xs-4">
-                      <div class="input-icon">
-                        <input class="input-error form-control" type="text" value="{{detalle.fechaAlta}}" disabled>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-md-1 control-label">Medico</label>
-                    <div class="col-xs-4">
-                      <div class="input-icon">
-                        <input class="input-error form-control" type="text" value="{{detalle.medico}}" disabled>
-                      </div>
-                    </div>
-                    
-                    <label class="col-md-1 control-label">Tipo</label>
-                    <div class="col-xs-4">
-                      <div class="input-icon">
-                        <input class="input-error form-control" type="text" value="{{detalle.get_tipo_display}}" disabled>
-                      </div>
-                    </div>
-                  </div>
+                  </form>
                 </div>
                 <div id="diagnosticos" class="tab-pane fade">
                   <h3>Menu 2</h3>
