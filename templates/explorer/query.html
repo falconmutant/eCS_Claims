@@ -45,8 +45,8 @@
     <div class="12u">
       <section class="box">
         <div id="query_area" class="col-md-12 query-area">
-        <h2>{% if query %}{{ query.title }}{% if shared %}<small>&nbsp;&nbsp;Compartido</small>{% endif %}{% else %}Nuevo Reporte{% endif %}</h2>
-
+        <h3>{% if query %}{{ query.title }}{% if shared %}<small>&nbsp;&nbsp;Compartido</small>{% endif %}{% else %}Nuevo Reporte{% endif %}</h3>
+        <hr>
         {% if message %}
             <div class="alert alert-info">{{ message }}</div>
         {% endif %}
