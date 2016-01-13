@@ -137,114 +137,52 @@ Respuesta
 ```javascript
 {
     "msj": "Evento creado",
-    "id": {x},
-    "url": "http://APPHOST/proveedores/{RFC}/eventos/{x}"
+    "id": {claimID},
+    "url": "http://APPHOST/proveedores/{RFC}/eventos/{claimID}"
 }
 ```
 
-### Evento
-* URL: `/pacientes/{curp}/eventos/{evento_id}`
-* GET: _Ver datos completos (Diagnosticos, Intervenciones, etc.) de un Evento_
+##ConsultarClaim
+Consultar el estatus de un reclamo
 
-Parametros
-
--
+###Endpoint
+```
+/proveedores/{RFC}/eventos/{claimID}
+```
+####Parametros
+N/A
 
 Respuesta
 ```javascript
 {
-    "id": 1,
-    "medico": "Dr Ismael Tamez Lopez",
-    "cedula": "465146113165",
-    "especialidad": "NA",
-    "tipo": "C",
-    "fechaInicio": "2015-12-01T08:00:00Z",
-    "fechaFin": "2015-12-01T09:00:00Z",
-    "motivo": "Estudio de laboratorio",
-    "paciente": 1,
-    "tomas": [
-        {
-            "id": 1,
-            "fecha": "2015-12-01T08:15:00Z",
-            "evento": 1,
-            "paciente": 1,
-            "signos": [
-                {
-                    "id": 1,
-                    "valor": 60.0,
-                    "nombre": "Peso",
-                    "unidad": "kg",
-                    "toma": 1
-                }
-            ]
-        }
-    ],
-    "recetas": [
-        {
-            "id": 1,
-            "fecha": "2015-12-01T08:30:00Z",
-            "notas": "evitar bebidas frías, y alimentos irritantes",
-            "evento": 1,
-            "paciente": 1,
-            "medicamentos": [
-                {
-                    "id": 1,
-                    "nombre": "Ibuprofeno 400mg",
-                    "codigo": "66-10-00-20-00-03-20",
-                    "clasificacion": "GPI",
-                    "via": "oral",
-                    "dosis": "1 tableta",
-                    "indicacion": "cada 6 hrs x 5 días",
-                    "receta": 1,
-                    "paciente": 1
-                }
-            ]
-        }
-    ],
-    "diagnosticos": [
-        {
-            "id": 1,
-            "fecha": "2015-12-01T09:00:00Z",
-            "nombre": "Dolor de garganta y en el pecho",
-            "codigo": "R07",
-            "evento": 1,
-            "paciente": 1
-        }
-    ],
-    "intervenciones": [
-        {
-            "id": 1,
-            "fecha": "2015-12-01T09:00:00Z",
-            "nombre": "Colecistectomia laparoscopica",
-            "codigo": "51.23",
-            "evento": 1,
-            "paciente": 1
-        }
-    ],
-    "cuestionarios": [
-        {
-            "id": 1,
-            "titulo": "Patologicos",
-            "fecha": "2015-12-01T09:00:00Z",
-            "preguntas": [
-                {
-                    "id": 1,
-                    "cuestionario": 1,
-                    "titulo": "Patologicos",
-                    "pregunta": "Diabetes?",
-                    "respuesta": "true",
-                    "descripcion": "Tipo 1",
-                }
-            ],
-            "evento": 1,
-            "paciente": 1
-        }
-    ]
+  "id": 29,
+  "folioAut": "EC0000000042",
+  "numEvento": "29",
+  "fechaAdm": "2016-01-09T15:25:57Z",
+  "fechaAlta": "2016-01-11T12:47:40Z",
+  "cedula": "0123456789",
+  "medico": "MEDICO DEMO REDES MEDICAS",
+  "tipo": "H",
+  "estatus": "C",
+  "total": "352.00",
+  "proveedor": 3,
+  "claim": {
+    "Motivo": "N/A",
+    "Estatus": "R",
+    "Display": "Recibido",
+    "Comentarios": null
+  },
+  "Paciente": {
+    "id": 26,
+    "curp": "OLGALVW69OECEZ6N88",
+    "fichaEmp": "1",
+    "numCod": "0",
+    "numEmpresa": "0",
+    "nombre": "ALVARO RODRIGUEZ OLGA LETICIA",
+    "evento": 29
+  }
 }
 ```
-
-TEXTO
-
 
 
 
