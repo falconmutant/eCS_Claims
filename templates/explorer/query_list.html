@@ -1,15 +1,13 @@
-{% extends "explorer/base.html" %}
+{% extends "base.html" %}
 {% load staticfiles %}
 
-{% block sql_explorer_navlinks %}
-    {% if can_change %}
-      <li><a href="{% url "query_create" %}">Nuevo Reporte</a></li>
-      <!-- <li><a href="{% url "explorer_playground" %}">Playground</a></li> -->
-      <li><a href="{% url "explorer_logs" %}">Logs</a></li>
-    {% endif %}
+{% block css %}
+    <link href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.9.0/codemirror.min.css" rel="stylesheet" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/pivottable/2.0.0/pivot.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'explorer/explorer.css' %}" />
 {% endblock %}
 
-{% block sql_explorer_content %}
+{% block content %}
     {% if recent_queries|length > 0 %}
         <!-- <h3>{{ recent_queries|length }} recientemente utilizados</h3> -->
         <h3>Recientemente utilizados</h3>
@@ -102,7 +100,22 @@
     </div>
 {% endblock %}
 
-{% block sql_explorer_scripts %}
+{% block javascript %}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.js"></script>
+
+    <script src="{% static 'explorer/explorer.js' %}"></script>
+    <script type="text/javascript">
+        dataUrl = "{{ dataUrl }}";
+        queryId = "{% firstof query.id 'new' %}";
+    </script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.9.0/codemirror.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.9.0/mode/sql/sql.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/floatthead/1.2.8/jquery.floatThead-slim.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/pivottable/2.0.0/pivot.min.js"></script>
     <script>
     $(function() {
         function SearchFocus() {
