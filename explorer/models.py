@@ -12,10 +12,6 @@ MSG_FAILED_BLACKLIST = "Query failed the SQL blacklist."
 
 logger = logging.getLogger(__name__)
 
-class User(models.Model):
-    user = models.ForeignKey(User)
-    query = models.ForeignKey(Query)
-
 
 class Query(models.Model):
     title = models.CharField(max_length=255)
