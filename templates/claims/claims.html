@@ -112,14 +112,16 @@
 {% endblock header %}
 {% block javascript %}
   <script type="text/javascript" src="{% static "js/pnotify.min.js" %}"></script>
-  <script>
-    $(document).ready(function(){
-      new PNotify({
-              title: 'Exito',
-              text: 'El reclamo seleccionado se actualizo con exito!',
-              type: 'success',
-              styling: 'fontawesome'
-            });
-    });
-  </script>
+  {% if bandera == 1 %}
+    <script>
+      $(document).ready(function(){
+        new PNotify({
+                title: 'Exito',
+                text: 'El reclamo seleccionado se actualizo con exito!',
+                type: 'success',
+                styling: 'fontawesome'
+              });
+      });
+    </script>
+  {% endif %}
 {% endblock javascript %}
