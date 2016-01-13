@@ -45,7 +45,7 @@
     </li>
     <li>
        
-            <a href="">{% if query %} {% with "Detalle "|add:query.title as detalle %}{{ detalle }}{% endwith %}{% if shared %}<small>&nbsp;&nbsp;Compartido</small>{% endif %}{% else %}Nuevo Reporte{% endif %}</a>
+            <a href="">{% if query %}Detalle{% if shared %}<small>&nbsp;&nbsp;Compartido</small>{% endif %}{% else %}Nuevo Reporte{% endif %}</a>
 
     </li>
     </ul>
