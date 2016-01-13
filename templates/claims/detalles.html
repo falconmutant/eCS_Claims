@@ -93,7 +93,7 @@ eCS Claims
               <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#general">General</a></li>
                 <li><a data-toggle="tab" href="#evento">Evento</a></li>
-                <li><a data-toggle="tab" href="#detalle">Detalle</a></li>
+                <li><a data-toggle="tab" href="#diagnosticos">Diagnosticos</a></li>
               </ul>
 
               <div class="tab-content">
@@ -121,16 +121,79 @@ eCS Claims
                       </div>
                     </div>
                   </div>
+                  <div class="form-group">
+                    <label class="col-md-1 control-label">Paciente</label>
+                    <div class="col-xs-4">
+                      <div class="input-icon">
+                        {% for pa in paciente %}
+                          {% if pa.evento_id == detalle.id %}
+                            <input class="input-error form-control" type="text" value="{{pa.nombre}}" disabled>
+                          {% endif %}
+                        {% endfor %}
+                      </div>
+                    </div>
+                    
+                    <label class="col-md-1 control-label">Total</label>
+                    <div class="col-xs-4">
+                      <div class="input-icon">
+                        <input class="input-error form-control" type="text" value="{{detalle.total}}" disabled>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div id="evento" class="tab-pane fade">
-                  <h3>Menu 1</h3>
-                  <p>Some content in menu 1.</p>
+                  <div class="form-group">
+                    <label class="col-md-1 control-label">Evento</label>
+                    <div class="col-xs-4">
+                      <div class="input-icon">
+                        <input class="input-error form-control" type="text" value="{{detalle.numEvento}}" disabled>
+                      </div>
+                    </div>
+                    
+                    <label class="col-md-1 control-label">Folio Autorización</label>
+                    <div class="col-xs-4">
+                      <div class="input-icon">
+                        <input class="input-error form-control" type="text" value="{{detalle.folioAut}}" disabled>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-1 control-label">Admisión</label>
+                    <div class="col-xs-4">
+                      <div class="input-icon">
+                        <input class="input-error form-control" type="text" value="{{detalle.fechaAdm}}" disabled>
+                      </div>
+                    </div>
+                    
+                    <label class="col-md-1 control-label">Alta</label>
+                    <div class="col-xs-4">
+                      <div class="input-icon">
+                        <input class="input-error form-control" type="text" value="{{detalle.fechaAlta}}" disabled>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-1 control-label">Medico</label>
+                    <div class="col-xs-4">
+                      <div class="input-icon">
+                        <input class="input-error form-control" type="text" value="{{detalle.medico}}" disabled>
+                      </div>
+                    </div>
+                    
+                    <label class="col-md-1 control-label">Tipo</label>
+                    <div class="col-xs-4">
+                      <div class="input-icon">
+                        <input class="input-error form-control" type="text" value="{{detalle.get_tipo_display}}" disabled>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div id="detalle" class="tab-pane fade">
+                <div id="diagnosticos" class="tab-pane fade">
                   <h3>Menu 2</h3>
                   <p>Some content in menu 2.</p>
                 </div>
               </div>
+              <br><br>
               <hr />
               <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="tabletools">
                 <thead>
