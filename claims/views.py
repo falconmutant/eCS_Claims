@@ -17,12 +17,9 @@ import datetime
 @api_view(['GET'])
 def routes(request, format=None):
     rs = [
-        'auth/login',
-        'apps/token',
-        'proveedores',
         'proveedores/{rfc}/',
         'proveedores/{rfc}/eventos',
-        'proveedores/{rfc}/eventos/{evento_id}',
+        'proveedores/{rfc}/eventos/{claim_id}',
     ]
 
     routes = [get_url(request.get_host(),r) for r in rs]
@@ -36,16 +33,19 @@ def login(request, format=None):
         password = request.data.get('password','')
 
         if not username or not password:
-            return Response({'message': 'Incorrect params'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'message': 'Incorrect params'}, 
+                status=status.HTTP_400_BAD_REQUEST)
 
         user = authenticate(username=username, password=password)
         if not user:
-            return Response({'message': 'No such user'}, status=status.HTTP_404_NOT_FOUND)
+            return Response({'message': 'No such user'}, 
+                status=status.HTTP_404_NOT_FOUND)
     else:
         if request.user.is_authenticated():
             user = request.user
         else:
-            return Response({'message': 'No params'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'message': 'No params'}, 
+                status=status.HTTP_400_BAD_REQUEST)
 
     token, created = Token.objects.get_or_create(user=user)
 
@@ -53,23 +53,14 @@ def login(request, format=None):
         proveedor = Proveedor.objects.get(owner_id=user.id)
         name = "%s %s" % (proveedor.cliente, proveedor.org)
 
-        return Response({'token': token.key, 'rfc': proveedor.rfc, 'name': name}, status=status.HTTP_200_OK)
+        return Response({'token': token.key, 
+            'rfc': proveedor.rfc, 
+            'name': name}, status=status.HTTP_200_OK)
 
     except Proveedor.DoesNotExist:
-        return Response({'token': token.key}, status=status.HTTP_200_OK)
+        return Response({'token': token.key}, 
+            status=status.HTTP_200_OK)
 
-
-class ProveedorSearch(ProveedorView):
-    def post(self, request, rfc, format=None):
-        proveedor = self.get_prov(rfc)
-        query = request.data.get('query','')
-
-        if not query:
-            return Response({'message:' 'Missing query parameter'}, status=status.HTTP_400_BAD_REQUEST)
-
-        result = raw_sql_search(query, proveedor.id)
-
-        return Response(result, status=status.HTTP_200_OK)
 
 class ProveedoresView(ProveedorView):
     def get(self, request, rfc, format=None):
@@ -89,7 +80,8 @@ class EventosView(ProveedorView):
         else:
             eventos = Evento.objects.filter(proveedor=proveedor.id).order_by('-fechaAlta')
         if not eventos:
-            return Response({'warning': 'Proveedor sin eventos'}, status=status.HTTP_204_NO_CONTENT)
+            return Response({'warning': 'Proveedor sin eventos'}, 
+                status=status.HTTP_204_NO_CONTENT)
 
         eventosSerial = EventoSerializer(eventos, many=True).data
         return Response(eventosSerial, status=status.HTTP_200_OK)
@@ -181,8 +173,10 @@ class EventosView(ProveedorView):
                         evento.delete()
                         return Response(response, status=status.HTTP_200_OK)
                     cargosDxSerial.save()
-        autorizacion= Autorizacion.objects.create(Estatus="R", FechaSolicitud=datetime.datetime.now(), TipoAprobacion="1",Sistema="Cirrus",evento_id=evento.id)
-
+        autorizacion= Autorizacion.objects.create(Estatus="R", 
+            FechaSolicitud=datetime.datetime.now(), TipoAprobacion="1",
+            Sistema="Cirrus",evento_id=evento.id)
+        print(user)
         
 
         response = {
