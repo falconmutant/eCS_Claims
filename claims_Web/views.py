@@ -15,26 +15,15 @@ def index(request):
     )
 
 def permisos(request):
-    usuarios = User.objects.all()
-    return render_to_response('explorer/usuarios.html',RequestContext(request,locals()))
-
-
-
-def cargar_permisos(request):
-	response = {}
-	if request.method == 'POST':
-
-        	reportes = Query.objects.all()
-	        response['data'] = reportes[0]
-	        return HttpResponse(
-	            json.dumps(response),
-	            content_type="application/json"
-	        )
-	else:
-	        return HttpResponse(
-	            json.dumps({"nothing to see": "this isn't happening"}),
-	            content_type="application/json"
-	        )
+	if request.POST:
+			usuario = int(request.POST.get("user"))
+			reportes = Query.objects.all()
+			permisos = Permiso.objects.all().filter(usuario=usuario)
+			value=User.objects.get(id=usuario)
+			return render_to_response('explorer/usuarios.html',RequestContext(request,locals()))
+	usuarios = User.objects.all()
+    	return render_to_response('explorer/usuarios.html',RequestContext(request,locals()))
+	
 
 
 @login_required
