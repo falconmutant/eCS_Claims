@@ -72,6 +72,9 @@
           </thead>
           <tbody id="tb">
             {% for query in reportes %}
+              {% if forloop.counter == 1 %}
+                <script>$('.selDiv option[value="{{value}}"]').attr('selected', 'selected')</script>
+              {% endif %}
               <tr>
                 <td>{{query.title}}</td>
                 <td><input type="checkbox" id="{{query.id}}" onchange="permisos({{query.id}},$('#user').val);" name="check"></td>
