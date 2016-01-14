@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, url
-from claims.views import *
+from claims import views
 
 urlpatterns = patterns('',
     url(r'^/(?P<rfc>\w+)/eventos$', views.EventosView.as_view(), name='eventos'),
