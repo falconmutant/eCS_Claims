@@ -3,6 +3,7 @@ from django.db import models, DatabaseError
 from time import time
 from django.core.urlresolvers import reverse
 from django.conf import settings
+from django.contrib import auth
 from . import app_settings
 import logging
 import six
@@ -94,6 +95,12 @@ class Query(models.Model):
             conn = get_s3_connection()
             res = conn.list('query-%s.snap-' % self.id)
             return sorted(res, key=lambda s: s['last_modified'])
+
+
+class permiso(models.Model):
+    usuario = models.ForeignKey(User)
+    reporte = models.ForeignKey(Query)
+    fecha = models.DateField()
 
 
 class QueryLog(models.Model):
