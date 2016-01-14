@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+  eCS Claims
+{% endblock title %}
+
+{% block css %}
+  <link type="text/css" href="{% static "css/pnotify.css" %}" rel="stylesheet">
+  <style type="text/css">
+    #footer {
+        padding: 4em 0 6em 0;
+        text-align: center;
+    }
+    #footer .copyright {
+        color: #999;
+        font-size: 0.9em;
+        line-height: 1em;
+        margin: 2em 0 0 0;
+        padding: 0;
+        text-align: center;
+    }
+    #footer .copyright li {
+        display: inline-block;
+        list-style: none;
+        margin-left: 1em;
+        padding-left: 1em;
+    }
+  </style>
+{% endblock css %}
+
+{% block header %}
+  <div id="jCrumbs" class="breadCrumb module">
+    <ul>
+      <li>
+        <a href="/logged_in/"><i class="glyphicon glyphicon-home"></i></a>
+      </li>
+      <li>
+        <a href="">Reportes</a>
+      </li>
+      <li>
+        <a href="">Permisos</a>
+      </li>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="12u">
+      <section class="box">
+        <center><h3>Permiso a usuarios</h3></center>
+        <hr />
+        <form action="" class="form-horizontal" method="POST">{% csrf_token %}
+          <div class="form-group">
+              <label class="col-md-3 control-label">Usuarios</label>
+              <div class="col-xs-4">
+                <div class="input-icon">
+                  <select name="user" id="user" class="input-error form-control" required>
+                    <option></option>
+                    {% for user in usuarios %}
+                      <option value="user.id">user.username</option>
+                    {% endfor %}
+                  </Select>
+                </div>
+              </div>
+          </div>
+        </form>
+        <hr />
+        <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="tabletools">
+          <thead>
+            <tr>
+              <th>Reporte</th>
+              <th>Activo</th>
+            </tr>
+          </thead>
+          <tbody id="tb">
+            <tr>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </div>
+{% endblock header %}
+{% block javascript %}
+  <script type="text/javascript" src="{% static "js/pnotify.min.js" %}"></script>
+  {% if bandera == 1 %}
+    <script>
+      $(document).ready(function(){
+        new PNotify({
+                title: 'Exito',
+                text: 'El reclamo seleccionado se actualizo con exito!',
+                type: 'success',
+                styling: 'fontawesome'
+              });
+      });
+    </script>
+  {% endif %}
+{% endblock javascript %}
