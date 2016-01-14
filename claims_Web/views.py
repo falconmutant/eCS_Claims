@@ -17,7 +17,7 @@ def index(request):
 def permisos(request):
     usuarios = User.objects.all()
     if request.POST:
-    	usuario = request.POST.get("user")
+    		usuario = request.POST.get("user")
 			reportes = Query.objects.all()
 			permisos = Permiso.objects.all().filter(usuario=usuario)
 			value=User.objects.get(id=usuario)
