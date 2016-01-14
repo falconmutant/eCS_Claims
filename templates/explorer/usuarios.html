@@ -73,7 +73,7 @@
           <tbody id="tb">
             {% for query in reportes %}
               {% if forloop.counter == 1 %}
-                <script>$('#user option[value="{{value}}"]').attr('selected', 'selected')</script>
+                <script>usuario();</script>
               {% endif %}
               <tr>
                 <td>{{query.title}}</td>
@@ -81,7 +81,7 @@
                 {% for select in permisos %}
                   {% if select.reporte == query.id %}
                     <script>
-                      $('#{{query.id}}').setAttribute("checked", "checked");
+                      selected('{{query.id}}');
                     </script>
                   {% endif %}
                 {% endfor %}
@@ -122,6 +122,12 @@
             }
         }
         return cookieValue;
+    }
+    function usuario(){
+      $('#user option[value="{{value}}"]').attr('selected', 'selected');
+    }
+    function selected(value){
+      $('#'+value).attr("checked", "checked");
     }
     var csrftoken = getCookie('csrftoken');
     function permisos(value) {
