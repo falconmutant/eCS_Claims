@@ -95,12 +95,7 @@
   {% if bandera == 1 %}
     <script>
       $(document).ready(function(){
-        new PNotify({
-                title: 'Exito',
-                text: 'El reclamo seleccionado se actualizo con exito!',
-                type: 'success',
-                styling: 'fontawesome'
-              });
+        
       });
     </script>
   {% endif %}
@@ -138,6 +133,12 @@
             success : function(json) {
                 //$('#check'+value).css('display','none'); // remove the value from the input
                 console.log(json); // log the returned json to the console
+                new PNotify({
+                  title: 'Exito',
+                  text: 'El Reporte seleccionado se asigno al usuario con exito!',
+                  type: 'success',
+                  styling: 'fontawesome'
+                });
                 console.log("success"); // another sanity check
             },
 
