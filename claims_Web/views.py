@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from django.contrib import auth
 from claims.models import *
+from explorer.models import *
 import datetime
 
 def index(request):
@@ -26,7 +27,7 @@ def cargar_permisos(request):
         	reportes = Query.objects.all()
 	        response['data'] = reportes
 	        return HttpResponse(
-	            json.dumps(reportes),
+	            json.dumps(response),
 	            content_type="application/json"
 	        )
 	else:
