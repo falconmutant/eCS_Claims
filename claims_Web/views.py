@@ -22,7 +22,7 @@ def permisos(request):
 			value=User.objects.get(id=usuario)
 			return render_to_response('explorer/usuarios.html',RequestContext(request,locals()))
 	usuarios = User.objects.all()
-    return render_to_response('explorer/usuarios.html',RequestContext(request,locals()))
+    	return render_to_response('explorer/usuarios.html',RequestContext(request,locals()))
 	
 
 
