@@ -3,7 +3,6 @@ from django.db import models, DatabaseError
 from time import time
 from django.core.urlresolvers import reverse
 from django.conf import settings
-from django.contrib.auth import User
 from . import app_settings
 import logging
 import six
@@ -98,8 +97,8 @@ class Query(models.Model):
 
 
 class permiso(models.Model):
-    usuario = models.ForeignKey(User)
-    reporte = models.ForeignKey(Query)
+    usuario = models.IntegerField(null=True)
+    reporte = models.IntegerField(null=True)
     fecha = models.DateField()
 
 
