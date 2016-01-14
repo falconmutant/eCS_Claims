@@ -18,10 +18,10 @@ def permisos(request):
     return render_to_response('explorer/usuarios.html',RequestContext(request,locals()))
 
 def cargar_permisos(request):
+	response = {}
 	if request.method == 'POST':
 
         reportes = Query.objects.all()
-        response = {}
         response['data'] = reportes
         return HttpResponse(
             json.dumps(response),
