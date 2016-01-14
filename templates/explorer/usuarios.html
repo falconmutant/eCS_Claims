@@ -74,7 +74,7 @@
             {% for query in reportes %}
               <tr>
                 <td>{{query.title}}</td>
-                <td><input type="checkbox" id="{{query.id}}" onchange="permisos({{query.id}},{{value}});" name="check"></td>
+                <td><input type="checkbox" id="{{query.id}}" onchange="permisos({{query.id}},{{value.id}});" name="check"></td>
                 {% for select in permisos %}
                   {% if select.reporte == query.id %}
                     <script>

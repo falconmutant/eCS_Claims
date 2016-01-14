@@ -19,7 +19,7 @@ def permisos(request):
 			usuario = int(request.POST.get("user"))
 			reportes = Query.objects.all()
 			permisos = Permiso.objects.all().filter(usuario=usuario)
-			value=User.objects.get(id=usuario)
+			value=User.objects.all().filter(id=usuario)
 			return render_to_response('explorer/usuarios.html',RequestContext(request,locals()))
 	usuarios = User.objects.all()
     	return render_to_response('explorer/usuarios.html',RequestContext(request,locals()))
