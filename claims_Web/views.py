@@ -23,25 +23,6 @@ def permisos(request):
 			return render_to_response('explorer/usuarios.html',RequestContext(request,locals()))
 	usuarios = User.objects.all()
     	return render_to_response('explorer/usuarios.html',RequestContext(request,locals()))
-	
-def cargar_permisos(request):
-	if request.method == 'POST':
-	        user = int(request.POST.get("u"))
-	        reporte = int(request.POST.get("r"))
-	        validar = Permiso.objects.filter(usuario=user, reporte=reporte)
-	        Almacenar = True
-	        for x in validar:
-	        	validar.delete()
-	        	Almacenar = False
-	        if Almacenar:
-	        	liga = Permiso(usuario=user, reporte=reporte)
-	        	liga.save()
-	        response_data = {}
-	        response_data['result'] = 'Create post successful!'
-	        return HttpResponse(
-	            json.dumps(response_data),
-	            content_type="application/json"
-	        )
 
 @login_required
 def logged_in(request):
@@ -115,6 +96,26 @@ def claims(request):
 		fin = request.POST.get("fin")
 
     	return render_to_response('claims/claims.html',RequestContext(request,locals()))
+
+
+def cargar_permisos(request):
+	if request.method == 'POST':
+	        user = int(request.POST.get("u"))
+	        reporte = int(request.POST.get("r"))
+	        validar = Permiso.objects.filter(usuario=user, reporte=reporte)
+	        Almacenar = True
+	        for x in validar:
+	        	validar.delete()
+	        	Almacenar = False
+	        if Almacenar:
+	        	liga = Permiso(usuario=user, reporte=reporte)
+	        	liga.save()
+	        response_data = {}
+	        response_data['result'] = 'Create post successful!'
+	        return HttpResponse(
+	            json.dumps(response_data),
+	            content_type="application/json"
+	        )
 
 @login_required
 def historial(request):
