@@ -68,8 +68,8 @@
                   <div class="accordion-body collapse" id="collapseTwo">
                     <div class="panel-body">
                       <ul class="nav nav-pills nav-stacked">
-                        <li><a href="claims/">Pendientes</a></li>
-                        <li><a href="historial/">Historial</a></li>
+                        <li><a href="/claims/">Pendientes</a></li>
+                        <li><a href="/historial/">Historial</a></li>
                       </ul>
                     </div>
                   </div>
@@ -83,8 +83,8 @@
                   <div class="accordion-body collapse" id="collapseOne">
                     <div class="panel-body">
                       <ul class="nav nav-pills nav-stacked">
-                        <li><a href="invoice/">Pendientes</a></li>
-                        <li><a href="historial_invoices/">Historial</a></li>
+                        <li><a href="/invoice/">Pendientes</a></li>
+                        <li><a href="/historial_invoices/">Historial</a></li>
                       </ul>
                     </div>
                   </div>
@@ -100,9 +100,9 @@
                       <ul class="nav nav-pills nav-stacked">
                         {% if request.user.is_superuser %}
                           <li><a href="{% url "query_create" %}">Nuevo Reporte</a></li>
-                          <li><a href="permisos/">Permisos</a></li>
+                          <li><a href="/permisos/">Permisos</a></li>
                         {% endif %}
-                        <li><a href="explorer/">Reportes</a></li>
+                        <li><a href="/explorer/">Reportes</a></li>
                       </ul>
                     </div>
                   </div>
