@@ -19,7 +19,7 @@ def permisos(request):
 
 def cargar_permisos(request):
 	if request.method == 'POST':
-        usuario = int(request.POST.get('user'))
+
         reportes = Query.objects.all()
         response = {}
         response['data'] = reportes
