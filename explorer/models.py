@@ -96,7 +96,7 @@ class Query(models.Model):
             return sorted(res, key=lambda s: s['last_modified'])
 
 
-class permiso(models.Model):
+class Permiso(models.Model):
     usuario = models.IntegerField(null=True)
     reporte = models.IntegerField(null=True)
     fecha = models.DateField()

@@ -52,7 +52,7 @@
               <label class="col-md-3 control-label">Usuarios</label>
               <div class="col-xs-4">
                 <div class="input-icon">
-                  <select name="user" id="user" class="input-error form-control" required>
+                  <select onchange="cargar_querys(this.value);" name="user" id="user" class="input-error form-control" required>
                     <option></option>
                     {% for user in usuarios %}
                       <option value="user.id">{{user.username}}</option>
@@ -80,6 +80,7 @@
                   {% endif %}
                   {% else %}
                     <td><input type="checkbox" onchange="agregar_permisos({{select.id}},$('#user').val);" name="check"></td>
+                  {% endelse %}
                 {% endfor %}
               </tr>
             {% endfor %}

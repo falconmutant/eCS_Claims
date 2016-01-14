@@ -1,3 +1,5 @@
+import json
+from django.http import HttpResponseRedirect, HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404, get_list_or_404
 from django.contrib.auth.decorators import login_required
@@ -14,6 +16,22 @@ def index(request):
 def permisos(request):
     usuarios = User.objects.all()
     return render_to_response('explorer/usuarios.html',RequestContext(request,locals()))
+
+def cargar_permisos(request):
+	response = {}
+		if request.method == 'POST':
+
+        	reportes = Query.objects.all()
+	        response['data'] = reportes
+	        return HttpResponse(
+	            json.dumps(response),
+	            content_type="application/json"
+	        )
+	    else:
+	        return HttpResponse(
+	            json.dumps({"nothing to see": "this isn't happening"}),
+	            content_type="application/json"
+	        )
 
 
 @login_required
