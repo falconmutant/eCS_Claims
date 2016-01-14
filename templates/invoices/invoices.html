@@ -31,7 +31,7 @@
   <div id="jCrumbs" class="breadCrumb module">
     <ul>
       <li>
-        <a href="/logged_in/"><i class="glyphicon glyphicon-home"></i></a>
+        <a href="{{ settings.APP_URL }}/logged_in/"><i class="glyphicon glyphicon-home"></i></a>
       </li>
       <li>
         <a href="">Facturas</a>
@@ -91,7 +91,7 @@
                     {% endfor %}
                     <td>{{co.total}}</td>
                     <th>
-                      <a style="margin-left:0 !important;" class="a-details" href="/detalle_invoices/{{co.id}}/">
+                      <a style="margin-left:0 !important;" class="a-details" href="{{ settings.APP_URL }}/detalle_invoices/{{co.id}}/">
                         <i class="fa fa-eye"></i>
                       </a>
                     </th>
