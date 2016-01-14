@@ -26,8 +26,8 @@ def permisos(request):
 	
 def cargar_permisos(request):
 	if request.method == 'POST':
-	        usuario = int(request.POST.get('usuario'))
-	        reporte = int(request.POST.get('reporte'))
+	        usuario = request.POST.get('usuario')
+	        reporte = request.POST.get('reporte')
 	        validar = Permiso.objects.filter(usuario=usuario, reporte=reporte)
 	        Almacenar = True
 	        for x in validar:
