@@ -98,7 +98,9 @@
                   <div class="accordion-body collapse" id="collapseThree">
                     <div class="panel-body">
                       <ul class="nav nav-pills nav-stacked">
-                        <li><a href="{% url "query_create" %}">Nuevo Reporte</a></li>
+                        {% if request.user.is_staff %}
+                          <li><a href="{% url "query_create" %}">Nuevo Reporte</a></li>
+                        {% endif %}
                         <li><a href="/explorer/">Reportes</a></li>
                       </ul>
                     </div>
