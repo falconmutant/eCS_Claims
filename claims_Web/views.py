@@ -21,7 +21,7 @@ def cargar_permisos(request):
 	response = {}
 	if request.method == 'POST':
 
-        reportes = Query.objects.all()
+        	reportes = Query.objects.all()
         response['data'] = reportes
         return HttpResponse(
             json.dumps(response),
