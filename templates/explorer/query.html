@@ -38,10 +38,10 @@
   <div id="jCrumbs" class="breadCrumb module">
     <ul>
       <li>
-        <a href="/logged_in/"><i class="glyphicon glyphicon-home"></i></a>
+        <a href="{{ settings.APP_URL }}/logged_in/"><i class="glyphicon glyphicon-home"></i></a>
       </li>
       <li>
-        <a href="/explorer/">Reportes</a>
+        <a href="{{ settings.APP_URL }}/explorer/">Reportes</a>
     </li>
     <li>
        
@@ -121,7 +121,7 @@
                             {% if can_change %}
                                 <input type="submit" value="Guardar & Ejecutar" class="btn btn-default" id="save_button" />
                                 {% if query %}
-                                     <button class="btn btn-default download_button" href="{% url "query_csv" query.id %}">Descargar CSV</button>
+                                     <button class="btn btn-default download_button" href="{{ settings.APP_URL }}{% url "query_csv" query.id %}">Descargar CSV</button>
                                      <input type="submit" value="Open in Playground" class="btn btn-default" id="playground_button"/>
 
                                 {%  endif %}
@@ -130,7 +130,7 @@
                                 <button type="button" class="btn btn-default" id="format_button">Formatear</button>
                             {% else %}
                                 <input type="submit" value="Refresh" class="btn btn-default" id="refresh_button" />
-                                <button class="btn btn-default download_button" href="{% url "query_csv" query.id %}">Descargar CSV</button>
+                                <button class="btn btn-default download_button" href="{{ settings.APP_URL }}{% url "query_csv" query.id %}">Descargar CSV</button>
                             {% endif %}
                         </div>
                     </div>
