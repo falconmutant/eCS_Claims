@@ -124,12 +124,13 @@
       $('#'+value).attr("checked", "checked");
     }
     var csrftoken = getCookie('csrftoken');
-    function permisos(value) {
+    function permisos(value,value2) {
         console.log("create post is working!") // sanity check
         $.ajax({
             url : "/cargar_permisos/", // the endpoint
             type : "POST", // http method
-            data : { usuario : value,
+            data : { usuario : value2,
+                     reporte : value,
                      csrfmiddlewaretoken : csrftoken
                     }, // data sent with the post request
 

@@ -24,7 +24,29 @@ def permisos(request):
 	usuarios = User.objects.all()
     	return render_to_response('explorer/usuarios.html',RequestContext(request,locals()))
 	
-
+def cargar_permisos(request):
+	if request.method == 'POST':
+        usuario = int(request.POST.get('usuario'))
+        reporte = int(request.POST.get('reporte'))
+        validar = Permiso.objects.filter(usuario=usuario, reporte=reporte)
+        Almacenar = True
+        for x in validar:
+        	validar.delete()
+        	Almacenar = False
+        if Almacenar:
+        	liga = Permiso(usuario=usuario, reporte=reporte)
+        	liga.save()
+        response_data = {}
+        response_data['result'] = 'Create post successful!'
+        return HttpResponse(
+            json.dumps(response_data),
+            content_type="application/json"
+        )
+    else:
+        return HttpResponse(
+            json.dumps({"nothing to see": "this isn't happening"}),
+            content_type="application/json"
+        )
 
 @login_required
 def logged_in(request):
