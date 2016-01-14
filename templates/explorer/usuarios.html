@@ -73,7 +73,7 @@
           <tbody id="tb">
             {% for query in reportes %}
               {% if forloop.counter == 1 %}
-                <script>$('.selDiv option[value="{{value}}"]').attr('selected', 'selected')</script>
+                <script>$('#user option[value="{{value}}"]').attr('selected', 'selected')</script>
               {% endif %}
               <tr>
                 <td>{{query.title}}</td>
