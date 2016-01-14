@@ -19,19 +19,19 @@ def permisos(request):
 
 def cargar_permisos(request):
 	response = {}
-	if request.method == 'POST':
+		if request.method == 'POST':
 
         	reportes = Query.objects.all()
-        response['data'] = reportes
-        return HttpResponse(
-            json.dumps(response),
-            content_type="application/json"
-        )
-    else:
-        return HttpResponse(
-            json.dumps({"nothing to see": "this isn't happening"}),
-            content_type="application/json"
-        )
+	        response['data'] = reportes
+	        return HttpResponse(
+	            json.dumps(response),
+	            content_type="application/json"
+	        )
+	    else:
+	        return HttpResponse(
+	            json.dumps({"nothing to see": "this isn't happening"}),
+	            content_type="application/json"
+	        )
 
 
 @login_required
