@@ -13,7 +13,7 @@ def index(request):
 
 @login_required
 def logged_in(request):
-	nombre = request.user.get_full_name()
+	nombre_user = request.user.get_full_name()
 	return render_to_response('pantallas.html',RequestContext(request,locals()))
 
 @login_required
@@ -33,7 +33,7 @@ def detalle(request, id):
 		else:
 			inicio = "%s-%s-%s"% (x.year, x.month, x.day)
 			fin = "%s-%s-%s"% (x.year, x.month, x.day)
-		nombre = request.user.get_full_name()
+		nombre_user = request.user.get_full_name()
 		autorizacion = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='1')
 		evento = Evento.objects.all()
 		paciente = Paciente.objects.all()
@@ -41,7 +41,7 @@ def detalle(request, id):
 		cargo = Cargos.objects.all()
 		dx = Dx.objects.all()
 		return render_to_response('claims/claims.html',RequestContext(request,locals()))
-	nombre = request.user.get_full_name()
+	nombre_user = request.user.get_full_name()
 	dx = Dx.objects.all()
 	detalle = get_object_or_404(Evento, id=id)
 	paciente = Paciente.objects.all()
@@ -52,7 +52,7 @@ def detalle(request, id):
 
 @login_required
 def detalle_historial(request, id):
-	nombre = request.user.get_full_name()
+	nombre_user = request.user.get_full_name()
 	dx = Dx.objects.all()
 	detalle = get_object_or_404(Evento, id=id)
 	paciente = Paciente.objects.all()
@@ -70,7 +70,7 @@ def claims(request):
 	else:
 		inicio = "%s-%s-%s"% (x.year, x.month, x.day)
 		fin = "%s-%s-%s"% (x.year, x.month, x.day)
-	nombre = request.user.get_full_name()
+	nombre_user = request.user.get_full_name()
 
 	autorizacion = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='1')
 	evento = Evento.objects.all()
@@ -86,7 +86,7 @@ def claims(request):
 
 @login_required
 def historial(request):
-	nombre = request.user.get_full_name()
+	nombre_user = request.user.get_full_name()
 	autorizacion = Autorizacion.objects.all().filter(TipoAprobacion='1').exclude(Estatus='R')
 	evento = Evento.objects.all()
 	paciente = Paciente.objects.all()
