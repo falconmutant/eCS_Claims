@@ -53,6 +53,7 @@
   <div class="row">
     <div class="12u">
       <section class="box">
+        {% if request.user.is_superuser %}
         <div id="query_area" class="col-md-12 query-area">
         <h3>{% if query %}{{ query.title }}{% if shared %}<small>&nbsp;&nbsp;Compartido</small>{% endif %}{% else %}Nuevo Reporte{% endif %}</h3>
         <hr>
@@ -140,6 +141,7 @@
     <div id="schema" style="display: none;">
         <iframe src="" height="630px" frameBorder="0" id="schema_frame"></iframe>
     </div>
+    {% endif %}
     {% include 'explorer/preview_pane.html' %}
 <div class="row">
   <!--<div class="col-md-6">
