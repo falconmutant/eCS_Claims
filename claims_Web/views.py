@@ -17,9 +17,11 @@ def permisos(request):
     usuarios = User.objects.all()
     return render_to_response('explorer/usuarios.html',RequestContext(request,locals()))
 
+    
+
 def cargar_permisos(request):
 	response = {}
-		if request.method == 'POST':
+	if request.method == 'POST':
 
         	reportes = Query.objects.all()
 	        response['data'] = reportes
@@ -27,7 +29,7 @@ def cargar_permisos(request):
 	            json.dumps(response),
 	            content_type="application/json"
 	        )
-	    else:
+	else:
 	        return HttpResponse(
 	            json.dumps({"nothing to see": "this isn't happening"}),
 	            content_type="application/json"
