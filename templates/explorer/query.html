@@ -62,9 +62,9 @@
         {% endif %}
         <div>
             {% if query %}
-                <form role="form" class="form-horizontal" action="{% url "query_detail" query.id %}" method="post" id="editor">{% csrf_token %}
+                <form role="form" class="form-horizontal" action="{{ settings.APP_URL }}{% url "query_detail" query.id %}" method="post" id="editor">{% csrf_token %}
             {% else %}
-                <form role="form" class="form-horizontal" action="{% url "query_create" %}" method="post" id="editor">{% csrf_token %}
+                <form role="form" class="form-horizontal" action="{{ settings.APP_URL }}{% url "query_create" %}" method="post" id="editor">{% csrf_token %}
             {% endif %}
                 {% if error %}
                     <div class="alert alert-danger">{{ error|escape }}</div>
