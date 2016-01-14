@@ -78,7 +78,7 @@
                   {% if select.reporte == query.id %}
                     <td><input type="checkbox" onchange="eliminar_permisos({{select.id}});" checked name="check"></td>
                   {% endif %}
-                  {% select.reporte != query.id %}
+                  {% if select.reporte != query.id %}
                     <td><input type="checkbox" onchange="agregar_permisos({{select.id}},$('#user').val);" name="check"></td>
                   {% endif %}
                 {% endfor %}
