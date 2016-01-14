@@ -43,10 +43,10 @@ def cargar_permisos(request):
 	            content_type="application/json"
 	        )
     else:
-	        return HttpResponse(
-	            json.dumps({"nothing to see": "this isn't happening"}),
-	            content_type="application/json"
-	        )
+        return HttpResponse(
+            json.dumps({"nothing to see": "this isn't happening"}),
+            content_type="application/json"
+        )
 
 @login_required
 def logged_in(request):
