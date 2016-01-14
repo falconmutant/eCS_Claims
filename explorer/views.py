@@ -1,6 +1,5 @@
 from explorer.tasks import execute_query
 import six
-from django.contrib import auth
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
@@ -40,11 +39,6 @@ except:
 import re
 import json
 from functools import wraps
-
-
-def permisos(request):
-    usuarios = User.objects.all()
-    return render_to_response('explorer/usuarios.html',RequestContext(request,locals()))
 
 def view_permission(f):
     @wraps(f)

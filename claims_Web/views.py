@@ -2,6 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404, get_list_or_404
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
+from django.contrib import auth
 from claims.models import *
 import datetime
 
@@ -9,6 +10,10 @@ def index(request):
     return render_to_response('index.html',
         context_instance=RequestContext(request)
     )
+
+def permisos(request):
+    usuarios = User.objects.all()
+    return render_to_response('explorer/usuarios.html',RequestContext(request,locals()))
 
 
 @login_required
