@@ -24,6 +24,7 @@ SECRET_KEY = '8!t_-u6hf6fb@#k%@jwv!=glmwrq58-vh*rr%m5$6w8t$&x8@8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+APP_URL = ''
 
 ALLOWED_HOSTS = []
 
@@ -74,6 +75,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django_settings_export.settings_export',
             ],
         },
     },
@@ -92,12 +94,15 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'claims',
         'USER': 'ecaresoft',
-        'PASSWORD': 'ecaresoft',
-        'HOST': 'localhost',
+        'PASSWORD': '',
+        'HOST': '',
         'PORT': '5432',
     }
 }
 
+SETTINGS_EXPORT = [
+    'APP_URL',
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -117,7 +122,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 #STATIC_ROOT = '/srv/www/django/ecsclaims/static/'
-STATIC_URL = '/static/'
+STATIC_URL = '/static2/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 # Cipher Key
