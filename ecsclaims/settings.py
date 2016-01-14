@@ -94,8 +94,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'claims',
         'USER': 'ecaresoft',
-        'PASSWORD': '',
-        'HOST': '',
+        'PASSWORD': 'ecaresoft',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
@@ -160,3 +160,4 @@ LOGGING = {
 LOGIN_REDIRECT_URL = '/logged_in'
 # White Noise
 #STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+

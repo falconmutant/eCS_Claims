@@ -74,12 +74,12 @@
             {% for query in reportes %}
               <tr>
                 <td>{{query.title}}</td>
+                <td><input type="checkbox" id="{{query.id}}" onchange="permisos({{query.id}},$('#user').val);" checked name="check"></td>
                 {% for select in permisos %}
                   {% if select.reporte == query.id %}
-                    <td><input type="checkbox" onchange="eliminar_permisos({{select.id}});" checked name="check"></td>
-                  {% endif %}
-                  {% if select.reporte != query.id %}
-                    <td><input type="checkbox" onchange="agregar_permisos({{select.id}},$('#user').val);" name="check"></td>
+                    <script>
+                      $('#{{query.id}}').setAttribute("checked", "checked");
+                    </script>
                   {% endif %}
                 {% endfor %}
               </tr>
@@ -121,7 +121,7 @@
         return cookieValue;
     }
     var csrftoken = getCookie('csrftoken');
-    function cargar_querys(value) {
+    function permisos(value) {
         console.log("create post is working!") // sanity check
         $.ajax({
             url : "/cargar_permisos/", // the endpoint
