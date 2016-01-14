@@ -15,7 +15,7 @@ def index(request):
     )
 
 def permisos(request):
-	if request.POST:
+	if request.method == 'POST':
 			usuario = int(request.POST.get("user"))
 			reportes = Query.objects.all()
 			permisos = Permiso.objects.all().filter(usuario=usuario)
@@ -26,15 +26,15 @@ def permisos(request):
 	
 def cargar_permisos(request):
 	if request.method == 'POST':
-	        usuario = request.POST.get('usuario')
-	        reporte = request.POST.get('reporte')
-	        validar = Permiso.objects.filter(usuario=usuario, reporte=reporte)
+	        user = int(request.POST.get("u"))
+	        reporte = int(request.POST.get("r"))
+	        validar = Permiso.objects.filter(usuario=user, reporte=reporte)
 	        Almacenar = True
 	        for x in validar:
 	        	validar.delete()
 	        	Almacenar = False
 	        if Almacenar:
-	        	liga = Permiso(usuario=usuario, reporte=reporte)
+	        	liga = Permiso(usuario=user, reporte=reporte)
 	        	liga.save()
 	        response_data = {}
 	        response_data['result'] = 'Create post successful!'
