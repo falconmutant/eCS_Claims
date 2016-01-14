@@ -15,12 +15,12 @@ def index(request):
     )
 
 def permisos(request):
-    if request.POST:
-		usuario = request.POST.get("user")
-		reportes = Query.objects.all()
-		permisos = Permiso.objects.all().filter(usuario=usuario)
-		value=User.objects.get(id=usuario)
-		return render_to_response('explorer/usuarios.html',RequestContext(request,locals()))
+	if request.POST:
+			usuario = request.POST.get("user")
+			reportes = Query.objects.all()
+			permisos = Permiso.objects.all().filter(usuario=usuario)
+			value=User.objects.get(id=usuario)
+			return render_to_response('explorer/usuarios.html',RequestContext(request,locals()))
 	usuarios = User.objects.all()
     return render_to_response('explorer/usuarios.html',RequestContext(request,locals()))
 	
