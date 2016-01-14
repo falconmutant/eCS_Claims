@@ -21,17 +21,10 @@ def permisos(request):
 
 
 def cargar_permisos(request):
-	response = {}
-	if request.method == 'POST':
-			usuario = int(request.POST.get("user"))
-        	reportes = Query.objects.all()
-        	permisos = Permiso.objects.all().filter(usuario=usuario)
-        	return render_to_response('explorer/usuarios.html',RequestContext(request,locals()))
-	else:
-	        return HttpResponse(
-	            json.dumps({"nothing to see": "this isn't happening"}),
-	            content_type="application/json"
-	        )
+	usuario = int(request.POST.get("user"))
+    reportes = Query.objects.all()
+    permisos = Permiso.objects.all().filter(usuario=usuario)
+    return render_to_response('explorer/usuarios.html',RequestContext(request,locals()))
 
 
 @login_required
