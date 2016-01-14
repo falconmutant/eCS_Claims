@@ -17,7 +17,7 @@ def permisos(request):
     usuarios = User.objects.all()
     return render_to_response('explorer/usuarios.html',RequestContext(request,locals()))
 
-    
+
 
 def cargar_permisos(request):
 	response = {}
@@ -26,7 +26,7 @@ def cargar_permisos(request):
         	reportes = Query.objects.all()
 	        response['data'] = reportes
 	        return HttpResponse(
-	            json.dumps(response),
+	            json.dumps(reportes),
 	            content_type="application/json"
 	        )
 	else:
