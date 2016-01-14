@@ -121,9 +121,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-STATIC_ROOT = [os.path.join(BASE_DIR, 'static')]
+#STATIC_ROOT = [os.path.join(BASE_DIR, 'static')]
 STATIC_URL = '/static2/'
-#STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 # Cipher Key
 CIPHER_KEY = 'f74de1d77975e92a4061fe31d8fe0656'
@@ -159,4 +159,4 @@ LOGGING = {
 # url to redirect after successfull login
 LOGIN_REDIRECT_URL = '/logged_in'
 # White Noise
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+#STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
