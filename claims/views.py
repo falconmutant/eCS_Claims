@@ -175,8 +175,8 @@ class EventosView(ProveedorView):
                     cargosDxSerial.save()
         autorizacion= Autorizacion.objects.create(Estatus="R", 
             FechaSolicitud=datetime.datetime.now(), TipoAprobacion="1",
-            Sistema="Cirrus",evento_id=evento.id)
-        print(request)
+            Sistema=request.user,evento_id=evento.id)
+        #print(request.GET.lists())
         
 
         response = {
