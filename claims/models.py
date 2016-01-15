@@ -13,6 +13,11 @@ EVENT_TIPO = (
 ('U', 'Urgencia'),
 )
 
+DX_ADM = (
+('S', 'Si'),
+('N', 'No'),
+)
+
 EVENT_ESTATUS = (
 ('A', 'Abierto'),
 ('C', 'Cerrado'),
@@ -72,6 +77,7 @@ class Dx(models.Model):
    codigo = models.CharField(max_length=255)
    nombre = models.CharField(max_length=255)
    estatus = models.CharField(choices= DX_ESTATUS, max_length=1)
+   admision = models.CharField(choices= DX_ADM,max_length=1)
    evento = models.ForeignKey(Evento)
 
 class Cargos(models.Model):
