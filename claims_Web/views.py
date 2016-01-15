@@ -91,7 +91,8 @@ def claims(request):
 		inicio = "%s-%s-%s"% (x.year, x.month, x.day)
 		fin = "%s-%s-%s"% (x.year, x.month, x.day)
 	nombre_user = request.user.get_full_name()
-	tipouser = get_object_or_404(TipoUsuario,usuario_id=request.user.id)
+	userid = User.objects.get(username=request.user.get_username())
+	tipouser = get_object_or_404(TipoUsuario,usuario_id=userid.id)
 	if tipouser.tipo == 'M':
 		autorizacion = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='1').filter(Estatus='E')
 	if tipouser.tipo == 'P':
