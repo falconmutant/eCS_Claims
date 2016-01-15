@@ -3,8 +3,11 @@ from __future__ import unicode_literals
 from django.db import models
 from django.contrib.auth.models import User
 from invoices_Web.models import Comprobante
+import datetime
 
 # Create your models here.
+
+x = datetime.datetime.now()
 
 EVENT_TIPO = (
 ('C', 'Cita'),
@@ -109,7 +112,7 @@ class Dx(models.Model):
    nombre = models.CharField(max_length=255)
    estatus = models.CharField(choices= DX_ESTATUS, max_length=1)
    admision = models.CharField(choices= DX_ADM,max_length=1,default='N')
-   fecha = models.DateField(default=timezone.now)
+   fecha = models.DateField(default="%s-0%s-%s"% (x.year, x.month, x.day))
    observaciones = models.CharField(max_length=255,null=True)
    medico = models.ForeignKey(Medico,null=True)
    evento = models.ForeignKey(Evento)
