@@ -48,7 +48,13 @@ def detalle(request, id):
 			inicio = "%s-%s-%s"% (x.year, x.month, x.day)
 			fin = "%s-%s-%s"% (x.year, x.month, x.day)
 		nombre_user = request.user.get_full_name()
-		autorizacion = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='1')
+		tipouser = get_object_or_404(TipoUsuario,usuario_id=request.user.id)
+		if tipouser == 'M':
+			autorizacion = Autorizacion.objects.all().filter(Estatus='R',Estatus='E',TipoAprobacion='1')
+		if tipouser == 'P':
+			autorizacion = Autorizacion.objects.all().filter(Estatus='A',Estatus='P',TipoAprobacion='1')
+		if tipouser == 'E':
+			autorizacion = Autorizacion.objects.all().filter(Estatus='R',Estatus='A',Estatus='E',Estatus='P',TipoAprobacion='1')	
 		evento = Evento.objects.all()
 		paciente = Paciente.objects.all()
 		proveedor = Proveedor.objects.all()
