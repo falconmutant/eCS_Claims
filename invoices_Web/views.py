@@ -38,7 +38,7 @@ def detalle(request, id):
 		emisor = get_object_or_404(Emisor, id=detalle.emisor_id)
 		proveedor = get_object_or_404(Proveedor, rfc=emisor.rfc)
 		paciente =  Paciente.objects.all()
-		autorizacion = Autorizacion.objects.filter(Estatus="R",TipoAprobacion='1')
+		autorizacion = Autorizacion.objects.filter(Estatus="A",TipoAprobacion='1')
 		CE = ComprobanteEvento.objects.all().filter(comprobante=id)
 		evento = Evento.objects.filter(proveedor_id=proveedor.id).exclude(id__in=[evento.evento for evento in CE])
 		event = Evento.objects.filter(proveedor_id=proveedor.id)
