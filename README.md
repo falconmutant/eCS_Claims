@@ -8,7 +8,8 @@ Aplicacion eCS Claims
 - [x] virtualenv
 - [x] postgresql
 - [x] python-devel
--Clonar el repositorio
+
+- Clonar el repositorio
 ```sh
 $ git clone -v binding git@github.com:falconmutant/eCS_Claims.git [NombreDirectorio]
 ```
