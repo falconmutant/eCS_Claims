@@ -94,11 +94,11 @@ def claims(request):
 	userid = User.objects.get(username=request.user.get_username())
 	tipouser = get_object_or_404(TipoUsuario,usuario_id=userid.id)
 	if tipouser.tipo == 'M':
-		autorizacion = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='1').filter(Estatus='E')
+		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R'],TipoAprobacion='1')
 	if tipouser.tipo == 'P':
-		autorizacion = Autorizacion.objects.all().filter(Estatus='A',TipoAprobacion='1').filter(Estatus='P')
+		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['A','P'],TipoAprobacion='1')
 	if tipouser.tipo == 'E':
-		autorizacion = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='1').filter(Estatus='A').filter(Estatus='E').filter(Estatus='P')
+		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='1')
 	evento = Evento.objects.all()
 	paciente = Paciente.objects.all()
 	proveedor = Proveedor.objects.all()
