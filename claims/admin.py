@@ -9,3 +9,5 @@ admin.site.register(Dx)
 admin.site.register(Cargos)
 admin.site.register(Medico)
 admin.site.register(Procedimientos)
+admin.site.register(Motivos)
+

@@ -55,7 +55,12 @@ AUTH_ESTATUS =(
 ('E', 'En Revision'),
 )
 
-
+TIPO_USER = (
+('M','MAC'),
+('P','PEMEX'),
+('E','ECARESOFT'),
+('S','SUPERADMIN')
+)
 
 class Motivos(models.Model):
    motivo = models.CharField(max_length=255, null=False)
@@ -68,6 +73,9 @@ class Proveedor(models.Model):
    hospital=models.CharField(max_length=255, null=False)
    localidad=models.CharField(max_length=255, null=False)
 
+class TipoUsuario(models.Model):
+   usuario_id = models.IntegerField()
+   tipo = models.CharField(choices=TIPO_USER,max_length=1)
 
 class Evento(models.Model):
    folioAut = models.CharField(max_length=255)

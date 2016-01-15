@@ -49,17 +49,17 @@
         <hr />
         <form action="" class="form-horizontal" method="POST">{% csrf_token %}
           <div class="form-group">
-              <label class="col-md-3 control-label">Usuarios</label>
-              <div class="col-xs-4">
-                <div class="input-icon">
-                  <select onchange="this.form.submit()" name="user" id="user" class="input-error form-control" required>
-                    <option></option>
-                    {% for user in usuarios %}
-                      <option value="{{user.id}}">{{user.username}}</option>
-                    {% endfor %}
-                  </Select>
-                </div>
+            <label class="col-md-3 control-label">Usuarios</label>
+            <div class="col-xs-4">
+              <div class="input-icon">
+                <select onchange="this.form.submit()" name="user" id="user" class="input-error form-control" required>
+                  <option></option>
+                  {% for user in usuarios %}
+                    <option value="{{user.id}}">{{user.username}}</option>
+                  {% endfor %}
+                </Select>
               </div>
+            </div>
           </div>
         </form>
         <hr />
@@ -95,61 +95,13 @@
   {% if bandera == 1 %}
     <script>
       $(document).ready(function(){
-        
-      });
-    </script>
-  {% endif %}
-  <script type="text/javascript">
-      function getCookie(name) {
-        var cookieValue = null;
-        if (document.cookie && document.cookie != '') {
-            var cookies = document.cookie.split(';');
-            for (var i = 0; i < cookies.length; i++) {
-                var cookie = jQuery.trim(cookies[i]);
-                // Does this cookie string begin with the name we want?
-                if (cookie.substring(0, name.length + 1) == (name + '=')) {
-                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                    break;
-                }
-            }
-        }
-        return cookieValue;
-    }
-    function selected(value){
-      $('#'+value).attr("checked", "checked");
-    }
-    var csrftoken = getCookie('csrftoken');
-    function permisos(value,value2) {
-        console.log("create post is working!") // sanity check
-        $.ajax({
-            url : "/cargar_permisos/", // the endpoint
-            type : "POST", // http method
-            data : { u : value2,
-                     r : value,
-                     user : '0',
-                     csrfmiddlewaretoken : csrftoken
-                    }, // data sent with the post request
-
-            // handle a successful response
-            success : function(json) {
-                //$('#check'+value).css('display','none'); // remove the value from the input
-                console.log(json); // log the returned json to the console
-                new PNotify({
+        new PNotify({
                   title: 'Exito',
                   text: 'El Reporte seleccionado se asigno al usuario con exito!',
                   type: 'success',
                   styling: 'fontawesome'
                 });
-                console.log("success"); // another sanity check
-            },
-
-            // handle a non-successful response
-            error : function(xhr,errmsg,err) {
-                $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
-                    " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
-                console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
-            }
-        });
-    };
-  </script>
+      });
+    </script>
+  {% endif %}
 {% endblock javascript %}

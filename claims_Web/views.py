@@ -21,7 +21,8 @@ def permisos(request):
 		permisos = Permiso.objects.all().filter(usuario=usuario)
 		value=get_object_or_404(User, id=usuario)
 		return render_to_response('explorer/usuarios.html',RequestContext(request,locals()))
-	usuarios = User.objects.all()
+	else:
+		usuarios = User.objects.all()
     	return render_to_response('explorer/usuarios.html',RequestContext(request,locals()))
 
 @login_required
@@ -47,7 +48,13 @@ def detalle(request, id):
 			inicio = "%s-%s-%s"% (x.year, x.month, x.day)
 			fin = "%s-%s-%s"% (x.year, x.month, x.day)
 		nombre_user = request.user.get_full_name()
-		autorizacion = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='1')
+		tipouser = get_object_or_404(TipoUsuario,usuario_id=request.user.id)
+		if tipouser == 'M':
+			autorizacion = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='1').filter(Estatus='E')
+		if tipouser == 'P':
+			autorizacion = Autorizacion.objects.all().filter(Estatus='A',TipoAprobacion='1').filter(Estatus='P')
+		if tipouser == 'E':
+			autorizacion = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='1').filter(Estatus='A').filter(Estatus='E').filter(Estatus='P')
 		evento = Evento.objects.all()
 		paciente = Paciente.objects.all()
 		proveedor = Proveedor.objects.all()
@@ -96,31 +103,6 @@ def claims(request):
 		fin = request.POST.get("fin")
 
     	return render_to_response('claims/claims.html',RequestContext(request,locals()))
-
-
-def cargar_permisos(request):
-	if request.method == 'POST':
-	        user = int(request.POST.get("u"))
-	        reporte = int(request.POST.get("r"))
-	        validar = Permiso.objects.filter(usuario=user, reporte=reporte)
-	        Almacenar = True
-	        for x in validar:
-	        	validar.delete()
-	        	Almacenar = False
-	        if Almacenar:
-	        	liga = Permiso(usuario=user, reporte=reporte)
-	        	liga.save()
-	        response_data = {}
-	        response_data['result'] = 'Create post successful!'
-	        return HttpResponse(
-	            json.dumps(response_data),
-	            content_type="application/json"
-	        )
-	else:
-	    return HttpResponse(
-	        json.dumps({"nothing to see": "this isn't happening"}),
-	        content_type="application/json"
-	    )
 
 @login_required
 def historial(request):
