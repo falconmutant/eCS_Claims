@@ -23,8 +23,8 @@ def permisos(request):
 		return render_to_response('explorer/usuarios.html',RequestContext(request,locals()))
 	else:
 		try:
-			user = int(request.GET.get("u"))
-	        reporte = int(request.GET.get("r"))
+			user = int(request.POST.get("u"))
+	        reporte = int(request.POST.get("r"))
 	        validar = Permiso.objects.filter(usuario=user, reporte=reporte)
 	        Almacenar = True
 	        for x in validar:
