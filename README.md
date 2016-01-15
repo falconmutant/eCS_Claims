@@ -3,12 +3,11 @@ Aplicacion eCS Claims
 
 ## Instalacion
 - Herramientas requeridas 
-* Python 2.7+
-* pip
-* virtualenv
-* postgresql
-* python-devel
-
+- [x] Python 2.7+
+- [x] pip
+- [x] virtualenv
+- [x] postgresql
+- [x] python-devel
 -Clonar el repositorio
 ```sh
 $ git clone -v binding git@github.com:falconmutant/eCS_Claims.git [NombreDirectorio]
