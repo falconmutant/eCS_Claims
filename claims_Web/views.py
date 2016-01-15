@@ -22,7 +22,7 @@ def permisos(request):
 		value=get_object_or_404(User, id=usuario)
 		return render_to_response('explorer/usuarios.html',RequestContext(request,locals()))
 	else:
-		if request.method == 'GET':	
+		try:
 			user = int(request.GET.get("u"))
 	        reporte = int(request.GET.get("r"))
 	        validar = Permiso.objects.filter(usuario=user, reporte=reporte)
@@ -39,8 +39,9 @@ def permisos(request):
 	            json.dumps(response_data),
 	            content_type="application/json"
 	        )
-	usuarios = User.objects.all()
-    	return render_to_response('explorer/usuarios.html',RequestContext(request,locals()))
+	    except Exception, e:
+			usuarios = User.objects.all()
+    		return render_to_response('explorer/usuarios.html',RequestContext(request,locals()))
 
 @login_required
 def logged_in(request):
