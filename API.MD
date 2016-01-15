@@ -26,7 +26,7 @@ Enviar un reclamo desde las aplicaciones autorizadas a la plataforma
 <tr><td> hospital </td><td> String </td><td> Nombre de Unidad Medica donde se realizo el evento </td></tr>
 <tr><td> localidad </td><td> String</td><td> Localidad donde se realizo el evento </td></tr>
 <tr><td colspan="3"> Cuenta </td></tr>
-<tr><td> numEvento </td><td> String </td><td> Una descripcion breve del motivo del evento </td></tr>
+<tr><td> numEvento </td><td> String </td><td> Numero/Codigo de Evento/Cuenta </td></tr>
 <tr><td> fechaAdm </td><td> String, formato “yyyy-mm-ddTHH:MM:SSZ” </td><td> Fecha en que inicio el evento </td></tr>
 <tr><td> fechaAlta </td><td> String, formato “yyyy-mm-ddTHH:MM:SSZ” </td><td> Fecha en que termino el evento </td></tr>
 <tr><td> Total </td><td> Number </td><td> Total del evento (hasta 2 decimales)</td></tr>
