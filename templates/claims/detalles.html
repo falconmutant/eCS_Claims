@@ -352,18 +352,12 @@
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           <h4 class="modal-title" id="myModalLabel">CUMULUS</h4>
         </div>
-        <form action="" class="form-horizontal" method="POST">{% csrf_token %}
         <div class="modal-body">
           <center>
             <object style="width:1000px;height:500px;" data="https://www.ecs.mx/CumulusWeb/external.zul?token=8fc0f9f91855794dfc69cf3c3fdb23ed705efb61&curp={{paciente.curp}}"></object>
           </center>
           
         </div>
-        <div id="btnmodal" class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-          <input type="submit" class="btn btn-default" value="Actualizar">
-        </div>
-        </form>
       </div>
     </div>
   </div>
