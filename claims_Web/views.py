@@ -21,6 +21,11 @@ def permisos(request):
 		permisos = Permiso.objects.all().filter(usuario=usuario)
 		value=get_object_or_404(User, id=usuario)
 		return render_to_response('explorer/usuarios.html',RequestContext(request,locals()))
+	else:
+    return HttpResponse(
+        json.dumps({"nothing to see": "this isn't happening"}),
+        content_type="application/json"
+    )
 	usuarios = User.objects.all()
     	return render_to_response('explorer/usuarios.html',RequestContext(request,locals()))
 
