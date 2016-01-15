@@ -1,5 +1,5 @@
 from django.contrib import admin
-from explorer.models import Query
+from explorer.models import Query,Permiso
 from explorer.actions import generate_report_action
 
 
@@ -11,3 +11,4 @@ class QueryAdmin(admin.ModelAdmin):
     actions = [generate_report_action()]
 
 admin.site.register(Query, QueryAdmin)
+admin.site.register(Permiso)

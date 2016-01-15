@@ -3,14 +3,36 @@ from __future__ import unicode_literals
 from django.db import models
 from django.contrib.auth.models import User
 from invoices_Web.models import Comprobante
+import datetime
 
 # Create your models here.
+
+x = datetime.datetime.now()
 
 EVENT_TIPO = (
 ('C', 'Cita'),
 ('A', 'Ambulatorio'),
 ('H', 'Hospitalizacion'),
 ('U', 'Urgencia'),
+)
+
+MEDICO_TIPO = (
+('PC','Familiar'),
+('RP','Referencia'),
+('AP','Admision'),
+('TP','Atencion'),
+('CP','Consultor'),
+('CO','Cobertura'),
+('AS','Asistente'),
+('AN','Anesteciologo'),
+('IN','Interprete'),
+('ER','Urgenciologo'),
+('PP','Cirujano'),
+)
+
+DX_ADM = (
+('S', 'Si'),
+('N', 'No'),
 )
 
 EVENT_ESTATUS = (
@@ -32,6 +54,8 @@ AUTH_ESTATUS =(
 ('N', 'Rechazado MAC'),
 ('E', 'En Revision'),
 )
+
+
 
 class Motivos(models.Model):
    motivo = models.CharField(max_length=255, null=False)
@@ -65,6 +89,23 @@ class Paciente(models.Model):
    nombre = models.CharField(max_length=255, null=False)
    evento = models.ForeignKey(Evento)
 
+class Medico(models.Model):
+   secuencia = models.PositiveSmallIntegerField()
+   tipo = models.CharField(choices= MEDICO_TIPO, max_length=2)
+   nombre = models.CharField(max_length=255)
+   especialidad = models.CharField(max_length=255)
+   cedula = models.CharField(max_length=255)
+
+class Procedimientos(models.Model):
+   secuencia = models.PositiveSmallIntegerField()
+   sistema = models.CharField(max_length=255)
+   codigo = models.CharField(max_length=255)
+   nombre = models.CharField(max_length=255)
+   fecha = models.DateField()
+   observaciones = models.CharField(max_length=255,null=True)
+   medico = models.ForeignKey(Medico)
+   evento = models.ForeignKey(Evento)
+
 class Dx(models.Model):
 
    secuencia = models.PositiveSmallIntegerField()
@@ -72,6 +113,10 @@ class Dx(models.Model):
    codigo = models.CharField(max_length=255)
    nombre = models.CharField(max_length=255)
    estatus = models.CharField(choices= DX_ESTATUS, max_length=1)
+   admision = models.CharField(choices= DX_ADM,max_length=1,default='N')
+   fecha = models.DateField(default="%s-0%s-%s"% (x.year, x.month, x.day))
+   observaciones = models.CharField(max_length=255,null=True)
+   medico = models.ForeignKey(Medico,null=True)
    evento = models.ForeignKey(Evento)
 
 class Cargos(models.Model):

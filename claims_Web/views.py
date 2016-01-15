@@ -16,32 +16,13 @@ def index(request):
 
 def permisos(request):
 	if request.method == 'POST':
-			usuario = int(request.POST.get("user"))
-			reportes = Query.objects.all()
-			permisos = Permiso.objects.all().filter(usuario=usuario)
-			value=get_object_or_404(User, id=usuario)
-			return render_to_response('explorer/usuarios.html',RequestContext(request,locals()))
+		usuario = int(request.POST.get("user"))
+		reportes = Query.objects.all()
+		permisos = Permiso.objects.all().filter(usuario=usuario)
+		value=get_object_or_404(User, id=usuario)
+		return render_to_response('explorer/usuarios.html',RequestContext(request,locals()))
 	usuarios = User.objects.all()
     	return render_to_response('explorer/usuarios.html',RequestContext(request,locals()))
-	
-def cargar_permisos(request):
-	if request.method == 'POST':
-	        user = int(request.POST.get("u"))
-	        reporte = int(request.POST.get("r"))
-	        validar = Permiso.objects.filter(usuario=user, reporte=reporte)
-	        Almacenar = True
-	        for x in validar:
-	        	validar.delete()
-	        	Almacenar = False
-	        if Almacenar:
-	        	liga = Permiso(usuario=user, reporte=reporte)
-	        	liga.save()
-	        response_data = {}
-	        response_data['result'] = 'Create post successful!'
-	        return HttpResponse(
-	            json.dumps(response_data),
-	            content_type="application/json"
-	        )
 
 @login_required
 def logged_in(request):
@@ -76,7 +57,7 @@ def detalle(request, id):
 	nombre_user = request.user.get_full_name()
 	dx = Dx.objects.all()
 	detalle = get_object_or_404(Evento, id=id)
-	paciente = Paciente.objects.all()
+	paciente = get_object_or_404(Paciente, evento=id)
 	cargo = Cargos.objects.all()
 	proveedor = Proveedor.objects.all()
 	motivo = Motivos.objects.all()
@@ -115,6 +96,31 @@ def claims(request):
 		fin = request.POST.get("fin")
 
     	return render_to_response('claims/claims.html',RequestContext(request,locals()))
+
+
+def cargar_permisos(request):
+	if request.method == 'POST':
+	        user = int(request.POST.get("u"))
+	        reporte = int(request.POST.get("r"))
+	        validar = Permiso.objects.filter(usuario=user, reporte=reporte)
+	        Almacenar = True
+	        for x in validar:
+	        	validar.delete()
+	        	Almacenar = False
+	        if Almacenar:
+	        	liga = Permiso(usuario=user, reporte=reporte)
+	        	liga.save()
+	        response_data = {}
+	        response_data['result'] = 'Create post successful!'
+	        return HttpResponse(
+	            json.dumps(response_data),
+	            content_type="application/json"
+	        )
+	else:
+	    return HttpResponse(
+	        json.dumps({"nothing to see": "this isn't happening"}),
+	        content_type="application/json"
+	    )
 
 @login_required
 def historial(request):
