@@ -22,22 +22,22 @@ def permisos(request):
 		value=get_object_or_404(User, id=usuario)
 		return render_to_response('explorer/usuarios.html',RequestContext(request,locals()))
 	if request.method == 'GET':	
-		user = int(request.GET.get("u"))
-        reporte = int(request.GET.get("r"))
-        validar = Permiso.objects.filter(usuario=user, reporte=reporte)
-        Almacenar = True
-        for x in validar:
-        	validar.delete()
-        	Almacenar = False
-        if Almacenar:
-        	liga = Permiso(usuario=user, reporte=reporte)
-        	liga.save()
-        response_data = {}
-        response_data['result'] = 'Create post successful!'
-        return HttpResponse(
-            json.dumps(response_data),
-            content_type="application/json"
-        )
+			user = int(request.GET.get("u"))
+	        reporte = int(request.GET.get("r"))
+	        validar = Permiso.objects.filter(usuario=user, reporte=reporte)
+	        Almacenar = True
+	        for x in validar:
+	        	validar.delete()
+	        	Almacenar = False
+	        if Almacenar:
+	        	liga = Permiso(usuario=user, reporte=reporte)
+	        	liga.save()
+	        response_data = {}
+	        response_data['result'] = 'Create post successful!'
+	        return HttpResponse(
+	            json.dumps(response_data),
+	            content_type="application/json"
+	        )
 	usuarios = User.objects.all()
     	return render_to_response('explorer/usuarios.html',RequestContext(request,locals()))
 
