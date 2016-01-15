@@ -138,7 +138,7 @@ class EventosView(ProveedorView):
                 paciente.delete()
                 return Response(response, status=status.HTTP_200_OK)
 
-            diag = dxSerial.save()
+            medicoSerial.save()
 
         # Procediemientos
         if procData:
@@ -159,7 +159,7 @@ class EventosView(ProveedorView):
 
                 return Response(response, status=status.HTTP_200_OK)
 
-            diag = dxSerial.save()
+            procSerial.save()
     
         # DX
         if dxData:
