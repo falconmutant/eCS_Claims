@@ -5,6 +5,7 @@
 {% endblock title %}
 
 {% block css %}
+  <link type="text/css" href="{% static "css/pnotify.css" %}" rel="stylesheet">
   <style type="text/css">
     #footer {
         padding: 4em 0 6em 0;
@@ -125,3 +126,18 @@
     </div>
   </div>
 {% endblock header %}
+{% block javascript %}
+  <script type="text/javascript" src="{% static "js/pnotify.min.js" %}"></script>
+  {% if bandera == 1 %}
+    <script>
+      $(document).ready(function(){
+        new PNotify({
+                title: 'Exito',
+                text: 'La Factura seleccionada se actualizo con exito!',
+                type: 'success',
+                styling: 'fontawesome'
+              });
+      });
+    </script>
+  {% endif %}
+{% endblock javascript %}
