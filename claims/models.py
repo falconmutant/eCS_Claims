@@ -83,7 +83,7 @@ class Evento(models.Model):
    fechaAdm = models.DateTimeField()
    fechaAlta = models.DateTimeField()
    cedula = models.CharField(max_length=50)
-   medico = models.CharField(max_length=255)
+   nommedico = models.CharField(max_length=255)
    tipo = models.CharField(choices=EVENT_TIPO, max_length=1)
    estatus = models.CharField(choices= EVENT_ESTATUS, max_length=1)
    proveedor = models.ForeignKey(Proveedor)
