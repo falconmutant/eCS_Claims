@@ -202,7 +202,7 @@ class EventosView(ProveedorView):
             cargos = cargosSerial.save()
             if cargos:
                 for k, v in cargosDxDic.iteritems():
-                    cargosRel = Cargos.objects.get(evento_id=evento.id,secuencia=k)
+                    cargosRel = Cargo.objects.get(evento_id=evento.id,secuencia=k)
                     for cargosDx in v:
                          cargosDx['cargo'] = cargosRel.id
                          dxRel = Dx.objects.get(evento_id=evento.id,secuencia=cargosDx['dxRel'])
