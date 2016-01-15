@@ -166,9 +166,10 @@ class EventosView(ProveedorView):
             for dx in dxData:
                 dx['evento'] = evento.id
                 dx['sistema'] = dxs.get('sistema')
-                medicoRel = Medico.objects.get(evento_id=evento.id,secuencia=dx['medicoRel'])
-                if medicoRel:
-                    dx['medico'] = medicoRel.id
+                if dx['medicoRel']:
+                   medicoRel = Medico.objects.get(evento_id=evento.id,secuencia=dx['medicoRel'])
+                   if medicoRel:
+                      dx['medico'] = medicoRel.id
             dxSerial = DxSerializer(data=dxData, many=True)
 
             if not dxSerial.is_valid():
