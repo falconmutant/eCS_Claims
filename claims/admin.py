@@ -8,6 +8,6 @@ admin.site.register(Evento)
 admin.site.register(Dx)
 admin.site.register(Cargo)
 admin.site.register(Medico)
-admin.site.register(Procedimientos)
+admin.site.register(Procedimiento)
 admin.site.register(Motivos)
 
