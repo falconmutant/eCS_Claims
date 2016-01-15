@@ -22,9 +22,9 @@ class MedicoSerializer(serializers.ModelSerializer):
         model = Medico
         exclude = ()
 
-class ProcedimientosSerializer(serializers.ModelSerializer):
+class ProcedimientoSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Procedimientos
+        model = Procedimiento
         exclude = ()
 
 class DxSerializer(serializers.ModelSerializer):
@@ -32,7 +32,7 @@ class DxSerializer(serializers.ModelSerializer):
         model = Dx
         exclude = ()
 
-class CargosSerializer(serializers.ModelSerializer):
+class CargoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cargos 
         exclude = ()
