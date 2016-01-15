@@ -146,7 +146,7 @@ class Cargo(models.Model):
 
 class CargosDx(models.Model):
    dx = models.ForeignKey(Dx)
-   cargo = models.ForeignKey(Cargos)
+   cargo = models.ForeignKey(Cargo)
 
 class Autorizacion(models.Model):
    Estatus = models.CharField(choices= AUTH_ESTATUS, max_length=255, null=False)
