@@ -34,7 +34,7 @@ class DxSerializer(serializers.ModelSerializer):
 
 class CargoSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Cargos 
+        model = Cargo
         exclude = ()
 
 class CargosDxSerializer(serializers.ModelSerializer):
