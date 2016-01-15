@@ -103,6 +103,7 @@ class Medico(models.Model):
    nombre = models.CharField(max_length=255)
    especialidad = models.CharField(max_length=255)
    cedula = models.CharField(max_length=255)
+   evento = models.ForeignKey(Evento)
 
 class Procedimiento(models.Model):
    secuencia = models.PositiveSmallIntegerField()
