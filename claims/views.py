@@ -166,7 +166,7 @@ class EventosView(ProveedorView):
             for dx in dxData:
                 dx['evento'] = evento.id
                 dx['sistema'] = dxs.get('sistema')
-                if dx['medicoRel']:
+                if dx.get('medicoRel'):
                    medicoRel = Medico.objects.get(evento_id=evento.id,secuencia=dx['medicoRel'])
                    if medicoRel:
                       dx['medico'] = medicoRel.id
