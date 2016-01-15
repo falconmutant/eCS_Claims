@@ -52,7 +52,7 @@
   <div class="row">
       <div class="12u">
         <section class="box">
-          <a class="a-details" id="modal2"><img src="{{ settings.APP_URL }}images/icon-medical.png"></a>
+          <a class="a-details" id="modal2"><img src="{% static "images/icon-medical.png" %}"></a>
           <a style="margin-left:50px !important;" class="a-details" href="/claims/"><i class="fa fa-long-arrow-left"></i></a>
           <a style="margin-left:50px !important;" class="a-details" id="modal"><i class="fa fa-check-square-o"></i></a>
           <ul class="nav nav-tabs">
@@ -94,11 +94,7 @@
                   <label class="col-md-1 control-label">Paciente</label>
                   <div class="col-xs-4">
                     <div class="input-icon">
-                      {% for pa in paciente %}
-                        {% if pa.evento_id == detalle.id %}
-                          <input class="input-error form-control" type="text" value="{{pa.nombre}}" disabled>
-                        {% endif %}
-                      {% endfor %}
+                      <input class="input-error form-control" type="text" value="{{paciente.nombre}}" disabled>
                     </div>
                   </div>
                   
@@ -359,7 +355,7 @@
         <form action="" class="form-horizontal" method="POST">{% csrf_token %}
         <div class="modal-body">
           <center>
-            <object style="width:1000px;height:500px;" data="https://www.governmentjobs.com/jobs?keyword=Medical%20Billing%20%26%20Coding"></object>
+            <object style="width:1000px;height:500px;" data="https://www.ecs.mx/CumulusWeb/external.zul?token=8fc0f9f91855794dfc69cf3c3fdb23ed705efb61&curp={{paciente.id}}"></object>
           </center>
           
         </div>
