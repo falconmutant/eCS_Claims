@@ -17,6 +17,15 @@ class PacienteSerializer(serializers.ModelSerializer):
         model = Paciente
         exclude = ()
 
+class MedicoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Medico
+        exclude = ()
+
+class ProcedimientosSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Procedimientos
+        exclude = ()
 
 class DxSerializer(serializers.ModelSerializer):
     class Meta:

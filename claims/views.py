@@ -93,6 +93,8 @@ class EventosView(ProveedorView):
         eventoData = request_data.get('Cuenta')
         eventoData['proveedor'] = proveedor.id
         pacienteData = request_data.get('Paciente')
+        medicosData = request_data.pop('Medicos', [])
+        procData = request_data.pop('Procedimientos', [])
         dxs = request_data.get('listaDx')
         dxData = dxs.pop('dx', [])
         cargosData = request_data.pop('cargos', [])
@@ -117,15 +119,56 @@ class EventosView(ProveedorView):
                 'msj': 'Error en los datos del paciente',
                 'errores': pacienteSerial.errors
             }
+            evento.delete
             return Response(response, status=status.HTTP_200_OK)
 
         paciente = pacienteSerial.save()
         
+        if medicosData:
+            for medico in medicosData:
+                medico['evento'] = evento.id
+            medicoSerial = MedicoSerializer(data=medicosData, many=True)
+
+            if not medicoSerial.is_valid():
+                response = {
+                    'msj': 'Error en medicos',
+                    'errores': medicoSerial.errors
+                }
+                evento.delete()
+                paciente.delete()
+                return Response(response, status=status.HTTP_200_OK)
+
+            diag = dxSerial.save()
+
+        # Procediemientos
+        if procData:
+            for proc in procData:
+                proc['evento'] = evento.id
+                medicoRel = Medico.objects.get(evento_id=evento.id,secuencia=proc['medicoRel'])
+                proc['medico'] = medicoRel.id
+            procSerial = ProcedimientoSerializer(data=procData, many=True)
+
+            if not procSerial.is_valid():
+                response = {
+                    'msj': 'Error en procedimientos',
+                    'errores': procSerial.errors
+                }
+                
+                evento.delete()
+                paciente.delete()
+
+                return Response(response, status=status.HTTP_200_OK)
+
+            diag = dxSerial.save()
+    
         # DX
         if dxData:
             for dx in dxData:
                 dx['evento'] = evento.id
                 dx['sistema'] = dxs.get('sistema')
+                medicoRel = Medico.objects.get(evento_id=evento.id,secuencia=dx['medicoRel'])
+                if medicoRel:
+                    dx['medico'] = medicoRel.id
             dxSerial = DxSerializer(data=dxData, many=True)
 
             if not dxSerial.is_valid():
@@ -145,7 +188,7 @@ class EventosView(ProveedorView):
                 cargos['evento'] = evento.id
                 cargosDxDic[cargos['secuencia']] = cargos.get('cargosDx')
 
-            cargosSerial = CargosSerializer(data=cargosData, many=True)
+            cargosSerial = CargoSerializer(data=cargosData, many=True)
 
             if not cargosSerial.is_valid():
                 response = {
