@@ -41,6 +41,20 @@ Enviar un reclamo desde las aplicaciones autorizadas a la plataforma
 <tr><td> numEmpresa </td><td> String </td><td> Numero de empresa del empleado [PEMEX] </td></tr>
 <tr><td> folioVigencia </td><td> String </td><td> Folio de consulta de vigencia de derechos [PEMEX]  </td></tr>
 <tr><td> nombre </td><td> String </td><td> Nombre  del empleado [PEMEX] </td></tr>
+<tr><td colspan="3"> Medicos [LISTA .. N] </td></tr>
+<tr><td> secuencia </td><td> Int </td><td> Secuencia del medico</td></tr>
+<tr><td> tipo </td><td> String </td><td> Tipo del medico [Lista Referencia @Cirrus]</td></tr>
+<tr><td> nombre </td><td> String </td><td> Nombre completo del medico</td></tr>
+<tr><td> especialidad </td><td> String </td><td> Especialidad del medico</td></tr>
+<tr><td> cedula </td><td> String </td><td> Cedula del medico</td></tr>
+<tr><td colspan="3"> Procedimientos [LISTA .. N] </td></tr>
+<tr><td> secuencia </td><td> Int </td><td> Secuencia del procedimiento</td></tr>
+<tr><td> sistema </td><td> String </td><td> Sistema de codificacion utilizado</td></tr>
+<tr><td> codigo </td><td> String </td><td> Codigo del procedimiento</td></tr>
+<tr><td> nombre </td><td> String </td><td> Nombre del procedimiento</td></tr>
+<tr><td> fecha </td><td> String, formato “yyyy-mm-ddTHH:MM:SSZ” </td><td> Fecha de realizacion del procedimiento </td></tr>
+<tr><td> observaciones </td><td> String </td><td> Observaciones</td></tr>
+<tr><td> medicoRel </td><td> Int </td><td> Secuencia del medico que realizo procedimiento</td></tr>
 <tr><td colspan="3"> listaDx </td></tr>
 <tr><td> sistema </td><td> String </td><td> Sistema de codificacion utilizado (CIE-9, CIE10, etc)</td></tr>
 <tr><td colspan="3"> dx [LISTA .. N] </td></tr>
@@ -48,6 +62,10 @@ Enviar un reclamo desde las aplicaciones autorizadas a la plataforma
 <tr><td> codigo </td><td> String </td><td> Codigo del diagnostico</td></tr>
 <tr><td> nombre </td><td> String </td><td> Nombre/Descripcion del diagnostico</td></tr>
 <tr><td> estatus </td><td> String, “A”, “I”, “R”</td><td>Estatus del diagnostico: <b>A</b>ctivo, <b>I</b>nactivo <b>R</b>esuelto </td></tr>
+<tr><td> admision </td><td> String, “Y”, “N”</td><td>Diagnostico presente al admitir: <b>Y</b> SI, <b>N</b> No</td></tr>
+<tr><td> fecha </td><td> String, formato “yyyy-mm-ddTHH:MM:SSZ” </td><td> Fecha de registro del diagnostico</td></tr>
+<tr><td> observaciones </td><td> String </td><td> Observaciones</td></tr>
+<tr><td> medicoRel </td><td> Int </td><td> Secuencia del medico que registro diagnostico</td></tr>
 <tr><td colspan="3"> cargos </td></tr>
 <tr><td> secuencia </td><td> String </td><td> Consecutivo del cargo</td></tr>
 <tr><td> fechaApli </td><td> String, formato “yyyy-mm-dd”  </td><td> Fecha de aplicacion del cargo</td></tr>
@@ -96,6 +114,77 @@ JSON Ejemplo
     "medico": "LUIS ANTONIO TORRES  FACUNDO",
     "tipo": "H"
   },
+  "Medicos": [
+    {
+      "secuencia": "0",
+      "tipo": "AP",
+      "nombre": "LUIS ANTONIO TORRES  FACUNDO",
+      "especialidad": "Urgenciologo", 
+      "cedula": "684097"
+    },
+    {
+      "secuencia": "1",
+      "tipo": "PP",
+      "nombre": "LUIS FACUNDO",
+      "especialidad": "CIRUJANO GENERAL", 
+      "cedula": "684080"
+    }
+  ],
+  "Procedimientos": [
+    {
+      "secuencia": "0",
+      "sistema": "CIE9",
+      "codigo": "XXXX",
+      "nombre": "LAPARASCOPIA", 
+      "fecha": "2016-01-06T13:37:56",
+      "observaciones": "PROCIDIMIENTO INICIAL",
+      "medicoRel": 1
+    },
+    {
+      "secuencia": "1",
+      "sistema": "CIE9",
+      "codigo": "YYYY",
+      "nombre": "CIRUGIA CORAZON", 
+      "fecha": "2016-01-06T13:37:56",
+      "observaciones": "PROCIDIMIENTO OTRO",
+      "medicoRel": 0
+    }
+  ],
+  "listaDx": {
+    "sistema": "CIE-10",
+    "dx": [
+      {
+        "secuencia": "0",
+        "codigo": "X146",
+        "nombre": "CONTACTO CON AIRE Y GASES CALIENTES",
+        "estatus": "A",
+        "admision": "Y",
+        "fecha": "2016-01-06T13:37:56",
+        "observaciones": "EJEMPLO",
+        "medicoRel": 0
+      },
+      {
+        "secuencia": "1",
+        "codigo": "X147",
+        "nombre": "CONTACTO CON AIRE",
+        "estatus": "A",
+        "admision": "N",
+        "fecha": "2016-01-06T13:37:56",
+        "observaciones": "EJEMPLO2",
+        "medicoRel": 1
+      },
+      {
+        "secuencia": "2",
+        "codigo": "X147",
+        "nombre": "CONTACTO CON GASES CALIENTES",
+        "estatus": "R",
+        "admision": "N",
+        "fecha": "2016-01-06T13:37:56",
+        "observaciones": "EJEMPLO3",
+        "medicoRel": 0
+      }
+    ]
+  },
   "cargos": [
     {
       "secuencia": "0",
@@ -118,18 +207,7 @@ JSON Ejemplo
       "sistemaCodigo": "N/A",
       "cantidad": 1
     }
-  ],
-  "listaDx": {
-    "sistema": "CIE-10",
-    "dx": [
-      {
-        "secuencia": "0",
-        "codigo": "X146",
-        "nombre": "CONTACTO CON AIRE Y GASES CALIENTES, AREA INDUSTRIAL Y DE LA CONSTRUCCION",
-        "estatus": "A"
-      }
-    ]
-  }
+  ]
 }
 ```
 
