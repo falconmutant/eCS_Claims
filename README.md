@@ -11,7 +11,7 @@ Aplicacion eCS Claims
 
 - Clonar el repositorio
 ```sh
-$ git clone -v binding git@github.com:falconmutant/eCS_Claims.git [NombreDirectorio]
+$ git clone -b binding git@github.com:falconmutant/eCS_Claims.git [NombreDirectorio]
 ```
 - Crear un entorno virtual con virtualenv
 ```sh
