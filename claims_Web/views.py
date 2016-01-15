@@ -57,7 +57,7 @@ def detalle(request, id):
 	nombre_user = request.user.get_full_name()
 	dx = Dx.objects.all()
 	detalle = get_object_or_404(Evento, id=id)
-	paciente = Paciente.objects.all()
+	paciente = Paciente.objects.all(evento=detalle)
 	cargo = Cargos.objects.all()
 	proveedor = Proveedor.objects.all()
 	motivo = Motivos.objects.all()
