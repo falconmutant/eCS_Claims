@@ -50,11 +50,11 @@ def detalle(request, id):
 		nombre_user = request.user.get_full_name()
 		tipouser = get_object_or_404(TipoUsuario,usuario_id=request.user.id)
 		if tipouser == 'M':
-			autorizacion = Autorizacion.objects.all().filter(Estatus='R',Estatus='E',TipoAprobacion='1')
+			autorizacion = Autorizacion.objects.filter(Estatus='R',TipoAprobacion='1').filter(Estatus='E')
 		if tipouser == 'P':
-			autorizacion = Autorizacion.objects.all().filter(Estatus='A',Estatus='P',TipoAprobacion='1')
+			autorizacion = Autorizacion.objects.filter(Estatus='A',TipoAprobacion='1').filter(Estatus='P')
 		if tipouser == 'E':
-			autorizacion = Autorizacion.objects.all().filter(Estatus='R',Estatus='A',Estatus='E',Estatus='P',TipoAprobacion='1')	
+			autorizacion = Autorizacion.objects.filter(Estatus='R',TipoAprobacion='1').filter(Estatus='A').filter(Estatus='E').filter(Estatus='P')
 		evento = Evento.objects.all()
 		paciente = Paciente.objects.all()
 		proveedor = Proveedor.objects.all()
