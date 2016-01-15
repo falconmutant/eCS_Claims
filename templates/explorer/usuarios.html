@@ -122,11 +122,10 @@
     function permisos(value,value2) {
         console.log("create post is working!") // sanity check
         $.ajax({
-            url : "/cargar_permisos/", // the endpoint
-            type : "POST", // http method
+            url : "/permisos/", // the endpoint
+            type : "GET", // http method
             data : { u : value2,
                      r : value,
-                     user : '0',
                      csrfmiddlewaretoken : csrftoken
                     }, // data sent with the post request
 
