@@ -96,7 +96,7 @@ class Medico(models.Model):
    especialidad = models.CharField(max_length=255)
    cedula = models.CharField(max_length=255)
 
-class Procedimientos(models.Model):
+class Procedimiento(models.Model):
    secuencia = models.PositiveSmallIntegerField()
    sistema = models.CharField(max_length=255)
    codigo = models.CharField(max_length=255)
@@ -119,7 +119,7 @@ class Dx(models.Model):
    medico = models.ForeignKey(Medico,null=True)
    evento = models.ForeignKey(Evento)
 
-class Cargos(models.Model):
+class Cargo(models.Model):
    evento = models.ForeignKey(Evento)
    secuencia = models.PositiveSmallIntegerField()
    fechaApli = models.DateTimeField()
