@@ -91,8 +91,13 @@ def claims(request):
 		inicio = "%s-%s-%s"% (x.year, x.month, x.day)
 		fin = "%s-%s-%s"% (x.year, x.month, x.day)
 	nombre_user = request.user.get_full_name()
-
-	autorizacion = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='1')
+	tipouser = get_object_or_404(TipoUsuario,usuario_id=request.user.id)
+	if tipouser.tipo == 'M':
+		autorizacion = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='1').filter(Estatus='E')
+	if tipouser.tipo == 'P':
+		autorizacion = Autorizacion.objects.all().filter(Estatus='A',TipoAprobacion='1').filter(Estatus='P')
+	if tipouser.tipo == 'E':
+		autorizacion = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='1').filter(Estatus='A').filter(Estatus='E').filter(Estatus='P')
 	evento = Evento.objects.all()
 	paciente = Paciente.objects.all()
 	proveedor = Proveedor.objects.all()
