@@ -55,6 +55,8 @@ AUTH_ESTATUS =(
 ('E', 'En Revision'),
 )
 
+
+
 class Motivos(models.Model):
    motivo = models.CharField(max_length=255, null=False)
 
