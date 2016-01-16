@@ -31,7 +31,7 @@ MEDICO_TIPO = (
 )
 
 DX_ADM = (
-('S', 'Si'),
+('Y', 'Si'),
 ('N', 'No'),
 )
 
