@@ -52,14 +52,14 @@ AUTH_ESTATUS =(
 ('X', 'Rechazado PEMEX'),
 ('Y', 'Aceptado MAC'),
 ('N', 'Rechazado MAC'),
-('E', 'En Revision'),
+('E', 'En Revisión MAC'),
+('P', 'En Revisión PEMEX')
 )
 
 TIPO_USER = (
 ('M','MAC'),
 ('P','PEMEX'),
 ('E','ECARESOFT'),
-('S','SUPERADMIN')
 )
 
 class Motivos(models.Model):
