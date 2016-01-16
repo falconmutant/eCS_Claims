@@ -52,7 +52,7 @@ Enviar un reclamo desde las aplicaciones autorizadas a la plataforma
 <tr><td> sistema </td><td> String </td><td> Sistema de codificacion utilizado</td></tr>
 <tr><td> codigo </td><td> String </td><td> Codigo del procedimiento</td></tr>
 <tr><td> nombre </td><td> String </td><td> Nombre del procedimiento</td></tr>
-<tr><td> fecha </td><td> String, formato “yyyy-mm-ddTHH:MM:SSZ” </td><td> Fecha de realizacion del procedimiento </td></tr>
+<tr><td> fecha </td><td> String, formato “yyyy-mm-dd” </td><td> Fecha de realizacion del procedimiento </td></tr>
 <tr><td> observaciones </td><td> String </td><td> Observaciones</td></tr>
 <tr><td> medicoRel </td><td> Int </td><td> Secuencia del medico que realizo procedimiento</td></tr>
 <tr><td colspan="3"> listaDx </td></tr>
@@ -136,7 +136,7 @@ JSON Ejemplo
       "sistema": "CIE9",
       "codigo": "XXXX",
       "nombre": "LAPARASCOPIA", 
-      "fecha": "2016-01-06T13:37:56",
+      "fecha": "2016-01-06",
       "observaciones": "PROCIDIMIENTO INICIAL",
       "medicoRel": 1
     },
@@ -145,7 +145,7 @@ JSON Ejemplo
       "sistema": "CIE9",
       "codigo": "YYYY",
       "nombre": "CIRUGIA CORAZON", 
-      "fecha": "2016-01-06T13:37:56",
+      "fecha": "2016-01-06",
       "observaciones": "PROCIDIMIENTO OTRO",
       "medicoRel": 0
     }
