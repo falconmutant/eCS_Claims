@@ -98,7 +98,7 @@ class EventosView(ProveedorView):
         dxs = request_data.get('listaDx')
         dxData = dxs.pop('dx', [])
         cargosData = request_data.pop('cargos', [])
-        eventoData['nommedico']=eventoData['nommedico']
+        eventoData['nommedico']=eventoData['medico']
         eventoSerial = EventoSerializer(data=eventoData)
         errors = {}
         
