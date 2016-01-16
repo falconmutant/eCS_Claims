@@ -54,7 +54,7 @@ Enviar un reclamo desde las aplicaciones autorizadas a la plataforma
 <tr><td> nombre </td><td> String </td><td> Nombre del procedimiento</td></tr>
 <tr><td> fecha </td><td> String, formato “yyyy-mm-dd” </td><td> Fecha de realizacion del procedimiento </td></tr>
 <tr><td> observaciones </td><td> String </td><td> Observaciones</td></tr>
-<tr><td> medicoRel </td><td> Int </td><td> Secuencia del medico que realizo procedimiento</td></tr>
+<tr><td> medicoRel </td><td> String </td><td> Secuencia del medico que realizo procedimiento</td></tr>
 <tr><td colspan="3"> listaDx </td></tr>
 <tr><td> sistema </td><td> String </td><td> Sistema de codificacion utilizado (CIE-9, CIE10, etc)</td></tr>
 <tr><td colspan="3"> dx [LISTA .. N] </td></tr>
@@ -65,7 +65,7 @@ Enviar un reclamo desde las aplicaciones autorizadas a la plataforma
 <tr><td> admision </td><td> String, “Y”, “N”</td><td>Diagnostico presente al admitir: <b>Y</b> SI, <b>N</b> No</td></tr>
 <tr><td> fecha </td><td> String, formato “yyyy-mm-ddTHH:MM:SSZ” </td><td> Fecha de registro del diagnostico</td></tr>
 <tr><td> observaciones </td><td> String </td><td> Observaciones</td></tr>
-<tr><td> medicoRel </td><td> Int </td><td> Secuencia del medico que registro diagnostico</td></tr>
+<tr><td> medicoRel </td><td> String </td><td> Secuencia del medico que registro diagnostico</td></tr>
 <tr><td colspan="3"> cargos </td></tr>
 <tr><td> secuencia </td><td> String </td><td> Consecutivo del cargo</td></tr>
 <tr><td> fechaApli </td><td> String, formato “yyyy-mm-dd”  </td><td> Fecha de aplicacion del cargo</td></tr>
@@ -138,7 +138,7 @@ JSON Ejemplo
       "nombre": "LAPARASCOPIA", 
       "fecha": "2016-01-06",
       "observaciones": "PROCIDIMIENTO INICIAL",
-      "medicoRel": 1
+      "medicoRel": "1"
     },
     {
       "secuencia": "1",
@@ -147,7 +147,7 @@ JSON Ejemplo
       "nombre": "CIRUGIA CORAZON", 
       "fecha": "2016-01-06",
       "observaciones": "PROCIDIMIENTO OTRO",
-      "medicoRel": 0
+      "medicoRel": "0"
     }
   ],
   "listaDx": {
@@ -159,9 +159,9 @@ JSON Ejemplo
         "nombre": "CONTACTO CON AIRE Y GASES CALIENTES",
         "estatus": "A",
         "admision": "Y",
-        "fecha": "2016-01-06T13:37:56",
+        "fecha": "2016-01-06",
         "observaciones": "EJEMPLO",
-        "medicoRel": 0
+        "medicoRel": "0"
       },
       {
         "secuencia": "1",
@@ -169,9 +169,9 @@ JSON Ejemplo
         "nombre": "CONTACTO CON AIRE",
         "estatus": "A",
         "admision": "N",
-        "fecha": "2016-01-06T13:37:56",
+        "fecha": "2016-01-06",
         "observaciones": "EJEMPLO2",
-        "medicoRel": 1
+        "medicoRel": "1"
       },
       {
         "secuencia": "2",
@@ -179,9 +179,9 @@ JSON Ejemplo
         "nombre": "CONTACTO CON GASES CALIENTES",
         "estatus": "R",
         "admision": "N",
-        "fecha": "2016-01-06T13:37:56",
+        "fecha": "2016-01-06",
         "observaciones": "EJEMPLO3",
-        "medicoRel": 0
+        "medicoRel": "0"
       }
     ]
   },
