@@ -52,7 +52,7 @@ def detalle(request, id):
 		userid = User.objects.get(username=request.user.get_username())
 		tipouser = get_object_or_404(TipoUsuario,usuario_id=userid.id)
 		if tipouser.tipo == 'M':
-		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R'],TipoAprobacion='1')
+			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R'],TipoAprobacion='1')
 		if tipouser.tipo == 'P':
 			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['A','P'],TipoAprobacion='1')
 		if tipouser.tipo == 'E':
