@@ -52,8 +52,8 @@ AUTH_ESTATUS =(
 ('X', 'Rechazado PEMEX'),
 ('Y', 'Aceptado MAC'),
 ('N', 'Rechazado MAC'),
-('E', 'En Revisión MAC'),
-('P', 'En Revisión PEMEX'),
+('E', 'En Revision MAC'),
+('P', 'En Revision PEMEX'),
 )
 
 TIPO_USER = (
