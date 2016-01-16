@@ -144,8 +144,10 @@ class EventosView(ProveedorView):
         if procData:
             for proc in procData:
                 proc['evento'] = evento.id
-                medicoRel = Medico.objects.get(evento_id=evento.id,secuencia=proc['medicoRel'])
-                proc['medico'] = medicoRel.id
+                if proc.get('medicoRel'):
+                    medicoRel = Medico.objects.get(evento_id=evento.id,secuencia=proc['medicoRel'])
+                    if medicoRel:
+                        proc['medico'] = medicoRel.id
             procSerial = ProcedimientoSerializer(data=procData, many=True)
 
             if not procSerial.is_valid():
