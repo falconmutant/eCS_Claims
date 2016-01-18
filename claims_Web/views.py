@@ -83,7 +83,8 @@ def detalle_historial(request, id):
 	dx = Dx.objects.filter(evento_id=detalle.id)
 	cargo = Cargo.objects.filter(evento_id=detalle.id)
 	proveedor = get_object_or_404(Proveedor, id=detalle.proveedor_id)
-	motivo = Motivos.objects.all()
+	medico = Medico.objects.filter(evento_id=detalle.id)
+	procedimiento = Procedimiento.objects.filter(evento_id=detalle.id,medico_id__in=[doctor.id for doctor in medico])
 	return render_to_response('claims/historial_detalles.html',RequestContext(request,locals()))
 
 @login_required
