@@ -62,7 +62,6 @@ def detalle(request, id):
 		proveedor = Proveedor.objects.filter(id__in=[event.proveedor_id for event in evento])
 		cargo = Cargo.objects.filter(evento_id__in=[event.id for event in evento])
 		dx = Dx.objects.filter(evento_id__in=[event.id for event in evento])
-		medico = Medico.objects.filter(evento_id__in=[event.id for event in evento])
 		return render_to_response('claims/claims.html',RequestContext(request,locals()))
 
 	nombre_user = request.user.get_full_name()
@@ -71,6 +70,8 @@ def detalle(request, id):
 	dx = Dx.objects.filter(evento_id=detalle.id)
 	cargo = Cargo.objects.filter(evento_id=detalle.id)
 	proveedor = get_object_or_404(Proveedor, id=detalle.proveedor_id)
+	medico = Medico.objects.filter(evento_id=detalle.id)
+	procedimiento = Procedimiento.objects.filter(evento_id=detalle.id,medico_id__in=[doctor.id for doctor in medico])
 	motivo = Motivos.objects.all()
 	return render_to_response('claims/detalles.html',RequestContext(request,locals()))
 

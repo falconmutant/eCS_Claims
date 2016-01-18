@@ -71,22 +71,14 @@
                   <label class="col-md-1 control-label">Proveedor</label>
                   <div class="col-xs-4">
                     <div class="input-icon">
-                      {% for pro in proveedor %}
-                        {% if pro.id == detalle.proveedor_id %}
-                          <input class="input-error form-control" type="text" value="{{pro.hospital}}" disabled>
-                        {% endif %}
-                      {% endfor %}
+                      <input class="input-error form-control" type="text" value="{{proveedor.hospital}}" disabled>
                     </div>
                   </div>
                   
                   <label class="col-md-1 control-label">Localidad</label>
                   <div class="col-xs-4">
                     <div class="input-icon">
-                      {% for pro in proveedor %}
-                        {% if pro.id == detalle.proveedor_id %}
-                          <input class="input-error form-control" type="text" value="{{pro.localidad}}" disabled>
-                        {% endif %}
-                      {% endfor %}
+                      <input class="input-error form-control" type="text" value="{{proveedor.localidad}}" disabled>
                     </div>
                   </div>
                 </div>
@@ -168,13 +160,11 @@
                   </thead>
                   <tbody id="tb">
                     {% for dato in medico %}
-                      {% if detalle.id == dato.evento_id %}
-                            <tr>
-                              <td>{{dato.tipo}}</td>
-                              <td>{{dato.nombre}}</td>
-                              <td>{{dato.especialidad}}</td>
-                            </tr>
-                      {% endif %}
+                      <tr>
+                        <td>{{dato.tipo}}</td>
+                        <td>{{dato.nombre}}</td>
+                        <td>{{dato.especialidad}}</td>
+                      </tr>
                     {% endfor %}
                   </tbody>
                 </table>
@@ -193,15 +183,13 @@
                 </thead>
                 <tbody id="tb">
                   {% for dato in dx %}
-                    {% if detalle.id == dato.evento_id %}
-                      <tr>
-                        <td>{{dato.fecha}}</td>
-                        <td>{{dato.codigo}}</td>
-                        <td>{{dato.nombre}}</td>
-                        <td>{% for me in medico %}{% if me.evento_id == detalle.id %}{{me.nombre}}{% endif %}{% endfor %}</td>
-                        <td>{{dato.observaciones}}</td>
-                      </tr>
-                    {% endif %}
+                    <tr>
+                      <td>{{dato.fecha}}</td>
+                      <td>{{dato.codigo}}</td>
+                      <td>{{dato.nombre}}</td>
+                      <td>{% for me in medico %}{% if me.evento_id == detalle.id %}{{me.nombre}}{% endif %}{% endfor %}</td>
+                      <td>{{dato.observaciones}}</td>
+                    </tr>
                   {% endfor %}
                 </tbody>
               </table>
@@ -221,15 +209,13 @@
                   </thead>
                   <tbody id="tb">
                     {% for dato in procedimiento %}
-                      {% if detalle.id == dato.evento_id %}
-                        <tr>
-                          <td>{{dato.fecha}}</td>
-                          <td>{{dato.codigo}}</td>
-                          <td>{{dato.nombre}}</td>
-                          <td>{{dato.medico}}</td>
-                          <td>{{dato.observaciones}}</td>
-                        </tr>
-                      {% endif %}
+                      <tr>
+                        <td>{{dato.fecha}}</td>
+                        <td>{{dato.codigo}}</td>
+                        <td>{{dato.nombre}}</td>
+                        <td>{{dato.medico}}</td>
+                        <td>{{dato.observaciones}}</td>
+                      </tr>
                     {% endfor %}
                   </tbody>
                 </table>
@@ -253,18 +239,16 @@
             <tbody id="tb">
 
               {% for dato in cargo %}
-                {% if detalle.id == dato.evento_id %}
-                  <tr>
-                    <td>{{dato.codigo}}</td>
-                    <td>{{dato.descripcion}}</td>
-                    <td>{{dato.udm}}</td>
-                    <td>{{dato.cantidad}}</td>
-                    <td>{{dato.precio}}</td>
-                    <td>{{dato.descuento}}</td>
-                    <td>{{dato.subtotal}}</td>
-                    <td>{{dato.iva}}</td>
-                  </tr>
-                {% endif %}
+                <tr>
+                  <td>{{dato.codigo}}</td>
+                  <td>{{dato.descripcion}}</td>
+                  <td>{{dato.udm}}</td>
+                  <td>{{dato.cantidad}}</td>
+                  <td>{{dato.precio}}</td>
+                  <td>{{dato.descuento}}</td>
+                  <td>{{dato.subtotal}}</td>
+                  <td>{{dato.iva}}</td>
+                </tr>
               {% endfor %}
             </tbody>
           </table>
