@@ -212,7 +212,11 @@
                         <td>{{dato.fecha}}</td>
                         <td>{{dato.codigo}}</td>
                         <td>{{dato.nombre}}</td>
-                        <td>{{dato.medico}}</td>
+                        {% for doctor in medico %}
+                          {% if doctor.id == dato.medico %}
+                            <td>{{doctor.nombre}}</td>
+                          {% endif %}
+                        {% endfor %}
                         <td>{{dato.observaciones}}</td>
                       </tr>
                     {% endfor %}
