@@ -54,7 +54,9 @@
         <section class="box">
           <a class="a-details" id="modal2"><img style="width:30px;" src="{% static "images/icon-medical.png" %}"></a>
           <a style="margin-left:50px !important;" class="a-details" href="/claims/"><i class="fa fa-long-arrow-left"></i></a>
-          <a style="margin-left:50px !important;" class="a-details" id="modal"><i class="fa fa-check-square-o"></i></a>
+          {% if tipouser.tipo != 'E' %}
+            <a style="margin-left:50px !important;" class="a-details" id="modal"><i class="fa fa-check-square-o"></i></a>
+          {% endif %}
           <ul class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#general">General</a></li>
             <li><a data-toggle="tab" href="#evento">Evento</a></li>
