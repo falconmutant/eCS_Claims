@@ -125,7 +125,7 @@ def invoices(request):
 
 	if request.POST:
 		if tipouser.tipo == 'M':
-		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R'],TipoAprobacion='2',FechaSolicitud__range=[request.POST.get("inicio"), request.POST.get("fin")])
+			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R'],TipoAprobacion='2',FechaSolicitud__range=[request.POST.get("inicio"), request.POST.get("fin")])
 		if tipouser.tipo == 'P':
 			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['A','P'],TipoAprobacion='2',FechaSolicitud__range=[request.POST.get("inicio"), request.POST.get("fin")])
 		if tipouser.tipo == 'E':
@@ -156,5 +156,5 @@ def historial(request):
 
 	comprobante = Comprobante.objects.filter(id__in=[auth.comprobante_id for auth in autorizacion])
 	cliente = Emisor.objects.filter(id__in=[invoice.emisor_id for invoice in comprobante])
-	
+
     	return render_to_response('invoices/historial.html',RequestContext(request,locals()))
