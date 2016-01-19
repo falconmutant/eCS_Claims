@@ -110,14 +110,12 @@
             </thead>
             <tbody>
               {% for co in conceptos %}
-                {% if co.comprobante_id == detalle.id %}
-                      <tr>
-                        <td>{{co.cantidad}}</td>
-                        <td>{{co.unidad}}</td>
-                        <td>{{co.descripcion}}</td>
-                        <td>{{co.importe}}</td>
-                      </tr>
-                {% endif %}
+                <tr>
+                  <td>{{co.cantidad}}</td>
+                  <td>{{co.unidad}}</td>
+                  <td>{{co.descripcion}}</td>
+                  <td>{{co.importe}}</td>
+                </tr>
               {% endfor %}
             </tbody>
           </table>
@@ -139,16 +137,16 @@
               {% for x in CE %}
                 {% for eve in event %}
                   {% if eve.id == x.evento %}
-                      <tr>
-                        <td>{{eve.numEvento}}</td>
-                        <td>{{eve.folioAut}}</td>
-                        {% for pa in paciente %}
-                          {% if pa.evento_id == eve.id %}
-                            <td>{{pa.nombre}}</td>
-                          {% endif %}
-                        {% endfor %}
-                        <td>{{eve.total}}</td>
-                      </tr>
+                    <tr>
+                      <td>{{eve.numEvento}}</td>
+                      <td>{{eve.folioAut}}</td>
+                      {% for pa in paciente %}
+                        {% if pa.evento_id == eve.id %}
+                          <td>{{pa.nombre}}</td>
+                        {% endif %}
+                      {% endfor %}
+                      <td>{{eve.total}}</td>
+                    </tr>
                   {% endif %}
                 {% endfor %}
               {% endfor %}
@@ -373,29 +371,17 @@
                   </thead>
                   <tbody id="tb">
                     {% for dato in autorizacion %}
-                      {% for eve in evento %}
-                          {% if eve.id == dato.evento_id %}
+                          {% if evento.id == dato.evento_id %}
                             <tr>
-                              <td>{{eve.numEvento}}</td>
-                              <td>{{eve.folioAut}}</td>
+                              <td>{{evento.numEvento}}</td>
+                              <td>{{evento.folioAut}}</td>
                               {% for pa in paciente %}
-                                {% if pa.evento_id == eve.id %}
+                                {% if pa.evento_id == evento.id %}
                                   <td>{{pa.nombre}}</td>
                                 {% endif %}
                               {% endfor %}
-                              {% if eve.tipo == 'C' %}
-                                <td>Cita</td>
-                              {% endif %}
-                              {% if eve.tipo == 'A' %}
-                                <td>Ambulatorio</td>
-                              {% endif %}
-                              {% if eve.tipo == 'H' %}
-                                <td>Hospitalizacion</td>
-                              {% endif %}
-                              {% if eve.tipo == 'U' %}
-                                <td>Urgencia</td>
-                              {% endif %}
-                              <td>{{eve.total}}</td>
+                              <td>{{evento.get_tipo_display}}</td>
+                              <td>{{evento.total}}</td>
                               <td><input type="checkbox" onchange="create_post({{eve.id}},{{detalle.id}});" name="check"></td>
                             </tr>
                           {% endif %}
