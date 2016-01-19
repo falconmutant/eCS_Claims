@@ -6,6 +6,8 @@
 
 {% block css %}
   <link type="text/css" href="{% static "css/pnotify.css" %}" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/latest/css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
   <style type="text/css">
     #footer {
         padding: 4em 0 6em 0;
@@ -53,12 +55,7 @@
               <label class="col-md-3 control-label">Rango de Fechas</label>
               <div class="col-xs-4">
                 <div class="input-icon">
-                  <input name="inicio" id="inicio" class="input-error form-control" type="date" value="{{inicio}}" required>
-                </div>
-              </div>
-              <div class="col-xs-4">
-                <div class="input-icon">
-                  <input name="fin" id="fin" class="input-error form-control" type="date" value="{{fin}}" required>
+                  <input type="text" name="daterange" value="01/01/2015 - 01/31/2015" />
                 </div>
               </div>
           </div>
@@ -128,6 +125,14 @@
 {% endblock header %}
 {% block javascript %}
   <script type="text/javascript" src="{% static "js/pnotify.min.js" %}"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('input[name="daterange"]').daterangepicker();
+    });
+  </script>
   {% if bandera == 1 %}
     <script>
       $(document).ready(function(){
