@@ -78,8 +78,8 @@
           </thead>
           <tbody id="tb">
             {% for auth in autorizacion %}
-              {% for event in evento %}
-                <tr>
+              <tr>
+                {% for event in evento %}
                   {% if auth.evento_id == event.id %}
                     <td>{{auth.FechaSolicitud}}</td>
                     {% for pro in proveedor %}
@@ -101,8 +101,8 @@
                       </a>
                     </th>
                   {% endif %}
-                </tr>
               {% endfor %}  
+            </tr>
             {% endfor %}
           </tbody>
         </table>
