@@ -216,7 +216,7 @@
                         <td>{{dato.codigo}}</td>
                         <td>{{dato.nombre}}</td>
                         {% for doctor in medico %}
-                          {% if doctor.id == dato.medico %}
+                          {% if doctor.id == dato.medico_id %}
                             <td>{{doctor.nombre}}</td>
                           {% endif %}
                         {% endfor %}
