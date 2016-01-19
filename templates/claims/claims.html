@@ -77,32 +77,32 @@
             </tr>
           </thead>
           <tbody id="tb">
-            {% for dato in autorizacion %}
+            {% for auth in autorizacion %}
+              {% for event in evento %}
                 <tr>
-                  {% for item in evento %}
-                    {% if item.id == dato.evento_id %}
-                      <td>{{dato.FechaSolicitud}}</td>
-                      {% for pro in proveedor %}
-                        {% if pro.id == item.proveedor_id %}
-                          <td>{{pro.localidad}}</td>
-                          <td>{{pro.hospital}}</td>
-                        {% endif %}
-                      {% endfor %}                            
-                      {% for pa in paciente %}
-                        {% if pa.evento_id == item.id %}
-                          <td>{{pa.nombre}}</td>
-                        {% endif %}
-                      {% endfor %}
-                      <td>{{item.folioAut}}</td>
-                      <td>{{item.total}}</td>
-                      <th>
-                        <a style="margin-left:0 !important;" class="a-details" href="{{ settings.APP_URL }}/detalles/{{dato.evento_id}}/">
-                          <i class="fa fa-eye"></i>
-                        </a>
-                      </th>
-                    {% endif %}
-                  {% endfor %}
+                  {% if auth.evento_id == event.id %}
+                    <td>{{auth.FechaSolicitud}}</td>
+                    {% for pro in proveedor %}
+                      {% if pro.id == item.proveedor_id %}
+                        <td>{{pro.localidad}}</td>
+                        <td>{{pro.hospital}}</td>
+                      {% endif %}
+                    {% endfor %}                            
+                    {% for pa in paciente %}
+                      {% if pa.evento_id == item.id %}
+                        <td>{{pa.nombre}}</td>
+                      {% endif %}
+                    {% endfor %}
+                    <td>{{item.folioAut}}</td>
+                    <td>{{item.total}}</td>
+                    <th>
+                      <a style="margin-left:0 !important;" class="a-details" href="{{ settings.APP_URL }}/detalles/{{dato.evento_id}}/">
+                        <i class="fa fa-eye"></i>
+                      </a>
+                    </th>
+                  {% endif %}
                 </tr>
+              {% endfor %}  
             {% endfor %}
           </tbody>
         </table>

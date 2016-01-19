@@ -10,4 +10,4 @@ admin.site.register(Cargo)
 admin.site.register(Medico)
 admin.site.register(Procedimiento)
 admin.site.register(Motivos)
-
+admin.site.register(TipoUsuario)
