@@ -79,7 +79,7 @@ class TipoUsuario(models.Model):
    user = models.ForeignKey(User)
    tipo = models.CharField(choices=TIPO_USER,max_length=1)
    def __str__(self):
-      return "%s %s" % (self.user.username)
+      return "%s" % (self.user.username)
 
 class Evento(models.Model):
    folioAut = models.CharField(max_length=255)
