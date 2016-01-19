@@ -12,6 +12,8 @@ from django.db.models import Count
 def detalle(request, id):
 	idd=id
 	bandera=0
+	userid = User.objects.get(username=request.user.get_username())
+	tipouser = get_object_or_404(TipoUsuario,user_id=userid.id)
 	if request.POST:
 		estatus = request.POST.get('estatus')
 		descripcion = request.POST.get('descripcion')
@@ -44,9 +46,7 @@ def detalle(request, id):
 	
 	try:
 		nombre = request.user.get_full_name()
-		userid = User.objects.get(username=request.user.get_username())
-		tipouser = get_object_or_404(TipoUsuario,user_id=userid.id)
-
+		
 		detalle = get_object_or_404(Comprobante, id=id)
 		conceptos = Conceptos.objects.filter(comprobante_id=detalle.id)
 		emisor = get_object_or_404(Emisor, id=detalle.emisor_id)
