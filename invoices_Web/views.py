@@ -33,15 +33,25 @@ def detalle(request, id):
 	
 	try:
 		nombre = request.user.get_full_name()
+
 		detalle = get_object_or_404(Comprobante, id=id)
-		conceptos = Conceptos.objects.all()
+
+		conceptos = Conceptos.objects.filter(comprobante_id=detalle.id)
+
 		emisor = get_object_or_404(Emisor, id=detalle.emisor_id)
+
 		proveedor = get_object_or_404(Proveedor, rfc=emisor.rfc)
+
 		paciente =  Paciente.objects.all()
+
 		autorizacion = Autorizacion.objects.filter(Estatus="A",TipoAprobacion='1')
+
 		CE = ComprobanteEvento.objects.all().filter(comprobante=id)
+
 		evento = Evento.objects.filter(proveedor_id=proveedor.id).exclude(id__in=[evento.evento for evento in CE])
+
 		event = Evento.objects.filter(proveedor_id=proveedor.id)
+
 		return render_to_response('invoices/detalles.html',RequestContext(request,locals()))
 	except Exception, e:
 		return render_to_response('invoices/detalles.html',RequestContext(request,locals()))
@@ -88,12 +98,31 @@ def invoices(request):
 		inicio = "%s-%s-%s"% (x.year, x.month, x.day)
 		fin = "%s-%s-%s"% (x.year, x.month, x.day)
 
-	nombre = request.user.get_full_name()
-	autorizacion = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='2')
-	comprobante = Comprobante.objects.all()
-	cliente = Emisor.objects.all()
+	nombre_user = request.user.get_full_name()
+	userid = User.objects.get(username=request.user.get_username())
+	tipouser = get_object_or_404(TipoUsuario,user_id=userid.id)
+
+	if tipouser.tipo == 'M':
+		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R'],TipoAprobacion='2')
+	if tipouser.tipo == 'P':
+		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['A','P'],TipoAprobacion='2')
+	if tipouser.tipo == 'E':
+		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='2')
+	if tipouser.tipo == 'S':
+		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='2')
+
+	comprobante = Comprobante.objects.filter(id__in=[auth.comprobante_id for auth in autorizacion])
+	cliente = Emisor.objects.filter(id__in=[invoice.emisor_id for invoice in comprobante])
+
 	if request.POST:
-		autorizacion = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='2',FechaSolicitud__range=[request.POST.get("inicio"), request.POST.get("fin")])
+		if tipouser.tipo == 'M':
+		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R'],TipoAprobacion='2',FechaSolicitud__range=[request.POST.get("inicio"), request.POST.get("fin")])
+		if tipouser.tipo == 'P':
+			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['A','P'],TipoAprobacion='2',FechaSolicitud__range=[request.POST.get("inicio"), request.POST.get("fin")])
+		if tipouser.tipo == 'E':
+			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='2',FechaSolicitud__range=[request.POST.get("inicio"), request.POST.get("fin")])
+		if tipouser.tipo == 'S':
+			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='2',FechaSolicitud__range=[request.POST.get("inicio"), request.POST.get("fin")])
 		inicio = request.POST.get("inicio")
 		fin = request.POST.get("fin")
 
