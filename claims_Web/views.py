@@ -101,7 +101,30 @@ def claims(request):
 	nombre_user = request.user.get_full_name()
 	userid = User.objects.get(username=request.user.get_username())
 	tipouser = get_object_or_404(TipoUsuario,user_id=userid.id)
-	
+	if tipouser.tipo == 'M':
+		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R'],TipoAprobacion='1')
+	if tipouser.tipo == 'P':
+		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['A','P'],TipoAprobacion='1')
+	if tipouser.tipo == 'E':
+		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='1')
+	if tipouser.tipo == 'S':
+		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='1')
+	evento = Evento.objects.filter(id__in=[auth.evento_id for auth in autorizacion])
+	paciente = Paciente.objects.filter(evento_id__in=[event.id for event in evento])
+	proveedor = Proveedor.objects.filter(id__in=[event.proveedor_id for event in evento])
+	cargo = Cargo.objects.filter(evento_id__in=[event.id for event in evento])
+	if request.POST:
+		if tipouser.tipo == 'M':
+			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R'],TipoAprobacion='1',FechaSolicitud__range=[request.POST.get("inicio"), request.POST.get("fin")])
+		if tipouser.tipo == 'P':
+			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['A','P'],TipoAprobacion='1',FechaSolicitud__range=[request.POST.get("inicio"), request.POST.get("fin")])
+		if tipouser.tipo == 'E':
+			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='1',FechaSolicitud__range=[request.POST.get("inicio"), request.POST.get("fin")])
+		if tipouser.tipo == 'S':
+			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='1',FechaSolicitud__range=[request.POST.get("inicio"), request.POST.get("fin")])	
+		inicio = request.POST.get("inicio")
+		fin = request.POST.get("fin")
+
 	return render_to_response('claims/claims.html',RequestContext(request,locals()))
 
 @login_required
