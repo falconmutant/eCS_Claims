@@ -4,6 +4,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from invoices_Web.models import Comprobante
 import datetime
+from django.conf import settings
 
 # Create your models here.
 
@@ -74,7 +75,7 @@ class Proveedor(models.Model):
    localidad=models.CharField(max_length=255, null=False)
 
 class TipoUsuario(models.Model):
-   usuario_id = models.IntegerField()
+   user = models.ForeignKey(User)
    tipo = models.CharField(choices=TIPO_USER,max_length=1)
 
 class Evento(models.Model):
