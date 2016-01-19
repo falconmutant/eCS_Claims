@@ -22,11 +22,11 @@ def detalle(request, id):
 		bandera=1
 		x = datetime.datetime.now()
 		if x.month < 10:
-			inicio = "%s-0%s-%s"% (x.day, x.month, x.year)
-			fin = "%s-0%s-%s"% (x.day, x.month, x.year)
+			inicio = "%s-0%s-%s"% (x.year, x.month, x.day)
+			fin = "%s-0%s-%s"% (x.year, x.month, x.day)
 		else:
-			inicio = "%s-%s-%s"% (x.day, x.month, x.year)
-			fin = "%s-%s-%s"% (x.day, x.month, x.year)
+			inicio = "%s-%s-%s"% (x.year, x.month, x.day)
+			fin = "%s-%s-%s"% (x.year, x.month, x.day)
 
 		nombre_user = request.user.get_full_name()
 		userid = User.objects.get(username=request.user.get_username())
@@ -98,11 +98,11 @@ def invoices(request):
         global Autorizacion
 	x = datetime.datetime.now()
 	if x.month < 10:
-		inicio = "%s-0%s-%s"% (x.day, x.month, x.year)
-		fin = "%s-0%s-%s"% (x.day, x.month, x.year)
+		inicio = "%s-0%s-%s"% (x.year, x.month, x.day)
+		fin = "%s-0%s-%s"% (x.year, x.month, x.day)
 	else:
-		inicio = "%s-%s-%s"% (x.day, x.month, x.year)
-		fin = "%s-%s-%s"% (x.day, x.month, x.year)
+		inicio = "%s-%s-%s"% (x.year, x.month, x.day)
+		fin = "%s-%s-%s"% (x.year, x.month, x.day)
 
 	nombre_user = request.user.get_full_name()
 	userid = User.objects.get(username=request.user.get_username())
@@ -138,8 +138,8 @@ def invoices(request):
 def historial(request):
 	nombre = request.user.get_full_name()
 	x = datetime.datetime.now()
-	inicio = "%s-%s-%s"% (x.day, x.month, x.year)
-	fin = "%s-%s-%s"% (x.day, x.month, x.year)
+	inicio = "%s-%s-%s"% (x.year, x.month, x.day)
+	fin = "%s-%s-%s"% (x.year, x.month, x.day)
 	nombre = request.user.get_full_name()
 
 	if tipouser.tipo == 'M':
