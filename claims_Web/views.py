@@ -125,6 +125,7 @@ def claims(request):
 		inicio = request.POST.get("inicio")
 		fin = request.POST.get("fin")
     		return render_to_response('claims/claims.html',RequestContext(request,locals()))
+    	return render_to_response('claims/claims.html',RequestContext(request,locals()))
 
 
 @login_required
