@@ -57,6 +57,8 @@ def detalle(request, id):
 			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['A','P'],TipoAprobacion='1')
 		if tipouser.tipo == 'E':
 			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='1')
+		if tipouser.tipo == 'S':
+			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='1')
 		evento = Evento.objects.filter(id__in=[auth.evento_id for auth in autorizacion])
 		paciente = Paciente.objects.filter(evento_id__in=[event.id for event in evento])
 		proveedor = Proveedor.objects.filter(id__in=[event.proveedor_id for event in evento])
@@ -105,6 +107,8 @@ def claims(request):
 		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['A','P'],TipoAprobacion='1')
 	if tipouser.tipo == 'E':
 		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='1')
+	if tipouser.tipo == 'S':
+		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='1')
 	evento = Evento.objects.filter(id__in=[auth.evento_id for auth in autorizacion])
 	paciente = Paciente.objects.filter(evento_id__in=[event.id for event in evento])
 	proveedor = Proveedor.objects.filter(id__in=[event.proveedor_id for event in evento])
@@ -116,7 +120,8 @@ def claims(request):
 			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['A','P'],TipoAprobacion='1',FechaSolicitud__range=[request.POST.get("inicio"), request.POST.get("fin")])
 		if tipouser.tipo == 'E':
 			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='1',FechaSolicitud__range=[request.POST.get("inicio"), request.POST.get("fin")])
-
+		if tipouser.tipo == 'S':
+			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='1',FechaSolicitud__range=[request.POST.get("inicio"), request.POST.get("fin")])	
 		inicio = request.POST.get("inicio")
 		fin = request.POST.get("fin")
     	return render_to_response('claims/claims.html',RequestContext(request,locals()))
@@ -132,6 +137,8 @@ def historial(request):
 		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['X','Y','N'],TipoAprobacion='1')
 	if tipouser.tipo == 'E':
 		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['X','N','Y'],TipoAprobacion='1')
+	if tipouser.tipo == 'S':
+		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['A','X','Y','N','P'],TipoAprobacion='1')
 	evento = Evento.objects.filter(id__in=[auth.evento_id for auth in autorizacion])
 	paciente = Paciente.objects.filter(evento_id__in=[event.id for event in evento])
 	proveedor = Proveedor.objects.filter(id__in=[event.proveedor_id for event in evento])
