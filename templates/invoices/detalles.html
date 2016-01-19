@@ -371,21 +371,20 @@
                   </thead>
                   <tbody id="tb">
                     {% for dato in autorizacion %}
-                          {% if evento.id == dato.evento_id %}
-                            <tr>
-                              <td>{{evento.numEvento}}</td>
-                              <td>{{evento.folioAut}}</td>
-                              {% for pa in paciente %}
-                                {% if pa.evento_id == evento.id %}
-                                  <td>{{pa.nombre}}</td>
-                                {% endif %}
-                              {% endfor %}
-                              <td>{{evento.get_tipo_display}}</td>
-                              <td>{{evento.total}}</td>
-                              <td><input type="checkbox" onchange="create_post({{eve.id}},{{detalle.id}});" name="check"></td>
-                            </tr>
-                          {% endif %}
-                      {% endfor %}
+                      {% if evento.id == dato.evento_id %}
+                        <tr>
+                          <td>{{evento.numEvento}}</td>
+                          <td>{{evento.folioAut}}</td>
+                          {% for pa in paciente %}
+                            {% if pa.evento_id == evento.id %}
+                              <td>{{pa.nombre}}</td>
+                            {% endif %}
+                          {% endfor %}
+                          <td>{{evento.get_tipo_display}}</td>
+                          <td>{{evento.total}}</td>
+                          <td><input type="checkbox" onchange="create_post({{eve.id}},{{detalle.id}});" name="check"></td>
+                        </tr>
+                      {% endif %}
                     {% endfor %}
                   </tbody>
           </table>
