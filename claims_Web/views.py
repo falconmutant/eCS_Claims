@@ -44,11 +44,11 @@ def detalle(request, id):
 		bandera=1
 		x = datetime.datetime.now()
 		if x.month < 10:
-			inicio = "%s-0%s-%s"% (x.year, x.month, x.day)
-			fin = "%s-0%s-%s"% (x.year, x.month, x.day)
+			inicio = "%s-0%s-%s"% (x.day, x.month, x.year)
+			fin = "%s-0%s-%s"% (x.day, x.month, x.year)
 		else:
-			inicio = "%s-%s-%s"% (x.year, x.month, x.day)
-			fin = "%s-%s-%s"% (x.year, x.month, x.day)
+			inicio = "%s-%s-%s"% (x.day, x.month, x.year)
+			fin = "%s-%s-%s"% (x.day, x.month, x.year)
 		nombre_user = request.user.get_full_name()
 		
 		if tipouser.tipo == 'M':
@@ -93,11 +93,11 @@ def detalle_historial(request, id):
 def claims(request):
 	x = datetime.datetime.now()
 	if x.month < 10:
-		inicio = "%s-0%s-%s"% (x.year, x.month, x.day)
-		fin = "%s-0%s-%s"% (x.year, x.month, x.day)
+		inicio = "%s-0%s-%s"% (x.day, x.month, x.year)
+		fin = "%s-0%s-%s"% (x.day, x.month, x.year)
 	else:
-		inicio = "%s-%s-%s"% (x.year, x.month, x.day)
-		fin = "%s-%s-%s"% (x.year, x.month, x.day)
+		inicio = "%s-%s-%s"% (x.day, x.month, x.year)
+		fin = "%s-%s-%s"% (x.day, x.month, x.year)
 	nombre_user = request.user.get_full_name()
 	userid = User.objects.get(username=request.user.get_username())
 	tipouser = get_object_or_404(TipoUsuario,user_id=userid.id)
