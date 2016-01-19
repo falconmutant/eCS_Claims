@@ -61,6 +61,7 @@ TIPO_USER = (
 ('M','MAC'),
 ('P','PEMEX'),
 ('E','ECARESOFT'),
+('S','SUPER USER'),
 )
 
 class Motivos(models.Model):
