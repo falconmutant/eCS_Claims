@@ -19,7 +19,7 @@ $ virtualenv venv
 ```
 - Activar el entorno virtual creado
 ```sh
-$ source ENV/bin/activate
+$ source venv/bin/activate
 ```
 - Entrar al proyecto
 ```sh
