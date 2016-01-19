@@ -83,13 +83,13 @@
                   {% if auth.evento_id == event.id %}
                     <td>{{auth.FechaSolicitud}}</td>
                     {% for pro in proveedor %}
-                      {% if pro.id == item.proveedor_id %}
+                      {% if pro.id == event.proveedor_id %}
                         <td>{{pro.localidad}}</td>
                         <td>{{pro.hospital}}</td>
                       {% endif %}
                     {% endfor %}                            
                     {% for pa in paciente %}
-                      {% if pa.evento_id == item.id %}
+                      {% if pa.evento_id == event.id %}
                         <td>{{pa.nombre}}</td>
                       {% endif %}
                     {% endfor %}
