@@ -65,10 +65,6 @@ def detalle(request, id):
 		return render_to_response('invoices/detalles.html',RequestContext(request,locals()))
 	except Exception, e:
 		return render_to_response('invoices/detalles.html',RequestContext(request,locals()))
-	else:
-		pass
-	finally:
-		pass
 
 def save_ligar(request):
     if request.method == 'POST':
