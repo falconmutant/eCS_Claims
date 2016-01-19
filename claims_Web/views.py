@@ -126,6 +126,7 @@ def claims(request):
 		fin = request.POST.get("fin")
     	return render_to_response('claims/claims.html',RequestContext(request,locals()))
 
+
 @login_required
 def historial(request):
 	nombre_user = request.user.get_full_name()
