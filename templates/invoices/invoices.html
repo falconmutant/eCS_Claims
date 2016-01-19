@@ -141,6 +141,8 @@
         function(start, end, label) {
             alert("A new date range was chosen: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
       });
+      $('.applyBtn').css('display','block');
+      $('.cancelBtn').css('display','block');
     });
   </script>
   {% if bandera == 1 %}
