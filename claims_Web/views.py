@@ -115,16 +115,19 @@ def claims(request):
 	cargo = Cargo.objects.filter(evento_id__in=[event.id for event in evento])
 	if request.POST:
 		if tipouser.tipo == 'M':
-			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R'],TipoAprobacion='1',FechaSolicitud__range=[request.POST.get("inicio"), request.POST.get("fin")])
+			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R']
+				,TipoAprobacion='1',FechaSolicitud__range=[request.POST.get("inicio"), request.POST.get("fin")])
 		if tipouser.tipo == 'P':
-			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['A','P'],TipoAprobacion='1',FechaSolicitud__range=[request.POST.get("inicio"), request.POST.get("fin")])
+			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['A','P']
+				,TipoAprobacion='1',FechaSolicitud__range=[request.POST.get("inicio"), request.POST.get("fin")])
 		if tipouser.tipo == 'E':
-			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='1',FechaSolicitud__range=[request.POST.get("inicio"), request.POST.get("fin")])
+			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P']
+				,TipoAprobacion='1',FechaSolicitud__range=[request.POST.get("inicio"), request.POST.get("fin")])
 		if tipouser.tipo == 'S':
-			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='1',FechaSolicitud__range=[request.POST.get("inicio"), request.POST.get("fin")])	
+			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P']
+				,TipoAprobacion='1',FechaSolicitud__range=[request.POST.get("inicio"), request.POST.get("fin")])	
 		inicio = request.POST.get("inicio")
 		fin = request.POST.get("fin")
-
 	return render_to_response('claims/claims.html',RequestContext(request,locals()))
 
 @login_required
