@@ -302,11 +302,20 @@
                 <label class="col-md-2 control-label">Tipo</label>
                 <div class="col-xs-6">
                   <div class="input-icon">
-                    <select onchange="motivos(this.value);" name="estatus" class="form-control">
-                      <option value="A">Aprobar</option>
-                      <option value="X">Rechazar</option>
-                      <option value="V">A revisión</option>
-                    </select>
+                    {% if tipouser.tipo == 'M' %}
+                      <select onchange="motivos(this.value);" name="estatus" class="form-control">
+                        <option value="Y">Aceptado</option>
+                        <option value="N">Rechazado</option>
+                        <option value="E">En Revisión</option>
+                      </select>
+                    {% endif %}
+                    {% if tipouser.tipo == 'P' %}
+                      <select onchange="motivos(this.value);" name="estatus" class="form-control">
+                        <option value="A">Aceptado</option>
+                        <option value="X">Rechazado</option>
+                        <option value="P">En Revisión</option>
+                      </select>
+                    {% endif %}
                   </div>
                 </div>
               </div>
