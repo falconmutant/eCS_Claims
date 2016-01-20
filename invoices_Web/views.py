@@ -11,7 +11,7 @@ from django.db.models import Count
 
 @login_required
 def detalle(request, id):
-	print('pasaporaqui1')
+	bug = 'pasoporaqui1'
 	global Motivos
 	idd=id
 	bandera=0
