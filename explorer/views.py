@@ -105,7 +105,6 @@ def view_csv_query(request, query_id):
 @view_permission
 @require_POST
 def email_csv_query(request, query_id):
-    print('hola')
     if request.is_ajax():
         email = request.POST.get('email', None)
         if email:
