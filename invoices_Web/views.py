@@ -11,6 +11,7 @@ from django.db.models import Count
 
 @login_required
 def detalle(request, id):
+	global Motivos
 	idd=id
 	bandera=0
 	userid = User.objects.get(username=request.user.get_username())
