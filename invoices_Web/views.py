@@ -98,7 +98,7 @@ def save_ligar(request):
 
 @login_required
 def invoices(request):
-    global Autorizacion
+		global Autorizacion
 	x = datetime.datetime.now()
 	if x.month < 10:
 		inicio = "%s-0%s-%s"% (x.year, x.month, x.day)
