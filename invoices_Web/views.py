@@ -57,6 +57,7 @@ def detalle(request, id):
 		evento = Evento.objects.filter(proveedor_id=proveedor.id).exclude(id__in=[evento.evento for evento in CE])
 		paciente =  Paciente.objects.filter(evento_id__in=[event.id for event in evento])
 		fullevento = Evento.objects.filter(proveedor_id=proveedor.id)
+
 		for x in motivo:
 			print(x.motivo)
 		if tipouser.tipo == 'M':
@@ -66,6 +67,7 @@ def detalle(request, id):
 
 		return render_to_response('invoices/detalles.html',RequestContext(request,locals()))
 	except Exception, e:
+		bug= 'fallo por pendejo'
 		return render_to_response('invoices/detalles.html',RequestContext(request,locals()))
 
 def save_ligar(request):
