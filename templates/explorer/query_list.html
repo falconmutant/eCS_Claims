@@ -106,7 +106,7 @@
                         {% endif %}
                     </td>
                     <td class="text-center">
-                        <a class="email-csv" data-id="{{ object.id }}" href="{% url "email_csv_query" object.id %}"><i class="glyphicon glyphicon-envelope"></i></a>
+                        <a class="email-csv" data-id="{{ object.id }}" href="{{ settings.APP_URL }}{% url "email_csv_query" object.id %}"><i class="glyphicon glyphicon-envelope"></i></a>
                     </td>
                     <td class="text-center">
                         <a href="{{ settings.APP_URL }}{% url "query_download" object.id %}"><i class="glyphicon glyphicon-download"></i></a>
