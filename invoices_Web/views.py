@@ -149,9 +149,9 @@ def historial(request):
 	if tipouser.tipo == 'P':
 		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['X'],TipoAprobacion='2')
 	if tipouser.tipo == 'E':
-		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['X','N','Y'],TipoAprobacion='2')
+		autorizacion = Autorizacion.objects.all().filter(TipoAprobacion='2')
 	if tipouser.tipo == 'S':
-		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['A','X','Y','N','P'],TipoAprobacion='2')
+		autorizacion = Autorizacion.objects.all().filter(TipoAprobacion='2')
 
 	comprobante = Comprobante.objects.filter(id__in=[auth.comprobante_id for auth in autorizacion])
 	cliente = Emisor.objects.filter(id__in=[invoice.emisor_id for invoice in comprobante])

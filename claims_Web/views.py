@@ -139,9 +139,9 @@ def historial(request):
 	if tipouser.tipo == 'P':
 		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['X'],TipoAprobacion='1')
 	if tipouser.tipo == 'E':
-		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['X','N','Y'],TipoAprobacion='1')
+		autorizacion = Autorizacion.objects.all().filter(TipoAprobacion='1')
 	if tipouser.tipo == 'S':
-		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['A','X','Y','N','P'],TipoAprobacion='1')
+		autorizacion = Autorizacion.objects.all().filter(TipoAprobacion='1')
 	evento = Evento.objects.filter(id__in=[auth.evento_id for auth in autorizacion])
 	paciente = Paciente.objects.filter(evento_id__in=[event.id for event in evento])
 	proveedor = Proveedor.objects.filter(id__in=[event.proveedor_id for event in evento])
