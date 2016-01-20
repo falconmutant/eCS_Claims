@@ -58,9 +58,9 @@ def detalle(request, id):
 		fullevento = Evento.objects.filter(proveedor_id=proveedor.id)
 
 		if tipouser.tipo == 'M':
-			autorizacion = Autorizacion.objects.all().filter(Estatus_in='A',TipoAprobacion='1')
+			autorizacion = Autorizacion.objects.all().filter(Estatus_in='A',TipoAprobacion='2')
 		if tipouser.tipo == 'P':
-			autorizacion = Autorizacion.objects.all().filter(Estatus__in='Y',TipoAprobacion='1')		
+			autorizacion = Autorizacion.objects.all().filter(Estatus__in='Y',TipoAprobacion='2')		
 
 		return render_to_response('invoices/detalles.html',RequestContext(request,locals()))
 	except Exception, e:
