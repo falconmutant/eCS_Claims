@@ -5,13 +5,12 @@ from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from invoices_Web.models import *
 from django.contrib import auth
-from claims.models import Motivos, Autorizacion, Paciente, Proveedor, TipoUsuario
+from claims.models import *
 import datetime
 from django.db.models import Count
 
 @login_required
 def detalle(request, id):
-	Motivos
 	idd=id
 	bandera=0
 	userid = User.objects.get(username=request.user.get_username())
