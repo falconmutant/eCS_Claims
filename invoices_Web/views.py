@@ -11,6 +11,7 @@ from django.db.models import Count
 
 @login_required
 def detalle(request, id):
+	motivo = Motivos.objects.all()
 	idd=id
 	bandera=0
 	userid = User.objects.get(username=request.user.get_username())
@@ -56,7 +57,6 @@ def detalle(request, id):
 		evento = Evento.objects.filter(proveedor_id=proveedor.id).exclude(id__in=[evento.evento for evento in CE])
 		paciente =  Paciente.objects.filter(evento_id__in=[event.id for event in evento])
 		fullevento = Evento.objects.filter(proveedor_id=proveedor.id)
-		motivo = Motivos.objects.all()
 		for x in motivo:
 			print(x.motivo)
 		if tipouser.tipo == 'M':
