@@ -58,6 +58,8 @@ def detalle(request, id):
 		paciente =  Paciente.objects.filter(evento_id__in=[event.id for event in evento])
 		fullevento = Evento.objects.filter(proveedor_id=proveedor.id)
 		motivo = Motivos.objects.all()
+		for x in motivo:
+			print x.motivo
 		if tipouser.tipo == 'M':
 			autorizacion = Autorizacion.objects.all().filter(Estatus_in='A',TipoAprobacion='2')
 		if tipouser.tipo == 'P':
