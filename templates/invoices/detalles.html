@@ -383,7 +383,7 @@
                             {% endfor %}
                             <td>{{event.get_tipo_display}}</td>
                             <td>{{event.total}}</td>
-                            <td><input type="checkbox" onchange="create_post({{eve.id}},{{detalle.id}});" name="check"></td>
+                            <td><input type="checkbox" onchange="create_post({{event.id}},{{detalle.id}});" name="check"></td>
                           </tr>
                         {% endif %}
                       {% endfor %}
