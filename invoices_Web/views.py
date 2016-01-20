@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from invoices_Web.models import *
 from django.contrib import auth
-from claims.models import Motivos, Autorizacion, Paciente, Proveedor
+from claims.models import Motivos, Autorizacion, Paciente, Proveedor, TipoUsuario
 import datetime
 from django.db.models import Count
 
