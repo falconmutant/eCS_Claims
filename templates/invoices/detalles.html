@@ -134,19 +134,21 @@
               </tr>
             </thead>
             <tbody>
-              {% for x in CE %}
-                {% if fullevento.id == x.evento %}
-                  <tr>
-                    <td>{{fullevento.numEvento}}</td>
-                    <td>{{fullevento.folioAut}}</td>
-                    {% for pa in paciente %}
-                      {% if pa.evento_id == fullevento.id %}
-                        <td>{{pa.nombre}}</td>
-                      {% endif %}
-                    {% endfor %}
-                    <td>{{fullevento.total}}</td>
-                  </tr>
-                {% endif %}
+              {% for CompEvent in CE %}
+                {% for event in fullevento %}
+                  {% if event.id == CompEvent.evento %}
+                    <tr>
+                      <td>{{event.numEvento}}</td>
+                      <td>{{event.folioAut}}</td>
+                      {% for pa in paciente %}
+                        {% if pa.evento_id == event.id %}
+                          <td>{{pa.nombre}}</td>
+                        {% endif %}
+                      {% endfor %}
+                      <td>{{event.total}}</td>
+                    </tr>
+                  {% endif %}
+                {% endfor %}
               {% endfor %}
             </tbody>
           </table>
