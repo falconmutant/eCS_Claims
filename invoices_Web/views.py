@@ -11,7 +11,6 @@ from django.db.models import Count
 
 @login_required
 def detalle(request, id):
-	motivo = Motivos.objects.all()
 	idd=id
 	bandera=0
 	userid = User.objects.get(username=request.user.get_username())
@@ -48,23 +47,17 @@ def detalle(request, id):
 	
 	try:
 		nombre = request.user.get_full_name()
-		bug = 'pasoporaqui1'
 		detalle = get_object_or_404(Comprobante, id=id)
 		conceptos = Conceptos.objects.filter(comprobante_id=detalle.id)
 		emisor = get_object_or_404(Emisor, id=detalle.emisor_id)
 		proveedor = get_object_or_404(Proveedor, rfc=emisor.rfc)
-		bug += ', pasoporaqui2'
 		CE = ComprobanteEvento.objects.all().filter(comprobante=id)
-		evento = Evento.objects.filter(proveedor_id=proveedor.id).exclude(id__in=[evento.evento for evento in CE])
-		bug += ', pasoporaqui3'
+		evento = Evento.objects.filter(proveedor_id=proveedor.id).exclude(id__in=[CompEvent.evento for CompEvent in CE])
 		paciente =  Paciente.objects.filter(evento_id__in=[event.id for event in evento])
-		bug += ', pasoporaqui4'
 		fullevento = Evento.objects.filter(proveedor_id=proveedor.id)
-		bug += ', pasoporaqui5'
-
+		motivo = Motivos.objects.all()
 		if tipouser.tipo == 'M':
 			autorizacion = Autorizacion.objects.all().filter(Estatus__in='A',TipoAprobacion='1')
-			bug += ', pasoporaqui6'
 		if tipouser.tipo == 'P':
 			autorizacion = Autorizacion.objects.all().filter(Estatus__in='Y',TipoAprobacion='1')		
 
