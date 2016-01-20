@@ -53,21 +53,24 @@ def detalle(request, id):
 		conceptos = Conceptos.objects.filter(comprobante_id=detalle.id)
 		emisor = get_object_or_404(Emisor, id=detalle.emisor_id)
 		proveedor = get_object_or_404(Proveedor, rfc=emisor.rfc)
+		bug += ', pasoporaqui2'
 		CE = ComprobanteEvento.objects.all().filter(comprobante=id)
 		evento = Evento.objects.filter(proveedor_id=proveedor.id).exclude(id__in=[evento.evento for evento in CE])
+		bug += ', pasoporaqui3'
 		paciente =  Paciente.objects.filter(evento_id__in=[event.id for event in evento])
+		bug += ', pasoporaqui4'
 		fullevento = Evento.objects.filter(proveedor_id=proveedor.id)
+		bug += ', pasoporaqui5'
 
-		for x in motivo:
-			print(x.motivo)
 		if tipouser.tipo == 'M':
 			autorizacion = Autorizacion.objects.all().filter(Estatus_in='A',TipoAprobacion='2')
+			bug += ', pasoporaqui6'
 		if tipouser.tipo == 'P':
 			autorizacion = Autorizacion.objects.all().filter(Estatus__in='Y',TipoAprobacion='2')		
 
 		return render_to_response('invoices/detalles.html',RequestContext(request,locals()))
 	except Exception, e:
-		bug= e
+		bug += e
 		print(e)
 		return render_to_response('invoices/detalles.html',RequestContext(request,locals()))
 
