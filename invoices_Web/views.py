@@ -11,7 +11,6 @@ from django.db.models import Count
 
 @login_required
 def detalle(request, id):
-	bug = 'pasoporaqui1'
 	global Motivos
 	idd=id
 	bandera=0
@@ -49,7 +48,7 @@ def detalle(request, id):
 	
 	try:
 		nombre = request.user.get_full_name()
-		
+		bug = 'pasoporaqui1'
 		detalle = get_object_or_404(Comprobante, id=id)
 		conceptos = Conceptos.objects.filter(comprobante_id=detalle.id)
 		emisor = get_object_or_404(Emisor, id=detalle.emisor_id)
@@ -59,9 +58,8 @@ def detalle(request, id):
 		paciente =  Paciente.objects.filter(evento_id__in=[event.id for event in evento])
 		fullevento = Evento.objects.filter(proveedor_id=proveedor.id)
 		motivo = Motivos.objects.all()
-		print('pasaporaqui')
 		for x in motivo:
-			print x.motivo
+			print(x.motivo)
 		if tipouser.tipo == 'M':
 			autorizacion = Autorizacion.objects.all().filter(Estatus_in='A',TipoAprobacion='2')
 		if tipouser.tipo == 'P':
