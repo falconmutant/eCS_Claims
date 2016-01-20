@@ -137,10 +137,7 @@
             },
             startDate: '{{inicio}}',
             endDate: '{{fin}}'
-        }, 
-        function(start, end, label) {
-            alert("A new date range was chosen: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-      });
+        });
       $('.applyBtn').css('display','none');
       $('.cancelBtn').css('display','none');
     });
