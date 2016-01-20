@@ -67,7 +67,8 @@ def detalle(request, id):
 
 		return render_to_response('invoices/detalles.html',RequestContext(request,locals()))
 	except Exception, e:
-		bug= 'fallo por pendejo'
+		bug= e
+		print(e)
 		return render_to_response('invoices/detalles.html',RequestContext(request,locals()))
 
 def save_ligar(request):
