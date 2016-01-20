@@ -140,9 +140,9 @@
                     <tr>
                       <td>{{event.numEvento}}</td>
                       <td>{{event.folioAut}}</td>
-                      {% for pa in paciente %}
-                        {% if pa.evento_id == event.id %}
-                          <td>{{pa.nombre}}</td>
+                      {% for pac in paciente %}
+                        {% if pac.evento_id == event.id %}
+                          <td>{{pac.nombre}}</td>
                         {% endif %}
                       {% endfor %}
                       <td>{{event.total}}</td>
