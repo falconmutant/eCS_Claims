@@ -20,40 +20,40 @@ Enviar un reclamo desde las aplicaciones autorizadas a la plataforma
 <table>
 <tr><th> Parametro </th><th> Tipo </th><th> Valor </th></tr>
 <tr><td colspan="3"> Proveedor </td></tr>
-<tr><td> rfc </td><td> String </td><td> RFC del Proveedor de la RED Medica que envia. </td></tr>
-<tr><td> cliente </td><td> String </td><td> RED Medica {PEMEX por default} </td></tr>
-<tr><td> org </td><td> String</td><td> Zona geografica del Proveedor (Zona Centro, Zona Sur, etc)</td></tr>
-<tr><td> hospital </td><td> String </td><td> Nombre de Unidad Medica donde se realizo el evento </td></tr>
-<tr><td> localidad </td><td> String</td><td> Localidad donde se realizo el evento </td></tr>
+<tr><td> rfc *</td><td> String </td><td> RFC del Proveedor de la RED Medica que envia. </td></tr>
+<tr><td> cliente *</td><td> String </td><td> RED Medica {PEMEX por default} </td></tr>
+<tr><td> org *</td><td> String</td><td> Zona geografica del Proveedor (Zona Centro, Zona Sur, etc)</td></tr>
+<tr><td> hospital *</td><td> String </td><td> Nombre de Unidad Medica donde se realizo el evento </td></tr>
+<tr><td> localidad *</td><td> String</td><td> Localidad donde se realizo el evento </td></tr>
 <tr><td colspan="3"> Cuenta </td></tr>
-<tr><td> numEvento </td><td> String </td><td> Numero/Codigo de Evento/Cuenta </td></tr>
-<tr><td> fechaAdm </td><td> String, formato “yyyy-mm-ddTHH:MM:SSZ” </td><td> Fecha en que inicio el evento </td></tr>
-<tr><td> fechaAlta </td><td> String, formato “yyyy-mm-ddTHH:MM:SSZ” </td><td> Fecha en que termino el evento </td></tr>
-<tr><td> Total </td><td> Number </td><td> Total del evento (hasta 2 decimales)</td></tr>
+<tr><td> numEvento *</td><td> String </td><td> Numero/Codigo de Evento/Cuenta </td></tr>
+<tr><td> fechaAdm *</td><td> String, formato “yyyy-mm-ddTHH:MM:SSZ” </td><td> Fecha en que inicio el evento </td></tr>
+<tr><td> fechaAlta *</td><td> String, formato “yyyy-mm-ddTHH:MM:SSZ” </td><td> Fecha en que termino el evento </td></tr>
+<tr><td> Total *</td><td> Number </td><td> Total del evento (hasta 2 decimales)</td></tr>
 <tr><td> cedula </td><td> String </td><td> Cedula del medico responsable del evento </td></tr>
 <tr><td> medico </td><td> String </td><td> Nombre del medico responsable del evento </td></tr>
-<tr><td> tipo </td><td> String, “C”, “A”, “H”</td><td> Tipo de evento: <b>C</b>onsulta, <b>A</b>mbulatoriom <b>H</b>ospitalizacion </td></tr>
-<tr><td> estatus </td><td> String, “A”, “C”</td><td> Estatus del evento: <b>A</b>bierto, <b>C</b>errado </td></tr>
+<tr><td> tipo *</td><td> String, “C”, “A”, “H”</td><td> Tipo de evento: <b>C</b>onsulta, <b>A</b>mbulatoriom <b>H</b>ospitalizacion </td></tr>
+<tr><td> estatus *</td><td> String, “A”, “C”</td><td> Estatus del evento: <b>A</b>bierto, <b>C</b>errado </td></tr>
 <tr><td colspan="3"> Paciente </td></tr>
-<tr><td> curp </td><td> String </td><td> CURP del Paciente</td></tr>
-<tr><td> fichaEmp </td><td> String </td><td> Ficha del empleado [PEMEX] </td></tr>
-<tr><td> numCod </td><td> String </td><td> Numero de codificacion del empleado [PEMEX] </td></tr>
-<tr><td> numEmpresa </td><td> String </td><td> Numero de empresa del empleado [PEMEX] </td></tr>
-<tr><td> folioVigencia </td><td> String </td><td> Folio de consulta de vigencia de derechos [PEMEX]  </td></tr>
-<tr><td> nombre </td><td> String </td><td> Nombre  del empleado [PEMEX] </td></tr>
+<tr><td> curp *</td><td> String </td><td> CURP del Paciente</td></tr>
+<tr><td> fichaEmp *</td><td> String </td><td> Ficha del empleado [PEMEX] </td></tr>
+<tr><td> numCod *</td><td> String </td><td> Numero de codificacion del empleado [PEMEX] </td></tr>
+<tr><td> numEmpresa *</td><td> String </td><td> Numero de empresa del empleado [PEMEX] </td></tr>
+<tr><td> folioVigencia *</td><td> String </td><td> Folio de consulta de vigencia de derechos [PEMEX]  </td></tr>
+<tr><td> nombre *</td><td> String </td><td> Nombre  del empleado [PEMEX] </td></tr>
 <tr><td colspan="3"> Medicos [LISTA .. N] </td></tr>
-<tr><td> secuencia </td><td> Int </td><td> Secuencia del medico</td></tr>
-<tr><td> tipo </td><td> String </td><td> Tipo del medico [Lista Referencia @Cirrus]</td></tr>
-<tr><td> nombre </td><td> String </td><td> Nombre completo del medico</td></tr>
-<tr><td> especialidad </td><td> String </td><td> Especialidad del medico</td></tr>
-<tr><td> cedula </td><td> String </td><td> Cedula del medico</td></tr>
+<tr><td> secuencia *</td><td> Int </td><td> Secuencia del medico</td></tr>
+<tr><td> tipo *</td><td> String </td><td> Tipo del medico [Lista Referencia @Cirrus]</td></tr>
+<tr><td> nombre *</td><td> String </td><td> Nombre completo del medico</td></tr>
+<tr><td> especialidad *</td><td> String </td><td> Especialidad del medico</td></tr>
+<tr><td> cedula *</td><td> String </td><td> Cedula del medico</td></tr>
 <tr><td colspan="3"> Procedimientos [LISTA .. N] </td></tr>
-<tr><td> secuencia </td><td> Int </td><td> Secuencia del procedimiento</td></tr>
-<tr><td> sistema </td><td> String </td><td> Sistema de codificacion utilizado</td></tr>
-<tr><td> codigo </td><td> String </td><td> Codigo del procedimiento</td></tr>
-<tr><td> nombre </td><td> String </td><td> Nombre del procedimiento</td></tr>
-<tr><td> fecha </td><td> String, formato “yyyy-mm-dd” </td><td> Fecha de realizacion del procedimiento </td></tr>
-<tr><td> observaciones </td><td> String </td><td> Observaciones</td></tr>
+<tr><td> secuencia *</td><td> Int </td><td> Secuencia del procedimiento</td></tr>
+<tr><td> sistema *</td><td> String </td><td> Sistema de codificacion utilizado</td></tr>
+<tr><td> codigo *</td><td> String </td><td> Codigo del procedimiento</td></tr>
+<tr><td> nombre *</td><td> String </td><td> Nombre del procedimiento</td></tr>
+<tr><td> fecha *</td><td> String, formato “yyyy-mm-dd” </td><td> Fecha de realizacion del procedimiento </td></tr>
+<tr><td> observaciones *</td><td> String </td><td> Observaciones</td></tr>
 <tr><td> medicoRel </td><td> String </td><td> Secuencia del medico que realizo procedimiento</td></tr>
 <tr><td colspan="3"> listaDx </td></tr>
 <tr><td> sistema </td><td> String </td><td> Sistema de codificacion utilizado (CIE-9, CIE10, etc)</td></tr>
