@@ -63,7 +63,7 @@ def detalle(request, id):
 		bug += ', pasoporaqui5'
 
 		if tipouser.tipo == 'M':
-			autorizacion = Autorizacion.objects.all().filter(Estatus_in='A',TipoAprobacion='1')
+			autorizacion = Autorizacion.objects.all().filter(Estatus__in='A',TipoAprobacion='1')
 			bug += ', pasoporaqui6'
 		if tipouser.tipo == 'P':
 			autorizacion = Autorizacion.objects.all().filter(Estatus__in='Y',TipoAprobacion='1')		
