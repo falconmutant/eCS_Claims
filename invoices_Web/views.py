@@ -35,7 +35,7 @@ def detalle(request, id):
 		if tipouser.tipo == 'M':
 			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R'],TipoAprobacion='2')
 		if tipouser.tipo == 'P':
-			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['A','P'],TipoAprobacion='2')
+			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['Y','P'],TipoAprobacion='2')
 		if tipouser.tipo == 'E':
 			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='2')
 		if tipouser.tipo == 'S':
@@ -111,7 +111,7 @@ def invoices(request):
 	if tipouser.tipo == 'M':
 		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R'],TipoAprobacion='2')
 	if tipouser.tipo == 'P':
-		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['A','P'],TipoAprobacion='2')
+		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['Y','P'],TipoAprobacion='2')
 	if tipouser.tipo == 'E':
 		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='2')
 	if tipouser.tipo == 'S':
@@ -126,7 +126,7 @@ def invoices(request):
 		if tipouser.tipo == 'M':
 			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R'],TipoAprobacion='1',FechaSolicitud__range=[inicio, fin])
 		if tipouser.tipo == 'P':
-			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['A','P'],TipoAprobacion='1',FechaSolicitud__range=[inicio, fin])
+			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['Y','P'],TipoAprobacion='1',FechaSolicitud__range=[inicio, fin])
 		if tipouser.tipo == 'E':
 			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='1',FechaSolicitud__range=[inicio, fin])
 		if tipouser.tipo == 'S':
@@ -148,7 +148,7 @@ def historial(request):
 	if tipouser.tipo == 'M':
 		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['A','X','Y','N','P'],TipoAprobacion='2')
 	if tipouser.tipo == 'P':
-		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['X','Y','N'],TipoAprobacion='2')
+		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['X'],TipoAprobacion='2')
 	if tipouser.tipo == 'E':
 		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['X','N','Y'],TipoAprobacion='2')
 	if tipouser.tipo == 'S':
