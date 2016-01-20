@@ -67,7 +67,7 @@ def detalle(request, id):
 
 		return render_to_response('invoices/detalles.html',RequestContext(request,locals()))
 	except Exception, e:
-		bug= emisor.rfc
+		bug= e
 		print(e)
 		return render_to_response('invoices/detalles.html',RequestContext(request,locals()))
 
