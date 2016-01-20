@@ -13,8 +13,7 @@ from django.db.models import Count
 def detalle(request, id):
 	idd=id
 	bandera=0
-	userid = User.objects.get(username=request.user.get_username())
-	tipouser = get_object_or_404(TipoUsuario,user_id=userid.id)
+	tipouser = get_object_or_404(TipoUsuario,user_id=request.user.id)
 	if request.POST:
 		estatus = request.POST.get('estatus')
 		descripcion = request.POST.get('descripcion')
@@ -29,8 +28,6 @@ def detalle(request, id):
 			fin = "%s-%s-%s"% (x.year, x.month, x.day)
 
 		nombre_user = request.user.get_full_name()
-		userid = User.objects.get(username=request.user.get_username())
-		tipouser = get_object_or_404(TipoUsuario,user_id=userid.id)
 
 		if tipouser.tipo == 'M':
 			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R'],TipoAprobacion='2')
@@ -104,8 +101,7 @@ def invoices(request):
 		fin = "%s-%s-%s"% (x.year, x.month, x.day)
 
 	nombre_user = request.user.get_full_name()
-	userid = User.objects.get(username=request.user.get_username())
-	tipouser = get_object_or_404(TipoUsuario,user_id=userid.id)
+	tipouser = get_object_or_404(TipoUsuario,user_id=request.user.id)
 
 	if tipouser.tipo == 'M':
 		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R'],TipoAprobacion='2')
@@ -142,8 +138,7 @@ def historial(request):
 	inicio = "%s-%s-%s"% (x.year, x.month, x.day)
 	fin = "%s-%s-%s"% (x.year, x.month, x.day)
 	nombre = request.user.get_full_name()
-	userid = User.objects.get(username=request.user.get_username())
-	tipouser = get_object_or_404(TipoUsuario,user_id=userid.id)
+	tipouser = get_object_or_404(TipoUsuario,user_id=request.user.id)
 	if tipouser.tipo == 'M':
 		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['A','X','Y','N','P'],TipoAprobacion='2')
 	if tipouser.tipo == 'P':
