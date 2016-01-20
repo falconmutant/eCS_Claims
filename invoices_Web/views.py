@@ -19,7 +19,7 @@ def detalle(request, id):
 	if request.POST:
 		estatus = request.POST.get('estatus')
 		descripcion = request.POST.get('descripcion')
-		Autorizacion.objects.filter(comprobante_id=idd).update(Estatus=estatus,Comentarios=descripcion)
+		Autorizacion.objects.filter(comprobante_id=id).update(Estatus=estatus,Comentarios=descripcion)
 		bandera=1
 		x = datetime.datetime.now()
 		if x.month < 10:

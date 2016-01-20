@@ -6,6 +6,7 @@
 
 {% block css %}
   <link type="text/css" href="{% static "css/pnotify.css" %}" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
   <style type="text/css">
     #footer {
         padding: 4em 0 6em 0;
@@ -122,9 +123,7 @@
   </div>
 {% endblock header %}
 {% block javascript %}
-  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
   <script type="text/javascript" src="{% static "js/pnotify.min.js" %}"></script>
-  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
   <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
   <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
   <script type="text/javascript">
