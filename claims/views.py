@@ -99,6 +99,7 @@ class EventosView(ProveedorView):
         dxData = dxs.pop('dx', [])
         cargosData = request_data.pop('cargos', [])
         eventoData['nommedico']=eventoData['medico']
+        eventoData['total']=round(eventoData['total'], 2)
         eventoSerial = EventoSerializer(data=eventoData)
         errors = {}
         
@@ -189,6 +190,11 @@ class EventosView(ProveedorView):
             cargosDxDic ={}
             for cargos in cargosData:
                 cargos['evento'] = evento.id
+                cargos['precio']=round(cargos['precio'],2)
+                cargos['subtotal']=round(cargos['subtotal'],2)
+                cargos['iva']=round(cargos['iva'],2)
+                cargos['descuento']=round(cargos['descuento'],2)
+                cargos['total']=round(cargos['total'],2)
                 cargosDxDic[cargos['secuencia']] = cargos.get('cargosDx')
 
             cargosSerial = CargoSerializer(data=cargosData, many=True)
