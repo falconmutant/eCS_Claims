@@ -43,22 +43,41 @@
         <div class="col-md-4">
           <div class="centeredcontainer">
             <p class="text-center">Total</p>
-            <input type="text" value="{{total}}" class="dial1" data-thickness=".15" disabled>
+            <input type="text" value="{{total_claims}}" class="claim1" data-thickness=".15" disabled>
           </div>
         </div>
         <div class="col-md-4">
           <div class="centeredcontainer">
             <p class="text-center">Por Aprobar</p>
-            <input type="text" value="{{falta}}" class="dial2" data-thickness=".15" disabled>
+            <input type="text" value="{{falta_claims}}" class="claim2" data-thickness=".15" disabled>
           </div>
         </div>
         <div class="col-md-4">
           <div class="centeredcontainer">
             <p class="text-center">Resueltas</p>
-            <input type="text" value="{{resuelto}}" class="dial3" data-thickness=".15" disabled>
+            <input type="text" value="{{resuelto_claims}}" class="claim3" data-thickness=".15" disabled>
           </div>
         </div>
+        <h2>Facturación</h2>
         <hr />
+        <div class="col-md-4">
+          <div class="centeredcontainer">
+            <p class="text-center">Total</p>
+            <input type="text" value="{{total_invoices}}" class="invoice1" data-thickness=".15" disabled>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="centeredcontainer">
+            <p class="text-center">Por Aprobar</p>
+            <input type="text" value="{{falta_invoices}}" class="invoice2" data-thickness=".15" disabled>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="centeredcontainer">
+            <p class="text-center">Resueltas</p>
+            <input type="text" value="{{resuelto_invoices}}" class="invoice3" data-thickness=".15" disabled>
+          </div>
+        </div>
       </section>
     </div>
   </div>
@@ -66,18 +85,35 @@
 {% block javascript %}
   <script src="//cdnjs.cloudflare.com/ajax/libs/jQuery-Knob/1.2.13/jquery.knob.min.js"></script>
   <script>
-    $(".dial1").knob({
+    $(".claim1").knob({
       'min':0,
       'max':{{total}},
       'readOnly':true
     });
-    $(".dial2").knob({
+    $(".claim2").knob({
       'min':0,
       'max':{{total}},
       "fgColor":"#ba1b1b",
       'readOnly':true
     });
-    $(".dial3").knob({
+    $(".claim3").knob({
+      'min':0,
+      'max':{{total}},
+      "fgColor":"#61b14c",
+      'readOnly':true
+    });
+    $(".invoice1").knob({
+      'min':0,
+      'max':{{total}},
+      'readOnly':true
+    });
+    $(".invoice2").knob({
+      'min':0,
+      'max':{{total}},
+      "fgColor":"#ba1b1b",
+      'readOnly':true
+    });
+    $(".invoice3").knob({
       'min':0,
       'max':{{total}},
       "fgColor":"#61b14c",
