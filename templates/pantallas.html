@@ -156,25 +156,118 @@
       'height':150
     });
     $('.claim1').each(function () { 
+      var elm = $(this);
+      var color = elm.attr("data-fgColor");  
+      var perc = elm.attr("value");  
 
-          var elm = $(this);
-          var color = elm.attr("data-fgColor");  
-          var perc = elm.attr("value");  
+      $({value: 0}).animate({ value: perc }, {
+          duration: 1000,
+          easing: 'swing',
+          progress: function () {                  
+            elm.val(Math.ceil(this.value)).trigger('change')
+          }
+      });
 
-          $({value: 0}).animate({ value: perc }, {
-              duration: 1000,
-              easing: 'swing',
-              progress: function () {                  
-                elm.val(Math.ceil(this.value)).trigger('change')
-              }
-          });
+      //circular progress bar color
+      $(this).append(function() {
+          elm.parent().parent().find('.circular-bar-content').css('color',color);
+          elm.parent().parent().find('.circular-bar-content label').text(perc+'%');
+      });
+    });
+    $('.claim2').each(function () { 
+      var elm = $(this);
+      var color = elm.attr("data-fgColor");  
+      var perc = elm.attr("value");  
 
-          //circular progress bar color
-          $(this).append(function() {
-              elm.parent().parent().find('.circular-bar-content').css('color',color);
-              elm.parent().parent().find('.circular-bar-content label').text(perc+'%');
-          });
+      $({value: 0}).animate({ value: perc }, {
+          duration: 1000,
+          easing: 'swing',
+          progress: function () {                  
+            elm.val(Math.ceil(this.value)).trigger('change')
+          }
+      });
 
-          });
+      //circular progress bar color
+      $(this).append(function() {
+          elm.parent().parent().find('.circular-bar-content').css('color',color);
+          elm.parent().parent().find('.circular-bar-content label').text(perc+'%');
+      });
+    });
+    $('.claim3').each(function () { 
+      var elm = $(this);
+      var color = elm.attr("data-fgColor");  
+      var perc = elm.attr("value");  
+
+      $({value: 0}).animate({ value: perc }, {
+          duration: 1000,
+          easing: 'swing',
+          progress: function () {                  
+            elm.val(Math.ceil(this.value)).trigger('change')
+          }
+      });
+
+      //circular progress bar color
+      $(this).append(function() {
+          elm.parent().parent().find('.circular-bar-content').css('color',color);
+          elm.parent().parent().find('.circular-bar-content label').text(perc+'%');
+      });
+    });
+    $('.invoice1').each(function () { 
+      var elm = $(this);
+      var color = elm.attr("data-fgColor");  
+      var perc = elm.attr("value");  
+
+      $({value: 0}).animate({ value: perc }, {
+          duration: 1000,
+          easing: 'swing',
+          progress: function () {                  
+            elm.val(Math.ceil(this.value)).trigger('change')
+          }
+      });
+
+      //circular progress bar color
+      $(this).append(function() {
+          elm.parent().parent().find('.circular-bar-content').css('color',color);
+          elm.parent().parent().find('.circular-bar-content label').text(perc+'%');
+      });
+    });
+    $('.invoice2').each(function () { 
+      var elm = $(this);
+      var color = elm.attr("data-fgColor");  
+      var perc = elm.attr("value");  
+
+      $({value: 0}).animate({ value: perc }, {
+          duration: 1000,
+          easing: 'swing',
+          progress: function () {                  
+            elm.val(Math.ceil(this.value)).trigger('change')
+          }
+      });
+
+      //circular progress bar color
+      $(this).append(function() {
+          elm.parent().parent().find('.circular-bar-content').css('color',color);
+          elm.parent().parent().find('.circular-bar-content label').text(perc+'%');
+      });
+    });
+    $('.invoice3').each(function () { 
+      var elm = $(this);
+      var color = elm.attr("data-fgColor");  
+      var perc = elm.attr("value");  
+
+      $({value: 0}).animate({ value: perc }, {
+          duration: 1000,
+          easing: 'swing',
+          progress: function () {                  
+            elm.val(Math.ceil(this.value)).trigger('change')
+          }
+      });
+
+      //circular progress bar color
+      $(this).append(function() {
+          elm.parent().parent().find('.circular-bar-content').css('color',color);
+          elm.parent().parent().find('.circular-bar-content label').text(perc+'%');
+      });
+    });
   </script>
 {% endblock javascript %}
