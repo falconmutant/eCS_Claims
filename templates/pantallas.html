@@ -40,9 +40,9 @@
       <section class="box">
         <h2>Reclamaciones</h2>
         <hr />
-        <input type="text" value="{{total}}" data-width="{{total}}" class="dial" data-thickness=".15" disabled>
-        <input type="text" value="{{falta}}" data-width="{{total}}" class="dial" data-thickness=".15" disabled>
-        <input type="text" value="{{resuelto}}" data-width="{{total}}" class="dial" data-thickness=".15" disabled>
+        <input type="text" value="{{total}}" class="dial1" data-thickness=".15" disabled>
+        <input type="text" value="{{falta}}" class="dial2" data-thickness=".15" disabled>
+        <input type="text" value="{{resuelto}}" class="dial3" data-thickness=".15" disabled>
         <hr />
       </section>
     </div>
@@ -51,8 +51,19 @@
 {% block javascript %}
   <script src="//cdnjs.cloudflare.com/ajax/libs/jQuery-Knob/1.2.13/jquery.knob.min.js"></script>
   <script>
-    $(".dial").knob({
+    $(".dial1").knob({
       'min':0,
+      'max':{{total}},
+      'readOnly':true
+    });
+    $(".dial2").knob({
+      'min':0,
+      'max':{{total}},
+      'readOnly':true
+    });
+    $(".dial3").knob({
+      'min':0,
+      'max':{{total}},
       'readOnly':true
     });
   </script>
