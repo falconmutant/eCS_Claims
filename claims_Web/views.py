@@ -33,12 +33,12 @@ def logged_in(request):
 		total_claims = Autorizacion.objects.all().filter(Estatus__in=['Y','N','E','R'],TipoAprobacion='1').count()
 		falta_claims = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='1').count()
 		resuelto_claims = total_claims-falta_claims
-		total_invoices = Autorizacion.objects.all().filter(Estatus__in=['Y','N','E','R'],TipoAprobacion='1').count()
-		falta_invoices = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='1').count()
+		total_invoices = Autorizacion.objects.all().filter(Estatus__in=['Y','N','E','R'],TipoAprobacion='2').count()
+		falta_invoices = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='2').count()
 		resuelto_invoices = total_invoices-falta_invoices
 	if tipouser.tipo == 'P':
-		total_claims = Autorizacion.objects.all().filter(Estatus__in=['A','X','P','Y'],TipoAprobacion='2').count()
-		falta_claims = Autorizacion.objects.all().filter(Estatus='Y',TipoAprobacion='2').count()
+		total_claims = Autorizacion.objects.all().filter(Estatus__in=['A','X','P','Y'],TipoAprobacion='1').count()
+		falta_claims = Autorizacion.objects.all().filter(Estatus='Y',TipoAprobacion='1').count()
 		resuelto_claims = total_claims-falta_claims
 		total_invoices = Autorizacion.objects.all().filter(Estatus__in=['A','X','P','Y'],TipoAprobacion='2').count()
 		falta_invoices = Autorizacion.objects.all().filter(Estatus='Y',TipoAprobacion='2').count()
