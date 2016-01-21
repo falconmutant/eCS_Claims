@@ -41,22 +41,22 @@
         <h2>Reclamaciones</h2>
         <hr />
         <div class="col-md-4">
-            <div class="centeredcontainer">
-                <p class="text-center">Total Reclamaciones</p>
-                <input type="text" value="{{total}}" class="dial1" data-thickness=".15" disabled>
-            </div>
+          <div class="centeredcontainer">
+            <p class="text-center">Total Reclamaciones</p>
+            <input type="text" value="{{total}}" class="dial1" data-thickness=".15" disabled>
+          </div>
         </div>
         <div class="col-md-4">
-            <div class="centeredcontainer">
-                <p class="text-center">Reclamaciones por Aprobar</p>
-                <input type="text" value="{{falta}}" class="dial2" data-thickness=".15" disabled>
-            </div>
+          <div class="centeredcontainer">
+            <p class="text-center">Reclamaciones por Aprobar</p>
+            <input type="text" value="{{falta}}" class="dial2" data-thickness=".15" disabled>
+          </div>
         </div>
         <div class="col-md-4">
-            <div class="centeredcontainer">
-                <p class="text-center">Reclamaciones Resueltas</p>
-                <input type="text" value="{{resuelto}}" class="dial3" data-thickness=".15" disabled>
-            </div>
+          <div class="centeredcontainer">
+            <p class="text-center">Reclamaciones Resueltas</p>
+            <input type="text" value="{{resuelto}}" class="dial3" data-thickness=".15" disabled>
+          </div>
         </div>
         <hr />
       </section>
@@ -74,11 +74,13 @@
     $(".dial2").knob({
       'min':0,
       'max':{{total}},
+      "fgColor":"#61b14c",
       'readOnly':true
     });
     $(".dial3").knob({
       'min':0,
       'max':{{total}},
+      "fgColor":"#ba1b1b",
       'readOnly':true
     });
   </script>
