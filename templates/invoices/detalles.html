@@ -378,11 +378,13 @@
                           <tr>
                             <td>{{event.numEvento}}</td>
                             <td>{{event.folioAut}}</td>
+
                             {% for pa in paciente %}
                               {% if pa.evento_id == event.id %}
                                 <td>{{pa.nombre}}</td>
                               {% endif %}
                             {% endfor %}
+                            
                             <td>{{event.get_tipo_display}}</td>
                             <td>{{event.total}}</td>
                             <td><input type="checkbox" onchange="create_post({{event.id}},{{detalle.id}});" name="check"></td>
