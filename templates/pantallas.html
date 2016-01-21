@@ -40,7 +40,7 @@
       <section class="box">
         <h2>Reclamaciones</h2>
         <hr />
-        <input type="text" value="75" class="dial">
+        <input type="text" value="{{falta}}" class="dial" data-thickness=".15" disabled>
         <hr />
       </section>
     </div>
@@ -49,8 +49,9 @@
 {% block javascript %}
   <script src="//cdnjs.cloudflare.com/ajax/libs/jQuery-Knob/1.2.13/jquery.knob.min.js"></script>
   <script>
-    $(function() {
-        $(".dial").knob();
+    $(".dial").knob({
+      'min':0,
+      'max':{{total}}
     });
   </script>
 {% endblock javascript %}
