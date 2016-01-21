@@ -31,6 +31,7 @@ def logged_in(request):
 	tipouser = get_object_or_404(TipoUsuario,user_id=request.user.id)
 	total = Autorizacion.objects.all().filter(TipoAprobacion='1').count()
 	falta = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='1').count()
+	resuelto = total-falta
 	return render_to_response('pantallas.html',RequestContext(request,locals()))
 
 @login_required

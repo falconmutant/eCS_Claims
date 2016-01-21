@@ -40,7 +40,9 @@
       <section class="box">
         <h2>Reclamaciones</h2>
         <hr />
-        <input type="text" value="{{falta}}" class="dial" data-thickness=".15" disabled>
+        <input type="text" value="{{total}}" data-width="{{total}}" class="dial" data-thickness=".15" disabled>
+        <input type="text" value="{{falta}}" data-width="{{total}}" class="dial" data-thickness=".15" disabled>
+        <input type="text" value="{{resuelto}}" data-width="{{total}}" class="dial" data-thickness=".15" disabled>
         <hr />
       </section>
     </div>
@@ -51,7 +53,6 @@
   <script>
     $(".dial").knob({
       'min':0,
-      'max':{{total}},
       'readOnly':true
     });
   </script>
