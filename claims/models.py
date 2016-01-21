@@ -95,7 +95,7 @@ class Evento(models.Model):
    
 class Paciente(models.Model):
    curp = models.CharField(max_length=18, null=False)
-   fichaEmp = models.CharField(max_length=10, null=False)
+   fichaEmp = models.CharField(max_length=12, null=False)
    numCod = models.CharField(max_length=2, null=False)
    numEmpresa = models.CharField(max_length=6, null=False)
    nombre = models.CharField(max_length=255, null=False)
