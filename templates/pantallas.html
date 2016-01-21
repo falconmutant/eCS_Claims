@@ -40,9 +40,24 @@
       <section class="box">
         <h2>Reclamaciones</h2>
         <hr />
-        <input type="text" value="{{total}}" class="dial1" data-thickness=".15" disabled>
-        <input type="text" value="{{falta}}" class="dial2" data-thickness=".15" disabled>
-        <input type="text" value="{{resuelto}}" class="dial3" data-thickness=".15" disabled>
+        <div class="col-md-4">
+            <div class="centeredcontainer">
+                <p class="text-center">Total Reclamaciones</p>
+                <input type="text" value="{{total}}" class="dial1" data-thickness=".15" disabled>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="centeredcontainer">
+                <p class="text-center">Reclamaciones por Aprobar</p>
+                <input type="text" value="{{falta}}" class="dial2" data-thickness=".15" disabled>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="centeredcontainer">
+                <p class="text-center">Reclamaciones Resueltas</p>
+                <input type="text" value="{{resuelto}}" class="dial3" data-thickness=".15" disabled>
+            </div>
+        </div>
         <hr />
       </section>
     </div>
