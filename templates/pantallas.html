@@ -35,5 +35,22 @@
       </li>
     </ul>
   </div>
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <div class="row">
+    <div class="12u">
+      <section class="box">
+        <h2>Reclamaciones</h2>
+        <hr />
+        <input type="text" value="75" class="dial">
+        <hr />
+      </section>
+    </div>
+  </div>
 {% endblock header %}
+{% block javascript %}
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jQuery-Knob/1.2.13/jquery.knob.min.js"></script>
+  <script>
+    $(function() {
+        $(".dial").knob();
+    });
+  </script>
+{% endblock javascript %}
