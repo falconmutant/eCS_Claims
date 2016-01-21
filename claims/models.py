@@ -127,7 +127,7 @@ class Dx(models.Model):
    nombre = models.CharField(max_length=255)
    estatus = models.CharField(choices= DX_ESTATUS, max_length=1)
    admision = models.CharField(choices= DX_ADM,max_length=1,default='N')
-   fecha = models.DateTimeField(default="%s-0%s-%s"% (x.year, x.month, x.day))
+   fecha = models.DateTimeField()
    observaciones = models.CharField(max_length=255,null=True)
    medico = models.ForeignKey(Medico,null=True)
    evento = models.ForeignKey(Evento)
