@@ -31,10 +31,10 @@ def logged_in(request):
 	tipouser = get_object_or_404(TipoUsuario,user_id=request.user.id)
 	total_claims = Autorizacion.objects.all().filter(TipoAprobacion='1').count()
 	falta_claims = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='1').count()
-	resuelto_claims = total-falta
+	resuelto_claims = total_claims-falta_claims
 	total_invoices = Autorizacion.objects.all().filter(TipoAprobacion='2').count()
 	falta_invoices = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='2').count()
-	resuelto_invoices = total-falta
+	resuelto_invoices = total_invoices-falta_invoices
 	return render_to_response('pantallas.html',RequestContext(request,locals()))
 
 @login_required
