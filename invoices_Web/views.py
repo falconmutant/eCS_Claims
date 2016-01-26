@@ -40,7 +40,7 @@ def detalle(request, id):
 
 		comprobante = Comprobante.objects.filter(id__in=[auth.comprobante_id for auth in autorizacion])
 		cliente = Emisor.objects.filter(id__in=[invoice.emisor_id for invoice in comprobante])
-		return render_to_response('invoices/invoices.html',RequestContext(request,locals()))
+		return HttpResponseRedirect('/invoices/')
 	
 	try:
 		nombre = request.user.get_full_name()
@@ -51,10 +51,6 @@ def detalle(request, id):
 		CE = ComprobanteEvento.objects.all().filter(comprobante=id)
 		evento = Evento.objects.filter(proveedor_id=proveedor.id).exclude(id__in=[CompEvent.evento for CompEvent in CE])
 		paciente =  Paciente.objects.all().filter(evento_id__in=[event.id for event in evento])
-		
-		bug = 'pacientes:'
-		for pa in paciente:
-			bug += ' - '+pa.nombre
 
 		fullevento = Evento.objects.filter(proveedor_id=proveedor.id)
 		motivo = Motivos.objects.all()
