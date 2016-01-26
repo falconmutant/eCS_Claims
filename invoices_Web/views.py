@@ -40,7 +40,7 @@ def detalle(request, id):
 
 		comprobante = Comprobante.objects.filter(id__in=[auth.comprobante_id for auth in autorizacion])
 		cliente = Emisor.objects.filter(id__in=[invoice.emisor_id for invoice in comprobante])
-		return HttpResponseRedirect('/invoices/')
+		return HttpResponseRedirect('/invoice/')
 	
 	try:
 		nombre = request.user.get_full_name()

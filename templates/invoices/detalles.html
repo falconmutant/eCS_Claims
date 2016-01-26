@@ -135,17 +135,17 @@
             </thead>
             <tbody>
               {% for CompEvent in CE %}
-                {% for event in fullevento %}
-                  {% if event.id == CompEvent.evento %}
+                {% for fullevent in fullevento %}
+                  {% if fullevent.id == CompEvent.evento %}
                     <tr>
-                      <td>{{event.numEvento}}</td>
-                      <td>{{event.folioAut}}</td>
+                      <td>{{fullevent.numEvento}}</td>
+                      <td>{{fullevent.folioAut}}</td>
                       {% for pac in paciente %}
-                        {% if pac.evento_id == event.id %}
+                        {% if pac.evento_id == fullevent.id %}
                           <td>{{pac.nombre}}</td>
                         {% endif %}
                       {% endfor %}
-                      <td>{{event.total}}</td>
+                      <td>{{fullevent.total}}</td>
                     </tr>
                   {% endif %}
                 {% endfor %}
