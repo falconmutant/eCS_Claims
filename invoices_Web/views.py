@@ -53,7 +53,7 @@ def detalle(request, id):
 		paciente =  Paciente.objects.filter(evento_id__in=[CompEvent.evento for CompEvent in CE])
 		
 		bug = ''
-		for pa in paciente
+		for pa in paciente:
 			bug += ' - '+pa.nombre
 
 		fullevento = Evento.objects.filter(proveedor_id=proveedor.id)
