@@ -50,7 +50,7 @@ def detalle(request, id):
 		proveedor = get_object_or_404(Proveedor, rfc=emisor.rfc)
 		CE = ComprobanteEvento.objects.all().filter(comprobante=id)
 		evento = Evento.objects.filter(proveedor_id=proveedor.id).exclude(id__in=[CompEvent.evento for CompEvent in CE])
-		paciente =  Paciente.objects.all().filter(evento_id__in=[event.id for event in evento])
+		paciente =  Paciente.objects.all().filter(evento_id__in=[event2.id for event2 in evento])
 
 		fullevento = Evento.objects.filter(proveedor_id=proveedor.id)
 		motivo = Motivos.objects.all()
