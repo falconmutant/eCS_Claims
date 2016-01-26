@@ -53,7 +53,7 @@ def detalle(request, id):
 		paciente =  Paciente.objects.all().filter(evento_id__in=[event2.id for event2 in evento])
 		bug = 'evento:'
 		for x in evento:
-			bug +=' - '+evento.id
+			bug +=' - '+x.id
 		fullevento = Evento.objects.filter(proveedor_id=proveedor.id)
 		motivo = Motivos.objects.all()
 		if tipouser.tipo == 'M':
