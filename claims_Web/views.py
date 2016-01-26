@@ -70,7 +70,7 @@ def detalle(request, id):
 		proveedor = Proveedor.objects.filter(id__in=[event.proveedor_id for event in evento])
 		cargo = Cargo.objects.filter(evento_id__in=[event.id for event in evento])
 		dx = Dx.objects.filter(evento_id__in=[event.id for event in evento])
-		return render_to_response('claims/claims.html',RequestContext(request,locals()))
+		return HttpResponseRedirect('/claims/')
 
 	nombre_user = request.user.get_full_name()
 	detalle = get_object_or_404(Evento, id=id)
