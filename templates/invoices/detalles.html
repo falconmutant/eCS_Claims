@@ -135,13 +135,18 @@
             </thead>
             <tbody>
               {% for CompEvent in CE %}
+              <script>alert("entra aqui");</script>
                 {% for event in fullevento %}
+                <script>alert("entra aqui");</script>
                   {% if event.id == CompEvent.evento %}
+                  <script>alert("entra aqui");</script>
                     <tr>
                       <td>{{event.numEvento}}</td>
                       <td>{{event.folioAut}}</td>
                       {% for pac in paciente %}
+                      <script>alert("entra aqui");</script>
                         {% if pac.evento_id == event.id %}
+                        <script>alert("entra aqui");</script>
                           <td>{{pac.nombre}}</td>
                         {% endif %}
                       {% endfor %}
