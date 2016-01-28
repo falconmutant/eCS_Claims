@@ -24,11 +24,11 @@ def permisos(request):
 			query = int(request.POST.get("idquery"))
 			selected = int(request.POST.get("selected"))
 			permiso = get_object_or_404(Permiso,usuario=user, reporte=query)
-	        if selected == 0:
-	        	liga = Permiso(usuario=user, reporte=query)
-	        	liga.save()
-	        else:
-	        	permiso.delete()
+		        if selected == 0:
+		        	liga = Permiso(usuario=user, reporte=query)
+		        	liga.save()
+		        else:
+		        	permiso.delete()
 	        response_data = {}
 	        response_data['result'] = 'Create post successful! '+correcto
 	        return HttpResponse(
