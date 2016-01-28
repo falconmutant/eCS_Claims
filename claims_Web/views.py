@@ -32,10 +32,10 @@ def permisos(request):
 		        	permiso.delete()
 
 	        	response_data['result'] = 'Create post successful! '+correcto
-	        return HttpResponse(
-	            json.dumps(response_data),
-	            content_type="application/json"
-	        )
+		        return HttpResponse(
+		            json.dumps(response_data),
+		            content_type="application/json"
+		        )
     else:
     		return render_to_response('explorer/usuarios.html',context_instance=RequestContext(request))
 
