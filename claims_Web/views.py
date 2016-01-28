@@ -31,8 +31,8 @@ def permisos(request):
             json.dumps(response_data),
             content_type="application/json"
         )
-	else:
-    	return render_to_response('explorer/usuarios.html',context_instance=RequestContext(request))
+    
+    return render_to_response('explorer/usuarios.html',context_instance=RequestContext(request))
 
 @login_required
 def logged_in(request):
