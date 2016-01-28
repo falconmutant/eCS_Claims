@@ -16,11 +16,10 @@ def index(request):
 
 
 def permisos(request):
-	if request.method == 'POST':
-		reportes = Query.objects.all()
-		permisos = Permisos.objects.all()
+	reportes = Query.objects.all()
+	permisos = Permisos.objects.all()
 	return render_to_response('explorer/usuarios.html',
-		context_instance=RequestContext(request))
+		RequestContext(request,locals()))
 
 def save_permission(request):
     if request.method == 'POST':
