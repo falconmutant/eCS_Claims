@@ -40,7 +40,7 @@ except:
 import re
 import json
 from functools import wraps
-iduser = get_object_or_404(User,username=auth.user.username)
+iduser = get_object_or_404(User,username=auth.User.username)
 tipouser = get_object_or_404(TipoUsuario,user_id=iduser.id)
 def view_permission(f):
     @wraps(f)
