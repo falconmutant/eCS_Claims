@@ -28,6 +28,8 @@ def save_permission(request):
 		fecha = "%s-0%s-%s"% (x.year, x.month, x.day)
 	else:
 		fecha = "%s-%s-%s"% (x.year, x.month, x.day)
+
+		
     if request.method == 'POST':
     	query = int(request.POST.get("idquery"))
     	selected = int(request.POST.get("select"))
