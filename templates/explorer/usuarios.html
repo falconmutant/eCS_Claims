@@ -117,8 +117,8 @@
           {% endfor %}
         }
         $('#tb').html(tag);
-        var table =$('#tabletools').dataTable({
-          "language": {
+        var table3 = $('#tabletools').dataTable({
+            "language": {
                 "lengthMenu": "_MENU_",
                 "sProcessing":     "Procesando...",
                 "sZeroRecords":    "No se encontraron resultados",
@@ -140,21 +140,17 @@
                     "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
                     "sSortDescending": ": Activar para ordenar la columna de manera descendente"
                 }
-          }
-        });
-      $('#example_length').hide();
-      $('.dataTables_filter').hide();
-      $('#tb').on( 'click', 'tr', function () {
-          
-            if ( $(this).hasClass('selected') ) {
-                $(this).removeClass('selected');
-            }
-            else {
-                table.$('tr.selected').removeClass('selected');
-                $(this).addClass('selected');
-                oID = $(this).attr('id');
             }
         });
+        $('.dataTables_filter input').attr('placeholder','Buscar');
+        $('#example_length').hide();
+
+        //DOM Manipulation to move datatable elements integrate to panel
+        $('.panel-ctrls').append($('.dataTables_filter').addClass("pull-right")).find("label").addClass("panel-ctrls-center");
+        $('.panel-ctrls').append("<i class='separator'></i>");
+        $('.panel-ctrls').append($('.dataTables_length').addClass("pull-left")).find("label").addClass("panel-ctrls-center");
+
+        $('.dataTables_paginate>ul.pagination').addClass("pull-right m0");
         
       }
       {% if bandera == 1 %}
