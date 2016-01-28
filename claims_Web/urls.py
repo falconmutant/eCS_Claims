@@ -14,5 +14,5 @@ urlpatterns = patterns('',
 	url(r'^cerrar/$' , 'django.contrib.auth.views.logout',
 						{'next_page': 'claims_Web.views.index'}),
 	url(r'permisos/$', 'claims_Web.views.permisos'),
-	url(r'^permission/$', 'invoices_Web.views.save_ligar')
+	url(r'^permission/$', 'claims_Web.views.save_permission')
 )
