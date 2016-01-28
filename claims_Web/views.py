@@ -14,6 +14,8 @@ def index(request):
         context_instance=RequestContext(request)
     )
 
+    
+@login_required
 def permisos(request):
 	correcto = 0
 	if request.POST:
@@ -34,7 +36,7 @@ def permisos(request):
 	            content_type="application/json"
 	        )
     
-    	return render_to_response('explorer/usuarios.html',context_instance=RequestContext(request))
+    return render_to_response('explorer/usuarios.html',context_instance=RequestContext(request))
 
 @login_required
 def logged_in(request):
