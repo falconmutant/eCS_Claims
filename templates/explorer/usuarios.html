@@ -83,41 +83,78 @@
   <script type="text/javascript" src="{% static "js/pnotify.min.js" %}"></script>
     <script>
       function reload(value){
+        var tag;
         if (value == 'P') {
-          $('#tb').append('{% for query in reportes %}'+
-                '<tr>'+
-                  '<td>{{query.title}}</td>'+
-                  '<td><input type="checkbox" id="{{query.id}}"'+ 
-                  'onchange="permisos({{query.id}},"$(#user).val()");"'+
-                  'name="check"></td>'+
-                  '{% for select in PemexPermisos %}'+
-                    '{% if select.reporte == query.id %}'+
-                      '<script>'+
-                        "selected('{{query.id}}');"+
-                      '</script>'+
-                    '{% endif %}'+
-                  '{% endfor %}'+
-                '</tr>'+
-              '{% endfor %}');
+          {% for query in reportes %}
+            tag += '<tr>';
+            tag += '<td>{{query.title}}</td>';
+            tag += '<td><input type="checkbox" id="{{query.id}}';
+            tag += 'onchange="permisos({{query.id}},';
+            tag += "'$(#user).val()');";
+            tag += 'name="check"></td>';
+            {% for select in PemexPermisos %}
+              {% if select.reporte == query.id %}
+                selected('{{query.id}}')
+              {% endif %}
+            {% endfor %}
+            tag += </tr>;
+          {% endfor %}
         }
         else{
-          $('#tb').html('{% for query in reportes %}'+
-                '<tr>'+
-                  '<td>{{query.title}}</td>'+
-                  '<td><input type="checkbox" id="{{query.id}}"'+ 
-                  'onchange="permisos({{query.id}},'+
-                    "'$(#user).val()');"+
-                  'name="check"></td>'+
-                  '{% for select in MacPermisos %}'+
-                    '{% if select.reporte == query.id %}'+
-                      '<script>'+
-                        "selected('{{query.id}}');"+
-                      '</script>'+
-                    '{% endif %}'+
-                  '{% endfor %}'+
-                '</tr>'+
-              '{% endfor %}');
+          {% for query in reportes %}
+            tag += '<tr>';
+            tag += '<td>{{query.title}}</td>';
+            tag += '<td><input type="checkbox" id="{{query.id}}';
+            tag += 'onchange="permisos({{query.id}},';
+            tag += "'$(#user).val()');";
+            tag += 'name="check"></td>';
+            {% for select in PemexPermisos %}
+              {% if select.reporte == query.id %}
+                selected('{{query.id}}')
+              {% endif %}
+            {% endfor %}
+            tag += </tr>;
+          {% endfor %}
         }
+        $('#tb').html(tag);
+        var table =$('#tabletools').dataTable({
+          "language": {
+                "lengthMenu": "_MENU_",
+                "sProcessing":     "Procesando...",
+                "sZeroRecords":    "No se encontraron resultados",
+                "sEmptyTable":     "Ningún dato disponible en esta tabla",
+                "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+                "sInfoPostFix":    "",
+                "sUrl":            "",
+                "sInfoThousands":  ",",
+                "sLoadingRecords": "Cargando...",
+                "oPaginate": {
+                    "sFirst":    "Primero",
+                    "sLast":     "Último",
+                    "sNext":     "Siguiente",
+                    "sPrevious": "Anterior"
+                },
+                "oAria": {
+                    "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                }
+          }
+        });
+      $('#example_length').hide();
+      $('.dataTables_filter').hide();
+      $('#tb').on( 'click', 'tr', function () {
+          
+            if ( $(this).hasClass('selected') ) {
+                $(this).removeClass('selected');
+            }
+            else {
+                table.$('tr.selected').removeClass('selected');
+                $(this).addClass('selected');
+                oID = $(this).attr('id');
+            }
+        });
         
       }
       {% if bandera == 1 %}
@@ -151,7 +188,7 @@
         var c;
         $('#'+value1).change(function(){
             c = this.checked ? 1 : 0;
-        });
+        })
         $.ajax({
             url : "/permission/", // the endpoint
             type : "POST", // http method
