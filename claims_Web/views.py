@@ -23,6 +23,11 @@ def permisos(request):
 		RequestContext(request,locals()))
 
 def save_permission(request):
+	x = datetime.datetime.now()
+	if x.month < 10:
+		fecha = "%s-0%s-%s"% (x.year, x.month, x.day)
+	else:
+		fecha = "%s-%s-%s"% (x.year, x.month, x.day)
     if request.method == 'POST':
     	query = int(request.POST.get("idquery"))
     	selected = int(request.POST.get("select"))
@@ -31,7 +36,7 @@ def save_permission(request):
     		permiso = get_object_or_404(Permiso,usuario=user, reporte=query)
     		permiso.delete()
     	else:
-    		liga = Permiso(usuario=user, reporte=query)
+    		liga = Permiso(usuario=user, reporte=query,fecha=fecha)
     		liga.save()
     		
     	response_data = {}
