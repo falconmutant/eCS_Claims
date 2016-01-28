@@ -16,7 +16,7 @@ def index(request):
 
 def permisos(request):
 
-		if request.POST:
+	if request.POST:
 			user = request.POST.get("user")
 			query = int(request.POST.get("idquery"))
 			selected = int(request.POST.get("selected"))
