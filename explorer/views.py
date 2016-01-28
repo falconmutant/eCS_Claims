@@ -41,9 +41,11 @@ import re
 import json
 from functools import wraps
 
+tipouser
 def view_permission(f):
     @wraps(f)
     def wrap(request, *args, **kwargs):
+        tipouser = get_object_or_404(TipoUsuario,user_id=request.user.id)
         if not app_settings.EXPLORER_PERMISSION_VIEW(request.user)\
                 and not user_can_see_query(request, kwargs)\
                 and not (app_settings.EXPLORER_TOKEN_AUTH_ENABLED()
@@ -154,14 +156,13 @@ class ListQueryView(ExplorerContextMixin, ListView):
 
     def get_queryset(self):
         if app_settings.EXPLORER_PERMISSION_VIEW(self.request.user):
-            tipouser = get_object_or_404(TipoUsuario,user_id=User.id)
+            
             if tipouser.tipo == 'P':
                 Permiso = Permiso.objects.filter(usuario='P')
             if tipouser.tipo == 'M':
                 Permiso = Permiso.objects.filter(usuario='M')
             qs = Query.objects.prefetch_related('created_by_user').all().filter(id__in=[permission.reporte for permission in Permiso])
         else:
-            tipouser = get_object_or_404(TipoUsuario,user_id=User.id)
             if tipouser.tipo == 'P':
                 Permiso = Permiso.objects.filter(usuario='P')
             if tipouser.tipo == 'M':
