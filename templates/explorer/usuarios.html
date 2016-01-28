@@ -101,7 +101,7 @@
               '{% endfor %}');
         }
         else{
-          $('#tb').append('{% for query in reportes %}'+
+          $('#tb').html('{% for query in reportes %}'+
                 '<tr>'+
                   '<td>{{query.title}}</td>'+
                   '<td><input type="checkbox" id="{{query.id}}"'+ 
