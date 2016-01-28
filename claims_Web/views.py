@@ -28,11 +28,12 @@ def save_permission(request):
     	selected = int(request.POST.get("select"))
     	user = request.POST.get("user")
     	if selected == 0:
-    		liga = Permiso(usuario=user, reporte=query)
-    		liga.save()
-    	else:
     		permiso = get_object_or_404(Permiso,usuario=user, reporte=query)
     		permiso.delete()
+    	else:
+    		liga = Permiso(usuario=user, reporte=query)
+    		liga.save()
+    		
     	response_data = {}
     	response_data['result'] = 'Create post successful! '
     	return HttpResponse(
