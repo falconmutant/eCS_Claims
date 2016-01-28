@@ -91,12 +91,13 @@
             tag += '<td>{{query.title}}</td>';
             tag += '<td><input type="checkbox" id="{{query.id}}"';
             tag += ' onchange="permisos({{query.id}},'+"'P'"+');"';
-            tag += ' name="check"></td>';
+            tag += ' name="check"';
             {% for select in PemexPermisos %}
               {% if select.reporte == query.id %}
-                selected('{{query.id}}')
+                tag += 'checked';
               {% endif %}
             {% endfor %}
+            tag += '></td>';
             tag += '</tr>';
           {% endfor %}
         }
@@ -106,12 +107,13 @@
             tag += '<td>{{query.title}}</td>';
             tag += '<td><input type="checkbox" id="{{query.id}}"';
             tag += ' onchange="permisos({{query.id}},'+"'M'"+');"';
-            tag += ' name="check"></td>';
+            tag += ' name="check"';
             {% for select in MacPermisos %}
               {% if select.reporte == query.id %}
-                selected('{{query.id}}')
+                tag += 'checked';
               {% endif %}
             {% endfor %}
+            tag += '></td>';
             tag += '</tr>';
           {% endfor %}
         }
