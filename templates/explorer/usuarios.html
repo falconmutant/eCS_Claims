@@ -180,10 +180,7 @@
     var csrftoken = getCookie('csrftoken');
     function permisos(value1,value2) {
         console.log("create post is working!"); // sanity check
-        var c='';
-        $('#'+value1).change(function(){
-            c = this.checked ? '1' : '0';
-        })
+        var c = $('#'+value1+':checked').length;
         $.ajax({
             url : "/permission/", // the endpoint
             type : "POST", // http method
