@@ -15,8 +15,8 @@ def index(request):
     )
 
 def permisos(request):
-		correcto = 0
-		if request.POST:
+	correcto = 0
+	if request.POST:
 			correcto = 1
 			user = request.POST.get("user")
 			query = int(request.POST.get("idquery"))
@@ -34,7 +34,7 @@ def permisos(request):
 	            content_type="application/json"
 	        )
     
-    	 	return render_to_response('explorer/usuarios.html',context_instance=RequestContext(request))
+    	return render_to_response('explorer/usuarios.html',context_instance=RequestContext(request))
 
 @login_required
 def logged_in(request):
