@@ -18,6 +18,7 @@ def index(request):
 @login_required
 def permisos(request):
 	correcto = 0
+	response_data = {}
 	if request.POST:
 			correcto = 1
 			user = request.POST.get("user")
@@ -29,7 +30,7 @@ def permisos(request):
 		        	liga.save()
 		        else:
 		        	permiso.delete()
-	        response_data = {}
+
 	        response_data['result'] = 'Create post successful! '+correcto
 	        return HttpResponse(
 	            json.dumps(response_data),
