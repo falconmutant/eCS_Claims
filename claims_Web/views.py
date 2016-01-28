@@ -25,25 +25,22 @@ def save_permission(request):
     	selected = int(request.POST.get("selected"))
     	user = request.POST.get("user")
     	permiso = get_object_or_404(Permiso,usuario=user, reporte=query)
-				
-		
-		
-        if selected == 0:
-	       	liga = Permiso(usuario=user, reporte=query)
-	       	liga.save()
-	    else:
-	       	permiso.delete()
-	        response_data = {}
-	        response_data['result'] = 'Create post successful! '
-	    return HttpResponse(
-            json.dumps(response_data),
-            content_type="application/json"
-	    )
+    	if selected == 0:
+    		liga = Permiso(usuario=user, reporte=query)
+    		liga.save()
+    	else:
+    		permiso.delete()
+    		response_data = {}
+    		response_data['result'] = 'Create post successful! '
+    		return HttpResponse(
+    			json.dumps(response_data),
+    			content_type="application/json"
+    		)
     else:
-        return HttpResponse(
-            json.dumps({"nothing to see": "this isn't happening"}),
-            content_type="application/json"
-        )
+    	return HttpResponse(
+    		json.dumps({"nothing to see": "this isn't happening"}),
+    		content_type="application/json"
+    	)
 
 @login_required
 def logged_in(request):
