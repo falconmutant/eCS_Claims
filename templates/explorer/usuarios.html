@@ -182,14 +182,14 @@
         console.log("create post is working!"); // sanity check
         var c;
         $('#'+value1).change(function(){
-            c = this.checked ? 1 : 0;
+            c = this.checked ? '1' : '0';
         })
         $.ajax({
             url : "/permission/", // the endpoint
             type : "POST", // http method
             data : { user : value2,
                      idquery : value1, 
-                     selected : c,
+                     select : c,
                      csrfmiddlewaretoken : csrftoken
                     }, // data sent with the post request
 
