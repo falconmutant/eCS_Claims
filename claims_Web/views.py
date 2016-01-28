@@ -20,11 +20,11 @@ def permisos(request):
 	correcto = 0
 	response_data = {}
 	if request.POST:
-			correcto = 1
-			user = request.POST.get("user")
-			query = int(request.POST.get("idquery"))
-			selected = int(request.POST.get("selected"))
-			permiso = get_object_or_404(Permiso,usuario=user, reporte=query)
+				correcto = 1
+				user = request.POST.get("user")
+				query = int(request.POST.get("idquery"))
+				selected = int(request.POST.get("selected"))
+				permiso = get_object_or_404(Permiso,usuario=user, reporte=query)
 		        if selected == 0:
 		        	liga = Permiso(usuario=user, reporte=query)
 		        	liga.save()
@@ -36,8 +36,8 @@ def permisos(request):
 		            json.dumps(response_data),
 		            content_type="application/json"
 		        )
-    else:
-    		return render_to_response('explorer/usuarios.html',context_instance=RequestContext(request))
+    	else:
+    			return render_to_response('explorer/usuarios.html',context_instance=RequestContext(request))
 
 @login_required
 def logged_in(request):
