@@ -31,7 +31,7 @@ def permisos(request):
 		        else:
 		        	permiso.delete()
 
-	        response_data['result'] = 'Create post successful! '+correcto
+	        	response_data['result'] = 'Create post successful! '+correcto
 	        return HttpResponse(
 	            json.dumps(response_data),
 	            content_type="application/json"
