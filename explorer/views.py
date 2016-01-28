@@ -40,12 +40,11 @@ except:
 import re
 import json
 from functools import wraps
-
-tipouser = ''
+iduser = get_object_or_404(User,username=user.username)
+tipouser = get_object_or_404(TipoUsuario,user_id=iduser.id)
 def view_permission(f):
     @wraps(f)
     def wrap(request, *args, **kwargs):
-        tipouser = get_object_or_404(TipoUsuario,user_id=request.user.id)
         if not app_settings.EXPLORER_PERMISSION_VIEW(request.user)\
                 and not user_can_see_query(request, kwargs)\
                 and not (app_settings.EXPLORER_TOKEN_AUTH_ENABLED()
