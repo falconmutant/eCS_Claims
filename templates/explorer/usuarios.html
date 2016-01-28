@@ -91,7 +91,7 @@
             tag += '<td>{{query.title}}</td>';
             tag += '<td><input type="checkbox" id="{{query.id}}';
             tag += 'onchange="permisos({{query.id}},';
-            tag += "'$(#user).val()');";
+            tag += $(#user).val()+')';
             tag += 'name="check"></td>';
             {% for select in PemexPermisos %}
               {% if select.reporte == query.id %}
@@ -107,7 +107,7 @@
             tag += '<td>{{query.title}}</td>';
             tag += '<td><input type="checkbox" id="{{query.id}}';
             tag += 'onchange="permisos({{query.id}},';
-            tag += "'$(#user).val()');";
+            tag += $(#user).val()+')';
             tag += 'name="check"></td>';
             {% for select in PemexPermisos %}
               {% if select.reporte == query.id %}
