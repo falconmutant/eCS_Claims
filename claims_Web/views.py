@@ -17,7 +17,8 @@ def index(request):
 
 def permisos(request):
 	reportes = Query.objects.all()
-	permisos = Permiso.objects.all()
+	PemexPermisos = Permiso.objects.filter(usuario='P')
+	MacPermisos = Permiso.objects.filter(usuario='M')
 	return render_to_response('explorer/usuarios.html',
 		RequestContext(request,locals()))
 
