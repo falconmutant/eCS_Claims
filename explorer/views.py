@@ -41,7 +41,7 @@ import re
 import json
 from functools import wraps
 
-tipouser
+tipouser = ''
 def view_permission(f):
     @wraps(f)
     def wrap(request, *args, **kwargs):
