@@ -17,10 +17,9 @@ def index(request):
 def permisos(request):
 
 	if request.POST:
-		selected = ''
 		user = request.POST.get("user")
 		query = int(request.POST.get("idquery"))
-		selected = request.POST.get("selected")
+		selected = int(request.POST.get("selected"))
 		permiso = get_object_or_404(Permiso,usuario=user, reporte=query)
         if selected:
         	liga = Permiso(usuario=user, reporte=query)
