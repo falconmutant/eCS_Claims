@@ -13,7 +13,7 @@ from django.forms.models import model_to_dict
 from django.http import HttpResponse
 from django.db import DatabaseError
 from django.db.models import Count, Avg
-
+from claims.models import *
 from explorer.models import Query, QueryLog
 from explorer import app_settings
 from explorer.forms import QueryForm
