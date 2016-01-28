@@ -153,9 +153,19 @@ class ListQueryView(ExplorerContextMixin, ListView):
 
     def get_queryset(self):
         if app_settings.EXPLORER_PERMISSION_VIEW(self.request.user):
-            qs = Query.objects.prefetch_related('created_by_user').all()
+            tipouser = get_object_or_404(TipoUsuario,user_id=request.user.id)
+            if tipouser.tipo == 'P':
+                Permiso = Permiso.objects.filter(usuario='P')
+            if tipouser.tipo == 'M':
+                Permiso = Permiso.objects.filter(usuario='M')
+            qs = Query.objects.prefetch_related('created_by_user').all().filter(id__in=[permission.reporte for permission in Permiso])
         else:
-            qs = Query.objects.prefetch_related('created_by_user').filter(pk__in=allowed_query_pks(self.request.user.id))
+            tipouser = get_object_or_404(TipoUsuario,user_id=request.user.id)
+            if tipouser.tipo == 'P':
+                Permiso = Permiso.objects.filter(usuario='P')
+            if tipouser.tipo == 'M':
+                Permiso = Permiso.objects.filter(usuario='M')
+            qs = Query.objects.prefetch_related('created_by_user').filter(pk__in=allowed_query_pks(self.request.user.id),id__in=[permission.reporte for permission in Permiso])
         return qs.annotate(run_count=Count('querylog'))
 
     def _build_queries_and_headers(self):
