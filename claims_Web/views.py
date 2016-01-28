@@ -21,8 +21,9 @@ def permisos(request):
 
 def save_permission(request):
     if request.method == 'POST':
+    	query = int(request.POST.get("idquery"))
     	user = request.POST.get("user")
-			query = int(request.POST.get("idquery"))
+				
 			selected = int(request.POST.get("selected"))
 			permiso = get_object_or_404(Permiso,usuario=user, reporte=query)
 	        if selected == 0:
