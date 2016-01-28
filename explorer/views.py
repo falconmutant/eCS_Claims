@@ -16,7 +16,6 @@ from django.db.models import Count, Avg
 from claims.models import *
 from explorer.models import Query, QueryLog
 from explorer import app_settings
-from django.contrib import auth
 from explorer.forms import QueryForm
 from explorer.utils import url_get_rows,\
     url_get_query_id,\
@@ -40,8 +39,7 @@ except:
 import re
 import json
 from functools import wraps
-iduser = get_object_or_404(User,username=auth.User.username)
-tipouser = get_object_or_404(TipoUsuario,user_id=iduser.id)
+
 def view_permission(f):
     @wraps(f)
     def wrap(request, *args, **kwargs):
@@ -155,18 +153,10 @@ class ListQueryView(ExplorerContextMixin, ListView):
 
     def get_queryset(self):
         if app_settings.EXPLORER_PERMISSION_VIEW(self.request.user):
-            
-            if tipouser.tipo == 'P':
-                Permiso = Permiso.objects.filter(usuario='P')
-            if tipouser.tipo == 'M':
-                Permiso = Permiso.objects.filter(usuario='M')
-            qs = Query.objects.prefetch_related('created_by_user').all().filter(id__in=[permission.reporte for permission in Permiso])
+            permisos = Permiso.objects.all()
+            qs = Query.objects.prefetch_related('created_by_user').all()
         else:
-            if tipouser.tipo == 'P':
-                Permiso = Permiso.objects.filter(usuario='P')
-            if tipouser.tipo == 'M':
-                Permiso = Permiso.objects.filter(usuario='M')
-            qs = Query.objects.prefetch_related('created_by_user').filter(pk__in=allowed_query_pks(self.request.user.id),id__in=[permission.reporte for permission in Permiso])
+            qs = Query.objects.prefetch_related('created_by_user').filter(pk__in=allowed_query_pks(self.request.user.id))
         return qs.annotate(run_count=Count('querylog'))
 
     def _build_queries_and_headers(self):
