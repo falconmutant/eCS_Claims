@@ -57,13 +57,17 @@
                 </thead>
                 <tbody>
                     {% for object in recent_queries %}
-                    <tr>
-                        <td><a href="{{ settings.APP_URL }}{% url "query_detail" object.id %}">{{ object.title }}</a></td>
-                        <td>{{ object.last_run_date|date:"SHORT_DATETIME_FORMAT" }}</td>
-                        <td class="text-center">
-                            <a href="{{ settings.APP_URL }}{% url "query_download" object.id %}"><i class="glyphicon glyphicon-download"></i></a>
-                        </td>
-                    </tr>
+                        {% for permission in permisos %}
+                            {% if permission.reporte == object.id and tipouser.tipo == permission.usuario %}
+                            <tr>
+                                <td><a href="{{ settings.APP_URL }}{% url "query_detail" object.id %}">{{ object.title }}</a></td>
+                                <td>{{ object.last_run_date|date:"SHORT_DATETIME_FORMAT" }}</td>
+                                <td class="text-center">
+                                    <a href="{{ settings.APP_URL }}{% url "query_download" object.id %}"><i class="glyphicon glyphicon-download"></i></a>
+                                </td>
+                            </tr>
+                            {% endif %}
+                        {% endfor %}
                     {% endfor %}
                 </tbody>
             </table>
