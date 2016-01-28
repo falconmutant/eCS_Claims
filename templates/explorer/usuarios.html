@@ -83,7 +83,8 @@
   <script type="text/javascript" src="{% static "js/pnotify.min.js" %}"></script>
     <script>
       function reload(value){
-        var tag;
+        $('#tabletools').dataTable().fnDestroy();
+        var tag = '';
         if (value == 'P') {
           {% for query in reportes %}
             tag += '<tr>';
