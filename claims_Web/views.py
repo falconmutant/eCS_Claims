@@ -21,7 +21,7 @@ def permisos(request):
 		query = int(request.POST.get("idquery"))
 		selected = request.POST.get("selected")
 		permiso = get_object_or_404(Permiso,usuario=user, reporte=query)
-        if Almacenar:
+        if selected:
         	liga = Permiso(usuario=user, reporte=query)
         	liga.save()
         else:
