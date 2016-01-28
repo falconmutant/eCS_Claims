@@ -152,7 +152,7 @@ class ListQueryView(ExplorerContextMixin, ListView):
         context['recent_queries'] = self.get_queryset().order_by('-last_run_date')[:app_settings.EXPLORER_RECENT_QUERY_COUNT]
         return context
 
-    def get_queryset(self):
+    def get_queryset(request,self):
         if app_settings.EXPLORER_PERMISSION_VIEW(self.request.user):
             tipouser = get_object_or_404(TipoUsuario,user_id=request.user.id)
             if tipouser.tipo == 'P':
