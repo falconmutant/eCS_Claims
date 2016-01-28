@@ -16,6 +16,7 @@ from django.db.models import Count, Avg
 from claims.models import *
 from explorer.models import Query, QueryLog
 from explorer import app_settings
+from django.contrib import auth
 from explorer.forms import QueryForm
 from explorer.utils import url_get_rows,\
     url_get_query_id,\
