@@ -16,13 +16,22 @@ def index(request):
 
 def permisos(request):
 	if request.method == 'POST':
-		usuario = int(request.POST.get("user"))
-		reportes = Query.objects.all()
-		permisos = Permiso.objects.all().filter(usuario=usuario)
-		value=get_object_or_404(User, id=usuario)
-		return render_to_response('explorer/usuarios.html',RequestContext(request,locals()))
+		user = request.POST.get("user")
+		query = int(request.POST.get("idquery"))
+		selected = request.POST.get("selected")
+		permiso = get_object_or_404(Permiso,usuario=user, reporte=query)
+        if Almacenar:
+        	liga = Permiso(usuario=user, reporte=query)
+        	liga.save()
+        else:
+        	permiso.delete()
+        response_data = {}
+        response_data['result'] = 'Create post successful!'
+        return HttpResponse(
+            json.dumps(response_data),
+            content_type="application/json"
+        )
 	else:
-		usuarios = User.objects.all()
     	return render_to_response('explorer/usuarios.html',RequestContext(request,locals()))
 
 @login_required

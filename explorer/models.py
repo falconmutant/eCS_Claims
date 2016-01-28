@@ -97,7 +97,7 @@ class Query(models.Model):
 
 
 class Permiso(models.Model):
-    usuario = models.IntegerField(null=True)
+    usuario = models.TextField(null=True, blank=True)
     reporte = models.IntegerField(null=True)
     fecha = models.DateField()
 
