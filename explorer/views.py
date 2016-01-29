@@ -161,6 +161,7 @@ class ListQueryView(ExplorerContextMixin, ListView):
                 permisos = Permiso.objects.filter(usuario='P')
                 qs = Query.objects.prefetch_related('created_by_user').filter(id__in=[permission.reporte for permission in permisos])
         else:
+            tipouser = get_object_or_404(TipoUsuario,user_id=self.request.user.id)
             if tipouser.tipo == 'M':
                 permisos = Permiso.objects.filter(usuario='M')
                 qs = Query.objects.prefetch_related('created_by_user').filter(pk__in=allowed_query_pks(self.request.user.id),id__in=[permission.reporte for permission in permisos])
