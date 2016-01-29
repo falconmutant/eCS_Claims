@@ -25,6 +25,7 @@ def permisos(request):
 
 def save_permission(request):
 	x = datetime.datetime.now()
+	bandera = 0
 	if x.month < 10:
 		fecha = "%s-0%s-%s"% (x.year, x.month, x.day)
 	else:
@@ -39,8 +40,12 @@ def save_permission(request):
 		else:
 			liga = Permiso(usuario=user, reporte=query,fecha=fecha)
 			liga.save()
+			bandera = 1
+		PemexPermisos = Permiso.objects.filter(usuario='P')
+		MacPermisos = Permiso.objects.filter(usuario='M')
 		response_data = {}
 		response_data['result'] = 'Create post successful! '
+		response_data['bandera'] = bandera
 		return HttpResponse(
 			json.dumps(response_data),
 			content_type="application/json"
