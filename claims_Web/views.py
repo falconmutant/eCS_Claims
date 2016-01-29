@@ -183,10 +183,3 @@ def historial(request):
 	proveedor = Proveedor.objects.filter(id__in=[event.proveedor_id for event in evento])
 	cargo = Cargo.objects.filter(evento_id__in=[event.id for event in evento])
     	return render_to_response('claims/historial.html',RequestContext(request,locals()))
-
-
-
-
-class MotivoLista(ListView):
-
-    model = Motivo	
