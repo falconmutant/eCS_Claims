@@ -148,9 +148,9 @@ def claims(request):
 		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='1')
 	if tipouser.tipo == 'S':
 		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='1')
-	evento = Evento.objects.filter(id__in=[auth.evento_id for auth in autorizacion],localidad=localidad.nombre)
+	evento = Evento.objects.filter(id__in=[auth.evento_id for auth in autorizacion])
 	paciente = Paciente.objects.filter(evento_id__in=[event.id for event in evento])
-	proveedor = Proveedor.objects.filter(id__in=[event.proveedor_id for event in evento])
+	proveedor = Proveedor.objects.filter(id__in=[event.proveedor_id for event in evento],localidad=localidad.nombre)
 	cargo = Cargo.objects.filter(evento_id__in=[event.id for event in evento])
 	if request.POST:
 		inicio = request.POST.get("daterange").split(" - ")[0]
