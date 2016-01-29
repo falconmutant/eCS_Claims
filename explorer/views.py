@@ -149,7 +149,6 @@ class ListQueryView(ExplorerContextMixin, ListView):
         context = super(ListQueryView, self).get_context_data(**kwargs)
         context['object_list'] = self._build_queries_and_headers()
         context['recent_queries'] = self.get_queryset().order_by('-last_run_date')[:app_settings.EXPLORER_RECENT_QUERY_COUNT]
-        context['tipouser'] = 
         return context
 
     def get_queryset(self):
