@@ -14,6 +14,7 @@ from django.http import HttpResponse
 from django.db import DatabaseError
 from django.db.models import Count, Avg
 from explorer.models import Query, QueryLog, Permiso
+from claims.models import TipoUsuario
 from explorer import app_settings
 from explorer.forms import QueryForm
 from explorer.utils import url_get_rows,\
@@ -148,14 +149,25 @@ class ListQueryView(ExplorerContextMixin, ListView):
         context = super(ListQueryView, self).get_context_data(**kwargs)
         context['object_list'] = self._build_queries_and_headers()
         context['recent_queries'] = self.get_queryset().order_by('-last_run_date')[:app_settings.EXPLORER_RECENT_QUERY_COUNT]
+        context['tipouser'] = 
         return context
 
     def get_queryset(self):
         if app_settings.EXPLORER_PERMISSION_VIEW(self.request.user):
-            permisos = Permiso.objects.all()
-            qs = Query.objects.prefetch_related('created_by_user').all()
+            tipouser = get_object_or_404(TipoUsuario,user_id=self.request.user.id)
+            if tipouser.tipo == 'M':
+                permisos = Permiso.objects.filter(usuario='M')
+                qs = Query.objects.prefetch_related('created_by_user').filter(id__in=[permission.reporte for permission in permisos])
+            if tipouser.tipo == 'P':
+                permisos = Permiso.objects.filter(usuario='P')
+                qs = Query.objects.prefetch_related('created_by_user').filter(id__in=[permission.reporte for permission in permisos])
         else:
-            qs = Query.objects.prefetch_related('created_by_user').filter(pk__in=allowed_query_pks(self.request.user.id))
+            if tipouser.tipo == 'M':
+                permisos = Permiso.objects.filter(usuario='M')
+                qs = Query.objects.prefetch_related('created_by_user').filter(pk__in=allowed_query_pks(self.request.user.id),id__in=[permission.reporte for permission in permisos])
+            if tipouser.tipo == 'P':
+                permisos = Permiso.objects.filter(usuario='P')
+                qs = Query.objects.prefetch_related('created_by_user').filter(pk__in=allowed_query_pks(self.request.user.id),id__in=[permission.reporte for permission in permisos])
         return qs.annotate(run_count=Count('querylog'))
 
     def _build_queries_and_headers(self):
