@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+  {% block content %}
+  <h2>Motivos</h2>
+  <em>Motivo - Nombre</em>
+  <ul>
+    {% for motivo in object_list %}
+      <li>{{ motivo.nombre }} </li>
+    {% endfor %}
+  </ul>
+  {% endblock %}
