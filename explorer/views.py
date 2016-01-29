@@ -152,23 +152,14 @@ class ListQueryView(ExplorerContextMixin, ListView):
         return context
 
     def get_queryset(self):
-        if app_settings.EXPLORER_PERMISSION_VIEW(self.request.user):
-            qs = Query.objects.prefetch_related('created_by_user').all()
-            tipouser = get_object_or_404(TipoUsuario,user_id=self.request.user.id)
-            if tipouser.tipo == 'M':
-                permisos = Permiso.objects.filter(usuario='M')
-                qs = Query.objects.prefetch_related('created_by_user').filter(id__in=[permission.reporte for permission in permisos])
-            if tipouser.tipo == 'P':
-                permisos = Permiso.objects.filter(usuario='P')
-                qs = Query.objects.prefetch_related('created_by_user').filter(id__in=[permission.reporte for permission in permisos])
-        else:
-            tipouser = get_object_or_404(TipoUsuario,user_id=self.request.user.id)
-            if tipouser.tipo == 'M':
-                permisos = Permiso.objects.filter(usuario='M')
-                qs = Query.objects.prefetch_related('created_by_user').filter(pk__in=allowed_query_pks(self.request.user.id),id__in=[permission.reporte for permission in permisos])
-            if tipouser.tipo == 'P':
-                permisos = Permiso.objects.filter(usuario='P')
-                qs = Query.objects.prefetch_related('created_by_user').filter(pk__in=allowed_query_pks(self.request.user.id),id__in=[permission.reporte for permission in permisos])
+        qs = Query.objects.prefetch_related('created_by_user').all()
+        tipouser = get_object_or_404(TipoUsuario,user_id=self.request.user.id)
+        if tipouser.tipo == 'M':
+            permisos = Permiso.objects.filter(usuario='M')
+            qs = Query.objects.prefetch_related('created_by_user').filter(id__in=[permission.reporte for permission in permisos])
+        if tipouser.tipo == 'P':
+            permisos = Permiso.objects.filter(usuario='P')
+            qs = Query.objects.prefetch_related('created_by_user').filter(id__in=[permission.reporte for permission in permisos])
         return qs.annotate(run_count=Count('querylog'))
 
     def _build_queries_and_headers(self):
