@@ -17687,3 +17687,32 @@ IntegrityError: insert or update on table "django_admin_log" violates foreign ke
 DETAIL:  Key (content_type_id)=(33) is not present in table "django_content_type".
 
 [29/Jan/2016 21:02:55] "POST /admin/claims/localidades/add/ HTTP/1.1" 500 146252
+Performing system checks...
+
+System check identified no issues (0 silenced).
+January 29, 2016 - 19:39:41
+Django version 1.8.5, using settings 'ecsclaims.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Unhandled exception in thread started by <function wrapper at 0x332cb90>
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/site-packages/django/utils/autoreload.py", line 229, in wrapper
+    fn(*args, **kwargs)
+  File "/usr/lib64/python2.7/site-packages/django/core/management/commands/runserver.py", line 107, in inner_run
+    autoreload.raise_last_exception()
+  File "/usr/lib64/python2.7/site-packages/django/utils/autoreload.py", line 252, in raise_last_exception
+    six.reraise(*_exception)
+  File "/usr/lib64/python2.7/site-packages/django/utils/autoreload.py", line 229, in wrapper
+    fn(*args, **kwargs)
+  File "/usr/lib64/python2.7/site-packages/django/__init__.py", line 18, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/usr/lib64/python2.7/site-packages/django/apps/registry.py", line 108, in populate
+    app_config.import_models(all_models)
+  File "/usr/lib64/python2.7/site-packages/django/apps/config.py", line 198, in import_models
+    self.models_module = import_module(models_module_name)
+  File "/usr/lib64/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/srv/www/django/ecsclaims/claims/models.py", line 70
+    <<<<<<< HEAD
+     ^
+SyntaxError: invalid syntax

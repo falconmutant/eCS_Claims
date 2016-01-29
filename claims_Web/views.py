@@ -5,6 +5,7 @@ from django.shortcuts import render_to_response, get_object_or_404, get_list_or_
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from django.contrib import auth
+from django.views.generic import ListView
 from claims.models import *
 from explorer.models import *
 import datetime
@@ -182,3 +183,10 @@ def historial(request):
 	proveedor = Proveedor.objects.filter(id__in=[event.proveedor_id for event in evento])
 	cargo = Cargo.objects.filter(evento_id__in=[event.id for event in evento])
     	return render_to_response('claims/historial.html',RequestContext(request,locals()))
+
+
+
+
+class MotivoLista(ListView):
+
+    model = Motivo	
