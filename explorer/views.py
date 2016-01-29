@@ -106,6 +106,7 @@ def view_csv_query(request, query_id):
 @require_POST
 def email_csv_query(request, query_id):
     if request.is_ajax():
+        return HttpResponse(status=403)
         email = request.POST.get('email', None)
         if email:
             execute_query.delay(query_id, email)
