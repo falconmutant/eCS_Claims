@@ -17028,3 +17028,662 @@ TemplateDoesNotExist: registration/login.html
 [29/Jan/2016 18:44:30] "GET /static2/images/icon-medical.png HTTP/1.1" 200 4212
 [29/Jan/2016 18:47:01] "GET /claims/ HTTP/1.1" 200 14780
 [29/Jan/2016 18:47:09] "GET /detalles/33/ HTTP/1.1" 200 21441
+[29/Jan/2016 18:50:35] "GET /detalles/33/ HTTP/1.1" 200 20786
+[29/Jan/2016 18:50:35] "GET /static2/css/font-awesome.css HTTP/1.1" 304 0
+[29/Jan/2016 18:50:35] "GET /static2/admin/bootstrap/css/bootstrap.min.css HTTP/1.1" 304 0
+[29/Jan/2016 18:50:35] "GET /static2/admin/lib/jquery-ui/css/Aristo/Aristo.css HTTP/1.1" 304 0
+[29/Jan/2016 18:50:35] "GET /static2/admin/lib/jBreadcrumbs/css/BreadCrumb.css HTTP/1.1" 304 0
+[29/Jan/2016 18:50:35] "GET /static2/admin/img/font-awesome/css/font-awesome.min.css HTTP/1.1" 304 0
+[29/Jan/2016 18:50:35] "GET /static2/admin/css/style.css HTTP/1.1" 304 0
+[29/Jan/2016 18:50:35] "GET /static2/admin/css/blue.css HTTP/1.1" 304 0
+[29/Jan/2016 18:50:36] "GET /static2/datatables/dataTables.css HTTP/1.1" 304 0
+[29/Jan/2016 18:50:36] "GET /static2/datatables/dataTables.bootstrap.css HTTP/1.1" 304 0
+[29/Jan/2016 18:50:36] "GET /static2/datatables/dataTables.fontAwesome.css HTTP/1.1" 304 0
+[29/Jan/2016 18:50:36] "GET /static2/admin/js/jquery.min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:50:36] "GET /static2/admin/js/jquery-migrate.min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:50:36] "GET /static2/admin/js/jquery.easing.1.3.min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:50:36] "GET /static2/admin/js/jquery_cookie_min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:50:36] "GET /static2/admin/bootstrap/js/bootstrap.min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:50:36] "GET /static2/admin/js/bootstrap.plugins.min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:50:36] "GET /static2/admin/lib/typeahead/typeahead.min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:50:36] "GET /static2/admin/lib/google-code-prettify/prettify.min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:50:36] "GET /static2/admin/lib/jBreadcrumbs/js/jquery.jBreadCrumb.1.1.min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:50:36] "GET /static2/admin/js/jquery.actual.min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:50:36] "GET /static2/admin/lib/slimScroll/jquery.slimscroll.js HTTP/1.1" 304 0
+[29/Jan/2016 18:50:36] "GET /static2/admin/lib/UItoTop/jquery.ui.totop.min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:50:36] "GET /static2/admin/js/selectNav.js HTTP/1.1" 304 0
+[29/Jan/2016 18:50:36] "GET /static2/admin/js/pages/gebo_common.js HTTP/1.1" 304 0
+[29/Jan/2016 18:50:36] "GET /static2/datatables/jquery.dataTables.js HTTP/1.1" 304 0
+[29/Jan/2016 18:50:36] "GET /static2/datatables/dataTables.bootstrap.js HTTP/1.1" 304 0
+[29/Jan/2016 18:50:36] "GET /static2/datatables/demo-datatables.js HTTP/1.1" 304 0
+[29/Jan/2016 18:50:36] "GET /static2/admin/bootstrap/fonts/glyphicons-halflings-regular.woff HTTP/1.1" 304 0
+[29/Jan/2016 18:50:36] "GET /static2/admin/img/bg_c.png HTTP/1.1" 304 0
+[29/Jan/2016 18:50:36] "GET /static2/images/icon-medical.png HTTP/1.1" 304 0
+[29/Jan/2016 18:50:36] "GET /static2/admin/img/user_avatar.png HTTP/1.1" 304 0
+[29/Jan/2016 18:50:37] "GET /static2/admin/img/ui.totop.png HTTP/1.1" 304 0
+[29/Jan/2016 18:51:34] "GET /detalles/33/ HTTP/1.1" 200 20721
+[29/Jan/2016 18:51:34] "GET /static2/css/font-awesome.css HTTP/1.1" 304 0
+[29/Jan/2016 18:51:34] "GET /static2/admin/bootstrap/css/bootstrap.min.css HTTP/1.1" 304 0
+[29/Jan/2016 18:51:34] "GET /static2/admin/lib/jquery-ui/css/Aristo/Aristo.css HTTP/1.1" 304 0
+[29/Jan/2016 18:51:35] "GET /static2/admin/lib/jBreadcrumbs/css/BreadCrumb.css HTTP/1.1" 304 0
+[29/Jan/2016 18:51:35] "GET /static2/admin/img/font-awesome/css/font-awesome.min.css HTTP/1.1" 304 0
+[29/Jan/2016 18:51:35] "GET /static2/admin/css/style.css HTTP/1.1" 304 0
+[29/Jan/2016 18:51:35] "GET /static2/admin/css/blue.css HTTP/1.1" 304 0
+[29/Jan/2016 18:51:35] "GET /static2/datatables/dataTables.css HTTP/1.1" 304 0
+[29/Jan/2016 18:51:35] "GET /static2/datatables/dataTables.bootstrap.css HTTP/1.1" 304 0
+[29/Jan/2016 18:51:35] "GET /static2/datatables/dataTables.fontAwesome.css HTTP/1.1" 304 0
+[29/Jan/2016 18:51:35] "GET /static2/admin/js/jquery.min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:51:35] "GET /static2/admin/js/jquery-migrate.min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:51:35] "GET /static2/admin/js/jquery.easing.1.3.min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:51:35] "GET /static2/admin/js/jquery_cookie_min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:51:35] "GET /static2/admin/bootstrap/js/bootstrap.min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:51:35] "GET /static2/admin/js/bootstrap.plugins.min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:51:35] "GET /static2/admin/lib/typeahead/typeahead.min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:51:35] "GET /static2/admin/lib/google-code-prettify/prettify.min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:51:35] "GET /static2/admin/lib/jBreadcrumbs/js/jquery.jBreadCrumb.1.1.min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:51:35] "GET /static2/admin/js/jquery.actual.min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:51:35] "GET /static2/admin/lib/slimScroll/jquery.slimscroll.js HTTP/1.1" 304 0
+[29/Jan/2016 18:51:35] "GET /static2/admin/lib/UItoTop/jquery.ui.totop.min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:51:35] "GET /static2/admin/js/selectNav.js HTTP/1.1" 304 0
+[29/Jan/2016 18:51:35] "GET /static2/admin/js/pages/gebo_common.js HTTP/1.1" 304 0
+[29/Jan/2016 18:51:35] "GET /static2/datatables/jquery.dataTables.js HTTP/1.1" 304 0
+[29/Jan/2016 18:51:35] "GET /static2/datatables/dataTables.bootstrap.js HTTP/1.1" 304 0
+[29/Jan/2016 18:51:35] "GET /static2/datatables/demo-datatables.js HTTP/1.1" 304 0
+[29/Jan/2016 18:51:35] "GET /static2/admin/bootstrap/fonts/glyphicons-halflings-regular.woff HTTP/1.1" 304 0
+[29/Jan/2016 18:51:35] "GET /static2/admin/img/bg_c.png HTTP/1.1" 304 0
+[29/Jan/2016 18:51:35] "GET /static2/admin/img/user_avatar.png HTTP/1.1" 304 0
+[29/Jan/2016 18:51:36] "GET /static2/images/icon-medical.png HTTP/1.1" 304 0
+[29/Jan/2016 18:51:36] "GET /static2/admin/img/ui.totop.png HTTP/1.1" 304 0
+[29/Jan/2016 18:56:22] "GET /detalles/33/ HTTP/1.1" 200 21111
+[29/Jan/2016 18:56:22] "GET /static2/css/font-awesome.css HTTP/1.1" 304 0
+[29/Jan/2016 18:56:22] "GET /static2/admin/bootstrap/css/bootstrap.min.css HTTP/1.1" 304 0
+[29/Jan/2016 18:56:22] "GET /static2/admin/lib/jquery-ui/css/Aristo/Aristo.css HTTP/1.1" 304 0
+[29/Jan/2016 18:56:22] "GET /static2/admin/lib/jBreadcrumbs/css/BreadCrumb.css HTTP/1.1" 304 0
+[29/Jan/2016 18:56:22] "GET /static2/admin/img/font-awesome/css/font-awesome.min.css HTTP/1.1" 304 0
+[29/Jan/2016 18:56:22] "GET /static2/admin/css/style.css HTTP/1.1" 304 0
+[29/Jan/2016 18:56:22] "GET /static2/admin/css/blue.css HTTP/1.1" 304 0
+[29/Jan/2016 18:56:22] "GET /static2/datatables/dataTables.css HTTP/1.1" 304 0
+[29/Jan/2016 18:56:22] "GET /static2/datatables/dataTables.bootstrap.css HTTP/1.1" 304 0
+[29/Jan/2016 18:56:22] "GET /static2/datatables/dataTables.fontAwesome.css HTTP/1.1" 304 0
+[29/Jan/2016 18:56:22] "GET /static2/admin/js/jquery.min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:56:22] "GET /static2/admin/js/jquery-migrate.min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:56:22] "GET /static2/admin/js/jquery.easing.1.3.min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:56:23] "GET /static2/admin/js/jquery_cookie_min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:56:23] "GET /static2/admin/bootstrap/js/bootstrap.min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:56:23] "GET /static2/admin/js/bootstrap.plugins.min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:56:23] "GET /static2/admin/lib/typeahead/typeahead.min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:56:23] "GET /static2/admin/lib/google-code-prettify/prettify.min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:56:23] "GET /static2/admin/lib/jBreadcrumbs/js/jquery.jBreadCrumb.1.1.min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:56:23] "GET /static2/admin/js/jquery.actual.min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:56:23] "GET /static2/admin/lib/slimScroll/jquery.slimscroll.js HTTP/1.1" 304 0
+[29/Jan/2016 18:56:23] "GET /static2/admin/lib/UItoTop/jquery.ui.totop.min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:56:23] "GET /static2/admin/js/selectNav.js HTTP/1.1" 304 0
+[29/Jan/2016 18:56:23] "GET /static2/admin/js/pages/gebo_common.js HTTP/1.1" 304 0
+[29/Jan/2016 18:56:23] "GET /static2/datatables/jquery.dataTables.js HTTP/1.1" 304 0
+[29/Jan/2016 18:56:23] "GET /static2/datatables/dataTables.bootstrap.js HTTP/1.1" 304 0
+[29/Jan/2016 18:56:23] "GET /static2/datatables/demo-datatables.js HTTP/1.1" 304 0
+[29/Jan/2016 18:56:23] "GET /static2/admin/bootstrap/fonts/glyphicons-halflings-regular.woff HTTP/1.1" 304 0
+[29/Jan/2016 18:56:23] "GET /static2/admin/img/bg_c.png HTTP/1.1" 304 0
+[29/Jan/2016 18:56:23] "GET /static2/admin/img/user_avatar.png HTTP/1.1" 304 0
+[29/Jan/2016 18:56:23] "GET /static2/images/icon-medical.png HTTP/1.1" 304 0
+[29/Jan/2016 18:56:23] "GET /static2/admin/img/ui.totop.png HTTP/1.1" 304 0
+[29/Jan/2016 18:59:45] "GET /detalles/33/ HTTP/1.1" 200 21064
+[29/Jan/2016 18:59:45] "GET /static2/css/font-awesome.css HTTP/1.1" 304 0
+[29/Jan/2016 18:59:46] "GET /static2/admin/bootstrap/css/bootstrap.min.css HTTP/1.1" 304 0
+[29/Jan/2016 18:59:46] "GET /static2/admin/lib/jquery-ui/css/Aristo/Aristo.css HTTP/1.1" 304 0
+[29/Jan/2016 18:59:46] "GET /static2/admin/lib/jBreadcrumbs/css/BreadCrumb.css HTTP/1.1" 304 0
+[29/Jan/2016 18:59:46] "GET /static2/admin/img/font-awesome/css/font-awesome.min.css HTTP/1.1" 304 0
+[29/Jan/2016 18:59:46] "GET /static2/admin/css/style.css HTTP/1.1" 304 0
+[29/Jan/2016 18:59:46] "GET /static2/admin/css/blue.css HTTP/1.1" 304 0
+[29/Jan/2016 18:59:46] "GET /static2/datatables/dataTables.css HTTP/1.1" 304 0
+[29/Jan/2016 18:59:46] "GET /static2/datatables/dataTables.bootstrap.css HTTP/1.1" 304 0
+[29/Jan/2016 18:59:46] "GET /static2/datatables/dataTables.fontAwesome.css HTTP/1.1" 304 0
+[29/Jan/2016 18:59:46] "GET /static2/admin/js/jquery.min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:59:46] "GET /static2/admin/js/jquery-migrate.min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:59:46] "GET /static2/admin/js/jquery.easing.1.3.min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:59:46] "GET /static2/admin/js/jquery_cookie_min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:59:46] "GET /static2/admin/bootstrap/js/bootstrap.min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:59:46] "GET /static2/admin/js/bootstrap.plugins.min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:59:46] "GET /static2/admin/lib/typeahead/typeahead.min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:59:46] "GET /static2/admin/lib/google-code-prettify/prettify.min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:59:46] "GET /static2/admin/lib/jBreadcrumbs/js/jquery.jBreadCrumb.1.1.min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:59:46] "GET /static2/admin/js/jquery.actual.min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:59:46] "GET /static2/admin/lib/slimScroll/jquery.slimscroll.js HTTP/1.1" 304 0
+[29/Jan/2016 18:59:46] "GET /static2/admin/lib/UItoTop/jquery.ui.totop.min.js HTTP/1.1" 304 0
+[29/Jan/2016 18:59:46] "GET /static2/admin/js/selectNav.js HTTP/1.1" 304 0
+[29/Jan/2016 18:59:46] "GET /static2/admin/js/pages/gebo_common.js HTTP/1.1" 304 0
+[29/Jan/2016 18:59:46] "GET /static2/datatables/jquery.dataTables.js HTTP/1.1" 304 0
+[29/Jan/2016 18:59:47] "GET /static2/datatables/dataTables.bootstrap.js HTTP/1.1" 304 0
+[29/Jan/2016 18:59:47] "GET /static2/datatables/demo-datatables.js HTTP/1.1" 304 0
+[29/Jan/2016 18:59:47] "GET /static2/admin/bootstrap/fonts/glyphicons-halflings-regular.woff HTTP/1.1" 304 0
+[29/Jan/2016 18:59:47] "GET /static2/admin/img/bg_c.png HTTP/1.1" 304 0
+[29/Jan/2016 18:59:47] "GET /static2/admin/img/user_avatar.png HTTP/1.1" 304 0
+[29/Jan/2016 18:59:47] "GET /static2/images/icon-medical.png HTTP/1.1" 304 0
+[29/Jan/2016 18:59:48] "GET /static2/admin/img/ui.totop.png HTTP/1.1" 304 0
+[29/Jan/2016 19:01:30] "GET /detalles/33/ HTTP/1.1" 200 21064
+[29/Jan/2016 19:01:30] "GET /static2/css/font-awesome.css HTTP/1.1" 304 0
+[29/Jan/2016 19:01:30] "GET /static2/admin/bootstrap/css/bootstrap.min.css HTTP/1.1" 304 0
+[29/Jan/2016 19:01:30] "GET /static2/admin/lib/jquery-ui/css/Aristo/Aristo.css HTTP/1.1" 304 0
+[29/Jan/2016 19:01:30] "GET /static2/admin/lib/jBreadcrumbs/css/BreadCrumb.css HTTP/1.1" 304 0
+[29/Jan/2016 19:01:30] "GET /static2/admin/img/font-awesome/css/font-awesome.min.css HTTP/1.1" 304 0
+[29/Jan/2016 19:01:31] "GET /static2/admin/css/style.css HTTP/1.1" 304 0
+[29/Jan/2016 19:01:31] "GET /static2/admin/css/blue.css HTTP/1.1" 304 0
+[29/Jan/2016 19:01:31] "GET /static2/datatables/dataTables.css HTTP/1.1" 304 0
+[29/Jan/2016 19:01:31] "GET /static2/datatables/dataTables.bootstrap.css HTTP/1.1" 304 0
+[29/Jan/2016 19:01:31] "GET /static2/datatables/dataTables.fontAwesome.css HTTP/1.1" 304 0
+[29/Jan/2016 19:01:31] "GET /static2/admin/js/jquery.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:01:31] "GET /static2/admin/js/jquery-migrate.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:01:31] "GET /static2/admin/js/jquery.easing.1.3.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:01:31] "GET /static2/admin/js/jquery_cookie_min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:01:31] "GET /static2/admin/bootstrap/js/bootstrap.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:01:31] "GET /static2/admin/js/bootstrap.plugins.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:01:31] "GET /static2/admin/lib/typeahead/typeahead.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:01:31] "GET /static2/admin/lib/google-code-prettify/prettify.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:01:31] "GET /static2/admin/lib/jBreadcrumbs/js/jquery.jBreadCrumb.1.1.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:01:31] "GET /static2/admin/js/jquery.actual.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:01:31] "GET /static2/admin/lib/slimScroll/jquery.slimscroll.js HTTP/1.1" 304 0
+[29/Jan/2016 19:01:31] "GET /static2/admin/lib/UItoTop/jquery.ui.totop.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:01:32] "GET /static2/admin/js/selectNav.js HTTP/1.1" 304 0
+[29/Jan/2016 19:01:32] "GET /static2/admin/js/pages/gebo_common.js HTTP/1.1" 304 0
+[29/Jan/2016 19:01:32] "GET /static2/datatables/jquery.dataTables.js HTTP/1.1" 304 0
+[29/Jan/2016 19:01:32] "GET /static2/datatables/dataTables.bootstrap.js HTTP/1.1" 304 0
+[29/Jan/2016 19:01:32] "GET /static2/datatables/demo-datatables.js HTTP/1.1" 304 0
+[29/Jan/2016 19:01:32] "GET /static2/admin/bootstrap/fonts/glyphicons-halflings-regular.woff HTTP/1.1" 304 0
+[29/Jan/2016 19:01:32] "GET /static2/images/icon-medical.png HTTP/1.1" 304 0
+[29/Jan/2016 19:01:32] "GET /static2/admin/img/bg_c.png HTTP/1.1" 304 0
+[29/Jan/2016 19:01:32] "GET /static2/admin/img/user_avatar.png HTTP/1.1" 304 0
+[29/Jan/2016 19:01:32] "GET /static2/admin/img/ui.totop.png HTTP/1.1" 304 0
+[29/Jan/2016 19:03:58] "GET /detalles/33/ HTTP/1.1" 200 21121
+[29/Jan/2016 19:03:58] "GET /static2/css/font-awesome.css HTTP/1.1" 304 0
+[29/Jan/2016 19:03:58] "GET /static2/admin/bootstrap/css/bootstrap.min.css HTTP/1.1" 304 0
+[29/Jan/2016 19:03:58] "GET /static2/admin/lib/jquery-ui/css/Aristo/Aristo.css HTTP/1.1" 304 0
+[29/Jan/2016 19:03:58] "GET /static2/admin/lib/jBreadcrumbs/css/BreadCrumb.css HTTP/1.1" 304 0
+[29/Jan/2016 19:03:58] "GET /static2/admin/img/font-awesome/css/font-awesome.min.css HTTP/1.1" 304 0
+[29/Jan/2016 19:03:58] "GET /static2/admin/css/style.css HTTP/1.1" 304 0
+[29/Jan/2016 19:03:58] "GET /static2/admin/css/blue.css HTTP/1.1" 304 0
+[29/Jan/2016 19:03:58] "GET /static2/datatables/dataTables.css HTTP/1.1" 304 0
+[29/Jan/2016 19:03:58] "GET /static2/datatables/dataTables.bootstrap.css HTTP/1.1" 304 0
+[29/Jan/2016 19:03:58] "GET /static2/datatables/dataTables.fontAwesome.css HTTP/1.1" 304 0
+[29/Jan/2016 19:03:58] "GET /static2/admin/js/jquery.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:03:58] "GET /static2/admin/js/jquery-migrate.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:03:58] "GET /static2/admin/js/jquery.easing.1.3.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:03:59] "GET /static2/admin/js/jquery_cookie_min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:03:59] "GET /static2/admin/bootstrap/js/bootstrap.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:03:59] "GET /static2/admin/js/bootstrap.plugins.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:03:59] "GET /static2/admin/lib/typeahead/typeahead.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:03:59] "GET /static2/admin/lib/google-code-prettify/prettify.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:03:59] "GET /static2/admin/lib/jBreadcrumbs/js/jquery.jBreadCrumb.1.1.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:03:59] "GET /static2/admin/js/jquery.actual.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:03:59] "GET /static2/admin/lib/slimScroll/jquery.slimscroll.js HTTP/1.1" 304 0
+[29/Jan/2016 19:03:59] "GET /static2/admin/lib/UItoTop/jquery.ui.totop.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:03:59] "GET /static2/admin/js/selectNav.js HTTP/1.1" 304 0
+[29/Jan/2016 19:03:59] "GET /static2/admin/js/pages/gebo_common.js HTTP/1.1" 304 0
+[29/Jan/2016 19:03:59] "GET /static2/datatables/jquery.dataTables.js HTTP/1.1" 304 0
+[29/Jan/2016 19:03:59] "GET /static2/datatables/dataTables.bootstrap.js HTTP/1.1" 304 0
+[29/Jan/2016 19:03:59] "GET /static2/datatables/demo-datatables.js HTTP/1.1" 304 0
+[29/Jan/2016 19:03:59] "GET /static2/admin/bootstrap/fonts/glyphicons-halflings-regular.woff HTTP/1.1" 304 0
+[29/Jan/2016 19:03:59] "GET /static2/admin/img/bg_c.png HTTP/1.1" 304 0
+[29/Jan/2016 19:03:59] "GET /static2/images/icon-medical.png HTTP/1.1" 304 0
+[29/Jan/2016 19:03:59] "GET /static2/admin/img/user_avatar.png HTTP/1.1" 304 0
+[29/Jan/2016 19:03:59] "GET /static2/admin/img/ui.totop.png HTTP/1.1" 304 0
+[29/Jan/2016 19:07:52] "GET /explorer/ HTTP/1.1" 200 16614
+Internal Server Error: /explorer/4/email_csv
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/srv/www/django/ecsclaims/explorer/views.py", line 51, in wrap
+    return f(request, *args, **kwargs)
+  File "/usr/lib64/python2.7/site-packages/django/views/decorators/http.py", line 45, in inner
+    return func(request, *args, **kwargs)
+  File "/srv/www/django/ecsclaims/explorer/views.py", line 111, in email_csv_query
+    execute_query.delay(query_id, email)
+AttributeError: 'function' object has no attribute 'delay'
+[29/Jan/2016 19:08:05] "POST /explorer/4/email_csv HTTP/1.1" 500 12278
+Performing system checks...
+
+System check identified no issues (0 silenced).
+January 29, 2016 - 18:24:09
+Django version 1.8.5, using settings 'ecsclaims.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+[29/Jan/2016 19:13:16] "GET /explorer/ HTTP/1.1" 200 16614
+Internal Server Error: /explorer/4/email_csv
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/srv/www/django/ecsclaims/explorer/views.py", line 51, in wrap
+    return f(request, *args, **kwargs)
+  File "/usr/lib64/python2.7/site-packages/django/views/decorators/http.py", line 45, in inner
+    return func(request, *args, **kwargs)
+  File "/srv/www/django/ecsclaims/explorer/views.py", line 111, in email_csv_query
+    execute_query.delay(query_id, email)
+AttributeError: 'function' object has no attribute 'delay'
+[29/Jan/2016 19:13:47] "POST /explorer/4/email_csv HTTP/1.1" 500 12257
+Internal Server Error: /explorer/4/email_csv
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/srv/www/django/ecsclaims/explorer/views.py", line 51, in wrap
+    return f(request, *args, **kwargs)
+  File "/usr/lib64/python2.7/site-packages/django/views/decorators/http.py", line 45, in inner
+    return func(request, *args, **kwargs)
+  File "/srv/www/django/ecsclaims/explorer/views.py", line 111, in email_csv_query
+    execute_query.delay(query_id, email)
+AttributeError: 'function' object has no attribute 'delay'
+[29/Jan/2016 19:14:00] "POST /explorer/4/email_csv HTTP/1.1" 500 12257
+Performing system checks...
+
+System check identified no issues (0 silenced).
+January 29, 2016 - 19:13:10
+Django version 1.8.5, using settings 'ecsclaims.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+[29/Jan/2016 19:15:41] "GET /explorer/ HTTP/1.1" 200 16614
+[29/Jan/2016 19:15:41] "GET /static2/css/font-awesome.css HTTP/1.1" 304 0
+[29/Jan/2016 19:15:41] "GET /static2/admin/bootstrap/css/bootstrap.min.css HTTP/1.1" 304 0
+[29/Jan/2016 19:15:41] "GET /static2/admin/lib/jquery-ui/css/Aristo/Aristo.css HTTP/1.1" 304 0
+[29/Jan/2016 19:15:41] "GET /static2/admin/lib/jBreadcrumbs/css/BreadCrumb.css HTTP/1.1" 304 0
+[29/Jan/2016 19:15:41] "GET /static2/admin/img/font-awesome/css/font-awesome.min.css HTTP/1.1" 304 0
+[29/Jan/2016 19:15:41] "GET /static2/admin/css/style.css HTTP/1.1" 304 0
+[29/Jan/2016 19:15:42] "GET /static2/admin/css/blue.css HTTP/1.1" 304 0
+[29/Jan/2016 19:15:42] "GET /static2/datatables/dataTables.css HTTP/1.1" 304 0
+[29/Jan/2016 19:15:42] "GET /static2/datatables/dataTables.bootstrap.css HTTP/1.1" 304 0
+[29/Jan/2016 19:15:42] "GET /static2/datatables/dataTables.fontAwesome.css HTTP/1.1" 304 0
+[29/Jan/2016 19:15:42] "GET /static2/admin/js/jquery.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:15:42] "GET /static2/admin/js/jquery-migrate.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:15:42] "GET /static2/admin/js/jquery.easing.1.3.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:15:42] "GET /static2/admin/js/jquery_cookie_min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:15:42] "GET /static2/admin/bootstrap/js/bootstrap.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:15:42] "GET /static2/admin/js/bootstrap.plugins.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:15:42] "GET /static2/admin/lib/typeahead/typeahead.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:15:42] "GET /static2/admin/lib/google-code-prettify/prettify.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:15:42] "GET /static2/admin/lib/jBreadcrumbs/js/jquery.jBreadCrumb.1.1.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:15:42] "GET /static2/admin/js/jquery.actual.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:15:42] "GET /static2/admin/lib/slimScroll/jquery.slimscroll.js HTTP/1.1" 304 0
+[29/Jan/2016 19:15:42] "GET /static2/admin/lib/UItoTop/jquery.ui.totop.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:15:42] "GET /static2/admin/js/selectNav.js HTTP/1.1" 304 0
+[29/Jan/2016 19:15:42] "GET /static2/admin/js/pages/gebo_common.js HTTP/1.1" 304 0
+[29/Jan/2016 19:15:42] "GET /static2/datatables/jquery.dataTables.js HTTP/1.1" 304 0
+[29/Jan/2016 19:15:42] "GET /static2/datatables/dataTables.bootstrap.js HTTP/1.1" 304 0
+[29/Jan/2016 19:15:42] "GET /static2/datatables/demo-datatables.js HTTP/1.1" 304 0
+[29/Jan/2016 19:15:42] "GET /static2/explorer/explorer.js HTTP/1.1" 304 0
+[29/Jan/2016 19:15:42] "GET /static2/explorer/query-list.js HTTP/1.1" 304 0
+[29/Jan/2016 19:15:42] "GET /static2/admin/bootstrap/fonts/glyphicons-halflings-regular.woff HTTP/1.1" 304 0
+[29/Jan/2016 19:15:42] "GET /static2/admin/img/bg_c.png HTTP/1.1" 304 0
+[29/Jan/2016 19:15:42] "GET /static2/admin/img/user_avatar.png HTTP/1.1" 304 0
+[29/Jan/2016 19:15:43] "GET /static2/admin/img/ui.totop.png HTTP/1.1" 304 0
+[29/Jan/2016 19:15:52] "POST /explorer/4/email_csv HTTP/1.1" 403 0
+Performing system checks...
+
+System check identified no issues (0 silenced).
+January 29, 2016 - 19:15:38
+Django version 1.8.5, using settings 'ecsclaims.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+[29/Jan/2016 19:16:27] "GET /explorer/ HTTP/1.1" 200 16614
+[29/Jan/2016 19:16:28] "GET /static2/css/font-awesome.css HTTP/1.1" 304 0
+[29/Jan/2016 19:16:28] "GET /static2/admin/bootstrap/css/bootstrap.min.css HTTP/1.1" 304 0
+[29/Jan/2016 19:16:28] "GET /static2/admin/lib/jquery-ui/css/Aristo/Aristo.css HTTP/1.1" 304 0
+[29/Jan/2016 19:16:28] "GET /static2/admin/lib/jBreadcrumbs/css/BreadCrumb.css HTTP/1.1" 304 0
+[29/Jan/2016 19:16:28] "GET /static2/admin/img/font-awesome/css/font-awesome.min.css HTTP/1.1" 304 0
+[29/Jan/2016 19:16:28] "GET /static2/admin/css/style.css HTTP/1.1" 304 0
+[29/Jan/2016 19:16:28] "GET /static2/admin/css/blue.css HTTP/1.1" 304 0
+[29/Jan/2016 19:16:28] "GET /static2/datatables/dataTables.css HTTP/1.1" 304 0
+[29/Jan/2016 19:16:28] "GET /static2/datatables/dataTables.bootstrap.css HTTP/1.1" 304 0
+[29/Jan/2016 19:16:28] "GET /static2/datatables/dataTables.fontAwesome.css HTTP/1.1" 304 0
+[29/Jan/2016 19:16:28] "GET /static2/admin/js/jquery.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:16:28] "GET /static2/admin/js/jquery-migrate.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:16:28] "GET /static2/admin/js/jquery.easing.1.3.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:16:28] "GET /static2/admin/js/jquery_cookie_min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:16:28] "GET /static2/admin/bootstrap/js/bootstrap.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:16:28] "GET /static2/admin/js/bootstrap.plugins.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:16:28] "GET /static2/admin/lib/typeahead/typeahead.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:16:28] "GET /static2/admin/lib/google-code-prettify/prettify.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:16:28] "GET /static2/admin/lib/jBreadcrumbs/js/jquery.jBreadCrumb.1.1.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:16:28] "GET /static2/admin/js/jquery.actual.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:16:28] "GET /static2/admin/lib/slimScroll/jquery.slimscroll.js HTTP/1.1" 304 0
+[29/Jan/2016 19:16:28] "GET /static2/admin/lib/UItoTop/jquery.ui.totop.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:16:28] "GET /static2/admin/js/selectNav.js HTTP/1.1" 304 0
+[29/Jan/2016 19:16:28] "GET /static2/admin/js/pages/gebo_common.js HTTP/1.1" 304 0
+[29/Jan/2016 19:16:29] "GET /static2/datatables/jquery.dataTables.js HTTP/1.1" 304 0
+[29/Jan/2016 19:16:29] "GET /static2/datatables/dataTables.bootstrap.js HTTP/1.1" 304 0
+[29/Jan/2016 19:16:29] "GET /static2/datatables/demo-datatables.js HTTP/1.1" 304 0
+[29/Jan/2016 19:16:29] "GET /static2/explorer/explorer.js HTTP/1.1" 304 0
+[29/Jan/2016 19:16:29] "GET /static2/explorer/query-list.js HTTP/1.1" 304 0
+[29/Jan/2016 19:16:29] "GET /static2/admin/bootstrap/fonts/glyphicons-halflings-regular.woff HTTP/1.1" 304 0
+[29/Jan/2016 19:16:29] "GET /static2/admin/img/bg_c.png HTTP/1.1" 304 0
+[29/Jan/2016 19:16:29] "GET /static2/admin/img/user_avatar.png HTTP/1.1" 304 0
+[29/Jan/2016 19:16:29] "GET /static2/admin/img/ui.totop.png HTTP/1.1" 304 0
+[29/Jan/2016 19:16:33] "POST /explorer/4/email_csv HTTP/1.1" 403 0
+Performing system checks...
+
+System check identified no issues (0 silenced).
+January 29, 2016 - 19:16:25
+Django version 1.8.5, using settings 'ecsclaims.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+[29/Jan/2016 19:21:14] "GET /explorer/ HTTP/1.1" 200 16614
+[29/Jan/2016 19:21:14] "GET /static2/css/font-awesome.css HTTP/1.1" 304 0
+[29/Jan/2016 19:21:14] "GET /static2/admin/bootstrap/css/bootstrap.min.css HTTP/1.1" 304 0
+[29/Jan/2016 19:21:14] "GET /static2/admin/lib/jquery-ui/css/Aristo/Aristo.css HTTP/1.1" 304 0
+[29/Jan/2016 19:21:14] "GET /static2/admin/lib/jBreadcrumbs/css/BreadCrumb.css HTTP/1.1" 304 0
+[29/Jan/2016 19:21:14] "GET /static2/admin/img/font-awesome/css/font-awesome.min.css HTTP/1.1" 304 0
+[29/Jan/2016 19:21:14] "GET /static2/admin/css/style.css HTTP/1.1" 304 0
+[29/Jan/2016 19:21:15] "GET /static2/admin/css/blue.css HTTP/1.1" 304 0
+[29/Jan/2016 19:21:15] "GET /static2/datatables/dataTables.css HTTP/1.1" 304 0
+[29/Jan/2016 19:21:15] "GET /static2/datatables/dataTables.bootstrap.css HTTP/1.1" 304 0
+[29/Jan/2016 19:21:15] "GET /static2/datatables/dataTables.fontAwesome.css HTTP/1.1" 304 0
+[29/Jan/2016 19:21:15] "GET /static2/admin/js/jquery.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:21:15] "GET /static2/admin/js/jquery-migrate.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:21:15] "GET /static2/admin/js/jquery.easing.1.3.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:21:15] "GET /static2/admin/js/jquery_cookie_min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:21:15] "GET /static2/admin/bootstrap/js/bootstrap.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:21:15] "GET /static2/admin/js/bootstrap.plugins.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:21:15] "GET /static2/admin/lib/typeahead/typeahead.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:21:15] "GET /static2/admin/lib/google-code-prettify/prettify.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:21:15] "GET /static2/admin/lib/jBreadcrumbs/js/jquery.jBreadCrumb.1.1.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:21:15] "GET /static2/admin/js/jquery.actual.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:21:15] "GET /static2/admin/lib/slimScroll/jquery.slimscroll.js HTTP/1.1" 304 0
+[29/Jan/2016 19:21:15] "GET /static2/admin/lib/UItoTop/jquery.ui.totop.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:21:15] "GET /static2/admin/js/selectNav.js HTTP/1.1" 304 0
+[29/Jan/2016 19:21:15] "GET /static2/admin/js/pages/gebo_common.js HTTP/1.1" 304 0
+[29/Jan/2016 19:21:15] "GET /static2/datatables/jquery.dataTables.js HTTP/1.1" 304 0
+[29/Jan/2016 19:21:15] "GET /static2/datatables/dataTables.bootstrap.js HTTP/1.1" 304 0
+[29/Jan/2016 19:21:15] "GET /static2/datatables/demo-datatables.js HTTP/1.1" 304 0
+[29/Jan/2016 19:21:15] "GET /static2/explorer/explorer.js HTTP/1.1" 304 0
+[29/Jan/2016 19:21:15] "GET /static2/explorer/query-list.js HTTP/1.1" 304 0
+[29/Jan/2016 19:21:15] "GET /static2/admin/bootstrap/fonts/glyphicons-halflings-regular.woff HTTP/1.1" 304 0
+[29/Jan/2016 19:21:16] "GET /static2/admin/img/bg_c.png HTTP/1.1" 304 0
+[29/Jan/2016 19:21:16] "GET /static2/admin/img/user_avatar.png HTTP/1.1" 304 0
+[29/Jan/2016 19:21:16] "GET /static2/admin/img/ui.totop.png HTTP/1.1" 304 0
+Internal Server Error: /explorer/4/email_csv
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/srv/www/django/ecsclaims/explorer/views.py", line 51, in wrap
+    return f(request, *args, **kwargs)
+  File "/usr/lib64/python2.7/site-packages/django/views/decorators/http.py", line 45, in inner
+    return func(request, *args, **kwargs)
+  File "/srv/www/django/ecsclaims/explorer/views.py", line 111, in email_csv_query
+    value = execute_query.delay(query_id, email)
+AttributeError: 'function' object has no attribute 'delay'
+[29/Jan/2016 19:21:21] "POST /explorer/4/email_csv HTTP/1.1" 500 12265
+Internal Server Error: /explorer/4/email_csv
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/srv/www/django/ecsclaims/explorer/views.py", line 51, in wrap
+    return f(request, *args, **kwargs)
+  File "/usr/lib64/python2.7/site-packages/django/views/decorators/http.py", line 45, in inner
+    return func(request, *args, **kwargs)
+  File "/srv/www/django/ecsclaims/explorer/views.py", line 111, in email_csv_query
+    value = execute_query.delay(query_id, email)
+AttributeError: 'function' object has no attribute 'delay'
+[29/Jan/2016 19:21:23] "POST /explorer/4/email_csv HTTP/1.1" 500 12265
+Internal Server Error: /explorer/4/email_csv
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/srv/www/django/ecsclaims/explorer/views.py", line 51, in wrap
+    return f(request, *args, **kwargs)
+  File "/usr/lib64/python2.7/site-packages/django/views/decorators/http.py", line 45, in inner
+    return func(request, *args, **kwargs)
+  File "/srv/www/django/ecsclaims/explorer/views.py", line 111, in email_csv_query
+    value = execute_query.delay(query_id, email)
+AttributeError: 'function' object has no attribute 'delay'
+[29/Jan/2016 19:21:24] "POST /explorer/4/email_csv HTTP/1.1" 500 12265
+Performing system checks...
+
+System check identified no issues (0 silenced).
+January 29, 2016 - 19:21:11
+Django version 1.8.5, using settings 'ecsclaims.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+[29/Jan/2016 19:21:57] "GET /explorer/ HTTP/1.1" 200 16614
+[29/Jan/2016 19:21:58] "GET /static2/css/font-awesome.css HTTP/1.1" 304 0
+[29/Jan/2016 19:21:58] "GET /static2/admin/bootstrap/css/bootstrap.min.css HTTP/1.1" 304 0
+[29/Jan/2016 19:21:58] "GET /static2/admin/lib/jquery-ui/css/Aristo/Aristo.css HTTP/1.1" 304 0
+[29/Jan/2016 19:21:58] "GET /static2/admin/lib/jBreadcrumbs/css/BreadCrumb.css HTTP/1.1" 304 0
+[29/Jan/2016 19:21:58] "GET /static2/admin/img/font-awesome/css/font-awesome.min.css HTTP/1.1" 304 0
+[29/Jan/2016 19:21:58] "GET /static2/admin/css/style.css HTTP/1.1" 304 0
+[29/Jan/2016 19:21:58] "GET /static2/admin/css/blue.css HTTP/1.1" 304 0
+[29/Jan/2016 19:21:58] "GET /static2/datatables/dataTables.css HTTP/1.1" 304 0
+[29/Jan/2016 19:21:58] "GET /static2/datatables/dataTables.bootstrap.css HTTP/1.1" 304 0
+[29/Jan/2016 19:21:58] "GET /static2/datatables/dataTables.fontAwesome.css HTTP/1.1" 304 0
+[29/Jan/2016 19:21:58] "GET /static2/admin/js/jquery.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:21:58] "GET /static2/admin/js/jquery-migrate.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:21:58] "GET /static2/admin/js/jquery.easing.1.3.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:21:58] "GET /static2/admin/js/jquery_cookie_min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:21:58] "GET /static2/admin/bootstrap/js/bootstrap.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:21:58] "GET /static2/admin/js/bootstrap.plugins.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:21:58] "GET /static2/admin/lib/typeahead/typeahead.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:21:58] "GET /static2/admin/lib/google-code-prettify/prettify.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:21:58] "GET /static2/admin/lib/jBreadcrumbs/js/jquery.jBreadCrumb.1.1.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:21:58] "GET /static2/admin/js/jquery.actual.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:21:58] "GET /static2/admin/lib/slimScroll/jquery.slimscroll.js HTTP/1.1" 304 0
+[29/Jan/2016 19:21:58] "GET /static2/admin/lib/UItoTop/jquery.ui.totop.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:21:58] "GET /static2/admin/js/selectNav.js HTTP/1.1" 304 0
+[29/Jan/2016 19:21:58] "GET /static2/admin/js/pages/gebo_common.js HTTP/1.1" 304 0
+[29/Jan/2016 19:21:59] "GET /static2/datatables/jquery.dataTables.js HTTP/1.1" 304 0
+[29/Jan/2016 19:21:59] "GET /static2/datatables/dataTables.bootstrap.js HTTP/1.1" 304 0
+[29/Jan/2016 19:21:59] "GET /static2/datatables/demo-datatables.js HTTP/1.1" 304 0
+[29/Jan/2016 19:21:59] "GET /static2/explorer/explorer.js HTTP/1.1" 304 0
+[29/Jan/2016 19:21:59] "GET /static2/explorer/query-list.js HTTP/1.1" 304 0
+[29/Jan/2016 19:21:59] "GET /static2/admin/bootstrap/fonts/glyphicons-halflings-regular.woff HTTP/1.1" 304 0
+[29/Jan/2016 19:21:59] "GET /static2/admin/img/bg_c.png HTTP/1.1" 304 0
+[29/Jan/2016 19:21:59] "GET /static2/admin/img/user_avatar.png HTTP/1.1" 304 0
+[29/Jan/2016 19:21:59] "GET /static2/admin/img/ui.totop.png HTTP/1.1" 304 0
+Internal Server Error: /explorer/4/email_csv
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/srv/www/django/ecsclaims/explorer/views.py", line 51, in wrap
+    return f(request, *args, **kwargs)
+  File "/usr/lib64/python2.7/site-packages/django/views/decorators/http.py", line 45, in inner
+    return func(request, *args, **kwargs)
+  File "/srv/www/django/ecsclaims/explorer/views.py", line 111, in email_csv_query
+    value = execute_query.delay(query_id, email)
+AttributeError: 'function' object has no attribute 'delay'
+[29/Jan/2016 19:22:06] "POST /explorer/4/email_csv HTTP/1.1" 500 12264
+[29/Jan/2016 19:26:17] "GET /explorer/ HTTP/1.1" 200 16614
+[29/Jan/2016 19:26:17] "GET /static2/css/font-awesome.css HTTP/1.1" 304 0
+[29/Jan/2016 19:26:17] "GET /static2/admin/bootstrap/css/bootstrap.min.css HTTP/1.1" 304 0
+[29/Jan/2016 19:26:17] "GET /static2/admin/lib/jquery-ui/css/Aristo/Aristo.css HTTP/1.1" 304 0
+[29/Jan/2016 19:26:17] "GET /static2/admin/lib/jBreadcrumbs/css/BreadCrumb.css HTTP/1.1" 304 0
+[29/Jan/2016 19:26:17] "GET /static2/admin/img/font-awesome/css/font-awesome.min.css HTTP/1.1" 304 0
+[29/Jan/2016 19:26:17] "GET /static2/admin/css/style.css HTTP/1.1" 304 0
+[29/Jan/2016 19:26:17] "GET /static2/admin/css/blue.css HTTP/1.1" 304 0
+[29/Jan/2016 19:26:17] "GET /static2/datatables/dataTables.css HTTP/1.1" 304 0
+[29/Jan/2016 19:26:17] "GET /static2/datatables/dataTables.bootstrap.css HTTP/1.1" 304 0
+[29/Jan/2016 19:26:17] "GET /static2/datatables/dataTables.fontAwesome.css HTTP/1.1" 304 0
+[29/Jan/2016 19:26:17] "GET /static2/admin/js/jquery.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:26:17] "GET /static2/admin/js/jquery-migrate.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:26:17] "GET /static2/admin/js/jquery.easing.1.3.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:26:17] "GET /static2/admin/js/jquery_cookie_min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:26:18] "GET /static2/admin/bootstrap/js/bootstrap.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:26:18] "GET /static2/admin/js/bootstrap.plugins.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:26:18] "GET /static2/admin/lib/typeahead/typeahead.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:26:18] "GET /static2/admin/lib/google-code-prettify/prettify.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:26:18] "GET /static2/admin/lib/jBreadcrumbs/js/jquery.jBreadCrumb.1.1.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:26:18] "GET /static2/admin/js/jquery.actual.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:26:18] "GET /static2/admin/lib/slimScroll/jquery.slimscroll.js HTTP/1.1" 304 0
+[29/Jan/2016 19:26:18] "GET /static2/admin/lib/UItoTop/jquery.ui.totop.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:26:18] "GET /static2/admin/js/selectNav.js HTTP/1.1" 304 0
+[29/Jan/2016 19:26:18] "GET /static2/admin/js/pages/gebo_common.js HTTP/1.1" 304 0
+[29/Jan/2016 19:26:18] "GET /static2/datatables/jquery.dataTables.js HTTP/1.1" 304 0
+[29/Jan/2016 19:26:18] "GET /static2/datatables/dataTables.bootstrap.js HTTP/1.1" 304 0
+[29/Jan/2016 19:26:18] "GET /static2/datatables/demo-datatables.js HTTP/1.1" 304 0
+[29/Jan/2016 19:26:18] "GET /static2/explorer/explorer.js HTTP/1.1" 304 0
+[29/Jan/2016 19:26:18] "GET /static2/explorer/query-list.js HTTP/1.1" 304 0
+[29/Jan/2016 19:26:18] "GET /static2/admin/bootstrap/fonts/glyphicons-halflings-regular.woff HTTP/1.1" 304 0
+[29/Jan/2016 19:26:18] "GET /static2/admin/img/bg_c.png HTTP/1.1" 304 0
+[29/Jan/2016 19:26:18] "GET /static2/admin/img/user_avatar.png HTTP/1.1" 304 0
+[29/Jan/2016 19:26:18] "GET /static2/admin/img/ui.totop.png HTTP/1.1" 304 0
+Performing system checks...
+
+System check identified no issues (0 silenced).
+January 29, 2016 - 19:21:54
+Django version 1.8.5, using settings 'ecsclaims.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+[29/Jan/2016 19:26:32] "GET /explorer/ HTTP/1.1" 200 16171
+[29/Jan/2016 19:26:33] "GET /static2/css/font-awesome.css HTTP/1.1" 304 0
+[29/Jan/2016 19:26:33] "GET /static2/admin/bootstrap/css/bootstrap.min.css HTTP/1.1" 304 0
+[29/Jan/2016 19:26:33] "GET /static2/admin/lib/jquery-ui/css/Aristo/Aristo.css HTTP/1.1" 304 0
+[29/Jan/2016 19:26:33] "GET /static2/admin/lib/jBreadcrumbs/css/BreadCrumb.css HTTP/1.1" 304 0
+[29/Jan/2016 19:26:33] "GET /static2/admin/img/font-awesome/css/font-awesome.min.css HTTP/1.1" 304 0
+[29/Jan/2016 19:26:33] "GET /static2/admin/css/style.css HTTP/1.1" 304 0
+[29/Jan/2016 19:26:33] "GET /static2/admin/css/blue.css HTTP/1.1" 304 0
+[29/Jan/2016 19:26:33] "GET /static2/datatables/dataTables.css HTTP/1.1" 304 0
+[29/Jan/2016 19:26:33] "GET /static2/datatables/dataTables.bootstrap.css HTTP/1.1" 304 0
+[29/Jan/2016 19:26:33] "GET /static2/datatables/dataTables.fontAwesome.css HTTP/1.1" 304 0
+[29/Jan/2016 19:26:33] "GET /static2/admin/js/jquery.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:26:33] "GET /static2/admin/js/jquery-migrate.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:26:33] "GET /static2/admin/js/jquery.easing.1.3.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:26:33] "GET /static2/admin/js/jquery_cookie_min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:26:33] "GET /static2/admin/bootstrap/js/bootstrap.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:26:33] "GET /static2/admin/js/bootstrap.plugins.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:26:33] "GET /static2/admin/lib/typeahead/typeahead.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:26:33] "GET /static2/admin/lib/google-code-prettify/prettify.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:26:33] "GET /static2/admin/lib/jBreadcrumbs/js/jquery.jBreadCrumb.1.1.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:26:33] "GET /static2/admin/js/jquery.actual.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:26:33] "GET /static2/admin/lib/slimScroll/jquery.slimscroll.js HTTP/1.1" 304 0
+[29/Jan/2016 19:26:33] "GET /static2/admin/lib/UItoTop/jquery.ui.totop.min.js HTTP/1.1" 304 0
+[29/Jan/2016 19:26:34] "GET /static2/admin/js/selectNav.js HTTP/1.1" 304 0
+[29/Jan/2016 19:26:34] "GET /static2/admin/js/pages/gebo_common.js HTTP/1.1" 304 0
+[29/Jan/2016 19:26:34] "GET /static2/datatables/jquery.dataTables.js HTTP/1.1" 304 0
+[29/Jan/2016 19:26:34] "GET /static2/datatables/dataTables.bootstrap.js HTTP/1.1" 304 0
+[29/Jan/2016 19:26:34] "GET /static2/datatables/demo-datatables.js HTTP/1.1" 304 0
+[29/Jan/2016 19:26:34] "GET /static2/explorer/explorer.js HTTP/1.1" 304 0
+[29/Jan/2016 19:26:34] "GET /static2/explorer/query-list.js HTTP/1.1" 304 0
+[29/Jan/2016 19:26:34] "GET /static2/admin/bootstrap/fonts/glyphicons-halflings-regular.woff HTTP/1.1" 304 0
+[29/Jan/2016 19:26:34] "GET /static2/admin/img/bg_c.png HTTP/1.1" 304 0
+[29/Jan/2016 19:26:34] "GET /static2/admin/img/user_avatar.png HTTP/1.1" 304 0
+[29/Jan/2016 19:26:34] "GET /static2/admin/img/ui.totop.png HTTP/1.1" 304 0
+[29/Jan/2016 19:33:35] "GET /claims/ HTTP/1.1" 200 14771
+[29/Jan/2016 19:33:39] "GET /historial/ HTTP/1.1" 200 17546
+[29/Jan/2016 19:37:22] "GET /logged_in/ HTTP/1.1" 200 16807
+Performing system checks...
+
+System check identified no issues (0 silenced).
+January 29, 2016 - 19:26:29
+Django version 1.8.5, using settings 'ecsclaims.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+January 29, 2016 - 19:38:15
+Django version 1.8.5, using settings 'ecsclaims.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+[29/Jan/2016 19:39:51] "GET /cerrar/ HTTP/1.1" 302 0
+[29/Jan/2016 19:39:51] "GET / HTTP/1.1" 200 3587
+[29/Jan/2016 19:39:52] "GET /static2/fonts/fontawesome-webfont.woff2?v=4.4.0 HTTP/1.1" 404 1717
+[29/Jan/2016 19:39:53] "GET /login/ HTTP/1.1" 200 1709
+[29/Jan/2016 19:39:57] "POST /login/ HTTP/1.1" 302 0
+[29/Jan/2016 19:39:58] "GET /logged_in HTTP/1.1" 301 0
+[29/Jan/2016 19:39:59] "GET /logged_in/ HTTP/1.1" 200 16820
+[29/Jan/2016 19:40:01] "GET /admin HTTP/1.1" 301 0
+[29/Jan/2016 19:40:02] "GET /admin/ HTTP/1.1" 200 16434
+[29/Jan/2016 19:40:03] "GET /admin/ HTTP/1.1" 200 16434
+[29/Jan/2016 19:40:04] "GET /static2/admin/css/dashboard.css HTTP/1.1" 200 434
+[29/Jan/2016 19:40:04] "GET /static2/admin/img/icon_changelink.gif HTTP/1.1" 200 119
+[29/Jan/2016 19:40:04] "GET /static2/admin/img/default-bg.gif HTTP/1.1" 200 836
+[29/Jan/2016 19:40:04] "GET /static2/admin/img/icon_addlink.gif HTTP/1.1" 200 119
+[29/Jan/2016 19:40:21] "GET /admin/claims/localidades/ HTTP/1.1" 200 3205
+[29/Jan/2016 19:40:21] "GET /static2/admin/css/changelists.css HTTP/1.1" 200 5254
+[29/Jan/2016 19:40:21] "GET /static2/admin/js/core.js HTTP/1.1" 200 7522
+[29/Jan/2016 19:40:21] "GET /static2/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 4464
+[29/Jan/2016 19:40:21] "GET /static2/admin/js/jquery.init.js HTTP/1.1" 200 326
+[29/Jan/2016 19:40:21] "GET /static2/admin/js/actions.js HTTP/1.1" 200 4910
+[29/Jan/2016 19:40:22] "GET /admin/jsi18n/ HTTP/1.1" 200 2372
+[29/Jan/2016 19:40:23] "GET /static2/admin/js/jquery.js HTTP/1.1" 200 284184
+[29/Jan/2016 19:40:23] "GET /static2/admin/img/nav-bg-reverse.gif HTTP/1.1" 200 178
+[29/Jan/2016 19:40:23] "GET /static2/admin/img/tooltag-add.png HTTP/1.1" 200 119
+[29/Jan/2016 19:40:27] "GET /admin/claims/localidades/add/ HTTP/1.1" 200 4578
+[29/Jan/2016 19:40:27] "GET /static2/admin/css/forms.css HTTP/1.1" 200 6283
+[29/Jan/2016 19:40:27] "GET /static2/admin/css/widgets.css HTTP/1.1" 200 10590
+[29/Jan/2016 19:40:28] "GET /admin/jsi18n/ HTTP/1.1" 200 2372
+[29/Jan/2016 20:31:59] "GET /admin/claims/localidades/add/ HTTP/1.1" 200 4578
+[29/Jan/2016 20:31:59] "GET /static2/admin/css/base.css HTTP/1.1" 200 14049
+[29/Jan/2016 20:31:59] "GET /static2/admin/css/forms.css HTTP/1.1" 304 0
+[29/Jan/2016 20:31:59] "GET /static2/admin/js/core.js HTTP/1.1" 304 0
+[29/Jan/2016 20:31:59] "GET /static2/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+[29/Jan/2016 20:32:00] "GET /static2/admin/js/jquery.js HTTP/1.1" 304 0
+[29/Jan/2016 20:32:00] "GET /static2/admin/css/widgets.css HTTP/1.1" 304 0
+[29/Jan/2016 20:32:00] "GET /static2/admin/js/jquery.init.js HTTP/1.1" 304 0
+[29/Jan/2016 20:32:00] "GET /static2/admin/js/actions.js HTTP/1.1" 304 0
+[29/Jan/2016 20:32:00] "GET /admin/jsi18n/ HTTP/1.1" 200 2372
+[29/Jan/2016 20:32:01] "GET /static2/admin/img/nav-bg-reverse.gif HTTP/1.1" 304 0
+[29/Jan/2016 20:32:01] "GET /static2/admin/img/nav-bg.gif HTTP/1.1" 200 265
+[29/Jan/2016 20:32:01] "GET /static2/admin/img/default-bg.gif HTTP/1.1" 304 0
+[29/Jan/2016 20:32:50] "GET /admin/claims/localidades/add/ HTTP/1.1" 200 4578
+[29/Jan/2016 20:32:51] "GET /static2/admin/css/base.css HTTP/1.1" 304 0
+[29/Jan/2016 20:32:51] "GET /static2/admin/css/forms.css HTTP/1.1" 304 0
+[29/Jan/2016 20:32:51] "GET /static2/admin/js/core.js HTTP/1.1" 304 0
+[29/Jan/2016 20:32:51] "GET /static2/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+[29/Jan/2016 20:32:51] "GET /static2/admin/js/jquery.js HTTP/1.1" 304 0
+[29/Jan/2016 20:32:51] "GET /static2/admin/css/widgets.css HTTP/1.1" 304 0
+[29/Jan/2016 20:32:51] "GET /static2/admin/js/jquery.init.js HTTP/1.1" 304 0
+[29/Jan/2016 20:32:51] "GET /static2/admin/js/actions.js HTTP/1.1" 304 0
+[29/Jan/2016 20:32:52] "GET /admin/jsi18n/ HTTP/1.1" 200 2372
+[29/Jan/2016 20:32:52] "GET /static2/admin/img/nav-bg-reverse.gif HTTP/1.1" 304 0
+[29/Jan/2016 20:32:52] "GET /static2/admin/img/nav-bg.gif HTTP/1.1" 304 0
+[29/Jan/2016 20:32:52] "GET /static2/admin/img/default-bg.gif HTTP/1.1" 304 0
+[29/Jan/2016 20:32:55] "GET /admin/claims/ HTTP/1.1" 200 6596
+[29/Jan/2016 20:32:55] "GET /static2/admin/css/dashboard.css HTTP/1.1" 304 0
+[29/Jan/2016 20:32:56] "GET /static2/admin/img/icon_addlink.gif HTTP/1.1" 304 0
+[29/Jan/2016 20:32:56] "GET /static2/admin/img/icon_changelink.gif HTTP/1.1" 304 0
+[29/Jan/2016 21:02:16] "GET /admin/claims/localidades/ HTTP/1.1" 200 3205
+[29/Jan/2016 21:02:17] "GET /static2/admin/css/base.css HTTP/1.1" 304 0
+[29/Jan/2016 21:02:17] "GET /static2/admin/css/changelists.css HTTP/1.1" 304 0
+[29/Jan/2016 21:02:17] "GET /static2/admin/js/core.js HTTP/1.1" 304 0
+[29/Jan/2016 21:02:17] "GET /static2/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+[29/Jan/2016 21:02:17] "GET /static2/admin/js/jquery.js HTTP/1.1" 304 0
+[29/Jan/2016 21:02:17] "GET /static2/admin/js/jquery.init.js HTTP/1.1" 304 0
+[29/Jan/2016 21:02:17] "GET /static2/admin/js/actions.js HTTP/1.1" 304 0
+[29/Jan/2016 21:02:17] "GET /admin/jsi18n/ HTTP/1.1" 200 2372
+[29/Jan/2016 21:02:18] "GET /static2/admin/img/tooltag-add.png HTTP/1.1" 304 0
+[29/Jan/2016 21:02:18] "GET /static2/admin/img/nav-bg.gif HTTP/1.1" 304 0
+[29/Jan/2016 21:02:20] "GET /admin/claims/localidades/add/ HTTP/1.1" 200 4578
+[29/Jan/2016 21:02:21] "GET /static2/admin/css/forms.css HTTP/1.1" 304 0
+[29/Jan/2016 21:02:21] "GET /static2/admin/css/widgets.css HTTP/1.1" 304 0
+[29/Jan/2016 21:02:22] "GET /admin/jsi18n/ HTTP/1.1" 200 2372
+[29/Jan/2016 21:02:52] "GET /static2/admin/img/default-bg-reverse.gif HTTP/1.1" 200 835
+Internal Server Error: /admin/claims/localidades/add/
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib64/python2.7/site-packages/django/contrib/admin/options.py", line 616, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/usr/lib64/python2.7/site-packages/django/utils/decorators.py", line 110, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib64/python2.7/site-packages/django/views/decorators/cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib64/python2.7/site-packages/django/contrib/admin/sites.py", line 233, in inner
+    return view(request, *args, **kwargs)
+  File "/usr/lib64/python2.7/site-packages/django/contrib/admin/options.py", line 1516, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "/usr/lib64/python2.7/site-packages/django/utils/decorators.py", line 34, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/usr/lib64/python2.7/site-packages/django/utils/decorators.py", line 110, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib64/python2.7/site-packages/django/utils/decorators.py", line 30, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/usr/lib64/python2.7/site-packages/django/utils/decorators.py", line 145, in inner
+    return func(*args, **kwargs)
+  File "/usr/lib64/python2.7/site-packages/django/db/transaction.py", line 225, in __exit__
+    connection.commit()
+  File "/usr/lib64/python2.7/site-packages/django/db/backends/base/base.py", line 173, in commit
+    self._commit()
+  File "/usr/lib64/python2.7/site-packages/django/db/backends/base/base.py", line 142, in _commit
+    return self.connection.commit()
+  File "/usr/lib64/python2.7/site-packages/django/db/utils.py", line 97, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/usr/lib64/python2.7/site-packages/django/db/backends/base/base.py", line 142, in _commit
+    return self.connection.commit()
+IntegrityError: insert or update on table "django_admin_log" violates foreign key constraint "djan_content_type_id_697914295151027a_fk_django_content_type_id"
+DETAIL:  Key (content_type_id)=(33) is not present in table "django_content_type".
+
+[29/Jan/2016 21:02:55] "POST /admin/claims/localidades/add/ HTTP/1.1" 500 146252
