@@ -108,9 +108,8 @@ def email_csv_query(request, query_id):
     if request.is_ajax():
         email = request.POST.get('email', None)
         if email:
-            return HttpResponse(status=403)
-            execute_query.delay(query_id, email)
-            return HttpResponse(content={'message': 'mensaje fue enviado exitosamente'})
+            value = execute_query.delay(query_id, email)
+            return HttpResponse(content={'message': value})
     return HttpResponse(status=403)
 
 
