@@ -67,7 +67,7 @@ TIPO_USER = (
 class Motivos(models.Model):
    motivo = models.CharField(max_length=255, null=False)
 
-class Localidades(models.Model):
+class Localidade(models.Model):
    codigo = models.CharField(max_length=255, null=False)
    nombre = models.CharField(max_length=255, null=False)
 
@@ -85,7 +85,7 @@ class TipoUsuario(models.Model):
    def __str__(self):
       return "%s" % (self.user.username)
 
-class TipoUsuarioLocalidades(models.Model):
+class TipoUsuarioLocalidade(models.Model):
    usuario = models.ForeignKey(User)
    localidades = models.ForeignKey(Localidades)
    def __str__(self):
