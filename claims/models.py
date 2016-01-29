@@ -91,8 +91,6 @@ class TipoUsuario(models.Model):
 class UsuarioLocalidad(models.Model):
    usuario = models.ForeignKey(User)
    localidad = models.ForeignKey(Localidad)
-   def __str__(self):
-      return "%s" % (self.user.username)
 
 class Evento(models.Model):
    folioAut = models.CharField(max_length=255)
