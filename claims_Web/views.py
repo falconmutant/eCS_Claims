@@ -138,6 +138,8 @@ def claims(request):
 		fin = "%s-%s-%s"% (x.year, x.month, x.day)
 	nombre_user = request.user.get_full_name()
 	tipouser = get_object_or_404(TipoUsuario,user_id=request.user.id)
+	id_localidad = get_object_or_404(UsuarioLocalidad,user_id=request.user.id)
+	localidad = get_object_or_404(Localidad,id=id_localidad)
 	if tipouser.tipo == 'M':
 		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R'],TipoAprobacion='1')
 	if tipouser.tipo == 'P':
@@ -146,7 +148,7 @@ def claims(request):
 		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='1')
 	if tipouser.tipo == 'S':
 		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='1')
-	evento = Evento.objects.filter(id__in=[auth.evento_id for auth in autorizacion])
+	evento = Evento.objects.filter(id__in=[auth.evento_id for auth in autorizacion],localidad=localidad.nombre)
 	paciente = Paciente.objects.filter(evento_id__in=[event.id for event in evento])
 	proveedor = Proveedor.objects.filter(id__in=[event.proveedor_id for event in evento])
 	cargo = Cargo.objects.filter(evento_id__in=[event.id for event in evento])
