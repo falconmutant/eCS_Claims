@@ -67,11 +67,7 @@ TIPO_USER = (
 class Motivos(models.Model):
    motivo = models.CharField(max_length=255, null=False)
 
-<<<<<<< HEAD
-class Localidade(models.Model):
-=======
 class Localidad(models.Model):
->>>>>>> 4cbeefd504827a63caf8ed0a3ed45b0e6518670c
    codigo = models.CharField(max_length=255, null=False)
    nombre = models.CharField(max_length=255, null=False)
    def __str__(self):
@@ -91,11 +87,8 @@ class TipoUsuario(models.Model):
    def __str__(self):
       return "%s" % (self.user.username)
 
-<<<<<<< HEAD
-class TipoUsuarioLocalidade(models.Model):
-=======
+
 class UsuarioLocalidad(models.Model):
->>>>>>> 4cbeefd504827a63caf8ed0a3ed45b0e6518670c
    usuario = models.ForeignKey(User)
    localidad = models.ForeignKey(Localidad)
    def __str__(self):
