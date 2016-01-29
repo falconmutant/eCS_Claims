@@ -67,9 +67,11 @@ TIPO_USER = (
 class Motivos(models.Model):
    motivo = models.CharField(max_length=255, null=False)
 
-class Localidades(models.Model):
+class Localidad(models.Model):
    codigo = models.CharField(max_length=255, null=False)
    nombre = models.CharField(max_length=255, null=False)
+   def __str__(self):
+      return "%s" % (self.nombre)
 
 class Proveedor(models.Model):
    owner = models.OneToOneField(User, null=True)
@@ -85,9 +87,9 @@ class TipoUsuario(models.Model):
    def __str__(self):
       return "%s" % (self.user.username)
 
-class TipoUsuarioLocalidades(models.Model):
+class UsuarioLocalidad(models.Model):
    usuario = models.ForeignKey(User)
-   localidades = models.ForeignKey(Localidades)
+   localidad = models.ForeignKey(Localidad)
    def __str__(self):
       return "%s" % (self.user.username)
 
