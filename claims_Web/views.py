@@ -139,7 +139,7 @@ def claims(request):
 	nombre_user = request.user.get_full_name()
 	tipouser = get_object_or_404(TipoUsuario,user_id=request.user.id)
 	id_localidad = get_object_or_404(UsuarioLocalidad,usuario_id=request.user.id)
-	localidad = get_object_or_404(Localidad,id=id_localidad)
+	localidad = get_object_or_404(Localidad,id=id_localidad.localidad)
 	if tipouser.tipo == 'M':
 		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R'],TipoAprobacion='1')
 	if tipouser.tipo == 'P':
