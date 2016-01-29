@@ -20,7 +20,6 @@ else:
 
 @task
 def execute_query(query_id, email_address):
-    return 'paso'
     q = Query.objects.get(pk=query_id)
     r = csv_report(q)
     random_part = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(20))
