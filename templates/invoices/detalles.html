@@ -244,7 +244,7 @@
       $('#modal-level').modal('show'); 
     });
     $('#modal').on('click',function(){
-      console.log("create post is working!") // sanity check
+      console.log("create post is working! "+$('#nivel').val()) // sanity check
         $.ajax({
             url : "/save_level/", // the endpoint
             type : "POST", // http method
