@@ -65,12 +65,6 @@ class Comprobante(models.Model):
 	file_xml = models.CharField(max_length=255, null=False)
 	file_pdf = models.CharField(max_length=255, null=False)
 
-class ComprobanteTipo(models.Model):
-	tipo = models.CharField(choices= LEVEL_TIPO, max_length=1)
-	Fecha = models.DateTimeField()
-	Usuario = models.ForeignKey(User)
-	comprobante = models.ForeignKey(Comprobante)
-
 class Conceptos(models.Model):
 	cantidad = models.IntegerField()
 	unidad = models.CharField(max_length=50, null=False)
@@ -83,6 +77,12 @@ class Impuesto(models.Model):
 	impuesto = models.CharField(max_length=10, null=False)
 	tasa = models.IntegerField()
 	importe = models.DecimalField(max_digits=10, decimal_places=2)
+	comprobante = models.ForeignKey(Comprobante)
+
+class ComprobanteTipo(models.Model):
+	tipo = models.CharField(choices= LEVEL_TIPO, max_length=1)
+	Fecha = models.DateTimeField()
+	Usuario = models.ForeignKey(User)
 	comprobante = models.ForeignKey(Comprobante)
 
 class ComprobanteEvento(models.Model):
