@@ -312,7 +312,6 @@
         <form action="" class="form-horizontal" method="POST">{% csrf_token %}
         <div class="modal-body">
             <div class="form-group">
-               <div class="form-group">
                 <div class="col-xs-6">
                   <div class="input-icon">
                       <select onchange="motivos(this.value);" name="estatus" class="form-control">
@@ -322,11 +321,10 @@
                       </select>
                   </div>
                 </div>
-              </div>
             </div>
         </div>
         <div id="btnmodal" class="modal-footer">
-          <button type="button" class="btn btn-default" id="modal" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-default" id="modal" data-dismiss="modal">Guardar</button>
         </div>
         </form>
       </div>
