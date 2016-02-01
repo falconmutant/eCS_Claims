@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from invoices_Web.models import Comprobante
 import datetime
 from django.conf import settings
+from django.core.validators import RegexValidator
 
 # Create your models here.
 
@@ -82,7 +83,7 @@ class Proveedor(models.Model):
    hospital=models.CharField(max_length=255, null=False)
    localidad=models.CharField(max_length=255, null=False)
    email = models.EmailField(max_length=70,blank=True)
-   celular = models.CharField(validators=[phone_regex], blank=True) 
+   celular = models.CharField(max_length=14, validators=[phone_regex], blank=True) 
    whatsapp = models.CharField(choices= YES_NO,max_length=1,default='N')
    telegram = models.CharField(choices= YES_NO,max_length=1,default='N')
    sms = models.CharField(choices= YES_NO,max_length=1,default='N')
