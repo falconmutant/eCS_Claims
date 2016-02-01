@@ -68,7 +68,6 @@
               <th>Cliente</th>
               <th>Localidad</th>
               <th>Total</th>
-              <th>Impuesto</th>
               <th>Detalle</th>
               <th>xml</th>
               <th>pdf</th>
@@ -88,11 +87,6 @@
                       {% endif %}
                     {% endfor %}
                     <td>{{co.total}}</td>
-                    {% for tax in impuesto %}
-                      {% if tax.comprobante_id ==  co.id %}
-                        <td>{{impuesto.impuesto}}</td>
-                      {% endif %}
-                    {% endfor %}
                     <th>
                       <a style="margin-left:0 !important;" class="a-details" href="{{ settings.APP_URL }}/detalle_invoices/{{co.id}}/">
                         <i class="fa fa-eye"></i>

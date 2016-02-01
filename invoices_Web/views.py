@@ -51,6 +51,7 @@ def detalle(request, id):
 		CE = ComprobanteEvento.objects.all().filter(comprobante=id)
 		evento = Evento.objects.filter(proveedor_id=proveedor.id).exclude(id__in=[CompEvent.evento for CompEvent in CE])
 		paciente =  Paciente.objects.all().filter(evento_id__in=[event2.id for event2 in evento])
+		tax = get_object_or_404(Impuesto,comprobante_id=detalle.id)
 		bug = 'evento:'
 		for x in evento:
 			bug +=' - '+x.id
@@ -117,7 +118,6 @@ def invoices(request):
 
 	comprobante = Comprobante.objects.filter(id__in=[auth.comprobante_id for auth in autorizacion])
 	cliente = Emisor.objects.filter(id__in=[invoice.emisor_id for invoice in comprobante])
-	impuesto = Impuesto.objects.filter(comprobante_id__in=[comp.id for comp in comprobante])
 
 	if request.POST:
 		inicio = request.POST.get("daterange").split(" - ")[0]
