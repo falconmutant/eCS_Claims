@@ -91,7 +91,7 @@
                     {% for level in  comptipo%}
                       {% if level.comprobante_id == co.id %}
                         <td>{{level.get_tipo_display}}</td>
-                      {% end if %}
+                      {% endif %}
                       {% else %}
                         <td>Pendiente</td>
                       {% endelse %}
