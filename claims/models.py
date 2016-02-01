@@ -31,7 +31,7 @@ MEDICO_TIPO = (
 ('PP','Cirujano'),
 )
 
-DX_ADM = (
+YES_NO = (
 ('Y', 'Si'),
 ('N', 'No'),
 )
@@ -74,12 +74,18 @@ class Localidad(models.Model):
       return "%s" % (self.nombre)
 
 class Proveedor(models.Model):
+   phone_regex = RegexValidator(regex=r'^\+?1?\d{13}$', message="Numero debe ingresarse en formato internacional: '+521999999'. 14 digitos en total.")
    owner = models.OneToOneField(User, null=True)
    rfc = models.CharField(max_length=13, null=False)
    cliente = models.CharField(max_length=255, null=False)
    org = models.CharField(max_length=255, null=False)
    hospital=models.CharField(max_length=255, null=False)
    localidad=models.CharField(max_length=255, null=False)
+   email = models.EmailField(max_length=70,blank=True)
+   celular = models.CharField(validators=[phone_regex], blank=True) 
+   whatsapp = models.CharField(choices= YES_NO,max_length=1,default='N')
+   telegram = models.CharField(choices= YES_NO,max_length=1,default='N')
+   sms = models.CharField(choices= YES_NO,max_length=1,default='N')
 
 class TipoUsuario(models.Model):
    user = models.ForeignKey(User)
@@ -137,7 +143,7 @@ class Dx(models.Model):
    codigo = models.CharField(max_length=255)
    nombre = models.CharField(max_length=255)
    estatus = models.CharField(choices= DX_ESTATUS, max_length=1)
-   admision = models.CharField(choices= DX_ADM,max_length=1,default='N')
+   admision = models.CharField(choices= YES_NO,max_length=1,default='N')
    fecha = models.DateTimeField()
    observaciones = models.CharField(max_length=255,null=True)
    medico = models.ForeignKey(Medico,null=True)
