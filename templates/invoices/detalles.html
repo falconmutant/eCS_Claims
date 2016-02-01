@@ -250,7 +250,7 @@
             type : "POST", // http method
             data : { 
                      tipo : $('#nivel').val(),
-                     comprobante : {{detalle.id}}, 
+                     comprobante : '{{detalle.id}}', 
                      csrfmiddlewaretoken : csrftoken
                     }, // data sent with the post request
 
