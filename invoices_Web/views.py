@@ -94,8 +94,8 @@ def save_ligar(request):
 def save_level(request):
     if request.method == 'POST':
     	x = datetime.datetime.now()
-        tipo = request.POST.get('tipo')
         comprobante = int(request.POST.get('comprobante'))
+        tipo = request.POST.get('tipo')
         level = ComprobanteTipo(tipo=tipo,fecha=x,usuario=request.user.id,comprobante=comprobante)
         level.save()
         response_data = {}
