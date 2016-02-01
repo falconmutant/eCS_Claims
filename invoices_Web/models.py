@@ -5,6 +5,12 @@ from django.contrib.auth.models import User
 from claims.models import *
 # Create your models here.
 
+LEVEL_TIPO = (
+('1', '1er Nivel'),
+('2', '2do Nivel'),
+('3', '3er Nivel'),
+)
+
 class Emisor(models.Model):
 	rfc = models.CharField(max_length=13, null=False)
 	nombre = models.CharField(max_length=255, null=False)
@@ -60,7 +66,7 @@ class Comprobante(models.Model):
 	file_pdf = models.CharField(max_length=255, null=False)
 
 class ComprobanteTipo(models.Model):
-	tipo = models.CharField(max_length=2, null=False)
+	tipo = models.CharField(choices= LEVEL_TIPO, max_length=1)
 	Fecha = models.DateTimeField()
 	Usuario = models.ForeignKey(User)
 	comprobante = models.ForeignKey(Comprobante)

@@ -88,7 +88,15 @@
                       {% endif %}
                     {% endfor %}
                     <td>{{co.total}}</td>
-                    <td>Pendiente</td>
+                    {% for level in  comptipo%}
+                      {% if level.comprobante_id == co.id %}
+                        <td>{{level.get_tipo_display()}}</td>
+                      {% end if %}
+                      {% else %}
+                        <td>Pendiente</td>
+                      {% endelse %}
+                    {% endfor %}
+                    
                     <th>
                       <a style="margin-left:0 !important;" class="a-details" href="{{ settings.APP_URL }}/detalle_invoices/{{co.id}}/">
                         <i class="fa fa-eye"></i>

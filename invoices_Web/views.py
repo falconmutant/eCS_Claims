@@ -91,6 +91,25 @@ def save_ligar(request):
             content_type="application/json"
         )
 
+def save_level(request):
+    if request.method == 'POST':
+    	x = datetime.datetime.now()
+        tipo = int(request.POST.get('tipo'))
+        comprobante = int(request.POST.get('comprobante'))
+        level = ComprobanteTipo(tipo=tipo,fecha=x,usuario=request.user.id,comprobante=comprobante)
+        level.save()
+        response_data = {}
+        response_data['result'] = 'Create post successful!'
+        return HttpResponse(
+            json.dumps(response_data),
+            content_type="application/json"
+        )
+    else:
+        return HttpResponse(
+            json.dumps({"nothing to see": "this isn't happening"}),
+            content_type="application/json"
+        )
+
 
 
 
@@ -118,7 +137,7 @@ def invoices(request):
 
 	comprobante = Comprobante.objects.filter(id__in=[auth.comprobante_id for auth in autorizacion])
 	cliente = Emisor.objects.filter(id__in=[invoice.emisor_id for invoice in comprobante])
-
+	comptipo = ComprobanteTipo.objects.filter(comprobante_id__in=[comp.id for comp in comprobante])
 	if request.POST:
 		inicio = request.POST.get("daterange").split(" - ")[0]
 		fin = request.POST.get("daterange").split(" - ")[1]
