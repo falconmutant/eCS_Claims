@@ -54,7 +54,7 @@
       <section class="box">
         <a class="a-details" href="{{ settings.APP_URL }}/invoice/"><i class="fa fa-long-arrow-left"></i></a>
         <a style="margin-left:50px !important;" class="a-details" id="info-claims"><i class="fa fa-info"></i></a>
-        <a style="margin-left:50px !important;" class="a-details" id="modal"><i class="fa fa-check-square-o"></i></a>
+        <a style="margin-left:50px !important;" class="a-details" id="level"><i class="fa fa-check-square-o"></i></a>
         <h3>Emisor</h3>
         <hr />
         <form id="form" class="form-horizontal">
@@ -248,7 +248,11 @@
         $('.dataTables_paginate>ul.pagination').addClass("pull-right m0");
 
     });
+    $('#level').on('click',function(){
+      $('#modal-level').modal('show'); 
+    });
     $('#modal').on('click',function(){
+
       $('#modal-form').modal('show'); 
     });
     $('#info-claims').on('click',function(){
@@ -312,6 +316,36 @@
 {% endblock javascript %}
 
 {% block modal %}
+  <div class="modal fade" id="modal-level" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" style="z-index:2000;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">Selecciona Nivel de la Factura</h4>
+        </div>
+        <form action="" class="form-horizontal" method="POST">{% csrf_token %}
+        <div class="modal-body">
+            <div class="form-group">
+               <div class="form-group">
+                <div class="col-xs-6">
+                  <div class="input-icon">
+                      <select onchange="motivos(this.value);" name="estatus" class="form-control">
+                        <option value="1">1er Nivel</option>
+                        <option value="2">2do Nivel</option>
+                        <option value="3">3er Nivel</option>
+                      </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div id="btnmodal" class="modal-footer">
+          <button type="button" class="btn btn-default" id="modal" data-dismiss="modal">Cancelar</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
   <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" style="z-index:2000;width:90%;">
       <div class="modal-content">
