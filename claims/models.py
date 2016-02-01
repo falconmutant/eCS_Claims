@@ -87,6 +87,8 @@ class Proveedor(models.Model):
    whatsapp = models.CharField(choices= YES_NO,max_length=1,default='N')
    telegram = models.CharField(choices= YES_NO,max_length=1,default='N')
    sms = models.CharField(choices= YES_NO,max_length=1,default='N')
+   def __str__(self):
+      return "%s - %s" % (self.rfc, self.localidad)
 
 class TipoUsuario(models.Model):
    user = models.ForeignKey(User)
