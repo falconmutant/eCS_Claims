@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.contrib.auth.models import User
 from claims.models import *
 # Create your models here.
 
@@ -57,6 +58,12 @@ class Comprobante(models.Model):
 	timbreFiscal = models.ForeignKey(TimbreFiscal)
 	file_xml = models.CharField(max_length=255, null=False)
 	file_pdf = models.CharField(max_length=255, null=False)
+
+class ComprobanteTipo(models.Model):
+	tipo = models.CharField(max_length=2, null=False)
+	Fecha = models.DateTimeField()
+	Usuario = ForeignKey(User)
+	comprobante = ForeignKey(Comprobante)
 
 class Conceptos(models.Model):
 	cantidad = models.IntegerField()

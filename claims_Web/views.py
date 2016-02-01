@@ -138,9 +138,9 @@ def claims(request):
 		fin = "%s-%s-%s"% (x.year, x.month, x.day)
 	nombre_user = request.user.get_full_name()
 	tipouser = get_object_or_404(TipoUsuario,user_id=request.user.id)
-	id_localidad = get_object_or_404(UsuarioLocalidad,usuario_id=request.user.id)
-	localidad = get_object_or_404(Localidad,id=id_localidad.localidad_id)
-	proveedor = Proveedor.objects.filter(localidad=localidad.nombre)
+	id_localidad = UsuarioLocalidad.objects.filter(usuario_id=request.user.id)
+	localidad = Localidad.objects.filter(id__in=[locality_ids.localidad_id for locality_ids in id_localidad])
+	proveedor = Proveedor.objects.filter(localidad__in=[locality.nombre for locality in localidad])
 	evento = Evento.objects.filter(proveedor_id__in=[provider.id for provider in proveedor])
 	paciente = Paciente.objects.filter(evento_id__in=[event.id for event in evento])
 	cargo = Cargo.objects.filter(evento_id__in=[event.id for event in evento])
@@ -172,13 +172,13 @@ def claims(request):
 @login_required
 def historial(request):
 	nombre_user = request.user.get_full_name()
-	id_localidad = get_object_or_404(UsuarioLocalidad,usuario_id=request.user.id)
-	localidad = get_object_or_404(Localidad,id=id_localidad.localidad_id)
-	proveedor = Proveedor.objects.filter(localidad=localidad.nombre)
+	tipouser = get_object_or_404(TipoUsuario,user_id=request.user.id)
+	id_localidad = UsuarioLocalidad.objects.filter(usuario_id=request.user.id)
+	localidad = Localidad.objects.filter(id__in=[locality_ids.localidad_id for locality_ids in id_localidad])
+	proveedor = Proveedor.objects.filter(localidad__in=[locality.nombre for locality in localidad])
 	evento = Evento.objects.filter(proveedor_id__in=[provider.id for provider in proveedor])
 	paciente = Paciente.objects.filter(evento_id__in=[event.id for event in evento])
 	cargo = Cargo.objects.filter(evento_id__in=[event.id for event in evento])
-	tipouser = get_object_or_404(TipoUsuario,user_id=request.user.id)
 	if tipouser.tipo == 'M':
 		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['A','X','Y','N','P'],TipoAprobacion='1',evento_id__in=[event.id for event in evento])
 	if tipouser.tipo == 'P':
