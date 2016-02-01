@@ -62,8 +62,8 @@ class Comprobante(models.Model):
 class ComprobanteTipo(models.Model):
 	tipo = models.CharField(max_length=2, null=False)
 	Fecha = models.DateTimeField()
-	Usuario = ForeignKey(User)
-	comprobante = ForeignKey(Comprobante)
+	Usuario = models.ForeignKey(User)
+	comprobante = models.ForeignKey(Comprobante)
 
 class Conceptos(models.Model):
 	cantidad = models.IntegerField()
