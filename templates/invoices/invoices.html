@@ -88,12 +88,10 @@
                       {% endif %}
                     {% endfor %}
                     <td>{{co.total}}</td>
-                    {% for level in  comptipo%}
-                      {% if level.comprobante_id == co.id %}
-                        <td>{{level.get_tipo_display}}</td>
-                      {% else %}
+                    {% for level in comptipo %}
+                        <td>{{ level.get_tipo_display }}</td>
+                    {% empty %}
                         <td>Pendiente</td>
-                      {% endif %}
                     {% endfor %}
                     
                     <th>
