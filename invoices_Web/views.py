@@ -93,10 +93,15 @@ def save_ligar(request):
 
 def save_level(request):
     if request.method == 'POST':
+    	x = datetime.datetime.now()
+    	if x.month < 10:
+		fecha = "%s-0%s-%s"% (x.year, x.month, x.day)
+		else:
+			fecha = "%s-%s-%s"% (x.year, x.month, x.day)
     	comprobante = int(request.POST.get('comprobante'))
         tipo = request.POST.get('tipo')
 
-        level = ComprobanteTipo(tipo=tipo,fecha=datetime.datetime.now(),usuario=request.user.id,comprobante=comprobante)
+        level = ComprobanteTipo(tipo=tipo,fecha=fecha,usuario=request.user.id,comprobante=comprobante)
         level.save()
         response_data = {}
         response_data['result'] = 'Create post successful!'
