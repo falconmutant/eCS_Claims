@@ -95,7 +95,7 @@ def save_level(request):
     if request.method == 'POST':
     	x = datetime.datetime.now()
     	if x.month < 10:
-		fecha = "%s-0%s-%s"% (x.year, x.month, x.day)
+    		fecha = "%s-0%s-%s"% (x.year, x.month, x.day)
 		else:
 			fecha = "%s-%s-%s"% (x.year, x.month, x.day)
     	comprobante = int(request.POST.get('comprobante'))
