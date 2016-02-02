@@ -82,7 +82,7 @@ class Proveedor(models.Model):
    whatsapp = models.CharField(choices= YES_NO,max_length=1,default='N')
    telegram = models.CharField(choices= YES_NO,max_length=1,default='N')
    sms = models.CharField(choices= YES_NO,max_length=1,default='N')
-   tgContact = models.CharField(max_length=255, blank=True)
+   tgcontact = models.CharField(max_length=255, blank=True)
    def __str__(self):
       return "%s - %s" % (self.rfc, self.localidad)
 
