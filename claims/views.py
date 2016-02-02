@@ -252,7 +252,7 @@ class EventosView(ProveedorView):
                 if userData.email:
                     print('sendEmail')
                 if userData.celular:
-                    mensaje = 'Se ha recibido el Estado de Cuenta %s , de %s para su autorizacion. Favor de revisar Sistema'%{evento.folioAut, proveedor.hospital}
+                    mensaje = 'Se ha recibido el Estado de Cuenta {0} , del proveedor {1} para su autorizacion. Favor de revisar Sistema'.format(evento.folioAut, proveedor.hospital)
                     if userData.whatsapp == 'Y':
                         paramsWA[userData.celular]=mensaje
                     if userData.telegram == 'Y':
