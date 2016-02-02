@@ -55,15 +55,18 @@ def secret_key_gen():
 def sendWhatsapp(**kwargs):
     client = Client(login='5218348538420', password='s2znFNoSU7MabzuFHx3qNXaphbY=')
     for key in kwargs:
+        print('entro WA')
         client.send_message(key, kwargs[key])
 
 def sendTelegram(**kwargs):
     sender = Sender("127.0.0.1", port=4458)
     for key in kwargs:
+        print('entro TG')
         sender.send_msg(key,unicode(kwargs[key]))
 
 def sendSMS(**kwargs):
     for key in kwargs:
+        print('entro SMS')
         payload = {'usuario':'gvaldez','password':'de434a'}
         payload['celular']='+'+str(key)
         payload['mensaje']=kwargs[key]
@@ -72,6 +75,7 @@ def sendSMS(**kwargs):
    
 def sendEmail(**kwargs):
     if not kwargs:
+        print('entro sendemail')
         fromaddr = "facturacion@ecaresoft.com"
         passmail = "3031393730"
         server = smtplib.SMTP('smtp.gmail.com', 587)
