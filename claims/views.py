@@ -13,6 +13,7 @@ from .permissions import ProveedorView, EventoView
 import json
 import datetime 
 import logging
+import traceback
 
 logger = logging.getLogger(__name__)
 
@@ -244,6 +245,7 @@ class EventosView(ProveedorView):
         except Exception as e:
             print('Error en el envio de alertas')
             print(e.message)
+            print(traceback.print_exc())
         finally:
             return Response(response, status=status.HTTP_201_CREATED)
 
