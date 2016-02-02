@@ -239,9 +239,12 @@ class EventosView(ProveedorView):
 
         try:
             usuariosLoc = UsuarioLocalidad.objects.filter(proveedor.localidad)
+            print(usuariosLoc)
             params = {}
             for user in usuariosLoc.usuario:
+                print(user)
                 userData = TipoUsuario.objects.get(user=user.id)
+                print(userData)
                 if userData.email:
                     print('sendEmail')
                 if userData.celular:
