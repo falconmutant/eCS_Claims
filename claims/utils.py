@@ -63,9 +63,13 @@ def sendWhatsapp(**kwargs):
 def sendTelegram(**kwargs):
     sender = Sender("127.0.0.1", port=4458)
     for key in kwargs:
-        print(kwargs[key][0])
-        print(kwargs[key][1])
-        print(kwargs[key][2])
+        #print(kwargs[key][0])
+        if not kwargs[key][1]:
+            #Si no tenemos contacto hay que dar de alta en Telegram 
+            #Actualizar el valor username_tipousuario en BD
+            salida = sender.contact_add(key, kwargs[key][2], kwargs[key][3] )
+            print (salida)
+        print(kwargs[key][3])
     #    sender.send_msg(key,unicode(kwargs[key]))
 
 def sendSMS(**kwargs):
@@ -132,7 +136,8 @@ def sendNotifications(localidad, mensaje, tipo):
                 if userData.whatsapp == 'Y':
                     paramsWA[userData.celular]=mensaje
                 if userData.telegram == 'Y':
-                    lista = [mensaje, userData.tgcontacto, userData.user.username]
+                    lista = [mensaje, userData.tgcontacto, 
+                    userData.user.username, userData.get_tipo_display()]
                     paramsTG[userData.celular]=lista
                 if userData.sms == 'Y':
                     paramsSMS[userData.celular]=mensaje
