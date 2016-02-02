@@ -260,8 +260,7 @@ class EventosView(ProveedorView):
                         paramsSMS[userData.celular]=mensaje
             sendWhatsapp(**paramsWA)
             sendTelegram(**paramsTG)
-            print(paramsTG)
-            sendSMS(paramsSMS)
+            sendSMS(**paramsSMS)
 
         except Exception as e:
             response = {

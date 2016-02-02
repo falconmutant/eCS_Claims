@@ -53,7 +53,6 @@ def sendWhatsapp(**kwargs):
 def sendTelegram(**kwargs):
     sender = Sender("127.0.0.1", port=4458)
     for key in kwargs:
-        print('entro')
         sender.send_msg(key,unicode(kwargs[key]))
 
 def sendSMS(**kwargs):
