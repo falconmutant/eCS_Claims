@@ -241,7 +241,7 @@ class EventosView(ProveedorView):
         }
 
         try:
-            localidad = Localidad.objects.get(localidad=proveedor.localidad)
+            localidad = Localidad.objects.get(nombre=proveedor.localidad)
             usuariosLoc = UsuariosLocalidad.objects.filter(localidad_id=localidad.id)
             logger.error(usuariosLoc)
             params = {}
