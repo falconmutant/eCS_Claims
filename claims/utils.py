@@ -13,6 +13,7 @@ import smtplib
 from email.MIMEMultipart import MIMEMultipart
 from email.MIMEText import MIMEText
 import base64
+from .models import Localidad, UsuarioLocalidad, TipoUsuario
 
 
 
