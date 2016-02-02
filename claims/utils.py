@@ -69,7 +69,7 @@ def sendTelegram(**kwargs):
             #Actualizar el valor username_tipousuario en BD
             salida = sender.contact_add(key, kwargs[key][2], kwargs[key][3] )
             if salida:
-                print(salida['id'])
+                print(salida[0]['id'])
     #    sender.send_msg(key,unicode(kwargs[key]))
 
 def sendSMS(**kwargs):
