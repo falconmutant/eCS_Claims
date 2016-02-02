@@ -96,23 +96,22 @@ def sendNotification(**kwargs):
     service = settings.SERVICE_GMAIL
     print(kwargs)
     print(service)
-    if not kwargs and service:
-        print('entro')
-        for key in kwargs:
-            try:
-               bodyTxt = MIMEText(kwargs[key])
-               bodyTxt['subject'] = "Estado de Cuenta por revisar"
-               bodyTxt['to'] = key
-               bodyTxt['from'] = settings.EMAIL_ACCOUNT
-               bodyMsg = {'raw': base64.urlsafe_b64encode(bodyTxt.as_string())}
-               print(bodyTxt.as_string())
-               aviso = (service.users().messages().send(userId='me', body=bodyMsg).execute())
-               print ('Correo enviado. Email Id: %s' % aviso['id'])
-               retVal='exitoso'
-            except Exception as e:
-               print(e)
-               print(traceback.format_exc())
-               retVal='error'
-            finally:        
-               return retVal
-    
+    print('entro')
+    for key in kwargs:
+        try:
+           bodyTxt = MIMEText(kwargs[key])
+           bodyTxt['subject'] = "Estado de Cuenta por revisar"
+           bodyTxt['to'] = key
+           bodyTxt['from'] = settings.EMAIL_ACCOUNT
+           bodyMsg = {'raw': base64.urlsafe_b64encode(bodyTxt.as_string())}
+           print(bodyTxt.as_string())
+           aviso = (service.users().messages().send(userId='me', body=bodyMsg).execute())
+           print ('Correo enviado. Email Id: %s' % aviso['id'])
+           retVal='exitoso'
+        except Exception as e:
+           print(e)
+           print(traceback.format_exc())
+           retVal='error'
+        finally:        
+           return retVal
+
