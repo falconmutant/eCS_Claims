@@ -73,6 +73,7 @@ def logged_in(request):
 def detalle(request, id):
 	idd=id
 	bandera=0
+	message=1
 	tipouser = get_object_or_404(TipoUsuario,user_id=request.user.id)
 	if request.POST:
 		estatus = request.POST.get('estatus')
@@ -80,6 +81,34 @@ def detalle(request, id):
 		motivo = request.POST.get('motivo')
 		Autorizacion.objects.filter(evento_id=idd).update(Estatus=estatus,Comentarios=descripcion,motivo=motivo)
 		bandera=1
+		try:
+			if estatus = 'Y':
+				detalle = get_object_or_404(Evento, id=id)
+				userlocality= UsuarioLocalidad.objects.filter(usuario_id = request.user.id)
+				localitys = UsuarioLocalidad.objects.filter(localidad__in =[locality.localidad for locality in userlocality] )
+				userspemex = TipoUsuario.objects.filter(Tipo = 'P', user__in = [ids_users.usuario for ids_users in localitys])
+				paramsWA = {}
+				paramsTG = {}
+				paramsSMS = {}
+				paramsEmail = {}
+				for pemex_ids in userspemex:
+					message = 'Se ha Autorizado el Estado de Cuenta {0}. Favor de revisar Sistema'.format(detalle.folioAut)
+					if pemex_ids.email:
+						paramsEmail[pemex_ids.email]=message
+					if pemex_ids.celular:
+						if pemex_ids.whatsapp == 'Y':
+							paramsWA[pemex_ids.celular]=message
+						if pemex_ids.telegram == 'Y':
+							paramsTG[pemex_ids.tgContact]=message
+						#if pemex_ids.sms == 'Y':
+							#paramsSMS[pemex_ids.celular]=message
+				sendWhatsapp(**paramsWA)
+				sendTelegram(**paramsTG)
+				#sendSMS(**paramsSMS)
+				sendEmail(**paramsEmail)
+		except Exception, e:
+			message = 1
+
 		x = datetime.datetime.now()
 		if x.month < 10:
 			inicio = "%s-0%s-%s"% (x.year, x.month, x.day)
@@ -88,20 +117,7 @@ def detalle(request, id):
 			inicio = "%s-%s-%s"% (x.year, x.month, x.day)
 			fin = "%s-%s-%s"% (x.year, x.month, x.day)
 		nombre_user = request.user.get_full_name()
-		
-		if tipouser.tipo == 'M':
-			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R'],TipoAprobacion='1')
-		if tipouser.tipo == 'P':
-			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['Y','P'],TipoAprobacion='1')
-		if tipouser.tipo == 'E':
-			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='1')
-		if tipouser.tipo == 'S':
-			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='1')
-		evento = Evento.objects.filter(id__in=[auth.evento_id for auth in autorizacion])
-		paciente = Paciente.objects.filter(evento_id__in=[event.id for event in evento])
-		proveedor = Proveedor.objects.filter(id__in=[event.proveedor_id for event in evento])
-		cargo = Cargo.objects.filter(evento_id__in=[event.id for event in evento])
-		dx = Dx.objects.filter(evento_id__in=[event.id for event in evento])
+
 		return HttpResponseRedirect('/claims/')
 
 	nombre_user = request.user.get_full_name()

@@ -150,4 +150,16 @@
       });
     </script>
   {% endif %}
+  {% if message == 1 %}
+    <script>
+      $(document).ready(function(){
+        new PNotify({
+                title: 'Error',
+                text: 'No se envio notificación a los usuarios!',
+                type: 'error',
+                styling: 'fontawesome'
+              });
+      });
+    </script>
+  {% endif %}
 {% endblock javascript %}
