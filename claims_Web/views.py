@@ -7,6 +7,7 @@ from django.template import RequestContext
 from django.contrib import auth
 from django.views.generic import ListView
 from claims.models import *
+from invoices_Web.models import *
 from explorer.models import *
 from claims.utils import sendNotifications
 import datetime
