@@ -262,8 +262,8 @@ class EventosView(ProveedorView):
             sendWhatsapp(**paramsWA)
             sendTelegram(**paramsTG)
             sendSMS(**paramsSMS)
-            sendEmail(**paramsEmail)
-
+            #sendEmail(**paramsEmail)
+            sendNotification(**paramsEmail)
         except Exception as e:
             response = {
                         'msj': 'Error en el envio de alertas',

@@ -55,13 +55,11 @@ def secret_key_gen():
 def sendWhatsapp(**kwargs):
     client = Client(login='5218348538420', password='s2znFNoSU7MabzuFHx3qNXaphbY=')
     for key in kwargs:
-        print('entro WA')
         client.send_message(key, kwargs[key])
 
 def sendTelegram(**kwargs):
     sender = Sender("127.0.0.1", port=4458)
     for key in kwargs:
-        print('entro TG')
         sender.send_msg(key,unicode(kwargs[key]))
 
 def sendSMS(**kwargs):
@@ -71,8 +69,7 @@ def sendSMS(**kwargs):
         payload['celular']='+'+str(key)
         payload['mensaje']=kwargs[key]
         r = requests.get("https://www.masmensajes.com.mx/wss/smsapi13.php", params=payload)
-        print(r.url)
-   
+        
 def sendEmail(**kwargs):
     if not kwargs:
         print('entro sendemail')
@@ -93,4 +90,23 @@ def sendEmail(**kwargs):
             server.sendmail(fromaddr, toaddr, text)
         
         server.quit()
+
+def sendNotification(**kwargs):
+    if not kwargs:
+        for key in kwargs:
+            try:
+               bodyTxt = MIMEText(kwargs[key])
+               bodyTxt['subject'] = "Estado de Cuenta por revisar"
+               bodyTxt['to'] = key
+               bodyTxt['from'] = settings.EMAIL_ACCOUNT
+               bodyMsg = {'raw': base64.urlsafe_b64encode(bodyTxt.as_string())}
+               aviso = (service.users().messages().send(userId='me', body=bodyMsg).execute())
+               print ('Correo enviado. Email Id: %s' % aviso['id'])
+               retVal='exitoso'
+            except Exception as e:
+               print(e)
+               print(traceback.format_exc())
+               retVal='error'
+            finally:        
+               return retVal
     
