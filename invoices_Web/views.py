@@ -142,7 +142,7 @@ def invoices(request):
 
 	comprobante = Comprobante.objects.filter(id__in=[auth.comprobante_id for auth in autorizacion])
 	cliente = Emisor.objects.filter(id__in=[invoice.emisor_id for invoice in comprobante])
-	comptipo = ComprobanteTipo.objects.filter(comprobante_id__in=[comp.id for comp in comprobante])
+	comptipo = ComprobanteTipo.objects.filter(comprobante__in=[comp.id for comp in comprobante])
 	if request.POST:
 		inicio = request.POST.get("daterange").split(" - ")[0]
 		fin = request.POST.get("daterange").split(" - ")[1]
