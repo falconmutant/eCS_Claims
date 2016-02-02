@@ -93,6 +93,12 @@ class Proveedor(models.Model):
 class TipoUsuario(models.Model):
    user = models.ForeignKey(User)
    tipo = models.CharField(choices=TIPO_USER,max_length=1)
+   phone_regex = RegexValidator(regex=r'^\+?1?\d{13}$', message="Numero debe ingresarse en formato internacional: '+521999999'. 14 digitos en total.")
+   email = models.EmailField(max_length=70,blank=True)
+   celular = models.CharField(max_length=14, validators=[phone_regex], blank=True) 
+   whatsapp = models.CharField(choices= YES_NO,max_length=1,default='N')
+   telegram = models.CharField(choices= YES_NO,max_length=1,default='N')
+   sms = models.CharField(choices= YES_NO,max_length=1,default='N')
    def __str__(self):
       return "%s" % (self.user.username)
 
