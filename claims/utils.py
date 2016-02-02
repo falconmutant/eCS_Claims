@@ -63,14 +63,22 @@ def sendWhatsapp(**kwargs):
 def sendTelegram(**kwargs):
     sender = Sender("127.0.0.1", port=4458)
     for key in kwargs:
-        #print(kwargs[key][0])
+        #(kwargs[key][0]) == mensaje
+        #(kwargs[key][1]) == Contacto de Telegram
+        #(kwargs[key][2]) == username
+        #(kwargs[key][3]) == TipoUsuario
+        #(kwargs[key][4]) == id TipoUsuario
         if not kwargs[key][1]:
             #Si no tenemos contacto hay que dar de alta en Telegram 
             #Actualizar el valor username_tipousuario en BD
             salida = sender.contact_add(key, kwargs[key][2], kwargs[key][3] )
-            if salida:
-                print(salida[0]['id'])
-    #    sender.send_msg(key,unicode(kwargs[key]))
+            #Verificamos que hubo respuesta y se obtuvo un ID
+            if salida and salida[0]['id']>0:
+                tipoUsuario = TipoUsuario.objects.get(pk=kwargs[key][4])
+                tipoUsuario.tgcontacto = salida[0]['print_name']
+                tipoUsuario.save()
+                #Enviamos mensaje por Telegram
+                #sender.send_msg(key,unicode(kwargs[key]))
 
 def sendSMS(**kwargs):
     for key in kwargs:
