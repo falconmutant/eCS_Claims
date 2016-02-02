@@ -8,10 +8,7 @@ https://docs.djangoproject.com/en/1.8/howto/deployment/wsgi/
 """
 
 import os
-
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "ecsclaims.settings")
-
-
 import sys
 import traceback
 import httplib2
@@ -30,6 +27,7 @@ home_dir = os.path.expanduser('~')
 credential_dir = os.path.join(home_dir, '.credentials')
 if  os.path.exists(credential_dir):
 	credential_path = os.path.join(credential_dir,'gmail-python-quickstart.json')
+	store = oauth2client.file.Storage(credential_path)
     #store = oauth2client.file.Storage(credential_path)
     #credentials = store.get()
     #if credentials and not credentials.invalid:
