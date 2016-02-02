@@ -17,9 +17,7 @@ from apiclient import discovery
 import oauth2client
 from oauth2client import client
 from oauth2client import tools
-import base64
-import mimetypes
-from email.mime.text import MIMEText
+
 SCOPES = 'https://www.googleapis.com/auth/gmail.readonly https://www.googleapis.com/auth/gmail.modify https://www.googleapis.com/auth/gmail.compose'
 CLIENT_SECRET_FILE = 'client_gmail.json'
 APPLICATION_NAME = 'Gmail API Python'
