@@ -68,8 +68,8 @@ def sendTelegram(**kwargs):
             #Si no tenemos contacto hay que dar de alta en Telegram 
             #Actualizar el valor username_tipousuario en BD
             salida = sender.contact_add(key, kwargs[key][2], kwargs[key][3] )
-            print (salida)
-        print(kwargs[key][3])
+            if salida:
+                print(salida['id'])
     #    sender.send_msg(key,unicode(kwargs[key]))
 
 def sendSMS(**kwargs):
