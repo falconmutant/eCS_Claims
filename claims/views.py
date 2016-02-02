@@ -245,7 +245,7 @@ class EventosView(ProveedorView):
             usuariosLoc = UsuarioLocalidad.objects.filter(localidad_id=localidad.id)
             logger.error(usuariosLoc)
             params = {}
-            for userLoc in usuariosLoc
+            for userLoc in usuariosLoc:
                 print(user)
                 userData = TipoUsuario.objects.get(user=userLoc.usuario_id)
                 print(userData)
