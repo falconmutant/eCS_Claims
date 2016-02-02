@@ -249,7 +249,7 @@
             url : "/save_level/", // the endpoint
             type : "POST", // http method
             data : { 
-                     tipo : $('#nivel').val(),
+                     tipo : $('#nivel').val()+'',
                      comprobante : '{{detalle.id}}', 
                      csrfmiddlewaretoken : csrftoken
                     }, // data sent with the post request
