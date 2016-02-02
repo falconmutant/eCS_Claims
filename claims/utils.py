@@ -61,8 +61,9 @@ def sendWhatsapp(**kwargs):
 
 def sendTelegram(**kwargs):
     sender = Sender("127.0.0.1", port=4458)
-    for key in kwargs:
-        sender.send_msg(key,unicode(kwargs[key]))
+    print(kwargs[key][1])
+    #for key in kwargs:
+    #    sender.send_msg(key,unicode(kwargs[key]))
 
 def sendSMS(**kwargs):
     for key in kwargs:
@@ -128,7 +129,7 @@ def sendNotifications(localidad, mensaje, tipo):
                 if userData.whatsapp == 'Y':
                     paramsWA[userData.celular]=mensaje
                 if userData.telegram == 'Y':
-                    paramsTG[userData.tgContact]=mensaje
+                    paramsTG[userData.celular]=[mensaje, userData.TgContact, userData.user.username]
                 if userData.sms == 'Y':
                     paramsSMS[userData.celular]=mensaje
     sendWhatsapp(**paramsWA)
