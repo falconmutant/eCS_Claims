@@ -12,6 +12,9 @@ from .utils import secret_key_gen, get_url, sendWhatsapp, sendTelegram, sendSMS
 from .permissions import ProveedorView, EventoView
 import json
 import datetime 
+import logging
+
+logger = logging.getLogger(__name__)
 
 # Create your views here.
 @api_view(['GET'])
@@ -239,7 +242,7 @@ class EventosView(ProveedorView):
 
         try:
             usuariosLoc = UsuarioLocalidad.objects.filter(proveedor.localidad)
-            print(usuariosLoc)
+            logger.info(usuariosLoc)
             params = {}
             for user in usuariosLoc.usuario:
                 print(user)
