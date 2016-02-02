@@ -135,10 +135,16 @@ def invoices(request):
 	id_localidad = UsuarioLocalidad.objects.filter(usuario_id=request.user.id)
 	localidad = Localidad.objects.filter(id__in=[locality_ids.localidad_id for locality_ids in id_localidad])
 	proveedor = Proveedor.objects.filter(localidad__in=[locality.nombre for locality in localidad])
-	bug = 'Proveedores: '
+	bug = 'Proveedores localidad: '
 	for provider in proveedor:
-		bug +=provider.localidad+' '
+		bug +=provider.localidad+', '
+	bug2 = 'Proveedores rfc: '
+	for provider in proveedor:
+		bug2 +=provider.rfc+', '
 	emisor = Emisor.objects.filter(rfc__in=[provider.rfc for provider in proveedor])
+	bug3 = 'emisor rfc: '
+	for trans in emisor:
+		bug3 +=trans.rfc+', '
 	comprobante = Comprobante.objects.filter(emisor_id__in=[trans.id for trans in emisor])
 	cliente = Emisor.objects.filter(id__in=[invoice.emisor_id for invoice in comprobante])
 	comptipo = ComprobanteTipo.objects.filter(comprobante__in=[comp.id for comp in comprobante])
