@@ -7,6 +7,10 @@ from .queries import search
 from whatsapp import Client
 from pytg.sender import Sender
 import requests
+import django
+from django.conf import settings
+from django.core.mail import send_mail
+
 
 ESCAPE_STRING_SEQUENCES = (
     (' AND ', '&'),
@@ -63,3 +67,6 @@ def sendSMS(**kwargs):
         r = requests.get("https://www.masmensajes.com.mx/wss/smsapi13.php", params=payload)
         print(r.url)
    
+def sendEmail(**kwargs):
+    for key in kwargs:
+        send_mail('Estado de Cuenta Recibido', kwargs[key], settings.EMAIL_HOST_USER, [key], fail_silently=False)

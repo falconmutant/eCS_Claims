@@ -246,10 +246,11 @@ class EventosView(ProveedorView):
             paramsWA = {}
             paramsTG = {}
             paramsSMS = {}
+            paramsEmail = {}
             for userLoc in usuariosLoc:
                 userData = TipoUsuario.objects.get(user_id=userLoc.usuario_id)
                 if userData.email:
-                    print('sendEmail')
+                    paramsEmail[userData.email]=mensaje
                 if userData.celular:
                     mensaje = 'Se ha recibido el Estado de Cuenta {0} , del proveedor {1} para su autorizacion. Favor de revisar Sistema'.format(evento.folioAut, proveedor.hospital)
                     if userData.whatsapp == 'Y':
@@ -261,6 +262,7 @@ class EventosView(ProveedorView):
             sendWhatsapp(**paramsWA)
             sendTelegram(**paramsTG)
             sendSMS(**paramsSMS)
+            sendEmail(**paramsEmail)
 
         except Exception as e:
             response = {
