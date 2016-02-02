@@ -8,6 +8,7 @@ from django.contrib import auth
 from django.views.generic import ListView
 from claims.models import *
 from explorer.models import *
+from claims.utils import sendNotifications
 import datetime
 
 
@@ -73,7 +74,7 @@ def logged_in(request):
 def detalle(request, id):
 	idd=id
 	bandera=0
-	message=1
+	message_error=1
 	tipouser = get_object_or_404(TipoUsuario,user_id=request.user.id)
 	if request.POST:
 		estatus = request.POST.get('estatus')
@@ -81,33 +82,16 @@ def detalle(request, id):
 		motivo = request.POST.get('motivo')
 		Autorizacion.objects.filter(evento_id=idd).update(Estatus=estatus,Comentarios=descripcion,motivo=motivo)
 		bandera=1
+		sendNotifications()
 		try:
 			if estatus = 'Y':
 				detalle = get_object_or_404(Evento, id=id)
-				userlocality= UsuarioLocalidad.objects.filter(usuario_id = request.user.id)
-				localitys = UsuarioLocalidad.objects.filter(localidad__in =[locality.localidad for locality in userlocality] )
-				userspemex = TipoUsuario.objects.filter(Tipo = 'P', user__in = [ids_users.usuario for ids_users in localitys])
-				paramsWA = {}
-				paramsTG = {}
-				paramsSMS = {}
-				paramsEmail = {}
-				for pemex_ids in userspemex:
+				locality = UsuarioLocalidad.objects.filter(usuario = request.user.id)
+				for localitys in locality:
 					message = 'Se ha Autorizado el Estado de Cuenta {0}. Favor de revisar Sistema'.format(detalle.folioAut)
-					if pemex_ids.email:
-						paramsEmail[pemex_ids.email]=message
-					if pemex_ids.celular:
-						if pemex_ids.whatsapp == 'Y':
-							paramsWA[pemex_ids.celular]=message
-						if pemex_ids.telegram == 'Y':
-							paramsTG[pemex_ids.tgContact]=message
-						#if pemex_ids.sms == 'Y':
-							#paramsSMS[pemex_ids.celular]=message
-				sendWhatsapp(**paramsWA)
-				sendTelegram(**paramsTG)
-				#sendSMS(**paramsSMS)
-				sendEmail(**paramsEmail)
+					sendNotifications(localitys.localidad,message, TipoUsuario.PEMEX)
 		except Exception, e:
-			message = 1
+			message_error = 1
 
 		x = datetime.datetime.now()
 		if x.month < 10:
