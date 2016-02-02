@@ -58,12 +58,7 @@ AUTH_ESTATUS =(
 ('P', 'En Revision PEMEX'),
 )
 
-TIPO_USER = (
-('M','MAC'),
-('P','PEMEX'),
-('E','ECARESOFT'),
-('S','SUPER USER'),
-)
+
 
 class Motivos(models.Model):
    motivo = models.CharField(max_length=255, null=False)
@@ -91,6 +86,16 @@ class Proveedor(models.Model):
       return "%s - %s" % (self.rfc, self.localidad)
 
 class TipoUsuario(models.Model):
+   MAC = 'M'
+   PEMEX = 'P'
+   ECARESOFT = 'E'
+   SUPERUSER = 'S'
+   TIPO_USER = (
+      (MAC,'MAC'),
+      (PEMEX,'PEMEX'),
+      (ECARESOFT,'ECARESOFT'),
+      (SUPERUSER,'SUPER USER'),
+   )
    user = models.ForeignKey(User)
    tipo = models.CharField(choices=TIPO_USER,max_length=1)
    phone_regex = RegexValidator(regex=r'^\+?1?\d{13}$', message="Numero debe ingresarse en formato internacional: '+521999999'. 14 digitos en total.")

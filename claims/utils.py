@@ -71,33 +71,30 @@ def sendSMS(**kwargs):
         payload['mensaje']=kwargs[key]
         r = requests.get("https://www.masmensajes.com.mx/wss/smsapi13.php", params=payload)
         
-def sendEmail(**kwargs):
-    if not kwargs:
-        print('entro sendemail')
-        fromaddr = "facturacion@ecaresoft.com"
-        passmail = "3031393730"
-        server = smtplib.SMTP('smtp.gmail.com', 587)
-        server.starttls()
-        server.login(fromaddr, passmail)
-        for key in kwargs:
-            toaddr = key
-            msg = MIMEMultipart()
-            msg['From'] = fromaddr
-            msg['To'] = key
-            msg['Subject'] = "Estado de Cuenta por revisar"
-            body = kwargs[key]
-            msg.attach(MIMEText(body, 'plain'))
-            text = msg.as_string()
-            server.sendmail(fromaddr, toaddr, text)
+# def sendEmail(**kwargs):
+#     if not kwargs:
+#         print('entro sendemail')
+#         fromaddr = "facturacion@ecaresoft.com"
+#         passmail = "3031393730"
+#         server = smtplib.SMTP('smtp.gmail.com', 587)
+#         server.starttls()
+#         server.login(fromaddr, passmail)
+#         for key in kwargs:
+#             toaddr = key
+#             msg = MIMEMultipart()
+#             msg['From'] = fromaddr
+#             msg['To'] = key
+#             msg['Subject'] = "Estado de Cuenta por revisar"
+#             body = kwargs[key]
+#             msg.attach(MIMEText(body, 'plain'))
+#             text = msg.as_string()
+#             server.sendmail(fromaddr, toaddr, text)
         
-        server.quit()
+#         server.quit()
 
-def sendNotification(**kwargs):
+def sendEmail(**kwargs):
     from django.conf import settings
     service = settings.SERVICE_GMAIL
-    print(kwargs)
-    print(service)
-    print('entro')
     for key in kwargs:
         try:
            bodyTxt = MIMEText(kwargs[key])
@@ -105,14 +102,35 @@ def sendNotification(**kwargs):
            bodyTxt['to'] = key
            bodyTxt['from'] = settings.EMAIL_ACCOUNT
            bodyMsg = {'raw': base64.urlsafe_b64encode(bodyTxt.as_string())}
-           print(bodyTxt.as_string())
            aviso = (service.users().messages().send(userId='me', body=bodyMsg).execute())
            print ('Correo enviado. Email Id: %s' % aviso['id'])
            retVal='exitoso'
         except Exception as e:
            print(e)
-           print(traceback.format_exc())
            retVal='error'
         finally:        
            return retVal
 
+def sendNotifications(localidad, mensaje, tipo):
+    localidad = Localidad.objects.get(nombre=localidad)
+    usuariosLoc = UsuarioLocalidad.objects.filter(localidad_id=localidad.id)
+    paramsWA = {}
+    paramsTG = {}
+    paramsSMS = {}
+    paramsEmail = {}
+    for userLoc in usuariosLoc:
+        userData = TipoUsuario.objects.get(user_id=userLoc.usuario_id)
+        if userData.tipo=tipo:
+            if userData.email:
+                paramsEmail[userData.email]=mensaje
+            if userData.celular:
+                if userData.whatsapp == 'Y':
+                    paramsWA[userData.celular]=mensaje
+                if userData.telegram == 'Y':
+                    paramsTG[userData.tgContact]=mensaje
+                if userData.sms == 'Y':
+                    paramsSMS[userData.celular]=mensaje
+    sendWhatsapp(**paramsWA)
+    sendTelegram(**paramsTG)
+    sendSMS(**paramsSMS)
+    sendEmail(**paramsEmail)

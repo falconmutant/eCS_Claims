@@ -231,9 +231,7 @@ class EventosView(ProveedorView):
         autorizacion= Autorizacion.objects.create(Estatus="R", 
             FechaSolicitud=datetime.datetime.now(), TipoAprobacion="1",
             Sistema=request.user,evento_id=evento.id)
-        #print(request.GET.lists())
         
-
         response = {
             'msj': 'Evento creado',
             'id': evento.id,
@@ -241,37 +239,13 @@ class EventosView(ProveedorView):
         }
 
         try:
-            localidad = Localidad.objects.get(nombre=proveedor.localidad)
-            usuariosLoc = UsuarioLocalidad.objects.filter(localidad_id=localidad.id)
-            paramsWA = {}
-            paramsTG = {}
-            paramsSMS = {}
-            paramsEmail = {}
-            for userLoc in usuariosLoc:
-                userData = TipoUsuario.objects.get(user_id=userLoc.usuario_id)
-                mensaje = 'Se ha recibido el Estado de Cuenta {0} , del proveedor {1} para su autorizacion. Favor de revisar Sistema'.format(evento.folioAut, proveedor.hospital)
-                if userData.email:
-                    paramsEmail[userData.email]=mensaje
-                if userData.celular:
-                    if userData.whatsapp == 'Y':
-                        paramsWA[userData.celular]=mensaje
-                    if userData.telegram == 'Y':
-                        paramsTG[userData.tgContact]=mensaje
-                    if userData.sms == 'Y':
-                        paramsSMS[userData.celular]=mensaje
-            sendWhatsapp(**paramsWA)
-            sendTelegram(**paramsTG)
-            sendSMS(**paramsSMS)
-            #sendEmail(**paramsEmail)
-            sendNotification(**paramsEmail)
+            mensaje = 'Se ha recibido el Estado de Cuenta {0} , del proveedor {1} para su autorizacion. Favor de revisar Sistema'.format(evento.folioAut, proveedor.hospital)
+            sendNotifications(proveedor.localidad, mensaje)
         except Exception as e:
-            response = {
-                        'msj': 'Error en el envio de alertas',
-                        'errores': e.message
-                        }
-            return Response(response, status=status.HTTP_200_OK)
-
-        return Response(response, status=status.HTTP_201_CREATED)
+            print('Error en el envio de alertas')
+            print(e.message)
+        finally:
+            return Response(response, status=status.HTTP_201_CREATED)
 
 # Detalles del evento
 class EventoDetailView(EventoView):
