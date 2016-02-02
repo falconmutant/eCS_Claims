@@ -245,9 +245,9 @@ class EventosView(ProveedorView):
             usuariosLoc = UsuarioLocalidad.objects.filter(localidad_id=localidad.id)
             logger.error(usuariosLoc)
             params = {}
-            for user in usuariosLoc.user_set.all()
+            for userLoc in usuariosLoc
                 print(user)
-                userData = TipoUsuario.objects.get(user=user.id)
+                userData = TipoUsuario.objects.get(user=userLoc.usuario_id)
                 print(userData)
                 if userData.email:
                     print('sendEmail')
