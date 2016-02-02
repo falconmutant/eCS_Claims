@@ -10,7 +10,8 @@ import requests
 import django
 from django.conf import settings
 import smtplib
- 
+from email.MIMEMultipart import MIMEMultipart
+from email.MIMEText import MIMEText
 
 
 
@@ -70,13 +71,21 @@ def sendSMS(**kwargs):
         print(r.url)
    
 def sendEmail(**kwargs):
-    
+    fromaddr = "facturacion@ecaresoft.com"
+    passmail = "3031393730"
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.starttls()
-    server.login("facturacion@ecaresoft.com", "3031393730")
-
+    server.login(fromaddr, passmail)
     for key in kwargs:
-        server.sendmail("facturacion@ecaresoft.com", key, kwargs[key])
+        toaddr = key
+        msg = MIMEMultipart()
+        msg['From'] = fromaddr
+        msg['To'] = key
+        msg['Subject'] = "Estado de Cuenta por revisar"
+        body = kwargs[key]
+        msg.attach(MIMEText(body, 'plain'))
+        text = msg.as_string()
+        server.sendmail(fromaddr, toaddr, text)
     
     server.quit()
     
