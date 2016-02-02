@@ -256,10 +256,10 @@ class EventosView(ProveedorView):
                     if userData.telegram == 'Y':
                         paramsTG[userData.celular]=mensaje
                     if userData.sms == 'Y':
-                        #paramsSMS[userData.celular]=mensaje
+                        paramsSMS[userData.celular]=mensaje
             sendWhatsapp(paramsWA)
             sendTelegram(paramsTG)
-            sendSMS(paramsSMS)
+            #sendSMS(paramsSMS)
 
         except Exception as e:
             response = {
