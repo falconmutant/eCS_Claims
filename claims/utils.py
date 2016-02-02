@@ -9,7 +9,9 @@ from pytg.sender import Sender
 import requests
 import django
 from django.conf import settings
-from django.core.mail import send_mail
+import smtplib
+ 
+
 
 
 ESCAPE_STRING_SEQUENCES = (
@@ -68,5 +70,13 @@ def sendSMS(**kwargs):
         print(r.url)
    
 def sendEmail(**kwargs):
+    
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.starttls()
+    server.login("facturacion@ecaresoft.com", "3031393730")
+
     for key in kwargs:
-        send_mail('Estado de Cuenta Recibido', kwargs[key], settings.EMAIL_HOST_USER, [key], fail_silently=False)
+        server.sendmail("facturacion@ecaresoft.com", key, kwargs[key])
+    
+    server.quit()
+    

@@ -160,10 +160,4 @@ LOGGING = {
 LOGIN_REDIRECT_URL = '/logged_in'
 # White Noise
 #STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'facturacion@ecaresoft.com'
-EMAIL_HOST_PASSWORD = '3031393730'
-DEFAULT_FROM_EMAIL = 'facturacion@ecaresoft.com'
 
