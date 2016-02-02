@@ -30,11 +30,11 @@ credential_dir = os.path.join(home_dir, '.credentials')
 if  os.path.exists(credential_dir):
 	credential_path = os.path.join(credential_dir,'gmail-python-quickstart.json')
     #store = oauth2client.file.Storage(credential_path)
-    credentials = store.get()
-    if credentials and not credentials.invalid:
-    	http = credentials.authorize(httplib2.Http())
-    	from django.conf import settings
-      	settings.SERVICE_GMAIL = discovery.build('gmail', 'v1', http=http)
+    #credentials = store.get()
+    #if credentials and not credentials.invalid:
+    #	http = credentials.authorize(httplib2.Http())
+    #	from django.conf import settings
+    #  	settings.SERVICE_GMAIL = discovery.build('gmail', 'v1', http=http)
 
 from django.core.wsgi import get_wsgi_application
 #from whitenoise.django import DjangoWhiteNoise
