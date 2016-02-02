@@ -83,7 +83,7 @@ class ComprobanteTipo(models.Model):
 	tipo = models.CharField(choices= LEVEL_TIPO, max_length=1)
 	Fecha = models.DateField()
 	Usuario = models.ForeignKey(User)
-	comprobante = models.IntegerField()
+	comprobante = models.ForeignKey(Comprobante)
 
 class ComprobanteEvento(models.Model):
 	comprobante = models.IntegerField()
