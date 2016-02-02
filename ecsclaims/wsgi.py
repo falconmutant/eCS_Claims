@@ -31,9 +31,8 @@ if  os.path.exists(credential_dir):
 	credentials = store.get()
 	if credentials and not credentials.invalid:
 		http = credentials.authorize(httplib2.Http())
-    #	http = credentials.authorize(httplib2.Http())
-    #	from django.conf import settings
-    #  	settings.SERVICE_GMAIL = discovery.build('gmail', 'v1', http=http)
+		from django.conf import settings
+		settings.SERVICE_GMAIL = discovery.build('gmail', 'v1', http=http)
 
 from django.core.wsgi import get_wsgi_application
 #from whitenoise.django import DjangoWhiteNoise
