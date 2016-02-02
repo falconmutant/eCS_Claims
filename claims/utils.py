@@ -78,7 +78,7 @@ def sendTelegram(**kwargs):
                 tipoUsuario.tgcontacto = salida[0]['print_name']
                 tipoUsuario.save()
                 #Enviamos mensaje por Telegram
-                #sender.send_msg(key,unicode(kwargs[key]))
+                sender.send_msg(salida[0]['print_name'],unicode(kwargs[key][0]))
 
 def sendSMS(**kwargs):
     for key in kwargs:
@@ -87,27 +87,6 @@ def sendSMS(**kwargs):
         payload['celular']='+'+str(key)
         payload['mensaje']=kwargs[key]
         r = requests.get("https://www.masmensajes.com.mx/wss/smsapi13.php", params=payload)
-        
-# def sendEmail(**kwargs):
-#     if not kwargs:
-#         print('entro sendemail')
-#         fromaddr = "facturacion@ecaresoft.com"
-#         passmail = "3031393730"
-#         server = smtplib.SMTP('smtp.gmail.com', 587)
-#         server.starttls()
-#         server.login(fromaddr, passmail)
-#         for key in kwargs:
-#             toaddr = key
-#             msg = MIMEMultipart()
-#             msg['From'] = fromaddr
-#             msg['To'] = key
-#             msg['Subject'] = "Estado de Cuenta por revisar"
-#             body = kwargs[key]
-#             msg.attach(MIMEText(body, 'plain'))
-#             text = msg.as_string()
-#             server.sendmail(fromaddr, toaddr, text)
-        
-#         server.quit()
 
 def sendEmail(**kwargs):
     from django.conf import settings
@@ -153,3 +132,25 @@ def sendNotifications(localidad, mensaje, tipo):
     sendTelegram(**paramsTG)
     sendSMS(**paramsSMS)
     sendEmail(**paramsEmail)
+
+
+# def sendEmail(**kwargs):
+#     if not kwargs:
+#         print('entro sendemail')
+#         fromaddr = "facturacion@ecaresoft.com"
+#         passmail = "3031393730"
+#         server = smtplib.SMTP('smtp.gmail.com', 587)
+#         server.starttls()
+#         server.login(fromaddr, passmail)
+#         for key in kwargs:
+#             toaddr = key
+#             msg = MIMEMultipart()
+#             msg['From'] = fromaddr
+#             msg['To'] = key
+#             msg['Subject'] = "Estado de Cuenta por revisar"
+#             body = kwargs[key]
+#             msg.attach(MIMEText(body, 'plain'))
+#             text = msg.as_string()
+#             server.sendmail(fromaddr, toaddr, text)
+        
+#         server.quit()
