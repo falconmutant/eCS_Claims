@@ -144,8 +144,8 @@ def sendNotifications(localidad, mensaje, tipo):
                 if userData.whatsapp == 'Y':
                     paramsWA[userData.celular]=mensaje
                 if userData.telegram == 'Y':
-                    lista = [mensaje, userData.tgcontacto, 
-                    userData.user.username, userData.get_tipo_display()]
+                    lista = [mensaje, userData.tgcontacto, userData.user.username, 
+                    userData.get_tipo_display(), userData.id]
                     paramsTG[userData.celular]=lista
                 if userData.sms == 'Y':
                     paramsSMS[userData.celular]=mensaje
