@@ -94,7 +94,10 @@ def sendEmail(**kwargs):
 def sendNotification(**kwargs):
     from django.conf import settings
     service = settings.SERVICE_GMAIL
+    print(kwargs)
+    print(service)
     if not kwargs and service:
+        print('entro')
         for key in kwargs:
             try:
                bodyTxt = MIMEText(kwargs[key])
