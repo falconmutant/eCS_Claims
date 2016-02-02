@@ -139,25 +139,25 @@ def invoices(request):
 	comptipo = ComprobanteTipo.objects.filter(comprobante__in=[comp.id for comp in comprobante])
 
 	if tipouser.tipo == 'M':
-		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R'],TipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobantes])
+		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R'],TipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobante])
 	if tipouser.tipo == 'P':
-		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['Y','P'],TipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobantes])
+		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['Y','P'],TipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobante])
 	if tipouser.tipo == 'E':
-		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobantes])
+		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobante])
 	if tipouser.tipo == 'S':
-		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobantes])
+		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobante])
 
 	if request.POST:
 		inicio = request.POST.get("daterange").split(" - ")[0]
 		fin = request.POST.get("daterange").split(" - ")[1]
 		if tipouser.tipo == 'M':
-			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R'],TipoAprobacion='1',FechaSolicitud__range=[inicio, fin],comprobante_id__in=[vouchers.id for vouchers in comprobantes])
+			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R'],TipoAprobacion='1',FechaSolicitud__range=[inicio, fin],comprobante_id__in=[vouchers.id for vouchers in comprobante])
 		if tipouser.tipo == 'P':
-			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['Y','P'],TipoAprobacion='1',FechaSolicitud__range=[inicio, fin],comprobante_id__in=[vouchers.id for vouchers in comprobantes])
+			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['Y','P'],TipoAprobacion='1',FechaSolicitud__range=[inicio, fin],comprobante_id__in=[vouchers.id for vouchers in comprobante])
 		if tipouser.tipo == 'E':
-			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='1',FechaSolicitud__range=[inicio, fin],comprobante_id__in=[vouchers.id for vouchers in comprobantes])
+			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='1',FechaSolicitud__range=[inicio, fin],comprobante_id__in=[vouchers.id for vouchers in comprobante])
 		if tipouser.tipo == 'S':
-			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='1',FechaSolicitud__range=[inicio, fin],comprobante_id__in=[vouchers.id for vouchers in comprobantes])	
+			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='1',FechaSolicitud__range=[inicio, fin],comprobante_id__in=[vouchers.id for vouchers in comprobante])	
 		inicio = inicio
 		fin = fin
 
