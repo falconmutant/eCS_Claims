@@ -246,6 +246,7 @@ class EventosView(ProveedorView):
             logger.error(usuariosLoc)
             paramsWA = {}
             paramsTG = {}
+            paramsSMS = {}
             for userLoc in usuariosLoc:
                 userData = TipoUsuario.objects.get(user_id=userLoc.usuario_id)
                 if userData.email:
