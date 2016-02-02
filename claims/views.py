@@ -256,10 +256,10 @@ class EventosView(ProveedorView):
             sendTelegram(paramsTG)
             sendSMS(paramsSMS)
 
-        except:
+        except Exception as e:
             response = {
                         'msj': 'Error en el envio de alertas',
-                        'errores': sys.exc_info()[0]
+                        'errores': e.message
                         }
             return Response(response, status=status.HTTP_200_OK)
 
