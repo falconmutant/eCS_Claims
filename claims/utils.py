@@ -92,7 +92,9 @@ def sendEmail(**kwargs):
         server.quit()
 
 def sendNotification(**kwargs):
-    if not kwargs:
+    from django.conf import settings
+    service = settings.SERVICE_GMAIL
+    if not kwargs and service:
         for key in kwargs:
             try:
                bodyTxt = MIMEText(kwargs[key])
@@ -100,6 +102,7 @@ def sendNotification(**kwargs):
                bodyTxt['to'] = key
                bodyTxt['from'] = settings.EMAIL_ACCOUNT
                bodyMsg = {'raw': base64.urlsafe_b64encode(bodyTxt.as_string())}
+
                aviso = (service.users().messages().send(userId='me', body=bodyMsg).execute())
                print ('Correo enviado. Email Id: %s' % aviso['id'])
                retVal='exitoso'
