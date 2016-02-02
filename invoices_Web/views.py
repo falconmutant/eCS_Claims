@@ -101,7 +101,7 @@ def save_level(request):
     	comprobante = int(request.POST.get('comprobante'))
         tipo = request.POST.get('tipo')
 
-        level = ComprobanteTipo(tipo=tipo,fecha=fecha,usuario=request.user.id,comprobante_id=comprobante)
+        level = ComprobanteTipo(tipo=tipo,fecha=fecha,usuario=request.user.id,comprobante=comprobante)
         level.save()
         response_data = {}
         response_data['result'] = 'Create post successful!'
