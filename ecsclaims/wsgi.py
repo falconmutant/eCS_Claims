@@ -28,8 +28,7 @@ CLIENT_SECRET_FILE = 'client_gmail.json'
 APPLICATION_NAME = 'Gmail API Python'
 credential_dir = os.path.join(home_dir, '.credentials')
 if  os.path.exists(credential_dir):
-    credential_path = os.path.join(credential_dir,
-                               'gmail-python-quickstart.json')
+    credential_path = os.path.join(credential_dir,'gmail-python-quickstart.json')
 	store = oauth2client.file.Storage(credential_path)
 	credentials = store.get()
 	if credentials and not credentials.invalid:
