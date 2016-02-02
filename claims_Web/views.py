@@ -62,12 +62,24 @@ def save_permission(request):
 def logged_in(request):
 	nombre_user = request.user.get_full_name()
 	tipouser = get_object_or_404(TipoUsuario,user_id=request.user.id)
-	total_claims = Autorizacion.objects.all().filter(TipoAprobacion='1').count()
-	falta_claims = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='1').count()
-	resuelto_claims = total_claims-falta_claims
-	total_invoices = Autorizacion.objects.all().filter(TipoAprobacion='2').count()
-	falta_invoices = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='2').count()
-	resuelto_invoices = total_invoices-falta_invoices
+	if tipouser.tipo == TipoUsuario.MAC:
+		id_localidad = UsuarioLocalidad.objects.filter(usuario_id=request.user.id)
+		localidad = Localidad.objects.filter(id__in=[locality_ids.localidad_id for locality_ids in id_localidad])
+		proveedor = Proveedor.objects.filter(localidad__in=[locality.nombre for locality in localidad])
+		evento = Evento.objects.filter(proveedor_id__in=[provider.id for provider in proveedor])
+
+		total_claims = Autorizacion.objects.all().filter(TipoAprobacion='1',evento_id__in=[event.id for event in evento]).count()
+		falta_claims = Autorizacion.objects.all().filter(Estatus__in=['E','R'],TipoAprobacion='1',evento_id__in=[event.id for event in evento]).count()
+		resuelto_claims = total_claims-falta_claims
+
+		emisor = Emisor.objects.filter(rfc__in=[provider.rfc for provider in proveedor])
+		comprobantes = Comprobante.objects.filter(emisor_id__in=[trans.id for trans in emisor])
+
+		total_invoices = Autorizacion.objects.all().filter(TipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobantes]).count()
+		falta_invoices = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobantes]).count()
+		resuelto_invoices = total_invoices-falta_invoices
+		
+	
 	return render_to_response('pantallas.html',RequestContext(request,locals()))
 
 @login_required
@@ -87,7 +99,7 @@ def detalle(request, id):
 				detalle = get_object_or_404(Evento, id=id)
 				locality = UsuarioLocalidad.objects.filter(usuario = request.user.id)
 				for localitys in locality:
-					message = 'Se ha Autorizado el Estado de Cuenta {0}. Favor de revisar Sistema'.format(detalle.folioAut)
+					message = 'Se ha Autorizado el Estado de Cuenta {0}, por el sectorial MAC. Favor de revisar Sistema'.format(detalle.folioAut)
 					sendNotifications(localitys.localidad,message, TipoUsuario.PEMEX)
 		except Exception, e:
 			message_error = 1
