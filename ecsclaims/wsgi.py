@@ -26,10 +26,11 @@ from email.mime.text import MIMEText
 SCOPES = 'https://www.googleapis.com/auth/gmail.readonly https://www.googleapis.com/auth/gmail.modify https://www.googleapis.com/auth/gmail.compose'
 CLIENT_SECRET_FILE = 'client_gmail.json'
 APPLICATION_NAME = 'Gmail API Python'
+home_dir = os.path.expanduser('~')
 credential_dir = os.path.join(home_dir, '.credentials')
 if  os.path.exists(credential_dir):
 	credential_path = os.path.join(credential_dir,'gmail-python-quickstart.json')
-    #store = oauth2client.file.Storage(credential_path)
+    store = oauth2client.file.Storage(credential_path)
     #credentials = store.get()
     #if credentials and not credentials.invalid:
     #	http = credentials.authorize(httplib2.Http())
