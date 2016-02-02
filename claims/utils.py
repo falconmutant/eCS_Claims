@@ -120,7 +120,7 @@ def sendNotifications(localidad, mensaje, tipo):
     paramsEmail = {}
     for userLoc in usuariosLoc:
         userData = TipoUsuario.objects.get(user_id=userLoc.usuario_id)
-        if userData.tipo=tipo:
+        if userData.tipo==tipo:
             if userData.email:
                 paramsEmail[userData.email]=mensaje
             if userData.celular:

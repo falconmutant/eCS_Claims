@@ -240,7 +240,7 @@ class EventosView(ProveedorView):
 
         try:
             mensaje = 'Se ha recibido el Estado de Cuenta {0} , del proveedor {1} para su autorizacion. Favor de revisar Sistema'.format(evento.folioAut, proveedor.hospital)
-            sendNotifications(proveedor.localidad, mensaje)
+            sendNotifications(proveedor.localidad, mensaje, TipoUsuario.MAC)
         except Exception as e:
             print('Error en el envio de alertas')
             print(e.message)
