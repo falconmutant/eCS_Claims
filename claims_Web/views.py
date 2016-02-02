@@ -83,7 +83,7 @@ def detalle(request, id):
 		Autorizacion.objects.filter(evento_id=idd).update(Estatus=estatus,Comentarios=descripcion,motivo=motivo)
 		bandera=1
 		try:
-			if estatus = 'Y':
+			if estatus == 'Y':
 				detalle = get_object_or_404(Evento, id=id)
 				locality = UsuarioLocalidad.objects.filter(usuario = request.user.id)
 				for localitys in locality:
