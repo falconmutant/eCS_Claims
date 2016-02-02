@@ -77,8 +77,27 @@ def logged_in(request):
 		comprobantes = Comprobante.objects.filter(emisor_id__in=[trans.id for trans in emisor])
 
 		total_invoices = Autorizacion.objects.all().filter(TipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobantes]).count()
-		falta_invoices = Autorizacion.objects.all().filter(Estatus='R',TipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobantes]).count()
+		falta_invoices = Autorizacion.objects.all().filter(Estatus__in=['E','R'],TipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobantes]).count()
 		resuelto_invoices = total_invoices-falta_invoices
+
+	if tipouser.tipo == TipoUsuario.PEMEX:
+		id_localidad = UsuarioLocalidad.objects.filter(usuario_id=request.user.id)
+		localidad = Localidad.objects.filter(id__in=[locality_ids.localidad_id for locality_ids in id_localidad])
+		proveedor = Proveedor.objects.filter(localidad__in=[locality.nombre for locality in localidad])
+		evento = Evento.objects.filter(proveedor_id__in=[provider.id for provider in proveedor])
+
+		total_claims = Autorizacion.objects.all().filter(TipoAprobacion='1',evento_id__in=[event.id for event in evento]).count()
+		falta_claims = Autorizacion.objects.all().filter(Estatus__in=['Y','P'],TipoAprobacion='1',evento_id__in=[event.id for event in evento]).count()
+		resuelto_claims = total_claims-falta_claims
+
+		emisor = Emisor.objects.filter(rfc__in=[provider.rfc for provider in proveedor])
+		comprobantes = Comprobante.objects.filter(emisor_id__in=[trans.id for trans in emisor])
+
+		total_invoices = Autorizacion.objects.all().filter(TipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobantes]).count()
+		falta_invoices = Autorizacion.objects.all().filter(Estatus__in=['Y','P'],TipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobantes]).count()
+		resuelto_invoices = total_invoices-falta_invoices
+
+
 		
 	
 	return render_to_response('pantallas.html',RequestContext(request,locals()))
