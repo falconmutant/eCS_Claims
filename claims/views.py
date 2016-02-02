@@ -8,7 +8,7 @@ from django.core.exceptions import ObjectDoesNotExist
 #from app.permissions import is_app
 from .models import *
 from .serializers import *
-from .utils import raw_sql_search, secret_key_gen, get_url
+from .utils import secret_key_gen, get_url, sendWhatsapp, sendTelegram, sendSMS
 from .permissions import ProveedorView, EventoView
 import json
 import datetime 
@@ -236,6 +236,34 @@ class EventosView(ProveedorView):
             'id': evento.id,
             'url': get_url(request.get_host(), "proveedores/%s/eventos/%s" % (proveedor.rfc, evento.id))
         }
+
+        try:
+            usuariosLoc = UsuarioLocalidad.objects.filter(proveedor.localidad)
+            params = {}
+            for user in usuariosLoc.usuario:
+                userData = TipoUsuario.objects.get(user=user.id)
+                if userData.email:
+                    print('sendEmail')
+                if userData.celular:
+                    mensaje = 'Se ha recibido el Estado de Cuenta %s '
+                            + ', de %s para su autorizacion. Favor de revisar Sistema'
+                            %{evento.folioAut, proveedor.nombre}
+                    if userData.whatsapp == 'Y':
+                        paramsWA[userData.celular]=mensaje
+                    if userData.telegram == 'Y':
+                        paramsTG[userData.celular]=mensaje
+                    if userData.sms == 'Y':
+                        paramsSMS[userData.celular]=mensaje
+            sendWhatsapp(paramsWA)
+            sendTelegram(paramsTG)
+            sendSMS(paramsSMS)
+
+        except:
+            response = {
+                        'msj': 'Error en el envio de alertas',
+                        'errores': sys.exc_info()[0]
+                        }
+            return Response(response, status=status.HTTP_200_OK)
 
         return Response(response, status=status.HTTP_201_CREATED)
 

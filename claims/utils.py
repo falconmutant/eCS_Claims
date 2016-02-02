@@ -4,6 +4,9 @@ import string
 from django.core import serializers
 from django.db import connection
 from .queries import search
+from whatsapp import Client
+from pytg.sender import Sender
+import requests
 
 ESCAPE_STRING_SEQUENCES = (
     (' AND ', '&'),
@@ -39,4 +42,24 @@ def raw_sql_search(query, pac_id):
     return result
 
 def secret_key_gen():
-    return "".join([random.SystemRandom().choice(string.digits + string.letters) for i in xrange(32)])
+    return "".join([random.SystemRandom().choice(string.digits 
+        + string.letters) for i in xrange(32)])
+
+def sendWhatsapp(**kwargs):
+    client = Client(login='5218348538420', password='s2znFNoSU7MabzuFHx3qNXaphbY=')
+    for key in kwargs:
+        client.send_message(key, kwargs[key])
+
+def sendTelegram(**kwargs):
+    sender = Sender("127.0.0.1", port=4458)
+    for key in kwargs:
+        sender.send_msg(key,unicode(kwargs[key]))
+
+def sendSMS(**kwargs):
+    for key in kwargs:
+        payload = {'usuario':'gvaldez','password':'de434a'}
+        payload['celular']='+'+str(key)
+        payload['mensaje']=kwargs[key]
+        r = requests.get("https://www.masmensajes.com.mx/wss/smsapi13.php", params=payload)
+        print(r.url)
+   
