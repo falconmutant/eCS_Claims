@@ -82,7 +82,6 @@ def detalle(request, id):
 		motivo = request.POST.get('motivo')
 		Autorizacion.objects.filter(evento_id=idd).update(Estatus=estatus,Comentarios=descripcion,motivo=motivo)
 		bandera=1
-		sendNotifications()
 		try:
 			if estatus = 'Y':
 				detalle = get_object_or_404(Evento, id=id)
