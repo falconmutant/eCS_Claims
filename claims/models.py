@@ -99,6 +99,7 @@ class TipoUsuario(models.Model):
    whatsapp = models.CharField(choices= YES_NO,max_length=1,default='N')
    telegram = models.CharField(choices= YES_NO,max_length=1,default='N')
    sms = models.CharField(choices= YES_NO,max_length=1,default='N')
+   tgContact = models.CharField(max_length=255, null=True)
    def __str__(self):
       return "%s" % (self.user.username)
 
@@ -106,6 +107,8 @@ class TipoUsuario(models.Model):
 class UsuarioLocalidad(models.Model):
    usuario = models.ForeignKey(User)
    localidad = models.ForeignKey(Localidad)
+   def __str__(self):
+      return "%s" % (self.usuario.username)
 
 class Evento(models.Model):
    folioAut = models.CharField(max_length=255)
