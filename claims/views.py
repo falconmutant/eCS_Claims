@@ -8,7 +8,7 @@ from django.core.exceptions import ObjectDoesNotExist
 #from app.permissions import is_app
 from .models import *
 from .serializers import *
-from .utils import secret_key_gen, get_url, sendWhatsapp, sendTelegram, sendSMS, sendEmail
+from .utils import secret_key_gen, get_url, sendWhatsapp, sendTelegram, sendSMS, sendEmail, sendNotification
 from .permissions import ProveedorView, EventoView
 import json
 import datetime 
