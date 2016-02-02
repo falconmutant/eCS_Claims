@@ -81,8 +81,8 @@ class Impuesto(models.Model):
 
 class ComprobanteTipo(models.Model):
 	tipo = models.CharField(choices= LEVEL_TIPO, max_length=1)
-	Fecha = models.DateField()
-	Usuario = models.ForeignKey(User)
+	fecha = models.DateField()
+	usuario = models.ForeignKey(User)
 	comprobante = models.ForeignKey(Comprobante)
 
 class ComprobanteEvento(models.Model):
