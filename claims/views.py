@@ -247,7 +247,7 @@ class EventosView(ProveedorView):
             params = {}
             for userLoc in usuariosLoc:
                 print(user)
-                userData = TipoUsuario.objects.get(user=userLoc.usuario_id)
+                userData = TipoUsuario.objects.get(user_id=userLoc.usuario_id)
                 print(userData)
                 if userData.email:
                     print('sendEmail')
