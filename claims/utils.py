@@ -71,21 +71,22 @@ def sendSMS(**kwargs):
         print(r.url)
    
 def sendEmail(**kwargs):
-    fromaddr = "facturacion@ecaresoft.com"
-    passmail = "3031393730"
-    server = smtplib.SMTP('smtp.gmail.com', 587)
-    server.starttls()
-    server.login(fromaddr, passmail)
-    for key in kwargs:
-        toaddr = key
-        msg = MIMEMultipart()
-        msg['From'] = fromaddr
-        msg['To'] = key
-        msg['Subject'] = "Estado de Cuenta por revisar"
-        body = kwargs[key]
-        msg.attach(MIMEText(body, 'plain'))
-        text = msg.as_string()
-        server.sendmail(fromaddr, toaddr, text)
-    
-    server.quit()
+    if not kwargs:
+        fromaddr = "facturacion@ecaresoft.com"
+        passmail = "3031393730"
+        server = smtplib.SMTP('smtp.gmail.com', 587)
+        server.starttls()
+        server.login(fromaddr, passmail)
+        for key in kwargs:
+            toaddr = key
+            msg = MIMEMultipart()
+            msg['From'] = fromaddr
+            msg['To'] = key
+            msg['Subject'] = "Estado de Cuenta por revisar"
+            body = kwargs[key]
+            msg.attach(MIMEText(body, 'plain'))
+            text = msg.as_string()
+            server.sendmail(fromaddr, toaddr, text)
+        
+        server.quit()
     
