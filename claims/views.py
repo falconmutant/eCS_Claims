@@ -243,7 +243,6 @@ class EventosView(ProveedorView):
         try:
             localidad = Localidad.objects.get(nombre=proveedor.localidad)
             usuariosLoc = UsuarioLocalidad.objects.filter(localidad_id=localidad.id)
-            logger.error(usuariosLoc)
             paramsWA = {}
             paramsTG = {}
             paramsSMS = {}
@@ -262,7 +261,7 @@ class EventosView(ProveedorView):
             sendWhatsapp(**paramsWA)
             sendTelegram(**paramsTG)
             print(paramsTG)
-            #sendSMS(paramsSMS)
+            sendSMS(paramsSMS)
 
         except Exception as e:
             response = {
