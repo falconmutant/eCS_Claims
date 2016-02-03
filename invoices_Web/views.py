@@ -43,7 +43,7 @@ def detalle(request, id):
 		evento = Evento.objects.filter(proveedor_id=proveedor.id).exclude(id__in=[CompEvent.evento for CompEvent in CE])
 		bug6 = 'evento: '
 		for x in CE:
-			bug6 += x.folioAuth+', '
+			bug6 += str(x.id)+', '
 
 		paciente =  Paciente.objects.all().filter(evento_id__in=[event2.id for event2 in evento])
 		tax = get_object_or_404(Impuesto,comprobante_id=detalle.id)
