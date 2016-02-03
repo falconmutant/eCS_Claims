@@ -38,7 +38,7 @@ def detalle(request, id):
 		CE = ComprobanteEvento.objects.all().filter(comprobante=id)
 		bug5 = 'ComprobanteEvento: '
 		for x in CE:
-			bug5 += x.evento+', '
+			bug5 += str(x.evento)+', '
 
 		evento = Evento.objects.filter(proveedor_id=proveedor.id).exclude(id__in=[CompEvent.evento for CompEvent in CE])
 		bug6 = 'evento: '
