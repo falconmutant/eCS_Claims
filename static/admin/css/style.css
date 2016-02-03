@@ -177,7 +177,7 @@
 		.sidebar_inner form input{margin:0}
 		.sidebar_inner form input.tt-query {padding-left:11px;padding-top:6px;font-size: 13px;line-height: 18px;}
 	
-		.sidebar_hidden .sidebar {display:none}
+		/*.sidebar_hidden .sidebar {display:none}*/
 		.sidebar_hidden .sidebar_switch {left:4px;}
 		.sidebar_hidden .main_content {margin:0;border-left:none}
 		.sidebar_hidden {background: #fff}
