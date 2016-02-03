@@ -74,7 +74,7 @@ def sendTelegram(**kwargs):
             #Si no tenemos contacto hay que dar de alta en Telegram 
             #Actualizar el valor username_tipousuario en BD
             salida = sender.contact_add(key, kwargs[key][2], kwargs[key][3] )
-            print ('Argumentos '+kwargs[key][2]+' - '+kwargs[key][3])
+            print ('Argumentos = '+kwargs[key][2]+' - '+kwargs[key][3])
             #Verificamos que hubo respuesta y se obtuvo un ID
             if salida and salida[0]['id']>0:
                 tipoUsuario = TipoUsuario.objects.get(pk=kwargs[key][4])
