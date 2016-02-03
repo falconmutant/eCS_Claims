@@ -63,6 +63,7 @@ def save_permission(request):
 def logged_in(request):
 	nombre_user = request.user.get_full_name()
 	tipouser = get_object_or_404(TipoUsuario,user_id=request.user.id)
+	
 	if tipouser.tipo == TipoUsuario.MAC:
 		id_localidad = UsuarioLocalidad.objects.filter(usuario_id=request.user.id)
 		localidad = Localidad.objects.filter(id__in=[locality_ids.localidad_id for locality_ids in id_localidad])
