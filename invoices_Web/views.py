@@ -22,8 +22,7 @@ def detalle(request, id):
 	try:
 
 		detalle = get_object_or_404(Comprobante, id=id)
-		bug = 'Comprobante: '
-		bug += detalle.id+', '
+		bug = 'Comprobante: '+detalle.id
 
 		conceptos = Conceptos.objects.filter(comprobante_id=detalle.id)
 		bug2 = 'Conceptos: '
