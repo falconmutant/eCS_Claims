@@ -20,7 +20,7 @@ def detalle(request, id):
 		return HttpResponseRedirect('/invoice/')
 	
 	try:
-		nombre = request.user.get_full_name()
+
 		detalle = get_object_or_404(Comprobante, id=id)
 		bug = 'Comprobante: '
 		bug += detalle.id
