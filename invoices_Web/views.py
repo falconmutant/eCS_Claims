@@ -27,7 +27,7 @@ def detalle(request, id):
 		conceptos = Conceptos.objects.filter(comprobante_id=detalle.id)
 		bug2 = 'Conceptos: '
 		for x in conceptos:
-			bug2 += x.cantidad+', '
+			bug2 += x.descripcion+', '
 
 		emisor = get_object_or_404(Emisor, id=detalle.emisor_id)
 		bug3 = 'Emisor: '
