@@ -22,7 +22,7 @@ def detalle(request, id):
 	try:
 
 		detalle = get_object_or_404(Comprobante, id=id)
-		bug = 'Comprobante: '+detalle.id
+		bug = 'Comprobante: ' + detalle.version
 
 		conceptos = Conceptos.objects.filter(comprobante_id=detalle.id)
 		bug2 = 'Conceptos: '
@@ -47,7 +47,7 @@ def detalle(request, id):
 		evento = Evento.objects.filter(proveedor_id=proveedor.id).exclude(id__in=[CompEvent.evento for CompEvent in CE])
 		bug6 = 'evento: '
 		for x in CE:
-			bug6 += x.id+', '
+			bug6 += x.folioAuth+', '
 
 		paciente =  Paciente.objects.all().filter(evento_id__in=[event2.id for event2 in evento])
 		tax = get_object_or_404(Impuesto,comprobante_id=detalle.id)
