@@ -111,7 +111,7 @@ def detalle(request, id):
 		estatus = request.POST.get('estatus')
 		descripcion = request.POST.get('descripcion')
 		motivo = request.POST.get('motivo')
-		Autorizacion.objects.filter(evento_id=idd).update(Estatus=estatus,Comentarios=descripcion,motivo=motivo)
+		Autorizacion.objects.filter(evento_id=id).update(Estatus=estatus,Comentarios=descripcion,motivo=motivo)
 		message_success=1
 		try:
 			if estatus == 'Y':
@@ -174,26 +174,26 @@ def claims(request):
 	evento = Evento.objects.filter(proveedor_id__in=[provider.id for provider in proveedor])
 	paciente = Paciente.objects.filter(evento_id__in=[event.id for event in evento])
 	cargo = Cargo.objects.filter(evento_id__in=[event.id for event in evento])
-	if tipouser.tipo == 'M':
+	if tipouser.tipo == TipoUsuario.MAC:
 		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R'],TipoAprobacion='1',evento_id__in=[event.id for event in evento])
-	if tipouser.tipo == 'P':
+	if tipouser.tipo == TipoUsuario.PEMEX:
 		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['Y','P'],TipoAprobacion='1',evento_id__in=[event.id for event in evento])
-	if tipouser.tipo == 'E':
+	if tipouser.tipo == TipoUsuario.ECARESOFT:
 		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='1')
-	if tipouser.tipo == 'S':
+	if tipouser.tipo == TipoUsuario.SUPERUSER:
 		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='1')
 	
 	if request.POST:
 		inicio = request.POST.get("daterange").split(" - ")[0]
 		fin = request.POST.get("daterange").split(" - ")[1]
-		if tipouser.tipo == 'M':
-			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R'],TipoAprobacion='1',FechaSolicitud__range=[inicio, fin],evento_id__in=[event.id for event in evento])
-		if tipouser.tipo == 'P':
-			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['Y','P'],TipoAprobacion='1',FechaSolicitud__range=[inicio, fin],evento_id__in=[event.id for event in evento])
-		if tipouser.tipo == 'E':
-			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='1',FechaSolicitud__range=[inicio, fin])
-		if tipouser.tipo == 'S':
-			autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='1',FechaSolicitud__range=[inicio, fin])	
+		if tipouser.tipo == TipoUsuario.MAC:
+			autorizacion = autorizacion.filter(FechaSolicitud__range=[inicio, fin])
+		if tipouser.tipo == TipoUsuario.PEMEX:
+			autorizacion = autorizacion.filter(FechaSolicitud__range=[inicio, fin])
+		if tipouser.tipo == TipoUsuario.ECARESOFT:
+			autorizacion = autorizacion.filter(FechaSolicitud__range=[inicio, fin])
+		if tipouser.tipo == TipoUsuario.SUPERUSER:
+			autorizacion = autorizacion.filter(FechaSolicitud__range=[inicio, fin])	
 		inicio = inicio
 		fin = fin
 
@@ -209,12 +209,12 @@ def historial(request):
 	evento = Evento.objects.filter(proveedor_id__in=[provider.id for provider in proveedor])
 	paciente = Paciente.objects.filter(evento_id__in=[event.id for event in evento])
 	cargo = Cargo.objects.filter(evento_id__in=[event.id for event in evento])
-	if tipouser.tipo == 'M':
+	if tipouser.tipo == TipoUsuario.MAC:
 		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['A','X','Y','N','P'],TipoAprobacion='1',evento_id__in=[event.id for event in evento])
-	if tipouser.tipo == 'P':
+	if tipouser.tipo == TipoUsuario.PEMEX:
 		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['X'],TipoAprobacion='1',evento_id__in=[event.id for event in evento])
-	if tipouser.tipo == 'E':
+	if tipouser.tipo == TipoUsuario.ECARESOFT:
 		autorizacion = Autorizacion.objects.all().filter(TipoAprobacion='1')
-	if tipouser.tipo == 'S':
+	if tipouser.tipo == TipoUsuario.SUPERUSER:
 		autorizacion = Autorizacion.objects.all().filter(TipoAprobacion='1')
     	return render_to_response('claims/historial.html',RequestContext(request,locals()))
