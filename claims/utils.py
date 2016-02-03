@@ -68,17 +68,22 @@ def sendTelegram(**kwargs):
         #(kwargs[key][2]) == username
         #(kwargs[key][3]) == TipoUsuario
         #(kwargs[key][4]) == id TipoUsuario
-        if not kwargs[key][1]:
+        contacto = kwargs[key][1]
+        #print('Contacto = '+contacto)
+        if not contacto:
             #Si no tenemos contacto hay que dar de alta en Telegram 
             #Actualizar el valor username_tipousuario en BD
             salida = sender.contact_add(key, kwargs[key][2], kwargs[key][3] )
+            #print ('Argumentos = '+kwargs[key][2]+' - '+kwargs[key][3])
             #Verificamos que hubo respuesta y se obtuvo un ID
             if salida and salida[0]['id']>0:
                 tipoUsuario = TipoUsuario.objects.get(pk=kwargs[key][4])
                 tipoUsuario.tgcontacto = salida[0]['print_name']
                 tipoUsuario.save()
-                #Enviamos mensaje por Telegram
-                sender.send_msg(salida[0]['print_name'],unicode(kwargs[key][0]))
+                contacto = salida[0]['print_name']
+                print('Se agrega a la lista de contactos de TG : '+salida[0]['print_name'])
+        #Enviamos mensaje por Telegram
+        sender.send_msg(contacto,unicode(kwargs[key][0]))        
 
 def sendSMS(**kwargs):
     for key in kwargs:
