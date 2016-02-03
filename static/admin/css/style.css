@@ -748,7 +748,7 @@
 		
 	/* media queries */
 
-		@media (min-width: 980px) {
+		@media (min-width: 400px) {
 			.sidebar {position:fixed;top:40px;left:0;margin-left:0;bottom:0;background:#eee}
 			.navbar-fixed-top .nav-collapse {height:40px !important}
 			/* fixed layout */
