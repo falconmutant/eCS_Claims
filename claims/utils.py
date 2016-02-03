@@ -81,7 +81,7 @@ def sendTelegram(**kwargs):
                 tipoUsuario.tgcontacto = salida[0]['print_name']
                 tipoUsuario.save()
                 contacto = salida[0]['print_name']
-                print('Salida = '+salida[0]['print_name'])
+                print('Salida : '+salida[0]['print_name'])
         #Enviamos mensaje por Telegram
         sender.send_msg(contacto,unicode(kwargs[key][0]))        
 
