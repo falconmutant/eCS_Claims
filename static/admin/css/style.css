@@ -805,7 +805,7 @@
 			.ssw_trigger {display:none}
 			#mobile-nav {display:none}
 			.selectnav {margin:8px 0 0 20px;margin-bottom:0}
-		}*/
+		}
 		
 		@media (max-width: 767px) {
 			.main_content {padding-top:20px}
@@ -851,7 +851,7 @@
             .navbar .user_menu .dropdown-menu {left:0 !important;right:auto !important}
             .navbar .user_menu .dropdown-menu:after {left:10px !important;right:auto !important}
             .navbar .user_menu .dropdown-menu:before {left:9px !important;right:auto !important}
-		}
+		}*/
 		
 		@media (min-width: 1681px) {
 			body {max-width:1680px;margin:0 auto !important;}
