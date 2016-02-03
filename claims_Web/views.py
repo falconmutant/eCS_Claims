@@ -21,14 +21,14 @@ def index(request):
 
 def permisos(request):
 	reportes = Query.objects.all()
-	PemexPermisos = Permiso.objects.filter(usuario='P')
-	MacPermisos = Permiso.objects.filter(usuario='M')
+	PemexPermisos = Permiso.objects.filter(usuario=TipoUsuario.PEMEX)
+	MacPermisos = Permiso.objects.filter(usuario=TipoUsuario.MAC)
 	return render_to_response('explorer/usuarios.html',
 		RequestContext(request,locals()))
 
 def save_permission(request):
 	x = datetime.datetime.now()
-	bandera = 0
+	message_success = 0
 	if x.month < 10:
 		fecha = "%s-0%s-%s"% (x.year, x.month, x.day)
 	else:
@@ -43,12 +43,12 @@ def save_permission(request):
 		else:
 			liga = Permiso(usuario=user, reporte=query,fecha=fecha)
 			liga.save()
-			bandera = 1
-		PemexPermisos = Permiso.objects.filter(usuario='P')
-		MacPermisos = Permiso.objects.filter(usuario='M')
+			message_success = 1
+		PemexPermisos = Permiso.objects.filter(usuario=TipoUsuario.PEMEX)
+		MacPermisos = Permiso.objects.filter(usuario=TipoUsuario.MAC)
 		response_data = {}
 		response_data['result'] = 'Create post successful! '
-		response_data['bandera'] = bandera
+		response_data['message_success'] = message_success
 		return HttpResponse(
 			json.dumps(response_data),
 			content_type="application/json"
@@ -104,8 +104,7 @@ def logged_in(request):
 
 @login_required
 def detalle(request, id):
-	idd=id
-	bandera=0
+	message_success=0
 	message_error=1
 	tipouser = get_object_or_404(TipoUsuario,user_id=request.user.id)
 	if request.POST:
@@ -113,7 +112,7 @@ def detalle(request, id):
 		descripcion = request.POST.get('descripcion')
 		motivo = request.POST.get('motivo')
 		Autorizacion.objects.filter(evento_id=idd).update(Estatus=estatus,Comentarios=descripcion,motivo=motivo)
-		bandera=1
+		message_success=1
 		try:
 			if estatus == 'Y':
 				detalle = get_object_or_404(Evento, id=id)

@@ -20,7 +20,6 @@ def detalle(request, id):
 		return HttpResponseRedirect('/invoice/')
 	
 	try:
-
 		detalle = get_object_or_404(Comprobante, id=id)
 		conceptos = Conceptos.objects.filter(comprobante_id=detalle.id)
 		emisor = get_object_or_404(Emisor, id=detalle.emisor_id)
@@ -31,9 +30,9 @@ def detalle(request, id):
 		tax = get_object_or_404(Impuesto,comprobante_id=detalle.id)
 		fullevento = Evento.objects.filter(proveedor_id=proveedor.id)
 		motivo = Motivos.objects.all()
-		if tipouser.tipo == 'M':
+		if tipouser.tipo == TipoUsuario.MAC:
 			autorizacion = Autorizacion.objects.all().filter(Estatus__in='A',TipoAprobacion='1')
-		if tipouser.tipo == 'P':
+		if tipouser.tipo == TipoUsuario.PEMEX:
 			autorizacion = Autorizacion.objects.all().filter(Estatus__in='Y',TipoAprobacion='1')		
 
 		return render_to_response('invoices/detalles.html',RequestContext(request,locals()))
@@ -47,8 +46,8 @@ def save_ligar(request):
         comprobante = int(request.POST.get('comprobante'))
         CE = ComprobanteEvento.objects.filter(evento=evento, comprobante=comprobante)
         Almacenar = True
-        for x in CE:
-        	CE.delete()
+        for EventVoucher in CE:
+        	EventVoucher.delete()
         	Almacenar = False
         if Almacenar:
         	liga = ComprobanteEvento(evento=evento, comprobante=comprobante)
@@ -114,25 +113,25 @@ def invoices(request):
 	cliente = Emisor.objects.filter(id__in=[invoice.emisor_id for invoice in comprobante])
 	comptipo = ComprobanteTipo.objects.filter(comprobante__in=[comp.id for comp in comprobante])
 
-	if tipouser.tipo == 'M':
+	if tipouser.tipo == TipoUsuario.MAC:
 		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R'],TipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobante])
-	if tipouser.tipo == 'P':
+	if tipouser.tipo == TipoUsuario.PEMEX:
 		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['Y','P'],TipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobante])
-	if tipouser.tipo == 'E':
+	if tipouser.tipo == TipoUsuario.ECARESOFT:
 		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='2')
-	if tipouser.tipo == 'S':
+	if tipouser.tipo == TipoUsuario.SUPERUSER:
 		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='2')
 
 	if request.POST:
 		inicio = request.POST.get("daterange").split(" - ")[0]
 		fin = request.POST.get("daterange").split(" - ")[1]
-		if tipouser.tipo == 'M':
+		if tipouser.tipo == TipoUsuario.MAC:
 			autorizacion = autorizacion.filter(FechaSolicitud__range=[inicio, fin])
-		if tipouser.tipo == 'P':
+		if tipouser.tipo == TipoUsuario.PEMEX:
 			autorizacion = autorizacion.filter(FechaSolicitud__range=[inicio, fin])
-		if tipouser.tipo == 'E':
+		if tipouser.tipo == TipoUsuario.ECARESOFT:
 			autorizacion = autorizacion.filter(FechaSolicitud__range=[inicio, fin])
-		if tipouser.tipo == 'S':
+		if tipouser.tipo == TipoUsuario.SUPERUSER:
 			autorizacion = autorizacion.filter(FechaSolicitud__range=[inicio, fin])	
     	return render_to_response('invoices/invoices.html',RequestContext(request,locals()))
 
@@ -149,13 +148,13 @@ def historial(request):
 	cliente = Emisor.objects.filter(id__in=[invoice.emisor_id for invoice in comprobante])
 	comptipo = ComprobanteTipo.objects.filter(comprobante__in=[comp.id for comp in comprobante])
 
-	if tipouser.tipo == 'M':
+	if tipouser.tipo == TipoUsuario.MAC:
 		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['A','X','Y','N','P'],TipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobante])
-	if tipouser.tipo == 'P':
+	if tipouser.tipo == TipoUsuario.PEMEX:
 		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['X'],TipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobante])
-	if tipouser.tipo == 'E':
+	if tipouser.tipo == TipoUsuario.ECARESOFT:
 		autorizacion = Autorizacion.objects.all().filter(TipoAprobacion='2',)
-	if tipouser.tipo == 'S':
+	if tipouser.tipo == TipoUsuario.SUPERUSER:
 		autorizacion = Autorizacion.objects.all().filter(TipoAprobacion='2')
 
 	return render_to_response('invoices/historial.html',RequestContext(request,locals()))

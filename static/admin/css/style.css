@@ -777,7 +777,7 @@
 			.search_page .box_view .search_item {width:49%}
 		}
 		
-		@media (max-width: 979px) {
+		/*@media (max-width: 979px) {
 			#maincontainer {background: #fff}
 			.row > [class*="span"],.navbar-fixed-top {margin:0 !important}
 			.navbar-fixed-top .container {padding:0 !important}
@@ -796,10 +796,6 @@
 			.user_menu .dropdown {margin-left:10px}
 			.main_content {margin:0 !important;border:none !important;padding:56px 14px 20px}
 			.main_content .row + .row {margin-top:20px}
-			.sidebar {height: 400px;position:absolute;top:39px;left:0;background:#f1f1f1;border-width:0 1px;border-style:solid;border-color:#ccc;margin:0;-webkit-box-shadow: 1px 1px 4px rgba(0,0,0,0.2);-moz-box-shadow: 1px 1px 4px rgba(0,0,0,0.2);box-shadow: 1px 1px 4px rgba(0,0,0,0.2);z-index:1000;-webkit-border-radius: 0px 5px 5px 0px;border-radius: 0px 5px 5px 0px}
-			.sidebar:after {border-bottom: 6px solid #fff;border-left: 6px solid transparent;border-right: 6px solid transparent;content: "";display: inline-block;left: 15px;position: absolute;top: -6px}
-            .sidebar_hidden .sidebar {border:none}
-			.sidebar_switch {position:absolute;z-index:1040;left:5px !important;top:12px;padding:0 10px}
 			.off_switch {background-position:center 1px}
 			.on_switch {background-position:center -17px}
             .sidebar_inner {padding-bottom:0 !important}
@@ -809,7 +805,7 @@
 			.ssw_trigger {display:none}
 			#mobile-nav {display:none}
 			.selectnav {margin:8px 0 0 20px;margin-bottom:0}
-		}
+		}*/
 		
 		@media (max-width: 767px) {
 			.main_content {padding-top:20px}
