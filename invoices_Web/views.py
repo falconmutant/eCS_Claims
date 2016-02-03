@@ -30,14 +30,10 @@ def detalle(request, id):
 			bug2 += x.descripcion+', '
 
 		emisor = get_object_or_404(Emisor, id=detalle.emisor_id)
-		bug3 = 'Emisor: '
-		for x in emisor:
-			bug3 += x.rfc+', '
+		bug3 = 'Emisor: '+emisor.rfc
 
 		proveedor = get_object_or_404(Proveedor, rfc=emisor.rfc)
-		bug4 = 'Proveedor: '
-		for x in proveedor:
-			bug4 += x.rfc+', '
+		bug4 = 'Proveedor: '+proveedor.rfc
 
 		CE = ComprobanteEvento.objects.all().filter(comprobante=id)
 		bug5 = 'ComprobanteEvento: '
