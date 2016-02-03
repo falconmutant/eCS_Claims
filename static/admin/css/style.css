@@ -177,7 +177,7 @@
 		.sidebar_inner form input{margin:0}
 		.sidebar_inner form input.tt-query {padding-left:11px;padding-top:6px;font-size: 13px;line-height: 18px;}
 	
-		/*.sidebar_hidden .sidebar {display:none}*/
+		/*.sidebar_hidden .sidebar {display:none}
 		.sidebar_hidden .sidebar_switch {left:4px;}
 		.sidebar_hidden .main_content {margin:0;border-left:none}
 		.sidebar_hidden {background: #fff}
@@ -204,7 +204,7 @@
 		.sidebar .nav-pills > li > a {padding:3px 15px}
 		.sidebar .nav-header {color: #999999;display: block;font-size: 11px;font-weight: bold;line-height: 20px;padding: 3px 15px;text-transform: uppercase;margin: 4px -15px 4px}
 		.sidebar li + .nav-header {margin-top:10px}
-
+		*/
 		/* accordion background animation */
 		.sidebar .accordion-toggle {-webkit-transition:background-color 0.2s ease-in-out; -moz-transition:background-color 0.2s ease-in-out;  -o-transition:background-color 0.2s ease-in-out;  transition:background-color 0.2s ease-in-out;}
 		.sdb_h_active a {background: url("../img/bullet_green.png") no-repeat 98% center}
