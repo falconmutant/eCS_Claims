@@ -180,7 +180,7 @@
 		/*.sidebar_hidden .sidebar {display:none}
 		.sidebar_hidden .sidebar_switch {left:4px;}
 		.sidebar_hidden .main_content {margin:0;border-left:none}
-		.sidebar_hidden {background: #fff}
+		.sidebar_hidden {background: #fff}*/
 		
 		.sidebar_info {width:180px;position:relative;left:30px;bottom:10px}
         .sidebar_info ul {padding:5px 10px;margin:0;font-size:11px;background:#fafafa;border:1px solid #e5e5e5;-webkit-border-radius: 6px;-moz-border-radius: 6px;-ms-border-radius: 6px;border-radius: 6px}
@@ -204,7 +204,7 @@
 		.sidebar .nav-pills > li > a {padding:3px 15px}
 		.sidebar .nav-header {color: #999999;display: block;font-size: 11px;font-weight: bold;line-height: 20px;padding: 3px 15px;text-transform: uppercase;margin: 4px -15px 4px}
 		.sidebar li + .nav-header {margin-top:10px}
-		*/
+		
 		/* accordion background animation */
 		.sidebar .accordion-toggle {-webkit-transition:background-color 0.2s ease-in-out; -moz-transition:background-color 0.2s ease-in-out;  -o-transition:background-color 0.2s ease-in-out;  transition:background-color 0.2s ease-in-out;}
 		.sdb_h_active a {background: url("../img/bullet_green.png") no-repeat 98% center}
