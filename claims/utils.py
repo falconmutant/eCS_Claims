@@ -6,7 +6,7 @@ from django.db import connection
 from .queries import search
 #from whatsapp import Client
 #from pytg.sender import Sender
-import requests
+#import requests
 import django
 from django.conf import settings
 import smtplib
