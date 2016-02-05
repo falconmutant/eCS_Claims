@@ -59,11 +59,28 @@ def save_permission(request):
 			content_type="application/json"
 		)
 
+
+def registration(request):
+	nombre_user = request.user.get_full_name()
+	if request.POST:
+		locality = request.POST.get("localidad")
+		user_type = request.POST.get('type')
+		
+	return render_to_response('registro.html',RequestContext(request,locals()))
+
 @login_required
 def logged_in(request):
 	nombre_user = request.user.get_full_name()
 	tipouser = get_object_or_404(TipoUsuario,user_id=request.user.id)
-	
+
+	total_claims = Autorizacion.objects.all().filter(TipoAprobacion='1').count()
+	falta_claims = Autorizacion.objects.all().filter(Estatus__in=['E','R'],TipoAprobacion='1').count()
+	resuelto_claims = total_claims-falta_claims
+
+	total_invoices = Autorizacion.objects.all().filter(TipoAprobacion='2').count()
+	falta_invoices = Autorizacion.objects.all().filter(Estatus__in=['E','R'],TipoAprobacion='2').count()
+	resuelto_invoices = total_invoices-falta_invoices
+
 	if tipouser.tipo == TipoUsuario.MAC:
 		id_localidad = UsuarioLocalidad.objects.filter(usuario_id=request.user.id)
 		localidad = Localidad.objects.filter(id__in=[locality_ids.localidad_id for locality_ids in id_localidad])

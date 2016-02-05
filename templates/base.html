@@ -103,6 +103,7 @@
                     <div class="panel-body">
                       <ul class="nav nav-pills nav-stacked">
                         {% if request.user.is_superuser %}
+                          <li><a href="{{ settings.APP_URL }}/registro/">Registro</a></li>
                           <li><a href="{{ settings.APP_URL }}{% url "query_create" %}">Nuevo Reporte</a></li>
                           <li><a href="{{ settings.APP_URL }}/permisos/">Permisos</a></li>
                         {% endif %}
