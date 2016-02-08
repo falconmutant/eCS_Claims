@@ -85,6 +85,8 @@ def registration(request):
 		user = User.objects.create_user(username, email, password)
 		user.first_name = first_name
 		user.last_name = last_name
+		if user_type=='S':
+			user.is_staff = True
 		user.save()
 		usertipo = TipoUsuario(user_id=user.id,tipo=user_type,email=email,celular=cellphone,whatsapp=wp,telegram=tg,sms=sms,tgcontacto='')
 		usertipo.save()
