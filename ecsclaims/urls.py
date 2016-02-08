@@ -29,7 +29,7 @@ urlpatterns = [
     url(r'^proveedores', include('claims.urls')),
     url(r'^apps/', include("app.urls")),
     url(r'^auth/login$', login, name='login'),
-    url(r'^accounts/', include('django.contrib.auth.urls')),
+    url(r'^', include('django.contrib.auth.urls')),
     #url(r'^api-token-auth/', 'rest_framework_jwt.views.obtain_jwt_token'),
     url(r'^routes/', routes, name='routes'),
     url(r'^', include('invoices_Web.urls')),
