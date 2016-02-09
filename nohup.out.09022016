@@ -2134,3 +2134,1031 @@ Traceback (most recent call last):
   File "/usr/lib64/python2.7/site-packages/django/utils/autoreload.py", line 208, in code_changed
     stat = os.stat(filename)
 OSError: [Errno 2] No such file or directory: '/srv/www/django/ecsclaims/invoices_Web/migrations/0008_auto_20160201_2225.py'
+[09/Feb/2016 13:58:36] "GET / HTTP/1.1" 200 3587
+[09/Feb/2016 13:58:37] "GET /static2/css/main.css HTTP/1.1" 304 0
+[09/Feb/2016 13:58:37] "GET /static2/css/font-awesome.min.css HTTP/1.1" 304 0
+[09/Feb/2016 13:58:37] "GET /static2/js/jquery.min.js HTTP/1.1" 304 0
+[09/Feb/2016 13:58:37] "GET /static2/js/jquery.dropotron.min.js HTTP/1.1" 304 0
+[09/Feb/2016 13:58:37] "GET /static2/js/jquery.scrollgress.min.js HTTP/1.1" 304 0
+[09/Feb/2016 13:58:37] "GET /static2/js/skel.min.js HTTP/1.1" 304 0
+[09/Feb/2016 13:58:37] "GET /static2/js/util.js HTTP/1.1" 304 0
+[09/Feb/2016 13:58:37] "GET /static2/js/main.js HTTP/1.1" 304 0
+[09/Feb/2016 13:58:37] "GET /static2/images/logopemex.png HTTP/1.1" 304 0
+[09/Feb/2016 13:58:37] "GET /static2/fonts/fontawesome-webfont.woff2?v=4.4.0 HTTP/1.1" 404 1717
+[09/Feb/2016 13:58:37] "GET /static2/images/centro_medico.jpg HTTP/1.1" 304 0
+[09/Feb/2016 13:58:37] "GET /static2/images/banner-03.jpg HTTP/1.1" 304 0
+[09/Feb/2016 13:58:37] "GET /static2/fonts/fontawesome-webfont.woff?v=4.4.0 HTTP/1.1" 304 0
+[09/Feb/2016 13:58:39] "GET /login/ HTTP/1.1" 200 1709
+[09/Feb/2016 13:58:39] "GET /static2/css/styles.css HTTP/1.1" 304 0
+[09/Feb/2016 13:58:39] "GET /static2/images/logo.png HTTP/1.1" 304 0
+[09/Feb/2016 13:58:39] "GET /static2/css/font-awesome.css HTTP/1.1" 304 0
+[09/Feb/2016 13:58:39] "GET /static2/css/entypo.css HTTP/1.1" 304 0
+[09/Feb/2016 13:58:39] "GET /static2/css/vendors/datatables/datables.css HTTP/1.1" 304 0
+[09/Feb/2016 13:58:39] "GET /static2/css/vendors/steps/jquery.steps.css HTTP/1.1" 304 0
+[09/Feb/2016 13:58:39] "GET /static2/css/vendors/sumernote/summernote.css HTTP/1.1" 304 0
+[09/Feb/2016 13:58:39] "GET /static2/css/vendors/animate/animate.css HTTP/1.1" 304 0
+[09/Feb/2016 13:58:39] "GET /static2/css/bootstrap.min.css HTTP/1.1" 304 0
+[09/Feb/2016 13:58:39] "GET /static2/css/vendors/fullcalendar/fullcalendar.css HTTP/1.1" 304 0
+[09/Feb/2016 13:58:39] "GET /static2/fonts/fontawesome-webfont.woff?v=4.0.3 HTTP/1.1" 304 0
+[09/Feb/2016 13:58:44] "POST /login/ HTTP/1.1" 302 0
+[09/Feb/2016 13:58:44] "GET /logged_in HTTP/1.1" 301 0
+[09/Feb/2016 13:58:45] "GET /logged_in/ HTTP/1.1" 200 16893
+[09/Feb/2016 13:58:46] "GET /static2/admin/bootstrap/css/bootstrap.min.css HTTP/1.1" 304 0
+[09/Feb/2016 13:58:46] "GET /static2/admin/lib/jquery-ui/css/Aristo/Aristo.css HTTP/1.1" 304 0
+[09/Feb/2016 13:58:46] "GET /static2/admin/lib/jBreadcrumbs/css/BreadCrumb.css HTTP/1.1" 304 0
+[09/Feb/2016 13:58:46] "GET /static2/admin/css/style.css HTTP/1.1" 304 0
+[09/Feb/2016 13:58:46] "GET /static2/admin/img/font-awesome/css/font-awesome.min.css HTTP/1.1" 304 0
+[09/Feb/2016 13:58:46] "GET /static2/admin/css/blue.css HTTP/1.1" 304 0
+[09/Feb/2016 13:58:46] "GET /static2/datatables/dataTables.css HTTP/1.1" 304 0
+[09/Feb/2016 13:58:46] "GET /static2/datatables/dataTables.bootstrap.css HTTP/1.1" 304 0
+[09/Feb/2016 13:58:46] "GET /static2/datatables/dataTables.fontAwesome.css HTTP/1.1" 304 0
+[09/Feb/2016 13:58:46] "GET /static2/admin/js/jquery.min.js HTTP/1.1" 304 0
+[09/Feb/2016 13:58:46] "GET /static2/admin/js/jquery-migrate.min.js HTTP/1.1" 304 0
+[09/Feb/2016 13:58:46] "GET /static2/admin/js/jquery.easing.1.3.min.js HTTP/1.1" 304 0
+[09/Feb/2016 13:58:46] "GET /static2/admin/js/jquery_cookie_min.js HTTP/1.1" 304 0
+[09/Feb/2016 13:58:46] "GET /static2/admin/bootstrap/js/bootstrap.min.js HTTP/1.1" 304 0
+[09/Feb/2016 13:58:46] "GET /static2/admin/js/bootstrap.plugins.min.js HTTP/1.1" 304 0
+[09/Feb/2016 13:58:46] "GET /static2/admin/lib/typeahead/typeahead.min.js HTTP/1.1" 304 0
+[09/Feb/2016 13:58:46] "GET /static2/admin/lib/google-code-prettify/prettify.min.js HTTP/1.1" 304 0
+[09/Feb/2016 13:58:46] "GET /static2/admin/lib/jBreadcrumbs/js/jquery.jBreadCrumb.1.1.min.js HTTP/1.1" 304 0
+[09/Feb/2016 13:58:46] "GET /static2/admin/js/jquery.actual.min.js HTTP/1.1" 304 0
+[09/Feb/2016 13:58:46] "GET /static2/admin/lib/slimScroll/jquery.slimscroll.js HTTP/1.1" 304 0
+[09/Feb/2016 13:58:46] "GET /static2/admin/lib/UItoTop/jquery.ui.totop.min.js HTTP/1.1" 304 0
+[09/Feb/2016 13:58:46] "GET /static2/admin/js/selectNav.js HTTP/1.1" 304 0
+[09/Feb/2016 13:58:46] "GET /static2/admin/js/pages/gebo_common.js HTTP/1.1" 304 0
+[09/Feb/2016 13:58:46] "GET /static2/datatables/jquery.dataTables.js HTTP/1.1" 304 0
+[09/Feb/2016 13:58:46] "GET /static2/datatables/dataTables.bootstrap.js HTTP/1.1" 304 0
+[09/Feb/2016 13:58:46] "GET /static2/datatables/demo-datatables.js HTTP/1.1" 304 0
+[09/Feb/2016 13:58:46] "GET /static2/admin/bootstrap/fonts/glyphicons-halflings-regular.woff HTTP/1.1" 304 0
+[09/Feb/2016 13:58:46] "GET /static2/admin/img/bg_c.png HTTP/1.1" 304 0
+[09/Feb/2016 13:58:46] "GET /static2/admin/img/user_avatar.png HTTP/1.1" 304 0
+[09/Feb/2016 13:58:46] "GET /static2/admin/lib/jBreadcrumbs/Images/ChevronOverlay.png HTTP/1.1" 304 0
+[09/Feb/2016 13:58:46] "GET /static2/admin/img/ui.totop.png HTTP/1.1" 304 0
+[09/Feb/2016 13:58:50] "GET /registro/ HTTP/1.1" 200 14867
+[09/Feb/2016 14:50:09] "GET / HTTP/1.1" 200 3587
+[09/Feb/2016 14:50:09] "GET /favicon.ico HTTP/1.1" 404 11969
+[09/Feb/2016 14:57:07] "GET / HTTP/1.1" 200 3587
+[09/Feb/2016 14:57:08] "GET /static2/css/font-awesome.min.css HTTP/1.1" 304 0
+[09/Feb/2016 14:57:08] "GET /static2/js/jquery.min.js HTTP/1.1" 304 0
+[09/Feb/2016 14:57:08] "GET /static2/js/jquery.dropotron.min.js HTTP/1.1" 304 0
+[09/Feb/2016 14:57:08] "GET /static2/js/skel.min.js HTTP/1.1" 304 0
+[09/Feb/2016 14:57:08] "GET /static2/js/jquery.scrollgress.min.js HTTP/1.1" 304 0
+[09/Feb/2016 14:57:08] "GET /static2/js/util.js HTTP/1.1" 304 0
+[09/Feb/2016 14:57:08] "GET /static2/js/main.js HTTP/1.1" 304 0
+[09/Feb/2016 14:57:08] "GET /static2/fonts/fontawesome-webfont.woff2?v=4.4.0 HTTP/1.1" 404 1717
+[09/Feb/2016 14:57:08] "GET /static2/images/logopemex.png HTTP/1.1" 304 0
+[09/Feb/2016 14:57:08] "GET /static2/images/centro_medico.jpg HTTP/1.1" 304 0
+[09/Feb/2016 14:57:08] "GET /static2/images/banner-03.jpg HTTP/1.1" 304 0
+[09/Feb/2016 14:57:08] "GET /static2/fonts/fontawesome-webfont.woff?v=4.4.0 HTTP/1.1" 304 0
+[09/Feb/2016 14:57:10] "GET /login/ HTTP/1.1" 200 1709
+[09/Feb/2016 14:57:10] "GET /static2/css/styles.css HTTP/1.1" 304 0
+[09/Feb/2016 14:57:10] "GET /static2/images/logo.png HTTP/1.1" 304 0
+[09/Feb/2016 14:57:11] "GET /static2/css/font-awesome.css HTTP/1.1" 304 0
+[09/Feb/2016 14:57:11] "GET /static2/css/entypo.css HTTP/1.1" 304 0
+[09/Feb/2016 14:57:11] "GET /static2/css/vendors/datatables/datables.css HTTP/1.1" 304 0
+[09/Feb/2016 14:57:11] "GET /static2/css/vendors/steps/jquery.steps.css HTTP/1.1" 304 0
+[09/Feb/2016 14:57:11] "GET /static2/css/vendors/sumernote/summernote.css HTTP/1.1" 304 0
+[09/Feb/2016 14:57:11] "GET /static2/css/vendors/animate/animate.css HTTP/1.1" 304 0
+[09/Feb/2016 14:57:11] "GET /static2/css/bootstrap.min.css HTTP/1.1" 304 0
+[09/Feb/2016 14:57:11] "GET /static2/css/vendors/fullcalendar/fullcalendar.css HTTP/1.1" 304 0
+[09/Feb/2016 14:57:11] "GET /static2/fonts/fontawesome-webfont.woff?v=4.0.3 HTTP/1.1" 304 0
+[09/Feb/2016 14:57:20] "POST /login/ HTTP/1.1" 302 0
+[09/Feb/2016 14:57:20] "GET /logged_in HTTP/1.1" 301 0
+[09/Feb/2016 14:57:22] "GET /logged_in/ HTTP/1.1" 200 16652
+[09/Feb/2016 14:57:22] "GET /static2/admin/bootstrap/css/bootstrap.min.css HTTP/1.1" 304 0
+[09/Feb/2016 14:57:22] "GET /static2/admin/lib/jquery-ui/css/Aristo/Aristo.css HTTP/1.1" 304 0
+[09/Feb/2016 14:57:22] "GET /static2/admin/lib/jBreadcrumbs/css/BreadCrumb.css HTTP/1.1" 304 0
+[09/Feb/2016 14:57:22] "GET /static2/admin/img/font-awesome/css/font-awesome.min.css HTTP/1.1" 304 0
+[09/Feb/2016 14:57:22] "GET /static2/admin/css/style.css HTTP/1.1" 304 0
+[09/Feb/2016 14:57:22] "GET /static2/admin/css/blue.css HTTP/1.1" 304 0
+[09/Feb/2016 14:57:22] "GET /static2/datatables/dataTables.css HTTP/1.1" 304 0
+[09/Feb/2016 14:57:22] "GET /static2/datatables/dataTables.bootstrap.css HTTP/1.1" 304 0
+[09/Feb/2016 14:57:22] "GET /static2/datatables/dataTables.fontAwesome.css HTTP/1.1" 304 0
+[09/Feb/2016 14:57:22] "GET /static2/admin/js/jquery.min.js HTTP/1.1" 304 0
+[09/Feb/2016 14:57:22] "GET /static2/admin/js/jquery-migrate.min.js HTTP/1.1" 304 0
+[09/Feb/2016 14:57:22] "GET /static2/admin/js/jquery.easing.1.3.min.js HTTP/1.1" 304 0
+[09/Feb/2016 14:57:23] "GET /static2/admin/js/jquery_cookie_min.js HTTP/1.1" 304 0
+[09/Feb/2016 14:57:23] "GET /static2/admin/bootstrap/js/bootstrap.min.js HTTP/1.1" 304 0
+[09/Feb/2016 14:57:23] "GET /static2/admin/js/bootstrap.plugins.min.js HTTP/1.1" 304 0
+[09/Feb/2016 14:57:23] "GET /static2/admin/lib/typeahead/typeahead.min.js HTTP/1.1" 304 0
+[09/Feb/2016 14:57:23] "GET /static2/admin/lib/google-code-prettify/prettify.min.js HTTP/1.1" 304 0
+[09/Feb/2016 14:57:23] "GET /static2/admin/lib/jBreadcrumbs/js/jquery.jBreadCrumb.1.1.min.js HTTP/1.1" 304 0
+[09/Feb/2016 14:57:23] "GET /static2/admin/js/jquery.actual.min.js HTTP/1.1" 304 0
+[09/Feb/2016 14:57:23] "GET /static2/admin/lib/slimScroll/jquery.slimscroll.js HTTP/1.1" 304 0
+[09/Feb/2016 14:57:23] "GET /static2/admin/lib/UItoTop/jquery.ui.totop.min.js HTTP/1.1" 304 0
+[09/Feb/2016 14:57:23] "GET /static2/admin/js/selectNav.js HTTP/1.1" 304 0
+[09/Feb/2016 14:57:23] "GET /static2/admin/js/pages/gebo_common.js HTTP/1.1" 304 0
+[09/Feb/2016 14:57:23] "GET /static2/datatables/dataTables.bootstrap.js HTTP/1.1" 304 0
+[09/Feb/2016 14:57:23] "GET /static2/datatables/demo-datatables.js HTTP/1.1" 304 0
+[09/Feb/2016 14:57:23] "GET /static2/datatables/jquery.dataTables.js HTTP/1.1" 304 0
+[09/Feb/2016 14:57:23] "GET /static2/admin/bootstrap/fonts/glyphicons-halflings-regular.woff HTTP/1.1" 304 0
+[09/Feb/2016 14:57:23] "GET /static2/admin/img/bg_c.png HTTP/1.1" 304 0
+[09/Feb/2016 14:57:23] "GET /static2/admin/lib/jBreadcrumbs/Images/ChevronOverlay.png HTTP/1.1" 304 0
+[09/Feb/2016 14:57:23] "GET /static2/admin/img/user_avatar.png HTTP/1.1" 304 0
+[09/Feb/2016 14:57:23] "GET /static2/admin/img/ui.totop.png HTTP/1.1" 304 0
+[09/Feb/2016 14:57:28] "GET /cerrar/ HTTP/1.1" 302 0
+[09/Feb/2016 14:57:29] "GET / HTTP/1.1" 200 3587
+[09/Feb/2016 14:57:29] "GET /static2/fonts/fontawesome-webfont.woff2?v=4.4.0 HTTP/1.1" 404 1717
+[09/Feb/2016 14:57:30] "GET /login/ HTTP/1.1" 200 1709
+[09/Feb/2016 14:57:54] "POST /login/ HTTP/1.1" 302 0
+[09/Feb/2016 14:57:54] "GET /logged_in HTTP/1.1" 301 0
+[09/Feb/2016 14:57:56] "GET /logged_in/ HTTP/1.1" 200 16893
+[09/Feb/2016 14:58:19] "GET /registro/ HTTP/1.1" 200 14867
+[09/Feb/2016 16:06:01] "GET / HTTP/1.1" 200 3587
+[09/Feb/2016 16:06:02] "GET /favicon.ico HTTP/1.1" 404 11974
+[09/Feb/2016 16:07:40] "GET /registro/ HTTP/1.1" 200 15124
+[09/Feb/2016 16:07:41] "GET /static2/css/font-awesome.css HTTP/1.1" 304 0
+[09/Feb/2016 16:07:41] "GET /static2/admin/bootstrap/css/bootstrap.min.css HTTP/1.1" 304 0
+[09/Feb/2016 16:07:41] "GET /static2/admin/lib/jquery-ui/css/Aristo/Aristo.css HTTP/1.1" 304 0
+[09/Feb/2016 16:07:41] "GET /static2/admin/lib/jBreadcrumbs/css/BreadCrumb.css HTTP/1.1" 304 0
+[09/Feb/2016 16:07:41] "GET /static2/admin/img/font-awesome/css/font-awesome.min.css HTTP/1.1" 304 0
+[09/Feb/2016 16:07:41] "GET /static2/admin/css/style.css HTTP/1.1" 304 0
+[09/Feb/2016 16:07:41] "GET /static2/admin/css/blue.css HTTP/1.1" 304 0
+[09/Feb/2016 16:07:41] "GET /static2/chosen/chosen.css HTTP/1.1" 404 1667
+[09/Feb/2016 16:07:41] "GET /static2/datatables/dataTables.css HTTP/1.1" 304 0
+[09/Feb/2016 16:07:41] "GET /static2/datatables/dataTables.bootstrap.css HTTP/1.1" 304 0
+[09/Feb/2016 16:07:41] "GET /static2/datatables/dataTables.fontAwesome.css HTTP/1.1" 304 0
+[09/Feb/2016 16:07:41] "GET /static2/css/pnotify.css HTTP/1.1" 304 0
+[09/Feb/2016 16:07:41] "GET /static2/admin/js/jquery.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:07:41] "GET /static2/admin/js/jquery-migrate.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:07:41] "GET /static2/admin/js/jquery.easing.1.3.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:07:41] "GET /static2/admin/js/jquery_cookie_min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:07:41] "GET /static2/admin/bootstrap/js/bootstrap.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:07:41] "GET /static2/admin/js/bootstrap.plugins.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:07:41] "GET /static2/chosen/chosen.jquery.js HTTP/1.1" 404 1685
+[09/Feb/2016 16:07:41] "GET /static2/admin/lib/typeahead/typeahead.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:07:41] "GET /static2/admin/lib/google-code-prettify/prettify.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:07:41] "GET /static2/admin/lib/jBreadcrumbs/js/jquery.jBreadCrumb.1.1.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:07:41] "GET /static2/admin/js/jquery.actual.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:07:41] "GET /static2/admin/lib/slimScroll/jquery.slimscroll.js HTTP/1.1" 304 0
+[09/Feb/2016 16:07:41] "GET /static2/admin/lib/UItoTop/jquery.ui.totop.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:07:41] "GET /static2/admin/js/selectNav.js HTTP/1.1" 304 0
+[09/Feb/2016 16:07:41] "GET /static2/admin/js/pages/gebo_common.js HTTP/1.1" 304 0
+[09/Feb/2016 16:07:41] "GET /static2/datatables/jquery.dataTables.js HTTP/1.1" 304 0
+[09/Feb/2016 16:07:41] "GET /static2/datatables/dataTables.bootstrap.js HTTP/1.1" 304 0
+[09/Feb/2016 16:07:42] "GET /static2/datatables/demo-datatables.js HTTP/1.1" 304 0
+[09/Feb/2016 16:07:42] "GET /static2/js/pnotify.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:07:42] "GET /static2/admin/bootstrap/fonts/glyphicons-halflings-regular.woff HTTP/1.1" 304 0
+[09/Feb/2016 16:07:42] "GET /static2/admin/img/bg_c.png HTTP/1.1" 304 0
+[09/Feb/2016 16:07:42] "GET /static2/admin/img/user_avatar.png HTTP/1.1" 304 0
+[09/Feb/2016 16:07:42] "GET /static2/admin/img/ui.totop.png HTTP/1.1" 304 0
+Performing system checks...
+
+System check identified no issues (0 silenced).
+February 09, 2016 - 13:58:29
+Django version 1.8.5, using settings 'ecsclaims.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+[09/Feb/2016 16:12:29] "GET /admin HTTP/1.1" 301 0
+[09/Feb/2016 16:12:31] "GET /admin/ HTTP/1.1" 200 16230
+[09/Feb/2016 16:12:31] "GET /static2/admin/css/dashboard.css HTTP/1.1" 200 434
+[09/Feb/2016 16:12:31] "GET /static2/admin/img/icon_addlink.gif HTTP/1.1" 200 119
+[09/Feb/2016 16:12:31] "GET /static2/admin/img/icon_changelink.gif HTTP/1.1" 200 119
+[09/Feb/2016 16:12:31] "GET /static2/admin/img/default-bg.gif HTTP/1.1" 200 836
+[09/Feb/2016 16:12:31] "GET /static2/admin/img/icon_deletelink.gif HTTP/1.1" 200 181
+[09/Feb/2016 16:12:35] "GET /admin/claims/motivos/ HTTP/1.1" 200 4804
+[09/Feb/2016 16:12:35] "GET /static2/admin/css/changelists.css HTTP/1.1" 200 5254
+[09/Feb/2016 16:12:35] "GET /static2/admin/js/core.js HTTP/1.1" 200 7522
+[09/Feb/2016 16:12:35] "GET /static2/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 4464
+[09/Feb/2016 16:12:35] "GET /static2/admin/js/jquery.init.js HTTP/1.1" 200 326
+[09/Feb/2016 16:12:35] "GET /static2/admin/js/actions.js HTTP/1.1" 200 4910
+[09/Feb/2016 16:12:36] "GET /admin/jsi18n/ HTTP/1.1" 200 2372
+[09/Feb/2016 16:12:37] "GET /static2/admin/js/jquery.js HTTP/1.1" 200 284184
+[09/Feb/2016 16:12:37] "GET /static2/admin/img/nav-bg-reverse.gif HTTP/1.1" 200 178
+[09/Feb/2016 16:12:37] "GET /static2/admin/img/tooltag-add.png HTTP/1.1" 200 119
+[09/Feb/2016 16:12:41] "GET /admin/claims/motivos/3/ HTTP/1.1" 200 4296
+[09/Feb/2016 16:12:41] "GET /static2/admin/css/forms.css HTTP/1.1" 200 6283
+[09/Feb/2016 16:12:41] "GET /static2/admin/css/widgets.css HTTP/1.1" 200 10590
+[09/Feb/2016 16:12:42] "GET /admin/jsi18n/ HTTP/1.1" 200 2372
+Performing system checks...
+
+System check identified no issues (0 silenced).
+February 09, 2016 - 16:08:20
+Django version 1.8.5, using settings 'ecsclaims.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+[09/Feb/2016 16:18:11] "GET /registro/ HTTP/1.1" 200 15124
+[09/Feb/2016 16:18:11] "GET /static2/css/font-awesome.css HTTP/1.1" 304 0
+[09/Feb/2016 16:18:11] "GET /static2/admin/bootstrap/css/bootstrap.min.css HTTP/1.1" 304 0
+[09/Feb/2016 16:18:11] "GET /static2/admin/lib/jquery-ui/css/Aristo/Aristo.css HTTP/1.1" 304 0
+[09/Feb/2016 16:18:11] "GET /static2/admin/lib/jBreadcrumbs/css/BreadCrumb.css HTTP/1.1" 304 0
+[09/Feb/2016 16:18:11] "GET /static2/admin/img/font-awesome/css/font-awesome.min.css HTTP/1.1" 304 0
+[09/Feb/2016 16:18:11] "GET /static2/admin/css/style.css HTTP/1.1" 304 0
+[09/Feb/2016 16:18:11] "GET /static2/admin/css/blue.css HTTP/1.1" 304 0
+[09/Feb/2016 16:18:11] "GET /static2/datatables/dataTables.css HTTP/1.1" 304 0
+[09/Feb/2016 16:18:11] "GET /static2/datatables/dataTables.bootstrap.css HTTP/1.1" 304 0
+[09/Feb/2016 16:18:11] "GET /static2/datatables/dataTables.fontAwesome.css HTTP/1.1" 304 0
+[09/Feb/2016 16:18:11] "GET /static2/css/pnotify.css HTTP/1.1" 304 0
+[09/Feb/2016 16:18:11] "GET /static2/admin/img/user_avatar.png HTTP/1.1" 304 0
+[09/Feb/2016 16:18:11] "GET /static2/chosen/chosen.css HTTP/1.1" 404 1667
+[09/Feb/2016 16:18:13] "GET /static2/admin/bootstrap/fonts/glyphicons-halflings-regular.woff HTTP/1.1" 304 0
+[09/Feb/2016 16:18:13] "GET /static2/admin/img/bg_c.png HTTP/1.1" 304 0
+[09/Feb/2016 16:18:13] "GET /static2/admin/js/jquery.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:18:13] "GET /static2/admin/js/jquery-migrate.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:18:13] "GET /static2/admin/js/jquery.easing.1.3.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:18:13] "GET /static2/admin/js/jquery_cookie_min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:18:13] "GET /static2/admin/bootstrap/js/bootstrap.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:18:13] "GET /static2/admin/js/bootstrap.plugins.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:18:13] "GET /static2/admin/lib/typeahead/typeahead.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:18:13] "GET /static2/admin/lib/google-code-prettify/prettify.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:18:13] "GET /static2/admin/lib/jBreadcrumbs/js/jquery.jBreadCrumb.1.1.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:18:13] "GET /static2/admin/js/jquery.actual.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:18:13] "GET /static2/admin/lib/slimScroll/jquery.slimscroll.js HTTP/1.1" 304 0
+[09/Feb/2016 16:18:13] "GET /static2/admin/lib/UItoTop/jquery.ui.totop.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:18:13] "GET /static2/admin/js/selectNav.js HTTP/1.1" 304 0
+[09/Feb/2016 16:18:13] "GET /static2/admin/js/pages/gebo_common.js HTTP/1.1" 304 0
+[09/Feb/2016 16:18:13] "GET /static2/datatables/jquery.dataTables.js HTTP/1.1" 304 0
+[09/Feb/2016 16:18:13] "GET /static2/datatables/dataTables.bootstrap.js HTTP/1.1" 304 0
+[09/Feb/2016 16:18:13] "GET /static2/datatables/demo-datatables.js HTTP/1.1" 304 0
+[09/Feb/2016 16:18:13] "GET /static2/chosen/chosen.jquery.js HTTP/1.1" 404 1685
+[09/Feb/2016 16:18:13] "GET /static2/js/pnotify.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:18:14] "GET /static2/admin/img/ui.totop.png HTTP/1.1" 304 0
+[09/Feb/2016 16:18:20] "GET /static2/chosen/chosen.css HTTP/1.1" 404 1667
+[09/Feb/2016 16:19:13] "GET /registro/ HTTP/1.1" 200 15118
+[09/Feb/2016 16:19:14] "GET /static2/css/font-awesome.css HTTP/1.1" 304 0
+[09/Feb/2016 16:19:14] "GET /static2/admin/bootstrap/css/bootstrap.min.css HTTP/1.1" 304 0
+[09/Feb/2016 16:19:14] "GET /static2/admin/lib/jquery-ui/css/Aristo/Aristo.css HTTP/1.1" 304 0
+[09/Feb/2016 16:19:14] "GET /static2/admin/lib/jBreadcrumbs/css/BreadCrumb.css HTTP/1.1" 304 0
+[09/Feb/2016 16:19:14] "GET /static2/admin/img/font-awesome/css/font-awesome.min.css HTTP/1.1" 304 0
+[09/Feb/2016 16:19:14] "GET /static2/admin/css/style.css HTTP/1.1" 304 0
+[09/Feb/2016 16:19:14] "GET /static2/admin/css/blue.css HTTP/1.1" 304 0
+[09/Feb/2016 16:19:14] "GET /static2/datatables/dataTables.css HTTP/1.1" 304 0
+[09/Feb/2016 16:19:14] "GET /static2/datatables/dataTables.bootstrap.css HTTP/1.1" 304 0
+[09/Feb/2016 16:19:14] "GET /static2/datatables/dataTables.fontAwesome.css HTTP/1.1" 304 0
+[09/Feb/2016 16:19:14] "GET /static2/css/pnotify.css HTTP/1.1" 304 0
+[09/Feb/2016 16:19:14] "GET /static2/chosen/chosen.min.css HTTP/1.1" 404 1679
+[09/Feb/2016 16:19:14] "GET /static2/admin/js/jquery.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:19:14] "GET /static2/admin/js/jquery-migrate.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:19:14] "GET /static2/admin/js/jquery.easing.1.3.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:19:14] "GET /static2/admin/js/jquery_cookie_min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:19:14] "GET /static2/admin/bootstrap/js/bootstrap.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:19:14] "GET /static2/admin/js/bootstrap.plugins.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:19:14] "GET /static2/admin/lib/typeahead/typeahead.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:19:14] "GET /static2/admin/lib/google-code-prettify/prettify.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:19:14] "GET /static2/admin/lib/jBreadcrumbs/js/jquery.jBreadCrumb.1.1.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:19:14] "GET /static2/admin/js/jquery.actual.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:19:14] "GET /static2/admin/lib/slimScroll/jquery.slimscroll.js HTTP/1.1" 304 0
+[09/Feb/2016 16:19:14] "GET /static2/admin/lib/UItoTop/jquery.ui.totop.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:19:14] "GET /static2/admin/js/selectNav.js HTTP/1.1" 304 0
+[09/Feb/2016 16:19:14] "GET /static2/admin/js/pages/gebo_common.js HTTP/1.1" 304 0
+[09/Feb/2016 16:19:14] "GET /static2/datatables/jquery.dataTables.js HTTP/1.1" 304 0
+[09/Feb/2016 16:19:14] "GET /static2/datatables/dataTables.bootstrap.js HTTP/1.1" 304 0
+[09/Feb/2016 16:19:14] "GET /static2/datatables/demo-datatables.js HTTP/1.1" 304 0
+[09/Feb/2016 16:19:15] "GET /static2/chosen/chosen.jquery.min.js HTTP/1.1" 404 1697
+[09/Feb/2016 16:19:15] "GET /static2/js/pnotify.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:19:15] "GET /static2/admin/bootstrap/fonts/glyphicons-halflings-regular.woff HTTP/1.1" 304 0
+[09/Feb/2016 16:19:15] "GET /static2/admin/img/user_avatar.png HTTP/1.1" 304 0
+[09/Feb/2016 16:19:15] "GET /static2/admin/img/bg_c.png HTTP/1.1" 304 0
+[09/Feb/2016 16:19:15] "GET /static2/admin/img/ui.totop.png HTTP/1.1" 304 0
+Performing system checks...
+
+System check identified no issues (0 silenced).
+February 09, 2016 - 16:18:06
+Django version 1.8.5, using settings 'ecsclaims.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+[09/Feb/2016 16:26:53] "GET /registro/ HTTP/1.1" 200 15118
+[09/Feb/2016 16:26:53] "GET /static2/css/font-awesome.css HTTP/1.1" 304 0
+[09/Feb/2016 16:26:53] "GET /static2/admin/bootstrap/css/bootstrap.min.css HTTP/1.1" 304 0
+[09/Feb/2016 16:26:53] "GET /static2/admin/lib/jquery-ui/css/Aristo/Aristo.css HTTP/1.1" 304 0
+[09/Feb/2016 16:26:53] "GET /static2/admin/lib/jBreadcrumbs/css/BreadCrumb.css HTTP/1.1" 304 0
+[09/Feb/2016 16:26:53] "GET /static2/admin/img/font-awesome/css/font-awesome.min.css HTTP/1.1" 304 0
+[09/Feb/2016 16:26:53] "GET /static2/admin/css/style.css HTTP/1.1" 304 0
+[09/Feb/2016 16:26:53] "GET /static2/admin/css/blue.css HTTP/1.1" 304 0
+[09/Feb/2016 16:26:53] "GET /static2/datatables/dataTables.css HTTP/1.1" 304 0
+[09/Feb/2016 16:26:53] "GET /static2/datatables/dataTables.bootstrap.css HTTP/1.1" 304 0
+[09/Feb/2016 16:26:53] "GET /static2/datatables/dataTables.fontAwesome.css HTTP/1.1" 304 0
+[09/Feb/2016 16:26:53] "GET /static2/css/pnotify.css HTTP/1.1" 304 0
+[09/Feb/2016 16:26:53] "GET /static2/chosen/chosen.min.css HTTP/1.1" 200 11060
+[09/Feb/2016 16:26:54] "GET /static2/admin/js/jquery.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:26:54] "GET /static2/admin/js/jquery-migrate.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:26:54] "GET /static2/admin/js/jquery.easing.1.3.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:26:54] "GET /static2/admin/js/jquery_cookie_min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:26:54] "GET /static2/admin/bootstrap/js/bootstrap.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:26:54] "GET /static2/admin/js/bootstrap.plugins.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:26:54] "GET /static2/admin/lib/typeahead/typeahead.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:26:54] "GET /static2/admin/lib/google-code-prettify/prettify.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:26:54] "GET /static2/admin/lib/jBreadcrumbs/js/jquery.jBreadCrumb.1.1.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:26:54] "GET /static2/admin/js/jquery.actual.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:26:54] "GET /static2/admin/lib/slimScroll/jquery.slimscroll.js HTTP/1.1" 304 0
+[09/Feb/2016 16:26:54] "GET /static2/admin/lib/UItoTop/jquery.ui.totop.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:26:54] "GET /static2/admin/js/selectNav.js HTTP/1.1" 304 0
+[09/Feb/2016 16:26:54] "GET /static2/admin/js/pages/gebo_common.js HTTP/1.1" 304 0
+[09/Feb/2016 16:26:54] "GET /static2/datatables/jquery.dataTables.js HTTP/1.1" 304 0
+[09/Feb/2016 16:26:54] "GET /static2/datatables/dataTables.bootstrap.js HTTP/1.1" 304 0
+[09/Feb/2016 16:26:54] "GET /static2/datatables/demo-datatables.js HTTP/1.1" 304 0
+[09/Feb/2016 16:26:54] "GET /static2/chosen/chosen.jquery.min.js HTTP/1.1" 200 28400
+[09/Feb/2016 16:26:54] "GET /static2/js/pnotify.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:26:54] "GET /static2/admin/bootstrap/fonts/glyphicons-halflings-regular.woff HTTP/1.1" 304 0
+[09/Feb/2016 16:26:54] "GET /static2/admin/lib/jBreadcrumbs/Images/ChevronOverlay.png HTTP/1.1" 304 0
+[09/Feb/2016 16:26:54] "GET /static2/admin/img/user_avatar.png HTTP/1.1" 304 0
+[09/Feb/2016 16:26:54] "GET /static2/admin/img/bg_c.png HTTP/1.1" 304 0
+[09/Feb/2016 16:26:55] "GET /static2/admin/img/ui.totop.png HTTP/1.1" 304 0
+[09/Feb/2016 16:26:58] "GET /static2/chosen/chosen-sprite.png HTTP/1.1" 200 538
+[09/Feb/2016 16:27:28] "GET /registro/ HTTP/1.1" 200 15144
+[09/Feb/2016 16:27:28] "GET /static2/css/font-awesome.css HTTP/1.1" 304 0
+[09/Feb/2016 16:27:28] "GET /static2/admin/bootstrap/css/bootstrap.min.css HTTP/1.1" 304 0
+[09/Feb/2016 16:27:28] "GET /static2/admin/lib/jquery-ui/css/Aristo/Aristo.css HTTP/1.1" 304 0
+[09/Feb/2016 16:27:28] "GET /static2/admin/lib/jBreadcrumbs/css/BreadCrumb.css HTTP/1.1" 304 0
+[09/Feb/2016 16:27:28] "GET /static2/admin/img/font-awesome/css/font-awesome.min.css HTTP/1.1" 304 0
+[09/Feb/2016 16:27:28] "GET /static2/admin/css/style.css HTTP/1.1" 304 0
+[09/Feb/2016 16:27:29] "GET /static2/admin/css/blue.css HTTP/1.1" 304 0
+[09/Feb/2016 16:27:29] "GET /static2/datatables/dataTables.css HTTP/1.1" 304 0
+[09/Feb/2016 16:27:29] "GET /static2/datatables/dataTables.bootstrap.css HTTP/1.1" 304 0
+[09/Feb/2016 16:27:29] "GET /static2/datatables/dataTables.fontAwesome.css HTTP/1.1" 304 0
+[09/Feb/2016 16:27:29] "GET /static2/css/pnotify.css HTTP/1.1" 304 0
+[09/Feb/2016 16:27:29] "GET /static2/chosen/chosen.min.css HTTP/1.1" 304 0
+[09/Feb/2016 16:27:29] "GET /static2/admin/js/jquery.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:27:29] "GET /static2/admin/js/jquery-migrate.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:27:29] "GET /static2/admin/js/jquery.easing.1.3.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:27:29] "GET /static2/admin/js/jquery_cookie_min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:27:29] "GET /static2/admin/bootstrap/js/bootstrap.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:27:29] "GET /static2/admin/js/bootstrap.plugins.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:27:29] "GET /static2/admin/lib/typeahead/typeahead.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:27:29] "GET /static2/admin/lib/google-code-prettify/prettify.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:27:29] "GET /static2/admin/lib/jBreadcrumbs/js/jquery.jBreadCrumb.1.1.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:27:29] "GET /static2/admin/js/jquery.actual.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:27:29] "GET /static2/admin/lib/slimScroll/jquery.slimscroll.js HTTP/1.1" 304 0
+[09/Feb/2016 16:27:29] "GET /static2/admin/lib/UItoTop/jquery.ui.totop.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:27:29] "GET /static2/admin/js/selectNav.js HTTP/1.1" 304 0
+[09/Feb/2016 16:27:29] "GET /static2/admin/js/pages/gebo_common.js HTTP/1.1" 304 0
+[09/Feb/2016 16:27:29] "GET /static2/datatables/jquery.dataTables.js HTTP/1.1" 304 0
+[09/Feb/2016 16:27:29] "GET /static2/datatables/dataTables.bootstrap.js HTTP/1.1" 304 0
+[09/Feb/2016 16:27:29] "GET /static2/datatables/demo-datatables.js HTTP/1.1" 304 0
+[09/Feb/2016 16:27:29] "GET /static2/chosen/chosen.jquery.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:27:29] "GET /static2/js/pnotify.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:27:29] "GET /static2/admin/bootstrap/fonts/glyphicons-halflings-regular.woff HTTP/1.1" 304 0
+[09/Feb/2016 16:27:29] "GET /static2/admin/img/user_avatar.png HTTP/1.1" 304 0
+[09/Feb/2016 16:27:29] "GET /static2/admin/img/bg_c.png HTTP/1.1" 304 0
+[09/Feb/2016 16:27:30] "GET /static2/admin/img/ui.totop.png HTTP/1.1" 304 0
+[09/Feb/2016 16:29:52] "GET /static2/chosen/chosen-sprite.png HTTP/1.1" 304 0
+[09/Feb/2016 16:32:15] "GET /registro/ HTTP/1.1" 200 15144
+[09/Feb/2016 16:32:16] "GET /static2/chosen/chosen.min.css HTTP/1.1" 200 11060
+[09/Feb/2016 16:32:16] "GET /static2/admin/bootstrap/css/bootstrap.min.css HTTP/1.1" 304 0
+[09/Feb/2016 16:32:16] "GET /static2/css/font-awesome.css HTTP/1.1" 304 0
+[09/Feb/2016 16:32:16] "GET /static2/admin/lib/jquery-ui/css/Aristo/Aristo.css HTTP/1.1" 304 0
+[09/Feb/2016 16:32:16] "GET /static2/admin/lib/jBreadcrumbs/css/BreadCrumb.css HTTP/1.1" 304 0
+[09/Feb/2016 16:32:16] "GET /static2/admin/img/font-awesome/css/font-awesome.min.css HTTP/1.1" 304 0
+[09/Feb/2016 16:32:16] "GET /static2/admin/css/style.css HTTP/1.1" 304 0
+[09/Feb/2016 16:32:16] "GET /static2/admin/css/blue.css HTTP/1.1" 304 0
+[09/Feb/2016 16:32:16] "GET /static2/datatables/dataTables.css HTTP/1.1" 304 0
+[09/Feb/2016 16:32:16] "GET /static2/datatables/dataTables.bootstrap.css HTTP/1.1" 304 0
+[09/Feb/2016 16:32:16] "GET /static2/css/pnotify.css HTTP/1.1" 304 0
+[09/Feb/2016 16:32:16] "GET /static2/admin/js/jquery.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:32:16] "GET /static2/admin/js/jquery-migrate.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:32:16] "GET /static2/admin/js/jquery.easing.1.3.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:32:16] "GET /static2/chosen/chosen.jquery.min.js HTTP/1.1" 200 28400
+[09/Feb/2016 16:32:16] "GET /static2/admin/bootstrap/js/bootstrap.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:32:16] "GET /static2/admin/js/bootstrap.plugins.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:32:17] "GET /static2/datatables/dataTables.fontAwesome.css HTTP/1.1" 304 0
+[09/Feb/2016 16:32:17] "GET /static2/admin/js/jquery_cookie_min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:32:17] "GET /static2/admin/lib/typeahead/typeahead.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:32:17] "GET /static2/admin/lib/google-code-prettify/prettify.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:32:17] "GET /static2/admin/lib/jBreadcrumbs/js/jquery.jBreadCrumb.1.1.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:32:17] "GET /static2/admin/js/jquery.actual.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:32:17] "GET /static2/admin/lib/slimScroll/jquery.slimscroll.js HTTP/1.1" 304 0
+[09/Feb/2016 16:32:17] "GET /static2/admin/lib/UItoTop/jquery.ui.totop.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:32:17] "GET /static2/admin/js/selectNav.js HTTP/1.1" 304 0
+[09/Feb/2016 16:32:17] "GET /static2/admin/js/pages/gebo_common.js HTTP/1.1" 304 0
+[09/Feb/2016 16:32:17] "GET /static2/datatables/jquery.dataTables.js HTTP/1.1" 304 0
+[09/Feb/2016 16:32:17] "GET /static2/datatables/dataTables.bootstrap.js HTTP/1.1" 304 0
+[09/Feb/2016 16:32:17] "GET /static2/datatables/demo-datatables.js HTTP/1.1" 304 0
+[09/Feb/2016 16:32:17] "GET /static2/js/pnotify.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:32:17] "GET /static2/admin/bootstrap/fonts/glyphicons-halflings-regular.woff HTTP/1.1" 304 0
+[09/Feb/2016 16:32:17] "GET /static2/admin/img/bg_c.png HTTP/1.1" 304 0
+[09/Feb/2016 16:32:17] "GET /static2/admin/img/user_avatar.png HTTP/1.1" 304 0
+[09/Feb/2016 16:32:18] "GET /static2/admin/img/ui.totop.png HTTP/1.1" 304 0
+[09/Feb/2016 16:32:20] "GET /static2/chosen/chosen-sprite.png HTTP/1.1" 200 538
+Internal Server Error: /registro/
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/srv/www/django/ecsclaims/claims_Web/views.py", line 92, in registration
+    for localitys in locality:
+TypeError: 'int' object is not iterable
+ERROR:django.request:Internal Server Error: /registro/
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/srv/www/django/ecsclaims/claims_Web/views.py", line 92, in registration
+    for localitys in locality:
+TypeError: 'int' object is not iterable
+[09/Feb/2016 16:35:02] "POST /registro/ HTTP/1.1" 500 72194
+[09/Feb/2016 16:37:26] "GET /admin HTTP/1.1" 301 0
+[09/Feb/2016 16:37:28] "GET /admin/ HTTP/1.1" 200 16230
+[09/Feb/2016 16:37:31] "GET /admin/auth/user/ HTTP/1.1" 200 10854
+[09/Feb/2016 16:37:32] "GET /admin/jsi18n/ HTTP/1.1" 200 2372
+[09/Feb/2016 16:37:38] "GET /admin/auth/user/17/ HTTP/1.1" 200 19473
+[09/Feb/2016 16:37:39] "GET /admin/jsi18n/ HTTP/1.1" 200 2372
+[09/Feb/2016 16:37:47] "GET /admin/auth/user/17/delete/ HTTP/1.1" 200 2640
+[09/Feb/2016 16:37:55] "POST /admin/auth/user/17/delete/ HTTP/1.1" 302 0
+[09/Feb/2016 16:37:58] "GET /admin/auth/user/ HTTP/1.1" 200 10559
+[09/Feb/2016 16:38:01] "GET /admin/jsi18n/ HTTP/1.1" 200 2372
+[09/Feb/2016 16:38:04] "GET /registro/ HTTP/1.1" 200 15143
+[09/Feb/2016 16:38:04] "GET /static2/css/font-awesome.css HTTP/1.1" 304 0
+[09/Feb/2016 16:38:04] "GET /static2/admin/bootstrap/css/bootstrap.min.css HTTP/1.1" 304 0
+[09/Feb/2016 16:38:04] "GET /static2/admin/lib/jquery-ui/css/Aristo/Aristo.css HTTP/1.1" 304 0
+[09/Feb/2016 16:38:04] "GET /static2/admin/lib/jBreadcrumbs/css/BreadCrumb.css HTTP/1.1" 304 0
+[09/Feb/2016 16:38:04] "GET /static2/admin/img/font-awesome/css/font-awesome.min.css HTTP/1.1" 304 0
+[09/Feb/2016 16:38:04] "GET /static2/admin/css/style.css HTTP/1.1" 304 0
+[09/Feb/2016 16:38:04] "GET /static2/admin/css/blue.css HTTP/1.1" 304 0
+[09/Feb/2016 16:38:04] "GET /static2/datatables/dataTables.css HTTP/1.1" 304 0
+[09/Feb/2016 16:38:05] "GET /static2/datatables/dataTables.bootstrap.css HTTP/1.1" 304 0
+[09/Feb/2016 16:38:05] "GET /static2/datatables/dataTables.fontAwesome.css HTTP/1.1" 304 0
+[09/Feb/2016 16:38:05] "GET /static2/css/pnotify.css HTTP/1.1" 304 0
+[09/Feb/2016 16:38:05] "GET /static2/chosen/chosen.min.css HTTP/1.1" 304 0
+[09/Feb/2016 16:38:05] "GET /static2/admin/js/jquery.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:38:05] "GET /static2/admin/js/jquery-migrate.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:38:06] "GET /static2/admin/js/jquery.easing.1.3.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:38:06] "GET /static2/admin/js/jquery_cookie_min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:38:06] "GET /static2/admin/bootstrap/js/bootstrap.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:38:06] "GET /static2/admin/js/bootstrap.plugins.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:38:06] "GET /static2/admin/lib/typeahead/typeahead.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:38:06] "GET /static2/admin/lib/google-code-prettify/prettify.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:38:06] "GET /static2/admin/lib/jBreadcrumbs/js/jquery.jBreadCrumb.1.1.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:38:06] "GET /static2/admin/js/jquery.actual.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:38:06] "GET /static2/admin/lib/slimScroll/jquery.slimscroll.js HTTP/1.1" 304 0
+[09/Feb/2016 16:38:06] "GET /static2/admin/lib/UItoTop/jquery.ui.totop.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:38:06] "GET /static2/admin/js/selectNav.js HTTP/1.1" 304 0
+[09/Feb/2016 16:38:06] "GET /static2/admin/js/pages/gebo_common.js HTTP/1.1" 304 0
+[09/Feb/2016 16:38:07] "GET /static2/datatables/jquery.dataTables.js HTTP/1.1" 304 0
+[09/Feb/2016 16:38:07] "GET /static2/datatables/dataTables.bootstrap.js HTTP/1.1" 304 0
+[09/Feb/2016 16:38:07] "GET /static2/datatables/demo-datatables.js HTTP/1.1" 304 0
+[09/Feb/2016 16:38:07] "GET /static2/chosen/chosen.jquery.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:38:07] "GET /static2/js/pnotify.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:38:08] "GET /static2/admin/bootstrap/fonts/glyphicons-halflings-regular.woff HTTP/1.1" 304 0
+[09/Feb/2016 16:38:08] "GET /static2/admin/img/user_avatar.png HTTP/1.1" 304 0
+[09/Feb/2016 16:38:08] "GET /static2/admin/img/bg_c.png HTTP/1.1" 304 0
+[09/Feb/2016 16:38:08] "GET /static2/admin/img/ui.totop.png HTTP/1.1" 304 0
+[09/Feb/2016 16:38:16] "GET /static2/chosen/chosen-sprite.png HTTP/1.1" 304 0
+Internal Server Error: /registro/
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/srv/www/django/ecsclaims/claims_Web/views.py", line 69, in registration
+    locality = int(request.POST.get("localidad"))
+TypeError: int() argument must be a string or a number, not 'NoneType'
+ERROR:django.request:Internal Server Error: /registro/
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/srv/www/django/ecsclaims/claims_Web/views.py", line 69, in registration
+    locality = int(request.POST.get("localidad"))
+TypeError: int() argument must be a string or a number, not 'NoneType'
+[09/Feb/2016 16:38:37] "POST /registro/ HTTP/1.1" 500 70476
+Performing system checks...
+
+System check identified no issues (0 silenced).
+February 09, 2016 - 16:23:30
+Django version 1.8.5, using settings 'ecsclaims.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Internal Server Error: /registro/
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/srv/www/django/ecsclaims/claims_Web/views.py", line 69, in registration
+    locality = int(request.POST.get("localidad"))
+TypeError: int() argument must be a string or a number, not 'NoneType'
+ERROR:django.request:Internal Server Error: /registro/
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/srv/www/django/ecsclaims/claims_Web/views.py", line 69, in registration
+    locality = int(request.POST.get("localidad"))
+TypeError: int() argument must be a string or a number, not 'NoneType'
+[09/Feb/2016 16:40:01] "POST /registro/ HTTP/1.1" 500 70476
+[09/Feb/2016 16:40:05] "GET /registro/ HTTP/1.1" 200 15164
+[09/Feb/2016 16:40:05] "GET /static2/chosen/chosen.min.css HTTP/1.1" 304 0
+[09/Feb/2016 16:40:05] "GET /static2/chosen/chosen.jquery.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:40:17] "GET /registro/ HTTP/1.1" 200 15164
+[09/Feb/2016 16:40:17] "GET /static2/css/font-awesome.css HTTP/1.1" 304 0
+[09/Feb/2016 16:40:17] "GET /static2/admin/bootstrap/css/bootstrap.min.css HTTP/1.1" 304 0
+[09/Feb/2016 16:40:17] "GET /static2/admin/lib/jquery-ui/css/Aristo/Aristo.css HTTP/1.1" 304 0
+[09/Feb/2016 16:40:17] "GET /static2/admin/lib/jBreadcrumbs/css/BreadCrumb.css HTTP/1.1" 304 0
+[09/Feb/2016 16:40:17] "GET /static2/admin/img/font-awesome/css/font-awesome.min.css HTTP/1.1" 304 0
+[09/Feb/2016 16:40:17] "GET /static2/admin/css/style.css HTTP/1.1" 304 0
+[09/Feb/2016 16:40:18] "GET /static2/admin/css/blue.css HTTP/1.1" 304 0
+[09/Feb/2016 16:40:18] "GET /static2/datatables/dataTables.css HTTP/1.1" 304 0
+[09/Feb/2016 16:40:18] "GET /static2/datatables/dataTables.bootstrap.css HTTP/1.1" 304 0
+[09/Feb/2016 16:40:18] "GET /static2/datatables/dataTables.fontAwesome.css HTTP/1.1" 304 0
+[09/Feb/2016 16:40:18] "GET /static2/css/pnotify.css HTTP/1.1" 304 0
+[09/Feb/2016 16:40:18] "GET /static2/chosen/chosen.min.css HTTP/1.1" 304 0
+[09/Feb/2016 16:40:18] "GET /static2/admin/js/jquery.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:40:18] "GET /static2/admin/js/jquery-migrate.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:40:18] "GET /static2/admin/js/jquery.easing.1.3.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:40:18] "GET /static2/admin/js/jquery_cookie_min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:40:18] "GET /static2/admin/bootstrap/js/bootstrap.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:40:18] "GET /static2/admin/js/bootstrap.plugins.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:40:18] "GET /static2/admin/lib/typeahead/typeahead.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:40:18] "GET /static2/admin/lib/google-code-prettify/prettify.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:40:18] "GET /static2/admin/lib/jBreadcrumbs/js/jquery.jBreadCrumb.1.1.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:40:18] "GET /static2/admin/js/jquery.actual.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:40:18] "GET /static2/admin/lib/slimScroll/jquery.slimscroll.js HTTP/1.1" 304 0
+[09/Feb/2016 16:40:18] "GET /static2/admin/lib/UItoTop/jquery.ui.totop.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:40:18] "GET /static2/admin/js/selectNav.js HTTP/1.1" 304 0
+[09/Feb/2016 16:40:18] "GET /static2/admin/js/pages/gebo_common.js HTTP/1.1" 304 0
+[09/Feb/2016 16:40:18] "GET /static2/datatables/jquery.dataTables.js HTTP/1.1" 304 0
+[09/Feb/2016 16:40:18] "GET /static2/datatables/dataTables.bootstrap.js HTTP/1.1" 304 0
+[09/Feb/2016 16:40:18] "GET /static2/datatables/demo-datatables.js HTTP/1.1" 304 0
+[09/Feb/2016 16:40:18] "GET /static2/chosen/chosen.jquery.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:40:18] "GET /static2/js/pnotify.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:40:18] "GET /static2/admin/bootstrap/fonts/glyphicons-halflings-regular.woff HTTP/1.1" 304 0
+[09/Feb/2016 16:40:18] "GET /static2/admin/img/bg_c.png HTTP/1.1" 304 0
+[09/Feb/2016 16:40:18] "GET /static2/admin/img/user_avatar.png HTTP/1.1" 304 0
+[09/Feb/2016 16:40:19] "GET /static2/admin/img/ui.totop.png HTTP/1.1" 304 0
+[09/Feb/2016 16:40:23] "GET /registro/ HTTP/1.1" 200 15164
+[09/Feb/2016 16:40:34] "GET /static2/chosen/chosen-sprite.png HTTP/1.1" 304 0
+Internal Server Error: /registro/
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/srv/www/django/ecsclaims/claims_Web/views.py", line 69, in registration
+    locality = int(request.POST.get("localidad"))
+TypeError: int() argument must be a string or a number, not 'NoneType'
+ERROR:django.request:Internal Server Error: /registro/
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/srv/www/django/ecsclaims/claims_Web/views.py", line 69, in registration
+    locality = int(request.POST.get("localidad"))
+TypeError: int() argument must be a string or a number, not 'NoneType'
+[09/Feb/2016 16:40:54] "POST /registro/ HTTP/1.1" 500 70494
+Performing system checks...
+
+System check identified no issues (0 silenced).
+February 09, 2016 - 16:39:40
+Django version 1.8.5, using settings 'ecsclaims.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+[09/Feb/2016 16:41:18] "POST /registro/ HTTP/1.1" 200 15326
+[09/Feb/2016 16:41:18] "GET /static2/css/font-awesome.css HTTP/1.1" 304 0
+[09/Feb/2016 16:41:18] "GET /static2/admin/bootstrap/css/bootstrap.min.css HTTP/1.1" 304 0
+[09/Feb/2016 16:41:18] "GET /static2/admin/lib/jquery-ui/css/Aristo/Aristo.css HTTP/1.1" 304 0
+[09/Feb/2016 16:41:18] "GET /static2/admin/lib/jBreadcrumbs/css/BreadCrumb.css HTTP/1.1" 304 0
+[09/Feb/2016 16:41:18] "GET /static2/admin/img/font-awesome/css/font-awesome.min.css HTTP/1.1" 304 0
+[09/Feb/2016 16:41:18] "GET /static2/admin/css/style.css HTTP/1.1" 304 0
+[09/Feb/2016 16:41:19] "GET /static2/admin/css/blue.css HTTP/1.1" 304 0
+[09/Feb/2016 16:41:19] "GET /static2/datatables/dataTables.css HTTP/1.1" 304 0
+[09/Feb/2016 16:41:19] "GET /static2/datatables/dataTables.bootstrap.css HTTP/1.1" 304 0
+[09/Feb/2016 16:41:19] "GET /static2/datatables/dataTables.fontAwesome.css HTTP/1.1" 304 0
+[09/Feb/2016 16:41:19] "GET /static2/css/pnotify.css HTTP/1.1" 304 0
+[09/Feb/2016 16:41:19] "GET /static2/chosen/chosen.min.css HTTP/1.1" 304 0
+[09/Feb/2016 16:41:19] "GET /static2/admin/js/jquery.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:41:19] "GET /static2/admin/js/jquery-migrate.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:41:19] "GET /static2/admin/js/jquery.easing.1.3.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:41:19] "GET /static2/admin/js/jquery_cookie_min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:41:19] "GET /static2/admin/bootstrap/js/bootstrap.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:41:19] "GET /static2/admin/js/bootstrap.plugins.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:41:19] "GET /static2/admin/lib/typeahead/typeahead.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:41:19] "GET /static2/admin/lib/google-code-prettify/prettify.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:41:19] "GET /static2/admin/lib/jBreadcrumbs/js/jquery.jBreadCrumb.1.1.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:41:19] "GET /static2/admin/js/jquery.actual.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:41:19] "GET /static2/admin/lib/slimScroll/jquery.slimscroll.js HTTP/1.1" 304 0
+[09/Feb/2016 16:41:19] "GET /static2/admin/lib/UItoTop/jquery.ui.totop.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:41:19] "GET /static2/admin/js/selectNav.js HTTP/1.1" 304 0
+[09/Feb/2016 16:41:19] "GET /static2/admin/js/pages/gebo_common.js HTTP/1.1" 304 0
+[09/Feb/2016 16:41:19] "GET /static2/datatables/jquery.dataTables.js HTTP/1.1" 304 0
+[09/Feb/2016 16:41:19] "GET /static2/datatables/dataTables.bootstrap.js HTTP/1.1" 304 0
+[09/Feb/2016 16:41:19] "GET /static2/datatables/demo-datatables.js HTTP/1.1" 304 0
+[09/Feb/2016 16:41:19] "GET /static2/chosen/chosen.jquery.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:41:19] "GET /static2/js/pnotify.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:41:19] "GET /static2/admin/bootstrap/fonts/glyphicons-halflings-regular.woff HTTP/1.1" 304 0
+[09/Feb/2016 16:41:19] "GET /static2/admin/img/user_avatar.png HTTP/1.1" 304 0
+[09/Feb/2016 16:41:20] "GET /static2/admin/img/bg_c.png HTTP/1.1" 304 0
+[09/Feb/2016 16:41:20] "GET /static2/admin/img/font-awesome/fonts/fontawesome-webfont.woff?v=4.2.0 HTTP/1.1" 404 1783
+[09/Feb/2016 16:41:20] "GET /static2/admin/img/ui.totop.png HTTP/1.1" 304 0
+[09/Feb/2016 16:41:20] "GET /static2/admin/img/font-awesome/fonts/fontawesome-webfont.ttf?v=4.2.0 HTTP/1.1" 404 1780
+Performing system checks...
+
+System check identified no issues (0 silenced).
+February 09, 2016 - 16:41:13
+Django version 1.8.5, using settings 'ecsclaims.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Internal Server Error: /admin/auth/user/
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/usr/lib64/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/usr/lib64/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/usr/lib64/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/usr/lib64/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/usr/lib64/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib64/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib64/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/usr/lib64/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/usr/lib64/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib64/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib64/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/usr/lib64/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/usr/lib64/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib64/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib64/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/usr/lib64/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/usr/lib64/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib64/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/usr/lib64/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/usr/lib64/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib64/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/usr/lib64/python2.7/site-packages/django/template/defaulttags.py", line 493, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/usr/lib64/python2.7/site-packages/django/core/urlresolvers.py", line 549, in reverse
+    app_list = resolver.app_dict[ns]
+  File "/usr/lib64/python2.7/site-packages/django/core/urlresolvers.py", line 351, in app_dict
+    self._populate()
+  File "/usr/lib64/python2.7/site-packages/django/core/urlresolvers.py", line 307, in _populate
+    for name in pattern.reverse_dict:
+  File "/usr/lib64/python2.7/site-packages/django/core/urlresolvers.py", line 337, in reverse_dict
+    self._populate()
+  File "/usr/lib64/python2.7/site-packages/django/core/urlresolvers.py", line 325, in _populate
+    lookups.appendlist(pattern.callback, (bits, p_pattern, pattern.default_args))
+  File "/usr/lib64/python2.7/site-packages/django/core/urlresolvers.py", line 246, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/usr/lib64/python2.7/site-packages/django/utils/lru_cache.py", line 101, in wrapper
+    result = user_function(*args, **kwds)
+  File "/usr/lib64/python2.7/site-packages/django/core/urlresolvers.py", line 105, in get_callable
+    mod = import_module(mod_name)
+  File "/usr/lib64/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/srv/www/django/ecsclaims/claims_Web/views.py", line 95
+    bug = locality.0
+                   ^
+SyntaxError: invalid syntax
+ERROR:django.request:Internal Server Error: /admin/auth/user/
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/site-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/usr/lib64/python2.7/site-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/usr/lib64/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/usr/lib64/python2.7/site-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/usr/lib64/python2.7/site-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/usr/lib64/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib64/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib64/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/usr/lib64/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/usr/lib64/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib64/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib64/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/usr/lib64/python2.7/site-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/usr/lib64/python2.7/site-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib64/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib64/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/usr/lib64/python2.7/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/usr/lib64/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib64/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/usr/lib64/python2.7/site-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/usr/lib64/python2.7/site-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib64/python2.7/site-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/usr/lib64/python2.7/site-packages/django/template/defaulttags.py", line 493, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/usr/lib64/python2.7/site-packages/django/core/urlresolvers.py", line 549, in reverse
+    app_list = resolver.app_dict[ns]
+  File "/usr/lib64/python2.7/site-packages/django/core/urlresolvers.py", line 351, in app_dict
+    self._populate()
+  File "/usr/lib64/python2.7/site-packages/django/core/urlresolvers.py", line 307, in _populate
+    for name in pattern.reverse_dict:
+  File "/usr/lib64/python2.7/site-packages/django/core/urlresolvers.py", line 337, in reverse_dict
+    self._populate()
+  File "/usr/lib64/python2.7/site-packages/django/core/urlresolvers.py", line 325, in _populate
+    lookups.appendlist(pattern.callback, (bits, p_pattern, pattern.default_args))
+  File "/usr/lib64/python2.7/site-packages/django/core/urlresolvers.py", line 246, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/usr/lib64/python2.7/site-packages/django/utils/lru_cache.py", line 101, in wrapper
+    result = user_function(*args, **kwds)
+  File "/usr/lib64/python2.7/site-packages/django/core/urlresolvers.py", line 105, in get_callable
+    mod = import_module(mod_name)
+  File "/usr/lib64/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/srv/www/django/ecsclaims/claims_Web/views.py", line 95
+    bug = locality.0
+                   ^
+SyntaxError: invalid syntax
+[09/Feb/2016 16:42:03] "GET /admin/auth/user/ HTTP/1.1" 500 242526
+[09/Feb/2016 16:42:52] "GET /admin/auth/user/ HTTP/1.1" 200 10854
+[09/Feb/2016 16:42:52] "GET /static2/admin/js/core.js HTTP/1.1" 304 0
+[09/Feb/2016 16:42:52] "GET /static2/admin/css/base.css HTTP/1.1" 304 0
+[09/Feb/2016 16:42:52] "GET /static2/admin/css/changelists.css HTTP/1.1" 304 0
+[09/Feb/2016 16:42:52] "GET /static2/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+[09/Feb/2016 16:42:52] "GET /static2/admin/js/jquery.js HTTP/1.1" 304 0
+[09/Feb/2016 16:42:52] "GET /static2/admin/js/jquery.init.js HTTP/1.1" 304 0
+[09/Feb/2016 16:42:52] "GET /static2/admin/js/actions.js HTTP/1.1" 304 0
+[09/Feb/2016 16:42:52] "GET /static2/admin/img/icon_searchbox.png HTTP/1.1" 304 0
+[09/Feb/2016 16:42:52] "GET /static2/admin/img/icon-yes.gif HTTP/1.1" 304 0
+[09/Feb/2016 16:42:53] "GET /static2/admin/img/icon-no.gif HTTP/1.1" 304 0
+[09/Feb/2016 16:42:53] "GET /admin/jsi18n/ HTTP/1.1" 200 2372
+[09/Feb/2016 16:42:57] "GET /admin/auth/user/18/ HTTP/1.1" 200 19473
+[09/Feb/2016 16:42:58] "GET /admin/jsi18n/ HTTP/1.1" 200 2372
+[09/Feb/2016 16:43:05] "GET /admin/auth/user/18/delete/ HTTP/1.1" 200 2640
+[09/Feb/2016 16:43:19] "POST /admin/auth/user/18/delete/ HTTP/1.1" 302 0
+[09/Feb/2016 16:43:20] "GET /admin/auth/user/ HTTP/1.1" 200 10559
+[09/Feb/2016 16:43:21] "GET /admin/jsi18n/ HTTP/1.1" 200 2372
+[09/Feb/2016 16:43:27] "GET /registro/ HTTP/1.1" 200 15164
+[09/Feb/2016 16:43:27] "GET /static2/chosen/chosen.min.css HTTP/1.1" 304 0
+[09/Feb/2016 16:43:27] "GET /static2/chosen/chosen.jquery.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:43:37] "GET /static2/chosen/chosen-sprite.png HTTP/1.1" 304 0
+Internal Server Error: /registro/
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/srv/www/django/ecsclaims/claims_Web/views.py", line 96, in registration
+    for localitys in locality:
+TypeError: 'NoneType' object is not iterable
+ERROR:django.request:Internal Server Error: /registro/
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/srv/www/django/ecsclaims/claims_Web/views.py", line 96, in registration
+    for localitys in locality:
+TypeError: 'NoneType' object is not iterable
+[09/Feb/2016 16:43:57] "POST /registro/ HTTP/1.1" 500 72423
+Performing system checks...
+
+System check identified no issues (0 silenced).
+February 09, 2016 - 16:41:52
+Django version 1.8.5, using settings 'ecsclaims.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Internal Server Error: /registro/
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/site-packages/django/core/handlers/base.py", line 119, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/lib64/python2.7/site-packages/django/core/urlresolvers.py", line 367, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/lib64/python2.7/site-packages/django/core/urlresolvers.py", line 367, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/lib64/python2.7/site-packages/django/core/urlresolvers.py", line 239, in resolve
+    return ResolverMatch(self.callback, args, kwargs, self.name)
+  File "/usr/lib64/python2.7/site-packages/django/core/urlresolvers.py", line 246, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/usr/lib64/python2.7/site-packages/django/utils/lru_cache.py", line 101, in wrapper
+    result = user_function(*args, **kwds)
+  File "/usr/lib64/python2.7/site-packages/django/core/urlresolvers.py", line 105, in get_callable
+    mod = import_module(mod_name)
+  File "/usr/lib64/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/srv/www/django/ecsclaims/claims_Web/views.py", line 97
+    bug += localitys.0
+                     ^
+SyntaxError: invalid syntax
+ERROR:django.request:Internal Server Error: /registro/
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/site-packages/django/core/handlers/base.py", line 119, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/lib64/python2.7/site-packages/django/core/urlresolvers.py", line 367, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/lib64/python2.7/site-packages/django/core/urlresolvers.py", line 367, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/lib64/python2.7/site-packages/django/core/urlresolvers.py", line 239, in resolve
+    return ResolverMatch(self.callback, args, kwargs, self.name)
+  File "/usr/lib64/python2.7/site-packages/django/core/urlresolvers.py", line 246, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/usr/lib64/python2.7/site-packages/django/utils/lru_cache.py", line 101, in wrapper
+    result = user_function(*args, **kwds)
+  File "/usr/lib64/python2.7/site-packages/django/core/urlresolvers.py", line 105, in get_callable
+    mod = import_module(mod_name)
+  File "/usr/lib64/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/srv/www/django/ecsclaims/claims_Web/views.py", line 97
+    bug += localitys.0
+                     ^
+SyntaxError: invalid syntax
+[09/Feb/2016 16:44:56] "POST /registro/ HTTP/1.1" 500 90830
+Internal Server Error: /registro/
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/srv/www/django/ecsclaims/claims_Web/views.py", line 84, in registration
+    user = User.objects.create_user(username, email, password)
+  File "/usr/lib64/python2.7/site-packages/django/contrib/auth/models.py", line 187, in create_user
+    **extra_fields)
+  File "/usr/lib64/python2.7/site-packages/django/contrib/auth/models.py", line 182, in _create_user
+    user.save(using=self._db)
+  File "/usr/lib64/python2.7/site-packages/django/db/models/base.py", line 734, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/usr/lib64/python2.7/site-packages/django/db/models/base.py", line 762, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "/usr/lib64/python2.7/site-packages/django/db/models/base.py", line 846, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "/usr/lib64/python2.7/site-packages/django/db/models/base.py", line 885, in _do_insert
+    using=using, raw=raw)
+  File "/usr/lib64/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/lib64/python2.7/site-packages/django/db/models/query.py", line 920, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/usr/lib64/python2.7/site-packages/django/db/models/sql/compiler.py", line 974, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/lib64/python2.7/site-packages/django/db/backends/utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "/usr/lib64/python2.7/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/usr/lib64/python2.7/site-packages/django/db/utils.py", line 97, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/usr/lib64/python2.7/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+IntegrityError: duplicate key value violates unique constraint "auth_user_username_key"
+DETAIL:  Key (username)=(rpina) already exists.
+
+ERROR:django.request:Internal Server Error: /registro/
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/srv/www/django/ecsclaims/claims_Web/views.py", line 84, in registration
+    user = User.objects.create_user(username, email, password)
+  File "/usr/lib64/python2.7/site-packages/django/contrib/auth/models.py", line 187, in create_user
+    **extra_fields)
+  File "/usr/lib64/python2.7/site-packages/django/contrib/auth/models.py", line 182, in _create_user
+    user.save(using=self._db)
+  File "/usr/lib64/python2.7/site-packages/django/db/models/base.py", line 734, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/usr/lib64/python2.7/site-packages/django/db/models/base.py", line 762, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "/usr/lib64/python2.7/site-packages/django/db/models/base.py", line 846, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "/usr/lib64/python2.7/site-packages/django/db/models/base.py", line 885, in _do_insert
+    using=using, raw=raw)
+  File "/usr/lib64/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/lib64/python2.7/site-packages/django/db/models/query.py", line 920, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/usr/lib64/python2.7/site-packages/django/db/models/sql/compiler.py", line 974, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/lib64/python2.7/site-packages/django/db/backends/utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "/usr/lib64/python2.7/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/usr/lib64/python2.7/site-packages/django/db/utils.py", line 97, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/usr/lib64/python2.7/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+IntegrityError: duplicate key value violates unique constraint "auth_user_username_key"
+DETAIL:  Key (username)=(rpina) already exists.
+
+[09/Feb/2016 16:47:35] "POST /registro/ HTTP/1.1" 500 138827
+[09/Feb/2016 16:48:09] "GET /admin/auth/user/ HTTP/1.1" 200 10854
+[09/Feb/2016 16:48:10] "GET /static2/admin/css/base.css HTTP/1.1" 304 0
+[09/Feb/2016 16:48:10] "GET /static2/admin/css/changelists.css HTTP/1.1" 304 0
+[09/Feb/2016 16:48:10] "GET /static2/admin/js/core.js HTTP/1.1" 304 0
+[09/Feb/2016 16:48:11] "GET /static2/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+[09/Feb/2016 16:48:11] "GET /static2/admin/js/jquery.js HTTP/1.1" 304 0
+[09/Feb/2016 16:48:11] "GET /static2/admin/js/jquery.init.js HTTP/1.1" 304 0
+[09/Feb/2016 16:48:11] "GET /static2/admin/js/actions.js HTTP/1.1" 304 0
+[09/Feb/2016 16:48:11] "GET /static2/admin/img/icon_searchbox.png HTTP/1.1" 304 0
+[09/Feb/2016 16:48:12] "GET /static2/admin/img/icon-yes.gif HTTP/1.1" 304 0
+[09/Feb/2016 16:48:12] "GET /admin/jsi18n/ HTTP/1.1" 200 2372
+[09/Feb/2016 16:48:13] "GET /static2/admin/img/icon-no.gif HTTP/1.1" 304 0
+[09/Feb/2016 16:48:18] "GET /admin/auth/user/19/ HTTP/1.1" 200 19473
+[09/Feb/2016 16:48:21] "GET /admin/jsi18n/ HTTP/1.1" 200 2372
+[09/Feb/2016 16:48:29] "GET /admin/auth/user/19/delete/ HTTP/1.1" 200 2640
+[09/Feb/2016 16:48:36] "POST /admin/auth/user/19/delete/ HTTP/1.1" 302 0
+[09/Feb/2016 16:48:38] "GET /admin/auth/user/ HTTP/1.1" 200 10559
+[09/Feb/2016 16:48:40] "GET /admin/jsi18n/ HTTP/1.1" 200 2372
+[09/Feb/2016 16:48:50] "GET /registro/ HTTP/1.1" 200 15164
+[09/Feb/2016 16:48:50] "GET /static2/chosen/chosen.min.css HTTP/1.1" 304 0
+[09/Feb/2016 16:48:50] "GET /static2/chosen/chosen.jquery.min.js HTTP/1.1" 304 0
+[09/Feb/2016 16:49:00] "GET /static2/chosen/chosen-sprite.png HTTP/1.1" 304 0
+[09/Feb/2016 16:49:21] "POST /registro/ HTTP/1.1" 200 15323
+Performing system checks...
+
+System check identified no issues (0 silenced).
+February 09, 2016 - 16:44:51
+Django version 1.8.5, using settings 'ecsclaims.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+[09/Feb/2016 16:50:15] "GET /admin/auth/user/ HTTP/1.1" 200 10854
+[09/Feb/2016 16:50:15] "GET /static2/admin/css/base.css HTTP/1.1" 304 0
+[09/Feb/2016 16:50:15] "GET /static2/admin/css/changelists.css HTTP/1.1" 304 0
+[09/Feb/2016 16:50:15] "GET /static2/admin/js/core.js HTTP/1.1" 304 0
+[09/Feb/2016 16:50:15] "GET /static2/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+[09/Feb/2016 16:50:15] "GET /static2/admin/js/jquery.js HTTP/1.1" 304 0
+[09/Feb/2016 16:50:15] "GET /static2/admin/js/jquery.init.js HTTP/1.1" 304 0
+[09/Feb/2016 16:50:15] "GET /static2/admin/js/actions.js HTTP/1.1" 304 0
+[09/Feb/2016 16:50:16] "GET /admin/jsi18n/ HTTP/1.1" 200 2372
+[09/Feb/2016 16:50:16] "GET /static2/admin/img/icon-no.gif HTTP/1.1" 304 0
+[09/Feb/2016 16:50:16] "GET /static2/admin/img/icon_searchbox.png HTTP/1.1" 304 0
+[09/Feb/2016 16:50:16] "GET /static2/admin/img/icon-yes.gif HTTP/1.1" 304 0
+[09/Feb/2016 16:50:20] "GET /admin/auth/user/21/ HTTP/1.1" 200 19473
+[09/Feb/2016 16:50:21] "GET /admin/jsi18n/ HTTP/1.1" 200 2372
+[09/Feb/2016 16:50:26] "GET /admin/auth/user/21/delete/ HTTP/1.1" 200 2640
+[09/Feb/2016 16:50:33] "POST /admin/auth/user/21/delete/ HTTP/1.1" 302 0
+[09/Feb/2016 16:50:34] "GET /admin/auth/user/ HTTP/1.1" 200 10559
+[09/Feb/2016 16:50:36] "GET /admin/jsi18n/ HTTP/1.1" 200 2372
+[09/Feb/2016 16:50:40] "GET /registro/ HTTP/1.1" 200 15173
+[09/Feb/2016 16:51:08] "POST /registro/ HTTP/1.1" 200 15332
+[09/Feb/2016 16:51:08] "GET /static2/chosen/chosen.min.css HTTP/1.1" 304 0
+[09/Feb/2016 16:51:08] "GET /static2/chosen/chosen.jquery.min.js HTTP/1.1" 304 0
+Performing system checks...
+
+System check identified no issues (0 silenced).
+February 09, 2016 - 16:49:51
+Django version 1.8.5, using settings 'ecsclaims.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Unhandled exception in thread started by <function wrapper at 0x32bd140>
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/site-packages/django/utils/autoreload.py", line 229, in wrapper
+    fn(*args, **kwargs)
+  File "/usr/lib64/python2.7/site-packages/django/core/management/commands/runserver.py", line 107, in inner_run
+    autoreload.raise_last_exception()
+  File "/usr/lib64/python2.7/site-packages/django/utils/autoreload.py", line 252, in raise_last_exception
+    six.reraise(*_exception)
+  File "/usr/lib64/python2.7/site-packages/django/utils/autoreload.py", line 229, in wrapper
+    fn(*args, **kwargs)
+  File "/usr/lib64/python2.7/site-packages/django/__init__.py", line 18, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/usr/lib64/python2.7/site-packages/django/apps/registry.py", line 108, in populate
+    app_config.import_models(all_models)
+  File "/usr/lib64/python2.7/site-packages/django/apps/config.py", line 198, in import_models
+    self.models_module = import_module(models_module_name)
+  File "/usr/lib64/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/srv/www/django/ecsclaims/claims/models.py", line 65
+    is_activate =  = models.CharField(choices= YES_NO,max_length=1,default='N')
+                   ^
+SyntaxError: invalid syntax
+Unhandled exception in thread started by <function wrapper at 0x19f2140>
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/site-packages/django/utils/autoreload.py", line 229, in wrapper
+    fn(*args, **kwargs)
+  File "/usr/lib64/python2.7/site-packages/django/core/management/commands/runserver.py", line 107, in inner_run
+    autoreload.raise_last_exception()
+  File "/usr/lib64/python2.7/site-packages/django/utils/autoreload.py", line 252, in raise_last_exception
+    six.reraise(*_exception)
+  File "/usr/lib64/python2.7/site-packages/django/utils/autoreload.py", line 229, in wrapper
+    fn(*args, **kwargs)
+  File "/usr/lib64/python2.7/site-packages/django/__init__.py", line 18, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/usr/lib64/python2.7/site-packages/django/apps/registry.py", line 108, in populate
+    app_config.import_models(all_models)
+  File "/usr/lib64/python2.7/site-packages/django/apps/config.py", line 198, in import_models
+    self.models_module = import_module(models_module_name)
+  File "/usr/lib64/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/srv/www/django/ecsclaims/claims/models.py", line 65
+    is_activate =  = models.CharField(choices= YES_NO,max_length=1,default='N')
+                   ^
+SyntaxError: invalid syntax
+Unhandled exception in thread started by <function wrapper at 0x292f140>
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/site-packages/django/utils/autoreload.py", line 229, in wrapper
+    fn(*args, **kwargs)
+  File "/usr/lib64/python2.7/site-packages/django/core/management/commands/runserver.py", line 107, in inner_run
+    autoreload.raise_last_exception()
+  File "/usr/lib64/python2.7/site-packages/django/utils/autoreload.py", line 252, in raise_last_exception
+    six.reraise(*_exception)
+  File "/usr/lib64/python2.7/site-packages/django/utils/autoreload.py", line 229, in wrapper
+    fn(*args, **kwargs)
+  File "/usr/lib64/python2.7/site-packages/django/__init__.py", line 18, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/usr/lib64/python2.7/site-packages/django/apps/registry.py", line 108, in populate
+    app_config.import_models(all_models)
+  File "/usr/lib64/python2.7/site-packages/django/apps/config.py", line 198, in import_models
+    self.models_module = import_module(models_module_name)
+  File "/usr/lib64/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/srv/www/django/ecsclaims/claims/models.py", line 65
+    is_activate =  = models.CharField(choices= YES_NO,max_length=1,default='N')
+                   ^
+SyntaxError: invalid syntax

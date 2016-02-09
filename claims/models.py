@@ -62,6 +62,7 @@ AUTH_ESTATUS =(
 
 class Motivos(models.Model):
    motivo = models.CharField(max_length=255, null=False)
+   is_active = models.CharField(null=False,max_length=1,choices= YES_NO)
 
 class Localidad(models.Model):
    codigo = models.CharField(max_length=255, null=False)

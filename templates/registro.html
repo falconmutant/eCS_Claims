@@ -6,6 +6,7 @@
 
 {% block css %}
   <link type="text/css" href="{% static "css/pnotify.css" %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static "chosen/chosen.min.css" %}">
   <style type="text/css">
     #footer {
         padding: 4em 0 6em 0;
@@ -81,10 +82,10 @@
                   </select>
                 </div>
               </div>
-              <label class="col-md-2 control-label">localidad</label>
+              <label class="col-md-2 control-label">Localidad</label>
               <div class="col-xs-4">
                 <div class="input-icon">
-                  <select name="localidad" class="input-error form-control">
+                  <select name="localidad" multiple="multiple" data-placeholder="Selecciona tus localidades" class="chosen-select input-error form-control">
                     <option></option>
                     {% for locality in localidad %}
                       <option value="{{locality.id}}">{{locality.nombre}}</option>
@@ -100,7 +101,7 @@
                   <input name="correo" class="input-error form-control" required>
                 </div>
               </div>
-              <label class="col-md-2 control-label">celular</label>
+              <label class="col-md-2 control-label">Celular</label>
               <div class="col-xs-4">
                 <div class="input-icon">
                   <input name="celular" class="input-error form-control" required>
@@ -144,8 +145,13 @@
   </div>
 {% endblock header %}
 {% block javascript %}
+  <script src="{% static "chosen/chosen.jquery.min.js" %}"></script>
   <script type="text/javascript" src="{% static "js/pnotify.min.js" %}"></script>
   <script type="text/javascript">
+    console.log('{{bug}}');
+    $(document).ready(function(){
+      $(".chosen-select").chosen();
+    });
     {% if menssage_success == 1 %}
       new PNotify({
         title: 'Exito',

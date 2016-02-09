@@ -66,7 +66,7 @@ def registration(request):
 	if request.POST:
 		first_name = request.POST.get("nombre")
 		last_name = request.POST.get("apellidos")
-		locality = int(request.POST.get("localidad"))
+		locality = request.POST.get("localidad")
 		user_type = request.POST.get('tipo')
 		email = request.POST.get('correo')
 		cellphone = request.POST.get('celular')
@@ -89,8 +89,12 @@ def registration(request):
 		user.save()
 		usertipo = TipoUsuario(user_id=user.id,tipo=user_type,email=email,celular=cellphone,whatsapp=wp,telegram=tg,sms=sms,tgcontacto='')
 		usertipo.save()
-		userlocality = UsuarioLocalidad(usuario_id=user.id,localidad_id=locality)
-		userlocality.save()
+		#for localitys in locality:
+		#	userlocality = UsuarioLocalidad(usuario_id=user.id,localidad_id=localitys)
+		#	userlocality.save()
+		bug = ''
+		for localitys in locality:
+			bug += localitys
 		menssage_success = 1
 		return render_to_response('registro.html',RequestContext(request,locals()))
 
