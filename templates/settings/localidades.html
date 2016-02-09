@@ -57,16 +57,16 @@
           <center><h3>Registro Localidades</h3></center>
           <hr />
             <div class="form-group">
-              <label class="col-md-2 control-label">Nombre</label>
+              <label class="col-md-2 control-label">Codigo</label>
               <div class="col-xs-4">
                 <div class="input-icon">
-                  <input name="nombre" class="input-error form-control" required>
+                  <input name="codigo" class="input-error form-control" required>
                 </div>
               </div>
-              <label class="col-md-2 control-label">Apellidos</label>
+              <label class="col-md-2 control-label">Localidad</label>
               <div class="col-xs-4">
                 <div class="input-icon">
-                  <input name="apellidos" class="input-error form-control" required>
+                  <input name="localidad" class="input-error form-control" required>
                 </div>
               </div>
             </div>
@@ -85,10 +85,10 @@
     $(document).ready(function(){
       $(".chosen-select").chosen();
     });
-    {% if menssage_success == 1 %}
+    {% if message_success == 1 %}
       new PNotify({
         title: 'Exito',
-        text: 'Usuario creado con exito!',
+        text: 'Localidad creada con exito!',
         type: 'success',
         styling: 'fontawesome'
       });

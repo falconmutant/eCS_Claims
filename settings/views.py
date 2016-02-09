@@ -47,7 +47,7 @@ def registration(request):
 		for localitys in locality:
 			userlocality = UsuarioLocalidad(usuario_id=user.id,localidad_id=int(localitys))
 			userlocality.save()
-		menssage_success = 1
+		message_success = 1
 		return render_to_response('settings/registro.html',RequestContext(request,locals()))
 
 
@@ -57,7 +57,11 @@ def registration(request):
 def localitys(request):
 	nombre_user = request.user.get_full_name()
 	if request.POST:
-		
+		code = request.POST.get('codigo')
+		locality = request.POST.get('localidad')
+		localitys = Localidad(codigo=code,nombre=locality)
+		localitys.save()
+		message_success = 1
 		return render_to_response('settings/localidades.html',RequestContext(request,locals()))
 
 
