@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+  eCS Claims
+{% endblock title %}
+
+{% block css %}
+  <link type="text/css" href="{% static "css/pnotify.css" %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static "chosen/chosen.min.css" %}">
+  <style type="text/css">
+    #footer {
+        padding: 4em 0 6em 0;
+        text-align: center;
+    }
+    #footer .copyright {
+        color: #999;
+        font-size: 0.9em;
+        line-height: 1em;
+        margin: 2em 0 0 0;
+        padding: 0;
+        text-align: center;
+    }
+    #footer .copyright li {
+        display: inline-block;
+        list-style: none;
+        margin-left: 1em;
+        padding-left: 1em;
+    }
+    .col-md-2{
+      width:13.666667%;
+    }
+    .right{
+      margin-left: 90%;
+    }
+  </style>
+{% endblock css %}
+
+{% block header %}
+  <div id="jCrumbs" class="breadCrumb module">
+    <ul>
+      <li>
+        <a href="{{ settings.APP_URL }}/logged_in/"><i class="glyphicon glyphicon-home"></i></a>
+      </li>
+      <li>
+        <a href="">Reportes</a>
+      </li>
+      <li>
+        <a href="">Permisos</a>
+      </li>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="12u">
+      <section class="box">
+        <form method="POST" class="form-horizontal">
+          {% csrf_token %}
+          <center><h3>Registro Localidades</h3></center>
+          <hr />
+            <div class="form-group">
+              <label class="col-md-2 control-label">Nombre</label>
+              <div class="col-xs-4">
+                <div class="input-icon">
+                  <input name="nombre" class="input-error form-control" required>
+                </div>
+              </div>
+              <label class="col-md-2 control-label">Apellidos</label>
+              <div class="col-xs-4">
+                <div class="input-icon">
+                  <input name="apellidos" class="input-error form-control" required>
+                </div>
+              </div>
+            </div>
+          <hr />
+          <input type="submit" class="right btn btn-default" value="Crear">
+        </form>
+      </section>
+    </div>
+  </div>
+{% endblock header %}
+{% block javascript %}
+  <script src="{% static "chosen/chosen.jquery.min.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/pnotify.min.js" %}"></script>
+  <script type="text/javascript">
+    console.log('{{bug}}');
+    $(document).ready(function(){
+      $(".chosen-select").chosen();
+    });
+    {% if menssage_success == 1 %}
+      new PNotify({
+        title: 'Exito',
+        text: 'Usuario creado con exito!',
+        type: 'success',
+        styling: 'fontawesome'
+      });
+    {% endif %}
+  </script>
+  
+{% endblock javascript %}

@@ -1,0 +1,165 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+  eCS Claims
+{% endblock title %}
+
+{% block css %}
+  <link type="text/css" href="{% static "css/pnotify.css" %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static "chosen/chosen.min.css" %}">
+  <style type="text/css">
+    #footer {
+        padding: 4em 0 6em 0;
+        text-align: center;
+    }
+    #footer .copyright {
+        color: #999;
+        font-size: 0.9em;
+        line-height: 1em;
+        margin: 2em 0 0 0;
+        padding: 0;
+        text-align: center;
+    }
+    #footer .copyright li {
+        display: inline-block;
+        list-style: none;
+        margin-left: 1em;
+        padding-left: 1em;
+    }
+    .col-md-2{
+      width:13.666667%;
+    }
+    .right{
+      margin-left: 90%;
+    }
+  </style>
+{% endblock css %}
+
+{% block header %}
+  <div id="jCrumbs" class="breadCrumb module">
+    <ul>
+      <li>
+        <a href="{{ settings.APP_URL }}/logged_in/"><i class="glyphicon glyphicon-home"></i></a>
+      </li>
+      <li>
+        <a href="">Reportes</a>
+      </li>
+      <li>
+        <a href="">Permisos</a>
+      </li>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="12u">
+      <section class="box">
+        <form method="POST" class="form-horizontal">
+          {% csrf_token %}
+          <center><h3>Registro Usuario Nuevo</h3></center>
+          <hr />
+            <div class="form-group">
+              <label class="col-md-2 control-label">Nombre</label>
+              <div class="col-xs-4">
+                <div class="input-icon">
+                  <input name="nombre" class="input-error form-control" required>
+                </div>
+              </div>
+              <label class="col-md-2 control-label">Apellidos</label>
+              <div class="col-xs-4">
+                <div class="input-icon">
+                  <input name="apellidos" class="input-error form-control" required>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-2 control-label">Tipo Usuario</label>
+              <div class="col-xs-4">
+                <div class="input-icon">
+                  <select name="tipo" class="input-error form-control">
+                    <option></option>
+                    {% for types in tipos %}
+                    <option value="{{types.0}}">{{types.1}}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+              <label class="col-md-2 control-label">Localidad</label>
+              <div class="col-xs-4">
+                <div class="input-icon">
+                  <select name="localidad" multiple="multiple" data-placeholder="Selecciona tus localidades" class="chosen-select input-error form-control">
+                    <option></option>
+                    {% for locality in localidad %}
+                      <option value="{{locality.id}}">{{locality.nombre}}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-2 control-label">Correo</label>
+              <div class="col-xs-4">
+                <div class="input-icon">
+                  <input name="correo" class="input-error form-control" required>
+                </div>
+              </div>
+              <label class="col-md-2 control-label">Celular</label>
+              <div class="col-xs-4">
+                <div class="input-icon">
+                  <input name="celular" class="input-error form-control" required>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-2 control-label">Redes Sociales</label>
+              <div class="col-xs-6">
+                <label class="checkbox-inline icheck">
+                  <input name="whatsapp" type="checkbox" id="inlinecheckbox1" value="Y"> Whatsapp
+                </label>
+                <label class="checkbox-inline icheck">
+                  <input name="telegram" type="checkbox" id="inlinecheckbox2" value="Y"> Telegram
+                </label>
+                <label class="checkbox-inline icheck">
+                  <input name="sms" type="checkbox" id="inlinecheckbox3" value="Y"> SMS
+                </label>
+              </div>
+            </div>
+          <hr />
+            <div class="form-group">
+              <label class="col-md-2 control-label">Usuario</label>
+              <div class="col-xs-4">
+                <div class="input-icon">
+                  <input name="user" class="input-error form-control" required>
+                </div>
+              </div>
+              <label class="col-md-2 control-label">Contraseña</label>
+              <div class="col-xs-4">
+                <div class="input-icon">
+                  <input type="password" name="pass" class="input-error form-control" required>
+                </div>
+              </div>
+            </div>
+          <hr />
+          <input type="submit" class="right btn btn-default" value="Crear">
+        </form>
+      </section>
+    </div>
+  </div>
+{% endblock header %}
+{% block javascript %}
+  <script src="{% static "chosen/chosen.jquery.min.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/pnotify.min.js" %}"></script>
+  <script type="text/javascript">
+    console.log('{{bug}}');
+    $(document).ready(function(){
+      $(".chosen-select").chosen();
+    });
+    {% if menssage_success == 1 %}
+      new PNotify({
+        title: 'Exito',
+        text: 'Usuario creado con exito!',
+        type: 'success',
+        styling: 'fontawesome'
+      });
+    {% endif %}
+  </script>
+  
+{% endblock javascript %}

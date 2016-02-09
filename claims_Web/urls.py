@@ -16,6 +16,5 @@ urlpatterns = patterns('',
 						{'next_page': 'claims_Web.views.index'}),
 	url(r'permisos/$', 'claims_Web.views.permisos'),
 	url(r'^permission/$', 'claims_Web.views.save_permission'),
-	url(r'^registro/$', 'claims_Web.views.registration'),
 	#url(r'^motivosLista/$', 'claims_Web.views.MotivosLista.as_view()', name='mLista'),
 )
