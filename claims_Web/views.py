@@ -12,7 +12,6 @@ from explorer.models import *
 from claims.utils import sendNotifications
 import datetime
 
-
 def index(request):
     return render_to_response('index.html',
         context_instance=RequestContext(request)
@@ -25,8 +24,8 @@ def permisos(request):
 	return render_to_response('explorer/usuarios.html',
 		RequestContext(request,locals()))
 
+
 def save_permission(request):
-	
 	x = datetime.datetime.now()
 	message_success = 0
 	if x.month < 10:
@@ -144,9 +143,6 @@ def logged_in(request):
 		total_invoices = Autorizacion.objects.all().filter(TipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobantes]).count()
 		falta_invoices = Autorizacion.objects.all().filter(Estatus__in=['Y','P'],TipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobantes]).count()
 		resuelto_invoices = total_invoices-falta_invoices
-
-
-		
 	
 	return render_to_response('pantallas.html',RequestContext(request,locals()))
 
