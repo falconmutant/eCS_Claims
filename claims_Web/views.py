@@ -12,12 +12,10 @@ from explorer.models import *
 from claims.utils import sendNotifications
 import datetime
 
-
 def index(request):
     return render_to_response('index.html',
         context_instance=RequestContext(request)
     )
-
 
 def permisos(request):
 	reportes = Query.objects.all()
@@ -25,6 +23,7 @@ def permisos(request):
 	MacPermisos = Permiso.objects.filter(usuario=TipoUsuario.MAC)
 	return render_to_response('explorer/usuarios.html',
 		RequestContext(request,locals()))
+
 
 def save_permission(request):
 	x = datetime.datetime.now()
@@ -62,10 +61,40 @@ def save_permission(request):
 
 def registration(request):
 	nombre_user = request.user.get_full_name()
+	tipos = TipoUsuario.TIPO_USER
+	localidad = Localidad.objects.all()
 	if request.POST:
-		locality = request.POST.get("localidad")
-		user_type = request.POST.get('type')
-		
+		first_name = request.POST.get("nombre")
+		last_name = request.POST.get("apellidos")
+		locality = int(request.POST.get("localidad"))
+		user_type = request.POST.get('tipo')
+		email = request.POST.get('correo')
+		cellphone = request.POST.get('celular')
+		wp = request.POST.get('whatsapp')
+		if wp != 'Y':
+			wp='N'
+		tg = request.POST.get('telegram')
+		if tg != 'Y':
+			tg='N'
+		sms = request.POST.get('sms')
+		if sms != 'Y':
+			sms='N'
+		username = request.POST.get('user')
+		password = request.POST.get('pass')
+		user = User.objects.create_user(username, email, password)
+		user.first_name = first_name
+		user.last_name = last_name
+		if user_type=='S':
+			user.is_staff = True
+		user.save()
+		usertipo = TipoUsuario(user_id=user.id,tipo=user_type,email=email,celular=cellphone,whatsapp=wp,telegram=tg,sms=sms,tgcontacto='')
+		usertipo.save()
+		userlocality = UsuarioLocalidad(usuario_id=user.id,localidad_id=locality)
+		userlocality.save()
+		menssage_success = 1
+		return render_to_response('registro.html',RequestContext(request,locals()))
+
+
 	return render_to_response('registro.html',RequestContext(request,locals()))
 
 @login_required
@@ -114,9 +143,6 @@ def logged_in(request):
 		total_invoices = Autorizacion.objects.all().filter(TipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobantes]).count()
 		falta_invoices = Autorizacion.objects.all().filter(Estatus__in=['Y','P'],TipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobantes]).count()
 		resuelto_invoices = total_invoices-falta_invoices
-
-
-		
 	
 	return render_to_response('pantallas.html',RequestContext(request,locals()))
 
@@ -138,6 +164,12 @@ def detalle(request, id):
 				for localitys in locality:
 					message = 'Se ha Autorizado el Estado de Cuenta {0}, por el sectorial MAC. Favor de revisar Sistema'.format(detalle.folioAut)
 					sendNotifications(localitys.localidad,message, TipoUsuario.PEMEX)
+			if estatus == 'A':
+				detalle = get_object_or_404(Evento, id=id)
+				locality = UsuarioLocalidad.objects.filter(usuario = request.user.id)
+				for localitys in locality:
+					message = 'Se ha Autorizado el Estado de Cuenta {0}, por el sectorial PEMEX.'.format(detalle.folioAut)
+					sendNotifications(localitys.localidad,message, TipoUsuario.MAC)
 		except Exception, e:
 			message_error = 1
 
