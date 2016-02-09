@@ -6,7 +6,7 @@
 
 {% block css %}
   <link type="text/css" href="{% static "css/pnotify.css" %}" rel="stylesheet">
-  <link rel="stylesheet" href="{% static "chosen/chosen.css" %}">
+  <link rel="stylesheet" href="{% static "chosen/chosen.min.css" %}">
   <style type="text/css">
     #footer {
         padding: 4em 0 6em 0;
@@ -85,7 +85,7 @@
               <label class="col-md-2 control-label">Localidad</label>
               <div class="col-xs-4">
                 <div class="input-icon">
-                  <select name="localidad" multiple="" data-placeholder="" class="chosen-select input-error form-control">
+                  <select name="localidad" multiple="multiple" data-placeholder="Selecciona tus localidades" class="chosen-select input-error form-control">
                     <option></option>
                     {% for locality in localidad %}
                       <option value="{{locality.id}}">{{locality.nombre}}</option>
@@ -145,11 +145,12 @@
   </div>
 {% endblock header %}
 {% block javascript %}
-  <script src="{% static "chosen/chosen.jquery.js" %}"></script>
+  <script src="{% static "chosen/chosen.jquery.min.js" %}"></script>
   <script type="text/javascript" src="{% static "js/pnotify.min.js" %}"></script>
   <script type="text/javascript">
+    console.log('{{bug}}');
     $(document).ready(function(){
-      $(".chosen-select").chosen({width: "95%"});
+      $(".chosen-select").chosen();
     });
     {% if menssage_success == 1 %}
       new PNotify({
