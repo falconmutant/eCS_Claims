@@ -50,6 +50,7 @@ INSTALLED_APPS = (
     'claims_Web',
     'invoices_Web',
     'explorer',
+    'settings',
 )
 
 MIDDLEWARE_CLASSES = (
