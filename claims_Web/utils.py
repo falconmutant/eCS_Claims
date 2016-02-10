@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404, get_list_or_404
 from django.contrib import auth
 
 
-class Methods:
+class Methods(object):
 	def get_info_user(request):
 		user.id = request.user.id
 		user.name = request.user.get_full_name()
