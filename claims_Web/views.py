@@ -1,16 +1,17 @@
 import json
 from django.http import HttpResponseRedirect, HttpResponse
-from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response, get_object_or_404, get_list_or_404
+from django.shortcuts import render_to_response
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from django.contrib import auth
-from django.views.generic import ListView
-from claims.models import *
+from .utils import *
+
 from invoices_Web.models import *
 from explorer.models import *
 from claims.utils import sendNotifications
 import datetime
+
+global user
 
 def index(request):
     return render_to_response('index.html',
@@ -60,6 +61,7 @@ def save_permission(request):
 
 @login_required
 def logged_in(request):
+	user = user = get_info_user(request)
 	nombre_user = request.user.get_full_name()
 	tipouser = get_object_or_404(TipoUsuario,user_id=request.user.id)
 
@@ -177,23 +179,19 @@ def claims(request):
 	else:
 		inicio = "%s-%s-%s"% (x.year, x.month, x.day)
 		fin = "%s-%s-%s"% (x.year, x.month, x.day)
-	nombre_user = request.user.get_full_name()
-	tipouser = get_object_or_404(TipoUsuario,user_id=request.user.id)
-	id_localidad = UsuarioLocalidad.objects.filter(usuario_id=request.user.id)
-	localidad = Localidad.objects.filter(id__in=[locality_ids.localidad_id for locality_ids in id_localidad])
-	proveedor = Proveedor.objects.filter(localidad__in=[locality.nombre for locality in localidad])
-	evento = Evento.objects.filter(proveedor_id__in=[provider.id for provider in proveedor])
-	paciente = Paciente.objects.filter(evento_id__in=[event.id for event in evento])
-	cargo = Cargo.objects.filter(evento_id__in=[event.id for event in evento])
-	if tipouser.tipo == TipoUsuario.MAC:
-		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R'],TipoAprobacion='1',evento_id__in=[event.id for event in evento])
-	if tipouser.tipo == TipoUsuario.PEMEX:
-		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['Y','P'],TipoAprobacion='1',evento_id__in=[event.id for event in evento])
-	if tipouser.tipo == TipoUsuario.ECARESOFT:
-		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='1')
-	if tipouser.tipo == TipoUsuario.SUPERUSER:
-		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='1')
-	
+
+
+
+	nombre_user = user.name
+	localidad = get_locality_user(user.id)
+	proveedor = get_providers_locality(localidad)
+	evento = get_event_provider(proveedor)
+	paciente = get_patient_event(evento)
+	cargo = get_process_event(evento)
+	autorizacion = get_auth_type(user.type)
+	if user.type == TipoUsuario.MAC and user.type == TipoUsuario.PEMEX:
+		autorizacion = get_auth_filter(autorizacion,'event',evento)
+
 	if request.POST:
 		inicio = request.POST.get("daterange").split(" - ")[0]
 		fin = request.POST.get("daterange").split(" - ")[1]
