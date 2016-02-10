@@ -3,12 +3,12 @@ from django.shortcuts import get_object_or_404, get_list_or_404
 from django.contrib import auth
 
 
-class Methods(object):
-	def get_info_user(request):
-		user.id = request.user.id
-		user.name = request.user.get_full_name()
-		user.type = get_object_or_404(TipoUsuario,user_id=user.id)
-		return user
+class Methods:
+	def get_info_user(self,request):
+		id = request.user.id
+		name = request.user.get_full_name()
+		type = get_object_or_404(TipoUsuario,user_id=user.id)
+		return id,name,type
 
 	def get_cause():
 		cause = Motivos.objects.all()
@@ -132,6 +132,8 @@ class Methods(object):
 		if self.filter == 'date':
 			auth = auth.filter(FechaSolicitud__range=[obj.start, obj.end]);
 		return auth
+
+
 
 
 
