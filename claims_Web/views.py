@@ -11,6 +11,7 @@ from explorer.models import *
 from claims.utils import sendNotifications
 import datetime
 
+claim = Methods()
 global user
 
 def index(request):
@@ -61,7 +62,7 @@ def save_permission(request):
 
 @login_required
 def logged_in(request):
-	user = get_info_user(request)
+	user = claim.get_info_user(request)
 	nombre_user = request.user.get_full_name()
 	tipouser = get_object_or_404(TipoUsuario,user_id=request.user.id)
 
@@ -183,14 +184,14 @@ def claims(request):
 
 
 	nombre_user = user.name
-	localidad = get_locality_user(user.id)
-	proveedor = get_providers_locality(localidad)
-	evento = get_event_provider(proveedor)
-	paciente = get_patient_event(evento)
-	cargo = get_process_event(evento)
-	autorizacion = get_auth_type(user.type)
+	localidad = claim.get_locality_user(user.id)
+	proveedor = claim.get_providers_locality(localidad)
+	evento = claim.get_event_provider(proveedor)
+	paciente = claim.get_patient_event(evento)
+	cargo = claim.get_process_event(evento)
+	autorizacion = claim.get_auth_type(user.type)
 	if user.type == TipoUsuario.MAC and user.type == TipoUsuario.PEMEX:
-		autorizacion = get_auth_filter(autorizacion,'event',evento)
+		autorizacion = claim.get_auth_filter(autorizacion,'event',evento)
 
 	if request.POST:
 		inicio = request.POST.get("daterange").split(" - ")[0]
