@@ -12,7 +12,7 @@ from claims.utils import sendNotifications
 import datetime
 
 claim = Methods()
-global user
+global user = claim.get_info_user(request)
 
 def index(request):
     return render_to_response('index.html',
@@ -62,7 +62,6 @@ def save_permission(request):
 
 @login_required
 def logged_in(request):
-	user = claim.get_info_user(request)
 	nombre_user = request.user.get_full_name()
 	tipouser = get_object_or_404(TipoUsuario,user_id=request.user.id)
 
