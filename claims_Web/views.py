@@ -61,7 +61,7 @@ def save_permission(request):
 
 @login_required
 def logged_in(request):
-	user = user = get_info_user(request)
+	user = get_info_user(request)
 	nombre_user = request.user.get_full_name()
 	tipouser = get_object_or_404(TipoUsuario,user_id=request.user.id)
 
