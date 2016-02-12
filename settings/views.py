@@ -71,12 +71,10 @@ def localitys(request):
 @login_required
 def reasons(request):
 	nombre_user = request.user.get_full_name()
-	if request.POST:
-		
-		return render_to_response('settings/motivos.html',RequestContext(request,locals()))
-
-
+	motivos = Motivos.objects.all()
 	return render_to_response('settings/motivos.html',RequestContext(request,locals()))
 
 
+def erace(request):
+	return
 

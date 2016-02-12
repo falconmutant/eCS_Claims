@@ -172,11 +172,16 @@ def claims(request):
 @login_required
 def historial(request):
 	user = info(request)
-	localidad = claim.get_locality_user(user.id)
-	proveedor= claim.get_providers_locality(localidad)
-	evento = claim.get_event_provider(proveedor)
-	paciente = claim.get_patient_event(evento)
-	cargo = claim.get_process_event(evento)
-	autorizacion = claim.get_auth_type(user.type(),'history',evento)
-
+	if user.type == TipoUsuario.MAC and user.type == TipoUsuario.PEMEX:
+		localidad = claim.get_locality_user(user.id)
+		proveedor= claim.get_providers_locality(localidad)
+		evento = claim.get_event_provider(proveedor)
+		paciente = claim.get_patient_event(evento)
+		cargo = claim.get_process_event(evento)
+		autorizacion = claim.get_auth_type(user.type(),'history',evento)
+	else:
+		proveedor = claim.get_providers()
+		evento = claim.get_events()
+		autorizacion = claim.get_auth_type(user.type(),'history',evento)
+	
 	return render_to_response('claims/historial.html',RequestContext(request,locals()))

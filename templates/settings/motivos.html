@@ -73,7 +73,6 @@
               </tr>
             </thead>
             <tbody id="tb">
-              
             </tbody>
           </table>
           <hr />
@@ -88,9 +87,31 @@
   <script type="text/javascript" src="{% static "js/pnotify.min.js" %}"></script>
   <script type="text/javascript">
     console.log('{{bug}}');
-    $(document).ready(function(){
-      $(".chosen-select").chosen();
-      var table3 = $('#tabletools').dataTable({
+    {% if message_success == 1 %}
+      new PNotify({
+        title: 'Exito',
+        text: 'Motivo creado con exito!',
+        type: 'success',
+        styling: 'fontawesome'
+      });
+    {% endif %}
+    function reloadtable(value){
+        $('#tabletools').dataTable().fnDestroy();
+        var tag = '';
+          {% for cause in motivos %}
+            tag += '<tr>';
+            tag += '<td>{{cause.motivo}}</td>';
+            tag += '<td><input type="checkbox" id="{{cause.id}}"';
+            tag += ' onchange="erace_logic({{cause.id}});"';
+            tag += ' name="check"';
+              {% if cause.is_active == 'Y' %}
+                tag += 'checked';
+              {% endif %}
+            tag += '></td>';
+            tag += '</tr>';
+          {% endfor %}
+        $('#tb').html(tag);
+        var table3 = $('#tabletools').dataTable({
             "language": {
                 "lengthMenu": "_MENU_",
                 "sProcessing":     "Procesando...",
@@ -124,15 +145,70 @@
         $('.panel-ctrls').append($('.dataTables_length').addClass("pull-left")).find("label").addClass("panel-ctrls-center");
 
         $('.dataTables_paginate>ul.pagination').addClass("pull-right m0");
+        
+      }
+      function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    var csrftoken = getCookie('csrftoken');
+    function erace_logic(value1) {
+        console.log("create post is working!"); // sanity check
+        var c = $('#'+value1+':checked').length;
+        $.ajax({
+            url : "/logic/", // the endpoint
+            type : "POST", // http method
+            data : { id : value1,
+                     select : c,
+                     csrfmiddlewaretoken : csrftoken
+                    }, // data sent with the post request
+
+            // handle a successful response
+            success : function(json) {
+                //$('#check'+value).css('display','none'); // remove the value from the input
+                console.log(json); // log the returned json to the console
+                console.log("success"); // another sanity check
+                if(json.message_success == 1){
+                  new PNotify({
+                    title: 'Exito',
+                    text: 'El motivo se activo con exito!',
+                    type: 'success',
+                    styling: 'fontawesome'
+                  });
+                }
+                else{
+                  new PNotify({
+                    title: 'Exito',
+                    text: 'El motivo se desactivo con exito!',
+                    type: 'success',
+                    styling: 'fontawesome'
+                  });
+                }
+            },
+
+            // handle a non-successful response
+            error : function(xhr,errmsg,err) {
+                $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+                    " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+                console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+            }
+        });
+    };
+    $(document).ready(function(){
+      $(".chosen-select").chosen();
+      reloadtable();
     });
-    {% if message_success == 1 %}
-      new PNotify({
-        title: 'Exito',
-        text: 'Motivo creado con exito!',
-        type: 'success',
-        styling: 'fontawesome'
-      });
-    {% endif %}
   </script>
   
 {% endblock javascript %}

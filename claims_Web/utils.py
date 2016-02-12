@@ -66,6 +66,7 @@ class Method:
 		return provider
 
 	def get_providers(self):
+		providers = {}
 		providers = Proveedor.objects.all()
 		return providers
 
@@ -79,6 +80,7 @@ class Method:
 		return event
 
 	def get_events(self):
+		events = {}
 		events = Evento.objects.all()
 		return events
 
