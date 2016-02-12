@@ -73,7 +73,7 @@
                   <div class="accordion-body collapse" id="collapseTwo">
                     <div class="panel-body">
                       <ul class="nav nav-pills nav-stacked">
-                        {% if tipouser.tipo != 'E' and tipouser.tipo != 'S' %}
+                        {% if user.type != TipoUsuario.ECARESOFT and user.type != TipoUsuario.SUPERUSER %}
                           <li><a href="{{ settings.APP_URL }}/claims/">Pendientes</a></li>
                         {% endif %}
                         <li><a href="{{ settings.APP_URL }}/historial/">Historial</a></li>
@@ -90,7 +90,7 @@
                   <div class="accordion-body collapse" id="collapseOne">
                     <div class="panel-body">
                       <ul class="nav nav-pills nav-stacked">
-                        {% if tipouser.tipo != 'E' and tipouser.tipo != 'S' %}
+                        {% if user.type != TipoUsuario.ECARESOFT and user.type != TipoUsuario.SUPERUSER %}
                           <li><a href="{{ settings.APP_URL }}/invoice/">Pendientes</a></li>
                         {% endif %}
                         <li><a href="{{ settings.APP_URL }}/historial_invoices/">Historial</a></li>

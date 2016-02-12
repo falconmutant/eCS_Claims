@@ -97,7 +97,7 @@ class Method:
 		try:
 			patient = Paciente.objects.filter(evento_id__in=[events.id for events in event])
 		except Exception, e:
-			patient = Paciente.objects.filter(evento_id=event)
+			patient = get_object_or_404(Paciente,evento_id=event)
 		
 		return patient
 
@@ -123,6 +123,14 @@ class Method:
 	def get_process_event(self,eventid):
 		process = {}
 		process = Procedimiento.objects.filter(evento_id__in=[event.id for event in eventid])
+		return process
+
+	def get_process_event_medic(self,eventid,medicid):
+		process = {}
+		try:
+			process = Procedimiento.objects.filter(evento_id__in=[event.id for event in eventid],medico_id__in=[medic.id for medic in medicid])
+		except Exception, e:
+			process = Procedimiento.objects.filter(evento_id=eventid,medico_id__in=[medic.id for medic in medicid])
 		return process
 
 	def get_process_object(self,processid):

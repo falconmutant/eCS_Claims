@@ -63,7 +63,6 @@ def save_permission(request):
 def logged_in(request):
 	user = info(request)
 	nombre_user = user.name
-	tipouser = get_object_or_404(TipoUsuario,user_id=request.user.id)
 
 	total_claims = Autorizacion.objects.all().filter(TipoAprobacion='1').count()
 	falta_claims = Autorizacion.objects.all().filter(Estatus__in=['E','R'],TipoAprobacion='1').count()
@@ -73,7 +72,7 @@ def logged_in(request):
 	falta_invoices = Autorizacion.objects.all().filter(Estatus__in=['E','R'],TipoAprobacion='2').count()
 	resuelto_invoices = total_invoices-falta_invoices
 
-	if tipouser.tipo == TipoUsuario.MAC:
+	if user.type == TipoUsuario.MAC:
 		id_localidad = UsuarioLocalidad.objects.filter(usuario_id=request.user.id)
 		localidad = Localidad.objects.filter(id__in=[locality_ids.localidad_id for locality_ids in id_localidad])
 		proveedor = Proveedor.objects.filter(localidad__in=[locality.nombre for locality in localidad])
@@ -90,7 +89,7 @@ def logged_in(request):
 		falta_invoices = Autorizacion.objects.all().filter(Estatus__in=['E','R'],TipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobantes]).count()
 		resuelto_invoices = total_invoices-falta_invoices
 
-	if tipouser.tipo == TipoUsuario.PEMEX:
+	if user.type == TipoUsuario.PEMEX:
 		id_localidad = UsuarioLocalidad.objects.filter(usuario_id=request.user.id)
 		localidad = Localidad.objects.filter(id__in=[locality_ids.localidad_id for locality_ids in id_localidad])
 		proveedor = Proveedor.objects.filter(localidad__in=[locality.nombre for locality in localidad])
@@ -122,6 +121,7 @@ def detalle(request, id):
 	proveedor = claim.get_provider_object(detalle.proveedor_id)
 	medico = claim.get_medic_event(id)
 	motivo = claim.get_cause()
+	procedimiento = claim.get_process_event_medic(id,medico)
 
 
 
@@ -147,7 +147,8 @@ def detalle_historial(request, id):
 	cargo = claim.get_charge_event(id)
 	proveedor = claim.get_provider_object(detalle.proveedor_id)
 	medico = claim.get_medic_event(id)
-	motivo = claim.get_cause()
+	procedimiento = claim.get_process_event_medic(id,medico)
+
 	return render_to_response('claims/historial_detalles.html',RequestContext(request,locals()))
 
 @login_required
@@ -155,12 +156,18 @@ def claims(request):
 	user = info(request)
 	inicio,fin = user.date()
 	nombre_user = user.name
-	localidad = claim.get_locality_user(user.id)
-	proveedor= claim.get_providers_locality(localidad)
-	evento = claim.get_event_provider(proveedor)
-	paciente = claim.get_patient_event(evento)
-	cargo = claim.get_process_event(evento)
-	autorizacion = claim.get_auth_type(user.type(),'claims',evento)
+
+	if user.type == TipoUsuario.MAC and user.type == TipoUsuario.PEMEX:
+		localidad = claim.get_locality_user(user.id)
+		proveedor= claim.get_providers_locality(localidad)
+		evento = claim.get_event_provider(proveedor)
+		paciente = claim.get_patient_event(evento)
+		cargo = claim.get_process_event(evento)
+		autorizacion = claim.get_auth_type(user.type(),'claims',evento)
+	else:
+		proveedor = claim.get_providers()
+		evento = claim.get_events()
+		autorizacion = claim.get_auth_type(user.type(),'claims',evento)
 
 	if request.POST:
 		claim.set_date(request.POST.get("daterange").split(" - ")[0],request.POST.get("daterange").split(" - ")[1])
@@ -172,6 +179,7 @@ def claims(request):
 @login_required
 def historial(request):
 	user = info(request)
+	nombre_user = user.name
 	if user.type == TipoUsuario.MAC and user.type == TipoUsuario.PEMEX:
 		localidad = claim.get_locality_user(user.id)
 		proveedor= claim.get_providers_locality(localidad)
