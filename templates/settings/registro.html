@@ -74,7 +74,7 @@
               <label class="col-md-2 control-label">Tipo Usuario</label>
               <div class="col-xs-4">
                 <div class="input-icon">
-                  <select name="tipo" class="input-error form-control">
+                  <select name="tipo" class="input-error form-control" required>
                     <option></option>
                     {% for types in tipos %}
                     <option value="{{types.0}}">{{types.1}}</option>
@@ -85,7 +85,7 @@
               <label class="col-md-2 control-label">Localidad</label>
               <div class="col-xs-4">
                 <div class="input-icon">
-                  <select name="localidad" multiple="multiple" data-placeholder="Selecciona tus localidades" class="chosen-select input-error form-control">
+                  <select name="localidad" multiple="multiple" data-placeholder="Selecciona tus localidades" class="chosen-select input-error form-control" required>
                     <option></option>
                     {% for locality in localidad %}
                       <option value="{{locality.id}}">{{locality.nombre}}</option>
