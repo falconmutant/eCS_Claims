@@ -9,10 +9,9 @@ from .utils import *
 from invoices_Web.models import *
 from explorer.models import *
 from claims.utils import sendNotifications
-import datetime
 
-claim = Methods()
-global user = claim.get_info_user(request)
+
+claim = Method()
 
 def index(request):
     return render_to_response('index.html',
@@ -62,7 +61,8 @@ def save_permission(request):
 
 @login_required
 def logged_in(request):
-	nombre_user = request.user.get_full_name()
+	user = info(request)
+	nombre_user = user.name
 	tipouser = get_object_or_404(TipoUsuario,user_id=request.user.id)
 
 	total_claims = Autorizacion.objects.all().filter(TipoAprobacion='1').count()
@@ -111,119 +111,72 @@ def logged_in(request):
 
 @login_required
 def detalle(request, id):
+	user = info(request)
 	message_success=0
 	message_error=1
-	tipouser = get_object_or_404(TipoUsuario,user_id=request.user.id)
+	nombre_user = user.name
+	detalle = claim.get_event_object(id)
+	paciente = claim.get_patient_event(id)
+	dx = claim.get_dx_event(id)
+	cargo = claim.get_charge_event(id)
+	proveedor = claim.get_provider_object(detalle.proveedor_id)
+	medico = claim.get_medic_event(id)
+	motivo = claim.get_cause()
+
+
+
 	if request.POST:
 		estatus = request.POST.get('estatus')
 		descripcion = request.POST.get('descripcion')
 		motivo = request.POST.get('motivo')
-		Autorizacion.objects.filter(evento_id=id).update(Estatus=estatus,Comentarios=descripcion,motivo=motivo)
 		message_success=1
-		try:
-			if estatus == 'Y':
-				detalle = get_object_or_404(Evento, id=id)
-				locality = UsuarioLocalidad.objects.filter(usuario = request.user.id)
-				for localitys in locality:
-					message = 'Se ha Autorizado el Estado de Cuenta {0}, por el sectorial MAC. Favor de revisar Sistema'.format(detalle.folioAut)
-					sendNotifications(localitys.localidad,message, TipoUsuario.PEMEX)
-			if estatus == 'A':
-				detalle = get_object_or_404(Evento, id=id)
-				locality = UsuarioLocalidad.objects.filter(usuario = request.user.id)
-				for localitys in locality:
-					message = 'Se ha Autorizado el Estado de Cuenta {0}, por el sectorial PEMEX.'.format(detalle.folioAut)
-					sendNotifications(localitys.localidad,message, TipoUsuario.MAC)
-		except Exception, e:
-			message_error = 1
-
-		x = datetime.datetime.now()
-		if x.month < 10:
-			inicio = "%s-0%s-%s"% (x.year, x.month, x.day)
-			fin = "%s-0%s-%s"% (x.year, x.month, x.day)
-		else:
-			inicio = "%s-%s-%s"% (x.year, x.month, x.day)
-			fin = "%s-%s-%s"% (x.year, x.month, x.day)
-		nombre_user = request.user.get_full_name()
-
 		return HttpResponseRedirect('/claims/')
 
-	nombre_user = request.user.get_full_name()
-	detalle = get_object_or_404(Evento, id=id)
-	paciente = get_object_or_404(Paciente, evento=id)
-	dx = Dx.objects.filter(evento_id=detalle.id)
-	cargo = Cargo.objects.filter(evento_id=detalle.id)
-	proveedor = get_object_or_404(Proveedor, id=detalle.proveedor_id)
-	medico = Medico.objects.filter(evento_id=detalle.id)
-	procedimiento = Procedimiento.objects.filter(evento_id=detalle.id,medico_id__in=[doctor.id for doctor in medico])
-	motivo = Motivos.objects.all()
+	
 	return render_to_response('claims/detalles.html',RequestContext(request,locals()))
 
 @login_required
 def detalle_historial(request, id):
-	nombre_user = request.user.get_full_name()
-	detalle = get_object_or_404(Evento, id=id)
-	paciente = get_object_or_404(Paciente, evento=id)
-	dx = Dx.objects.filter(evento_id=detalle.id)
-	cargo = Cargo.objects.filter(evento_id=detalle.id)
-	proveedor = get_object_or_404(Proveedor, id=detalle.proveedor_id)
-	medico = Medico.objects.filter(evento_id=detalle.id)
-	procedimiento = Procedimiento.objects.filter(evento_id=detalle.id,medico_id__in=[doctor.id for doctor in medico])
+	user = info(request)
+	message_success=0
+	message_error=1
+	nombre_user = user.name
+	detalle = claim.get_event_object(id)
+	paciente = claim.get_patient_event(id)
+	dx = claim.get_dx_event(id)
+	cargo = claim.get_charge_event(id)
+	proveedor = claim.get_provider_object(detalle.proveedor_id)
+	medico = claim.get_medic_event(id)
+	motivo = claim.get_cause()
 	return render_to_response('claims/historial_detalles.html',RequestContext(request,locals()))
 
 @login_required
 def claims(request):
-	x = datetime.datetime.now()
-	if x.month < 10:
-		inicio = "%s-0%s-%s"% (x.year, x.month, x.day)
-		fin = "%s-0%s-%s"% (x.year, x.month, x.day)
-	else:
-		inicio = "%s-%s-%s"% (x.year, x.month, x.day)
-		fin = "%s-%s-%s"% (x.year, x.month, x.day)
-
-
-
+	user = info(request)
+	inicio,fin = user.date()
 	nombre_user = user.name
 	localidad = claim.get_locality_user(user.id)
-	proveedor = claim.get_providers_locality(localidad)
+	proveedor= claim.get_providers_locality(localidad)
 	evento = claim.get_event_provider(proveedor)
 	paciente = claim.get_patient_event(evento)
 	cargo = claim.get_process_event(evento)
-	autorizacion = claim.get_auth_type(user.type)
-	if user.type == TipoUsuario.MAC and user.type == TipoUsuario.PEMEX:
-		autorizacion = claim.get_auth_filter(autorizacion,'event',evento)
+	autorizacion = claim.get_auth_type(user.type(),'claims',evento)
 
 	if request.POST:
-		inicio = request.POST.get("daterange").split(" - ")[0]
-		fin = request.POST.get("daterange").split(" - ")[1]
-		if tipouser.tipo == TipoUsuario.MAC:
-			autorizacion = autorizacion.filter(FechaSolicitud__range=[inicio, fin])
-		if tipouser.tipo == TipoUsuario.PEMEX:
-			autorizacion = autorizacion.filter(FechaSolicitud__range=[inicio, fin])
-		if tipouser.tipo == TipoUsuario.ECARESOFT:
-			autorizacion = autorizacion.filter(FechaSolicitud__range=[inicio, fin])
-		if tipouser.tipo == TipoUsuario.SUPERUSER:
-			autorizacion = autorizacion.filter(FechaSolicitud__range=[inicio, fin])	
-		inicio = inicio
-		fin = fin
+		claim.set_date(request.POST.get("daterange").split(" - ")[0],request.POST.get("daterange").split(" - ")[1])
+		autorizacion = claim.get_auth_filter(autorizacion,'date','')
+		
 
 	return render_to_response('claims/claims.html',RequestContext(request,locals()))
 
 @login_required
 def historial(request):
-	nombre_user = request.user.get_full_name()
-	tipouser = get_object_or_404(TipoUsuario,user_id=request.user.id)
-	id_localidad = UsuarioLocalidad.objects.filter(usuario_id=request.user.id)
-	localidad = Localidad.objects.filter(id__in=[locality_ids.localidad_id for locality_ids in id_localidad])
-	proveedor = Proveedor.objects.filter(localidad__in=[locality.nombre for locality in localidad])
-	evento = Evento.objects.filter(proveedor_id__in=[provider.id for provider in proveedor])
-	paciente = Paciente.objects.filter(evento_id__in=[event.id for event in evento])
-	cargo = Cargo.objects.filter(evento_id__in=[event.id for event in evento])
-	if tipouser.tipo == TipoUsuario.MAC:
-		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['A','X','Y','N','P'],TipoAprobacion='1',evento_id__in=[event.id for event in evento])
-	if tipouser.tipo == TipoUsuario.PEMEX:
-		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['X'],TipoAprobacion='1',evento_id__in=[event.id for event in evento])
-	if tipouser.tipo == TipoUsuario.ECARESOFT:
-		autorizacion = Autorizacion.objects.all().filter(TipoAprobacion='1')
-	if tipouser.tipo == TipoUsuario.SUPERUSER:
-		autorizacion = Autorizacion.objects.all().filter(TipoAprobacion='1')
-    	return render_to_response('claims/historial.html',RequestContext(request,locals()))
+	user = info(request)
+	localidad = claim.get_locality_user(user.id)
+	proveedor= claim.get_providers_locality(localidad)
+	evento = claim.get_event_provider(proveedor)
+	paciente = claim.get_patient_event(evento)
+	cargo = claim.get_process_event(evento)
+	autorizacion = claim.get_auth_type(user.type(),'history',evento)
+
+	return render_to_response('claims/historial.html',RequestContext(request,locals()))
