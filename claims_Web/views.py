@@ -161,10 +161,10 @@ def claims(request):
 		localidad = claim.get_locality_user(user.id)
 		proveedor= claim.get_providers_locality(localidad)
 		evento = claim.get_event_provider(proveedor)
-		paciente = claim.get_patient()
+		paciente = Paciente.objects.filter(evento_id__in=[events.id for events in evento])
 		cargo = claim.get_process_event(evento)
-		motivo = claim.get_cause()
-		
+		motivo = motivos.objects.all()
+
 		autorizacion = claim.get_auth_type(user.type(),'claims',evento)
 	else:
 		proveedor = claim.get_providers()
