@@ -85,6 +85,7 @@ class Method:
 		return events
 
 	def get_patients(self):
+		patients = {}
 		patients = Paciente.objects.all()
 		return patients
 
