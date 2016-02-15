@@ -160,11 +160,12 @@ def claims(request):
 	if user.type == TipoUsuario.MAC and user.type == TipoUsuario.PEMEX:
 		localidad = claim.get_locality_user(user.id)
 		proveedor= claim.get_providers_locality(localidad)
+		bug = "proveedor: "
+		for x in proveedor:
+			bug +=x.hospital+', '
 		evento = claim.get_event_provider(proveedor)
 		paciente = Paciente.objects.all()
-		bug = "paciente: "
-		for x in paciente:
-			bug +=x.nombre+', '
+		
 		cargo = claim.get_process_event(evento)
 		motivo = motivos.objects.all()
 
