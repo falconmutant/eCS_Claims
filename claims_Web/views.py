@@ -156,7 +156,7 @@ def claims(request):
 	user = info(request)
 	inicio,fin = user.date()
 	nombre_user = user.name
-
+	usuariotipo = user.type
 	if user.type == TipoUsuario.MAC and user.type == TipoUsuario.PEMEX:
 		localidad = claim.get_locality_user(user.id)
 		proveedor= claim.get_providers_locality(localidad)
