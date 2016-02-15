@@ -162,6 +162,9 @@ def claims(request):
 		proveedor= claim.get_providers_locality(localidad)
 		evento = claim.get_event_provider(proveedor)
 		paciente = claim.get_patient_event(evento)
+		bug = 'paciente: '
+		for x in paciente:
+			bug += x.nombre+", "
 		cargo = claim.get_process_event(evento)
 		autorizacion = claim.get_auth_type(user.type(),'claims',evento)
 	else:
