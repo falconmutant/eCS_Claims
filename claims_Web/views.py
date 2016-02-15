@@ -167,7 +167,7 @@ def claims(request):
 		paciente = Paciente.objects.all()
 		
 		cargo = claim.get_process_event(evento)
-		motivo = motivos.objects.all()
+		motivo = Motivos.objects.all()
 
 		autorizacion = claim.get_auth_type(user.type(),'claims',evento)
 	else:
@@ -180,7 +180,7 @@ def claims(request):
 		paciente = Paciente.objects.all()
 		
 		cargo = claim.get_process_event(evento)
-		motivo = motivos.objects.all()
+		motivo = Motivos.objects.all()
 
 		autorizacion = claim.get_auth_type(user.type(),'claims',evento)
 
