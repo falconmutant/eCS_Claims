@@ -161,7 +161,7 @@ def claims(request):
 		localidad = claim.get_locality_user(user.id)
 		proveedor= claim.get_providers_locality(localidad)
 		evento = claim.get_event_provider(proveedor)
-		paciente = Paciente.objects.filter(evento_id__in=[events.id for events in evento])
+		paciente = Paciente.objects.all()
 		cargo = claim.get_process_event(evento)
 		motivo = motivos.objects.all()
 
