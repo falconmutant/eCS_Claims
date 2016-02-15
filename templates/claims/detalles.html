@@ -311,14 +311,14 @@
                 <label class="col-md-2 control-label">Tipo</label>
                 <div class="col-xs-6">
                   <div class="input-icon">
-                    {% if usuariotipo == 'M' %}
+                    {% if user.type == 'M' %}
                       <select onchange="motivos(this.value);" name="estatus" class="form-control">
                         <option value="Y">Aceptado</option>
                         <option value="N">Rechazado</option>
                         <option value="E">En Revisión</option>
                       </select>
                     {% endif %}
-                    {% if usuariotipo == 'P' %}
+                    {% if user.type == 'P' %}
                       <select onchange="motivos(this.value);" name="estatus" class="form-control">
                         <option value="A">Aceptado</option>
                         <option value="X">Rechazado</option>
