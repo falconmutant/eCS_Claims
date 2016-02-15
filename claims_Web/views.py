@@ -171,8 +171,17 @@ def claims(request):
 
 		autorizacion = claim.get_auth_type(user.type(),'claims',evento)
 	else:
-		proveedor = claim.get_providers()
-		evento = claim.get_events()
+		localidad = claim.get_locality_user(user.id)
+		proveedor= claim.get_providers_locality(localidad)
+		bug = "proveedor: "
+		for x in proveedor:
+			bug +=x.hospital+', '
+		evento = claim.get_event_provider(proveedor)
+		paciente = Paciente.objects.all()
+		
+		cargo = claim.get_process_event(evento)
+		motivo = motivos.objects.all()
+
 		autorizacion = claim.get_auth_type(user.type(),'claims',evento)
 
 	if request.POST:
