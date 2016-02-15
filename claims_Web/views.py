@@ -162,6 +162,9 @@ def claims(request):
 		proveedor= claim.get_providers_locality(localidad)
 		evento = claim.get_event_provider(proveedor)
 		paciente = Paciente.objects.all()
+		bug = "paciente: "
+		for x in paciente:
+			bug +=x.nombre+', '
 		cargo = claim.get_process_event(evento)
 		motivo = motivos.objects.all()
 
