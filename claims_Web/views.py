@@ -68,10 +68,10 @@ def detalle(request, id):
 		procedure = claim.get_process_event_medic(id,medic)
 		auth_type = claim.get_choice_auth(user.type())
 		if request.POST:
-			estatus = request.POST.get('estatus')
-			descripcion = request.POST.get('descripcion')
-			motivo = request.POST.get('motivo')
-			claim.set_auth_status()
+			status = request.POST.get('estatus')
+			description = request.POST.get('descripcion')
+			cause = request.POST.get('motivo')
+			claim.set_auth_status(id,status,description,cause)
 			global message_success
 			message_success = 1
 			global message_error

@@ -132,7 +132,7 @@ class Method:
 		return queryset
 
 	def set_auth_status(self,id,status,comment,cause):
-		Autorizacion.objects.filter(evento_id=id).update(estatus=estatus,comentarios=descripcion,motivo_id=motivo)
+		Autorizacion.objects.filter(evento_id=id).update(estatus=status,comentarios=comment,motivo_id=cause)
 
 #try:
 #			if estatus == 'Y':
