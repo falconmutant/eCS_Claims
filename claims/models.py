@@ -59,7 +59,6 @@ AUTH_ESTATUS =(
 )
 
 
-
 class Motivos(models.Model):
    motivo = models.CharField(max_length=255, null=False)
    is_active = models.CharField(null=False,max_length=1,choices= YES_NO)
@@ -190,11 +189,11 @@ class CargosDx(models.Model):
    cargo = models.ForeignKey(Cargo)
 
 class Autorizacion(models.Model):
-   Estatus = models.CharField(choices= AUTH_ESTATUS, max_length=255, null=False)
-   FechaSolicitud = models.DateField()
-   Comentarios  = models.CharField(max_length=255,null=True)
-   TipoAprobacion = models.CharField(max_length=255)
-   Sistema = models.CharField(max_length=255, null=False)
+   estatus = models.CharField(choices= AUTH_ESTATUS, max_length=255, null=False)
+   fechaSolicitud = models.DateField()
+   comentarios  = models.CharField(max_length=255,null=True)
+   tipoAprobacion = models.CharField(max_length=255)
+   sistema = models.CharField(max_length=255, null=False)
    evento = models.ForeignKey(Evento,null=True)
    comprobante = models.ForeignKey(Comprobante,null=True)
    motivo = models.ForeignKey(Motivos, blank=True, null=True)

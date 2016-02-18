@@ -35,7 +35,7 @@
                     <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img src="{% static "admin/img/user_avatar.png" %}" alt="" class="user_avatar">
-                        {{nombre_user}}
+                        {{user_name}}
                         <b class="caret"></b>
                       </a>
                       <ul class="dropdown-menu dropdown-menu-right">
@@ -73,7 +73,7 @@
                   <div class="accordion-body collapse" id="collapseTwo">
                     <div class="panel-body">
                       <ul class="nav nav-pills nav-stacked">
-                        {% if user.type != 'E' and user.type != 'S' %}
+                        {% if permission != True %}
                           <li><a href="{{ settings.APP_URL }}/claims/">Pendientes</a></li>
                         {% endif %}
                         <li><a href="{{ settings.APP_URL }}/historial/">Historial</a></li>
@@ -90,7 +90,7 @@
                   <div class="accordion-body collapse" id="collapseOne">
                     <div class="panel-body">
                       <ul class="nav nav-pills nav-stacked">
-                        {% if user.type != 'E' and user.type != 'S' %}
+                        {% if permission != True %}
                           <li><a href="{{ settings.APP_URL }}/invoice/">Pendientes</a></li>
                         {% endif %}
                         <li><a href="{{ settings.APP_URL }}/historial_invoices/">Historial</a></li>
@@ -107,7 +107,7 @@
                   <div class="accordion-body collapse" id="collapseThree">
                     <div class="panel-body">
                       <ul class="nav nav-pills nav-stacked">
-                        {% if request.user.is_superuser %}
+                        {% if permission == True %}
                           <li><a href="{{ settings.APP_URL }}{% url "query_create" %}">Nuevo Reporte</a></li>
                           <li><a href="{{ settings.APP_URL }}/permisos/">Permisos</a></li>
                         {% endif %}
@@ -116,7 +116,7 @@
                     </div>
                   </div>
                 </div>
-                {% if request.user.is_superuser %}
+                {% if permission == True %}
                 <div class="panel panel-default">
                   <div class="panel-heading">
                     <a href="#collapseFour" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle">

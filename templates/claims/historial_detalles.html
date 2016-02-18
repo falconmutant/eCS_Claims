@@ -70,14 +70,14 @@
                   <label class="col-md-1 control-label">Proveedor</label>
                   <div class="col-xs-4">
                     <div class="input-icon">
-                      <input class="input-error form-control" type="text" value="{{proveedor.hospital}}" disabled>
+                      <input class="input-error form-control" type="text" value="{{provider.hospital}}" disabled>
                     </div>
                   </div>
                   
                   <label class="col-md-1 control-label">Localidad</label>
                   <div class="col-xs-4">
                     <div class="input-icon">
-                      <input class="input-error form-control" type="text" value="{{proveedor.localidad}}" disabled>
+                      <input class="input-error form-control" type="text" value="{{provider.localidad}}" disabled>
                     </div>
                   </div>
                 </div>
@@ -85,14 +85,14 @@
                   <label class="col-md-1 control-label">Paciente</label>
                   <div class="col-xs-4">
                     <div class="input-icon">
-                      <input class="input-error form-control" type="text" value="{{paciente.nombre}}" disabled>
+                      <input class="input-error form-control" type="text" value="{{patient.nombre}}" disabled>
                     </div>
                   </div>
                   
                   <label class="col-md-1 control-label">Total</label>
                   <div class="col-xs-4">
                     <div class="input-icon">
-                      <input class="input-error form-control" type="text" value="{{detalle.total}}" disabled>
+                      <input class="input-error form-control" type="text" value="{{patient.total}}" disabled>
                     </div>
                   </div>
                 </div>
@@ -104,14 +104,14 @@
                   <label class="col-md-1 control-label">Evento</label>
                   <div class="col-xs-4">
                     <div class="input-icon">
-                      <input class="input-error form-control" type="text" value="{{detalle.numEvento}}" disabled>
+                      <input class="input-error form-control" type="text" value="{{detail.numEvento}}" disabled>
                     </div>
                   </div>
                   
                   <label class="col-md-1 control-label">Folio</label>
                   <div class="col-xs-4">
                     <div class="input-icon">
-                      <input class="input-error form-control" type="text" value="{{detalle.folioAut}}" disabled>
+                      <input class="input-error form-control" type="text" value="{{detail.folioAut}}" disabled>
                     </div>
                   </div>
                 </div>
@@ -119,14 +119,14 @@
                   <label class="col-md-1 control-label">Admisión</label>
                   <div class="col-xs-4">
                     <div class="input-icon">
-                      <input class="input-error form-control" type="text" value="{{detalle.fechaAdm}}" disabled>
+                      <input class="input-error form-control" type="text" value="{{detail.fechaAdm}}" disabled>
                     </div>
                   </div>
                   
                   <label class="col-md-1 control-label">Alta</label>
                   <div class="col-xs-4">
                     <div class="input-icon">
-                      <input class="input-error form-control" type="text" value="{{detalle.fechaAlta}}" disabled>
+                      <input class="input-error form-control" type="text" value="{{detail.fechaAlta}}" disabled>
                     </div>
                   </div>
                 </div>
@@ -134,14 +134,14 @@
                   <label class="col-md-1 control-label">Medico</label>
                   <div class="col-xs-4">
                     <div class="input-icon">
-                      <input class="input-error form-control" type="text" value="{{detalle.medico}}" disabled>
+                      <input class="input-error form-control" type="text" value="{{detail.medico}}" disabled>
                     </div>
                   </div>
                   
                   <label class="col-md-1 control-label">Tipo</label>
                   <div class="col-xs-4">
                     <div class="input-icon">
-                      <input class="input-error form-control" type="text" value="{{detalle.get_tipo_display}}" disabled>
+                      <input class="input-error form-control" type="text" value="{{detail.get_tipo_display}}" disabled>
                     </div>
                   </div>
                 </div>
@@ -158,11 +158,11 @@
                     </tr>
                   </thead>
                   <tbody id="tb">
-                    {% for dato in medico %}
+                    {% for medics in medic %}
                       <tr>
-                        <td>{{dato.tipo}}</td>
-                        <td>{{dato.nombre}}</td>
-                        <td>{{dato.especialidad}}</td>
+                        <td>{{medics.tipo}}</td>
+                        <td>{{medics.nombre}}</td>
+                        <td>{{medics.especialidad}}</td>
                       </tr>
                     {% endfor %}
                   </tbody>
@@ -181,13 +181,17 @@
                   </tr>
                 </thead>
                 <tbody id="tb">
-                  {% for dato in dx %}
+                  {% for dxs in dx %}
                     <tr>
-                      <td>{{dato.fecha}}</td>
-                      <td>{{dato.codigo}}</td>
-                      <td>{{dato.nombre}}</td>
-                      <td>{% for me in medico %}{% if me.evento_id == detalle.id %}{{me.nombre}}{% endif %}{% endfor %}</td>
-                      <td>{{dato.observaciones}}</td>
+                      <td>{{dxs.fecha}}</td>
+                      <td>{{dxs.codigo}}</td>
+                      <td>{{dxs.nombre}}</td>
+                      {% for medics in medic %}
+                        {% if medics.id == dxs.medico_id %}
+                          <td>{{medics.nombre}}</td>
+                        {% endif %}
+                      {% endfor %}
+                      <td>{{dxs.observaciones}}</td>
                     </tr>
                   {% endfor %}
                 </tbody>
@@ -207,17 +211,17 @@
                     </tr>
                   </thead>
                   <tbody id="tb">
-                    {% for dato in procedimiento %}
+                    {% for procedures in procedure %}
                       <tr>
-                        <td>{{dato.fecha}}</td>
-                        <td>{{dato.codigo}}</td>
-                        <td>{{dato.nombre}}</td>
-                        {% for doctor in medico %}
-                          {% if doctor.id == dato.medico %}
-                            <td>{{doctor.nombre}}</td>
+                        <td>{{procedures.fecha}}</td>
+                        <td>{{procedures.codigo}}</td>
+                        <td>{{procedures.nombre}}</td>
+                        {% for medics in medic %}
+                          {% if medics.id == procedures.medico %}
+                            <td>{{medics.nombre}}</td>
                           {% endif %}
                         {% endfor %}
-                        <td>{{dato.observaciones}}</td>
+                        <td>{{procedures.observaciones}}</td>
                       </tr>
                     {% endfor %}
                   </tbody>
@@ -241,16 +245,16 @@
             </thead>
             <tbody id="tb">
 
-              {% for dato in cargo %}
+              {% for charges in charge %}
                 <tr>
-                  <td>{{dato.codigo}}</td>
-                  <td>{{dato.descripcion}}</td>
-                  <td>{{dato.udm}}</td>
-                  <td>{{dato.cantidad}}</td>
-                  <td>{{dato.precio}}</td>
-                  <td>{{dato.descuento}}</td>
-                  <td>{{dato.subtotal}}</td>
-                  <td>{{dato.iva}}</td>
+                  <td>{{charges.codigo}}</td>
+                  <td>{{charges.descripcion}}</td>
+                  <td>{{charges.udm}}</td>
+                  <td>{{charges.cantidad}}</td>
+                  <td>{{charges.precio}}</td>
+                  <td>{{charges.descuento}}</td>
+                  <td>{{charges.subtotal}}</td>
+                  <td>{{charges.iva}}</td>
                 </tr>
               {% endfor %}
             </tbody>

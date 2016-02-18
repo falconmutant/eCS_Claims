@@ -54,7 +54,7 @@
               <label class="col-md-3 control-label">Rango de Fechas</label>
               <div class="col-xs-4">
                 <div class="input-icon">
-                  <input type="text" name="daterange" class="input-error form-control" value="{{inicio}}-{{fin}}" />
+                  <input type="text" name="daterange" class="input-error form-control" value="{{start}}-{{end}}" />
                 </div>
               </div>
           </div>
@@ -73,26 +73,26 @@
             </tr>
           </thead>
           <tbody id="tb">
-            {% for auth in autorizacion %}
+            {% for auths in auth %}
               <tr>
-                {% for event in evento %}
-                  {% if auth.evento_id == event.id %}
-                    <td>{{auth.FechaSolicitud}}</td>
-                    {% for pro in proveedor %}
-                      {% if pro.id == event.proveedor_id %}
-                        <td>{{pro.localidad}}</td>
-                        <td>{{pro.hospital}}</td>
+                {% for events in event %}
+                  {% if auths.evento_id == events.id %}
+                    <td>{{auths.fechaSolicitud}}</td>
+                    {% for providers in provider %}
+                      {% if providers.id == events.proveedor_id %}
+                        <td>{{providers.localidad}}</td>
+                        <td>{{providers.hospital}}</td>
                       {% endif %}
                     {% endfor %}                            
-                    {% for pa in paciente %}
-                      {% if pa.evento_id == event.id %}
-                        <td>{{pa.nombre}}</td>
+                    {% for patients in patient %}
+                      {% if patients.evento_id == events.id %}
+                        <td>{{patients.nombre}}</td>
                       {% endif %}
                     {% endfor %}
-                    <td>{{event.folioAut}}</td>
-                    <td>{{event.total}}</td>
+                    <td>{{events.folioAut}}</td>
+                    <td>{{events.total}}</td>
                     <th>
-                      <a style="margin-left:0 !important;" class="a-details" href="{{ settings.APP_URL }}/detalles/{{auth.evento_id}}/">
+                      <a style="margin-left:0 !important;" class="a-details" href="{{ settings.APP_URL }}/detalles/{{auths.evento_id}}/">
                         <i class="fa fa-eye"></i>
                       </a>
                     </th>
@@ -132,14 +132,14 @@
               showMonthAfterYear: false,
               yearSuffix: ''
             },
-            startDate: '{{inicio}}',
-            endDate: '{{fin}}'
+            startDate: '{{start}}',
+            endDate: '{{end}}'
         });
       $('.applyBtn').css('display','none');
       $('.cancelBtn').css('display','none');
     });
   </script>
-  {% if bandera == 1 %}
+  {% if success == 1 %}
     <script>
       $(document).ready(function(){
         new PNotify({
@@ -151,7 +151,7 @@
       });
     </script>
   {% endif %}
-  {% if message == 1 %}
+  {% if error == 1 %}
     <script>
       $(document).ready(function(){
         new PNotify({

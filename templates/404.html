@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  eCS Claims
+{% endblock title %}
+
+{% block css %}
+  <style type="text/css">
+    #footer {
+        padding: 4em 0 6em 0;
+        text-align: center;
+    }
+    #footer .copyright {
+        color: #999;
+        font-size: 0.9em;
+        line-height: 1em;
+        margin: 2em 0 0 0;
+        padding: 0;
+        text-align: center;
+    }
+    #footer .copyright li {
+        display: inline-block;
+        list-style: none;
+        margin-left: 1em;
+        padding-left: 1em;
+    }
+    h1{
+      font-size: 50px;
+    }
+    .box{
+      margin-left: 35%;
+      margin-top: 20%;
+      margin-bottom: 10%;
+    }
+
+  </style>
+{% endblock css %}
+
+{% block header %}
+  <div class="row">
+    <div class="12u">
+      <section class="box">
+        <h1>ERROR 404</h1>
+        <h3>INFORMACIÓN NO ENCONTRADA.</h3>
+      </section>
+    </div>
+  </div>
+{% endblock header %}
+{% block javascript %}
+<script>
+  console.log('{{bug}}');
+</script>
+{% endblock javascript %}

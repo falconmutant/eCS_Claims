@@ -14,35 +14,107 @@ class info:
 		return self.request.user.get_full_name()
 
 	def type(self):
-		user = get_object_or_404(TipoUsuario,user_id=self.request.user.id)
-		return user.tipo
+		return get_object_or_404(TipoUsuario,user_id=self.request.user.id).tipo
+	
 	def date(self):
 		datenow = datetime.datetime.now()
 		if x.month < 10:
-			self.inicio = "%s-0%s-%s"% (x.year, x.month, x.day)
-			self.fin = "%s-0%s-%s"% (x.year, x.month, x.day)
+			self.start = "%s-0%s-%s"% (x.year, x.month, x.day)
+			self.end = "%s-0%s-%s"% (x.year, x.month, x.day)
 		else:
-			self.inicio = "%s-%s-%s"% (x.year, x.month, x.day)
-			self.fin = "%s-%s-%s"% (x.year, x.month, x.day)
-		return self.inicio,self.fin
+			self.start = "%s-%s-%s"% (x.year, x.month, x.day)
+			self.end = "%s-%s-%s"% (x.year, x.month, x.day)
+		return self.start,self.end
 
 
 
 class Method:
-
-	def get_cause(self):
-		cause = Motivos.objects.all()
-		return cause
-
-	def get_cause_object(self,causeid):
-		cause = get_object_or_404(Motivos,id=causeid)
-		return cause
 
 	def get_locality_user(self,userid):
 		locality = {}
 		localityid = UsuarioLocalidad.objects.filter(usuario_id=userid)
 		locality = Localidad.objects.filter(id__in=[locality_ids.localidad_id for locality_ids in localityid])
 		return locality
+
+	def get_providers_locality(self,locality):
+		return Proveedor.objects.filter(localidad__in=[localitys.nombre for localitys in locality])
+
+	def get_event_provider(self,provider):
+		return Evento.objects.filter(proveedor_id__in=[providers.id for providers in provider])
+
+	def get_patient_event(self,event):
+		try:
+			return Paciente.objects.filter(evento_id__in=[events.id for events in event])
+		except Exception, e:
+			return get_object_or_404(Paciente,evento_id=event)
+
+	def get_process_event(self,eventid):
+		return Procedimiento.objects.filter(evento_id__in=[event.id for event in eventid])
+
+	def get_auth_type(self,usertype,eventype,event):
+		auth={}
+		if usertype == TipoUsuario.MAC:
+			if eventype == 'history':
+				auth = Autorizacion.objects.all().filter(estatus__in=['A','X','Y','N','P'],tipoAprobacion='1',evento_id__in=[events.id for events in event])
+			else:
+				auth = Autorizacion.objects.filter(estatus__in=['E','R'],tipoAprobacion='1',evento_id__in=[events.id for events in event])
+		elif usertype == TipoUsuario.PEMEX:
+			if eventype == 'history':
+				auth = Autorizacion.objects.all().filter(estatus__in=['X'],tipoAprobacion='1',evento_id__in=[events.id for events in event])
+			else:
+				auth = Autorizacion.objects.filter(estatus__in=['Y','P'],tipoAprobacion='1',evento_id__in=[events.id for events in event])
+		elif usertype == TipoUsuario.ECARESOFT:
+			auth = Autorizacion.objects.filter(estatus__in=['E','R','A','P'],tipoAprobacion='1')
+		elif usertype == TipoUsuario.SUPERUSER:
+			auth = Autorizacion.objects.filter(estatus__in=['E','R','A','P'],tipoAprobacion='1')
+		return auth
+
+	def get_auth_filter(self,auth,value,obj):
+		if value == 'date':
+			auth = auth.filter(fechaSolicitud__range=[self.start, self.end])
+		if value == 'status':
+			auth = auth.filter(estatus__in=obj)
+		if value == 'type':
+			auth = auth.filter(tipoAprobacion=obj)
+		return auth
+
+	def get_event_auth(self,auth):
+		return Evento.objects.filter(id__in= [auths.evento_id for auths in auth])
+
+	def get_choice_auth(self,typeUser):
+		AUTH_ESTATUS_TEMPLATE=()
+		if typeUser == TipoUsuario.MAC:
+			AUTH_ESTATUS_TEMPLATE =(
+				('Y', 'Aceptado'),
+				('N', 'Rechazado'),
+				('E', 'En Revision'),
+			)
+		elif typeUser == TipoUsuario.PEMEX:
+			AUTH_ESTATUS_TEMPLATE =(
+				('A', 'Aceptado'),
+				('X', 'Rechazado'),
+				('P', 'En Revision'),
+			)
+		return AUTH_ESTATUS_TEMPLATE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	def get_cause(self):
+		return Motivos.objects.all()
+
+	
 
 	def get_locality_object(self,localityid):
 		locality = get_object_or_404(Localidad,id=localityid)
@@ -52,10 +124,7 @@ class Method:
 		localitys = Localidad.objects.all()
 		return localitys
 
-	def get_providers_locality(self,locality):
-		provider = {}
-		provider = Proveedor.objects.filter(localidad__in=[localitys.nombre for localitys in locality])
-		return provider
+	
 
 	def get_provider_rfc(self,providerrfc):
 		provider = get_object_or_404(Proveedor,rfc=providerrfc)
@@ -70,19 +139,13 @@ class Method:
 		providers = Proveedor.objects.all()
 		return providers
 
-	def get_event_provider(self,provider):
-		event = {}
-		event = Evento.objects.filter(proveedor_id__in=[providers.id for providers in provider])
-		return event
+	
 
 	def get_event_object(self,eventid):
 		event = get_object_or_404(Evento,id=eventid)
 		return event
 
-	def get_events(self):
-		events = {}
-		events = Evento.objects.all()
-		return events
+	
 
 	def get_patients(self):
 		patients = {}
@@ -93,14 +156,7 @@ class Method:
 		patient = get_object_or_404(Paciente,id=patientid)
 		return patient
 
-	def get_patient_event(self,event):
-		patient = {}
-		try:
-			patient = Paciente.objects.filter(evento_id__in=[events.id for events in event])
-		except Exception, e:
-			patient = get_object_or_404(Paciente,evento_id=event)
-		
-		return patient
+	
 
 	def get_medics(self):
 		medics = Medico.objects.all()
@@ -121,10 +177,7 @@ class Method:
 		process = Procedimiento.objects.filter(medico_id__in=[medic.id for medic in medicid])
 		return process
 
-	def get_process_event(self,eventid):
-		process = {}
-		process = Procedimiento.objects.filter(evento_id__in=[event.id for event in eventid])
-		return process
+	
 
 	def get_process_event_medic(self,eventid,medicid):
 		process = {}
@@ -167,65 +220,44 @@ class Method:
 
 	def get_count_claims():
 		if usertype == TipoUsuario.ECARESOFT or usertype == TipoUsuario.SUPERUSER:
-			return Autorizacion.objects.all().filter(TipoAprobacion='1').count()
+			return Autorizacion.objects.all().filter(tipoAprobacion='1').count()
 		elif usertype == TipoUsuario.MAC:
 			locality = Localidad.objects.filter(id__in=[locality_ids.localidad_id for locality_ids in get_locality_user(self.id)])
 			event = Evento.objects.filter(proveedor_id__in=[provider.id for provider in get_providers_locality(locality)])
-			return Autorizacion.objects.all().filter(TipoAprobacion='1',evento_id__in=[events.id for events in event]).count()
+			return Autorizacion.objects.all().filter(tipoAprobacion='1',evento_id__in=[events.id for events in event]).count()
 
 
 	def get_count_invoices():
 		if usertype == TipoUsuario.ECARESOFT or usertype == TipoUsuario.SUPERUSER:
-			return Autorizacion.objects.all().filter(TipoAprobacion='2').count()
+			return Autorizacion.objects.all().filter(tipoAprobacion='2').count()
 		elif usertype == TipoUsuario.MAC:
 			locality = Localidad.objects.filter(id__in=[locality_ids.localidad_id for locality_ids in get_locality_user(self.id)])
 			emisor = Emisor.objects.filter(rfc__in=[provider.rfc for provider in get_providers_locality(locality)])
 			comprobantes = Comprobante.objects.filter(emisor_id__in=[trans.id for trans in emisor])
-			return Autorizacion.objects.all().filter(TipoAprobacion='1',evento_id__in=[events.id for events in event]).count()
+			return Autorizacion.objects.all().filter(tipoAprobacion='1',evento_id__in=[events.id for events in event]).count()
 
 	def get_missing_claims():
 		if usertype == TipoUsuario.ECARESOFT or usertype == TipoUsuario.SUPERUSER:
-			return Autorizacion.objects.all().filter(Estatus__in=['E','R'],TipoAprobacion='1').count()
+			return Autorizacion.objects.all().filter(estatus__in=['E','R'],tipoAprobacion='1').count()
 		elif usertype == TipoUsuario.MAC:
 			locality = Localidad.objects.filter(id__in=[locality_ids.localidad_id for locality_ids in get_locality_user(self.id)])
 			event = Evento.objects.filter(proveedor_id__in=[provider.id for provider in get_providers_locality(locality)])
-			return Autorizacion.objects.all().filter(Estatus__in=['E','R'],TipoAprobacion='1',evento_id__in=[events.id for events in event]).count()
+			return Autorizacion.objects.all().filter(estatus__in=['E','R'],tipoAprobacion='1',evento_id__in=[events.id for events in event]).count()
 
 	def get_missing_invoices():
 		if usertype == TipoUsuario.ECARESOFT or usertype == TipoUsuario.SUPERUSER:
-			return Autorizacion.objects.all().filter(Estatus__in=['E','R'],TipoAprobacion='2').count()
+			return Autorizacion.objects.all().filter(estatus__in=['E','R'],tipoAprobacion='2').count()
 
-	def get_auth_type(self,usertype,eventype,event):
-		auth={}
 
-		if usertype == TipoUsuario.MAC:
-			if eventype == 'history':
-				auth = Autorizacion.objects.all().filter(Estatus__in=['A','X','Y','N','P'],TipoAprobacion='1',evento_id__in=[events.id for events in event])
-			else:
-				auth = Autorizacion.objects.filter(Estatus__in=['E','R'],TipoAprobacion='1',evento_id__in=[events.id for events in event])
-		elif usertype == TipoUsuario.PEMEX:
-			if eventype == 'history':
-				auth = Autorizacion.objects.all().filter(Estatus__in=['X'],TipoAprobacion='1',evento_id__in=[events.id for events in event])
-			else:
-				auth = Autorizacion.objects.filter(Estatus__in=['Y','P'],TipoAprobacion='1',evento_id__in=[events.id for events in event])
-		elif usertype == TipoUsuario.ECARESOFT:
-			auth = Autorizacion.objects.filter(Estatus__in=['E','R','A','P'],TipoAprobacion='1')
-		elif usertype == TipoUsuario.SUPERUSER:
-			auth = Autorizacion.objects.filter(Estatus__in=['E','R','A','P'],TipoAprobacion='1')
-		return auth
-
-	def get_auth_filter(self,auth,value,obj):
-		if value == 'date':
-			auth = auth.filter(FechaSolicitud__range=[self.start, self.end])
-		if value == 'status':
-			auth = auth.filter(Estatus__in=obj)
-		if value == 'type':
-			auth = auth.filter(TipoAprobacion=obj)
-		return auth
+	def get_date(self):
+		return self.start,self.end
+	
 
 	def set_date(self,start,end):
 		self.start = start
 		self.end = end
+
+
 
 	def set_userid(self,id):
 		self.id = id
