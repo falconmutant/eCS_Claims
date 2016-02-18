@@ -12,14 +12,6 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='tipousuariolocalidades',
-            name='localidades',
-        ),
-        migrations.RemoveField(
-            model_name='tipousuariolocalidades',
-            name='usuario',
-        ),
         migrations.AddField(
             model_name='motivos',
             name='is_active',
