@@ -45,12 +45,12 @@ INSTALLED_APPS = (
     'rest_framework.authtoken',
     #'kronos',
     #
+    'settings',
     'claims',
     'app',
     'claims_Web',
     'invoices_Web',
     'explorer',
-    'settings',
 )
 
 MIDDLEWARE_CLASSES = (

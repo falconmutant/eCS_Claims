@@ -4,11 +4,9 @@ from django.shortcuts import render_to_response
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from django.contrib import auth
-from .utils import *
-
-from invoices_Web.models import *
-from explorer.models import *
-from claims.utils import sendNotifications
+from .utils import Method
+from settings.utils import info
+from claims.models import TipoUsuario
 
 claim = Method()
 message_success=0
@@ -20,6 +18,7 @@ def claims(request):
 	user_type = user.type()
 	user_name = user.name()
 	start,end = user.date()
+	permission = user.permission(user_type)
 	success = message_success
 	error = message_error
 	global message_success
@@ -49,6 +48,7 @@ def claims(request):
 
 		return render_to_response('claims/claims.html',RequestContext(request,locals()))
 	except Exception, e:
+		bug = e
 		return render_to_response('404.html',RequestContext(request,locals()))
 
 @login_required
@@ -56,6 +56,7 @@ def detalle(request, id):
 	user = info(request)
 	user_type = user.type()
 	user_name = user.name()
+	permission = user.permission(user_type)
 	try:
 		detail = claim.get_event_object(id)
 		patient = claim.get_patient_event(id)
@@ -70,7 +71,7 @@ def detalle(request, id):
 			estatus = request.POST.get('estatus')
 			descripcion = request.POST.get('descripcion')
 			motivo = request.POST.get('motivo')
-			save = Autorizacion.objects.filter(evento_id=id).update(estatus=estatus,comentarios=descripcion,motivo_id=motivo)
+			claim.set_auth_status()
 			global message_success
 			message_success = 1
 			global message_error
@@ -86,6 +87,7 @@ def historial(request):
 	user = info(request)
 	user_type = user.type()
 	user_name = user.name()
+	permission = user.permission(user_type)
 	try:
 		if user.type() == TipoUsuario.MAC or user.type() == TipoUsuario.PEMEX:
 			locality = claim.get_locality_user(user.id())
@@ -102,14 +104,15 @@ def historial(request):
 			locality = claim.get_locality_provider(provider)
 		return render_to_response('claims/historial.html',RequestContext(request,locals()))
 	except Exception, e:
+		bug = e
 		return render_to_response('404.html',RequestContext(request,locals()))
-
 
 @login_required
 def detalle_historial(request, id):
 	user = info(request)
 	user_type = user.type()
 	user_name = user.name()
+	permission = user.permission(user_type)
 	try:
 		detail = claim.get_event_object(id)
 		patient = claim.get_patient_event(id)
@@ -122,4 +125,5 @@ def detalle_historial(request, id):
 		auth_type = claim.get_choice_auth(user.type())
 		return render_to_response('claims/historial_detalles.html',RequestContext(request,locals()))
 	except Exception, e:
+		bug = e
 		return render_to_response('404.html',RequestContext(request,locals()))

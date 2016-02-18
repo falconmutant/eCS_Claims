@@ -25,6 +25,7 @@ from app.views import apptoken, AppResetKeyView
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^', include('settings.urls')),
     url(r'^', include('claims_Web.urls')),
     url(r'^proveedores', include('claims.urls')),
     url(r'^apps/', include("app.urls")),
@@ -33,7 +34,6 @@ urlpatterns = [
     #url(r'^api-token-auth/', 'rest_framework_jwt.views.obtain_jwt_token'),
     url(r'^routes/', routes, name='routes'),
     url(r'^', include('invoices_Web.urls')),
-    url(r'^', include('settings.urls')),
     url(r'^explorer/', include('explorer.urls')),
 ]
 

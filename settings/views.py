@@ -11,9 +11,67 @@ from invoices_Web.models import *
 from explorer.models import *
 from claims.utils import sendNotifications
 import datetime
-from claims_Web.utils import *
+from .utils import *
+
+
 
 # Create your views here.
+def index(request):
+    return render_to_response('index.html',
+        context_instance=RequestContext(request)
+    )
+
+@login_required
+def logged_in(request):
+	user = info(request)
+	user_type = user.type()
+	user_name = user.name()
+	permission = user.permission(user_type)
+
+	total_claims = Autorizacion.objects.all().filter(tipoAprobacion='1').count()
+	falta_claims = Autorizacion.objects.all().filter(estatus__in=['E','R'],tipoAprobacion='1').count()
+	resuelto_claims = total_claims-falta_claims
+
+	total_invoices = Autorizacion.objects.all().filter(tipoAprobacion='2').count()
+	falta_invoices = Autorizacion.objects.all().filter(estatus__in=['E','R'],tipoAprobacion='2').count()
+	resuelto_invoices = total_invoices-falta_invoices
+
+	if user.type() == TipoUsuario.MAC:
+		id_localidad = UsuarioLocalidad.objects.filter(usuario_id=request.user.id)
+		localidad = Localidad.objects.filter(id__in=[locality_ids.localidad_id for locality_ids in id_localidad])
+		proveedor = Proveedor.objects.filter(localidad__in=[locality.nombre for locality in localidad])
+		evento = Evento.objects.filter(proveedor_id__in=[provider.id for provider in proveedor])
+
+		total_claims = Autorizacion.objects.all().filter(tipoAprobacion='1',evento_id__in=[event.id for event in evento]).count()
+		falta_claims = Autorizacion.objects.all().filter(estatus__in=['E','R'],tipoAprobacion='1',evento_id__in=[event.id for event in evento]).count()
+		resuelto_claims = total_claims-falta_claims
+
+		emisor = Emisor.objects.filter(rfc__in=[provider.rfc for provider in proveedor])
+		comprobantes = Comprobante.objects.filter(emisor_id__in=[trans.id for trans in emisor])
+
+		total_invoices = Autorizacion.objects.all().filter(tipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobantes]).count()
+		falta_invoices = Autorizacion.objects.all().filter(estatus__in=['E','R'],tipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobantes]).count()
+		resuelto_invoices = total_invoices-falta_invoices
+
+	if user.type() == TipoUsuario.PEMEX:
+		id_localidad = UsuarioLocalidad.objects.filter(usuario_id=request.user.id)
+		localidad = Localidad.objects.filter(id__in=[locality_ids.localidad_id for locality_ids in id_localidad])
+		proveedor = Proveedor.objects.filter(localidad__in=[locality.nombre for locality in localidad])
+		evento = Evento.objects.filter(proveedor_id__in=[provider.id for provider in proveedor])
+
+		total_claims = Autorizacion.objects.all().filter(tipoAprobacion='1',evento_id__in=[event.id for event in evento]).count()
+		falta_claims = Autorizacion.objects.all().filter(estatus__in=['Y','P'],tipoAprobacion='1',evento_id__in=[event.id for event in evento]).count()
+		resuelto_claims = total_claims-falta_claims
+
+		emisor = Emisor.objects.filter(rfc__in=[provider.rfc for provider in proveedor])
+		comprobantes = Comprobante.objects.filter(emisor_id__in=[trans.id for trans in emisor])
+
+		total_invoices = Autorizacion.objects.all().filter(tipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobantes]).count()
+		falta_invoices = Autorizacion.objects.all().filter(estatus__in=['Y','P'],tipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobantes]).count()
+		resuelto_invoices = total_invoices-falta_invoices
+	
+	return render_to_response('pantallas.html',RequestContext(request,locals()))
+
 @login_required
 def registration(request):
 	nombre_user = request.user.get_full_name()
@@ -80,10 +138,7 @@ def erace(request):
 	return
 
 
-def index(request):
-    return render_to_response('index.html',
-        context_instance=RequestContext(request)
-    )
+
 
 def permisos(request):
 	reportes = Query.objects.all()
@@ -126,55 +181,4 @@ def save_permission(request):
 			content_type="application/json"
 		)
 
-@login_required
-def logged_in(request):
-	user = info(request)
-	user_type = user.type()
-	user_name = user.name()
-	permission = False
-	if user.type() == TipoUsuario.ECARESOFT or user.type() == TipoUsuario.SUPERUSER:
-		permission = True
 
-	total_claims = Autorizacion.objects.all().filter(tipoAprobacion='1').count()
-	falta_claims = Autorizacion.objects.all().filter(estatus__in=['E','R'],tipoAprobacion='1').count()
-	resuelto_claims = total_claims-falta_claims
-
-	total_invoices = Autorizacion.objects.all().filter(tipoAprobacion='2').count()
-	falta_invoices = Autorizacion.objects.all().filter(estatus__in=['E','R'],tipoAprobacion='2').count()
-	resuelto_invoices = total_invoices-falta_invoices
-
-	if user.type() == TipoUsuario.MAC:
-		id_localidad = UsuarioLocalidad.objects.filter(usuario_id=request.user.id)
-		localidad = Localidad.objects.filter(id__in=[locality_ids.localidad_id for locality_ids in id_localidad])
-		proveedor = Proveedor.objects.filter(localidad__in=[locality.nombre for locality in localidad])
-		evento = Evento.objects.filter(proveedor_id__in=[provider.id for provider in proveedor])
-
-		total_claims = Autorizacion.objects.all().filter(tipoAprobacion='1',evento_id__in=[event.id for event in evento]).count()
-		falta_claims = Autorizacion.objects.all().filter(estatus__in=['E','R'],tipoAprobacion='1',evento_id__in=[event.id for event in evento]).count()
-		resuelto_claims = total_claims-falta_claims
-
-		emisor = Emisor.objects.filter(rfc__in=[provider.rfc for provider in proveedor])
-		comprobantes = Comprobante.objects.filter(emisor_id__in=[trans.id for trans in emisor])
-
-		total_invoices = Autorizacion.objects.all().filter(tipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobantes]).count()
-		falta_invoices = Autorizacion.objects.all().filter(estatus__in=['E','R'],tipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobantes]).count()
-		resuelto_invoices = total_invoices-falta_invoices
-
-	if user.type() == TipoUsuario.PEMEX:
-		id_localidad = UsuarioLocalidad.objects.filter(usuario_id=request.user.id)
-		localidad = Localidad.objects.filter(id__in=[locality_ids.localidad_id for locality_ids in id_localidad])
-		proveedor = Proveedor.objects.filter(localidad__in=[locality.nombre for locality in localidad])
-		evento = Evento.objects.filter(proveedor_id__in=[provider.id for provider in proveedor])
-
-		total_claims = Autorizacion.objects.all().filter(tipoAprobacion='1',evento_id__in=[event.id for event in evento]).count()
-		falta_claims = Autorizacion.objects.all().filter(estatus__in=['Y','P'],tipoAprobacion='1',evento_id__in=[event.id for event in evento]).count()
-		resuelto_claims = total_claims-falta_claims
-
-		emisor = Emisor.objects.filter(rfc__in=[provider.rfc for provider in proveedor])
-		comprobantes = Comprobante.objects.filter(emisor_id__in=[trans.id for trans in emisor])
-
-		total_invoices = Autorizacion.objects.all().filter(tipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobantes]).count()
-		falta_invoices = Autorizacion.objects.all().filter(estatus__in=['Y','P'],tipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobantes]).count()
-		resuelto_invoices = total_invoices-falta_invoices
-	
-	return render_to_response('pantallas.html',RequestContext(request,locals()))

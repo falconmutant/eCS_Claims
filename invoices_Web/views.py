@@ -16,7 +16,7 @@ def detalle(request, id):
 	if request.POST:
 		estatus = request.POST.get('estatus')
 		descripcion = request.POST.get('descripcion')
-		Autorizacion.objects.filter(comprobante_id=id).update(Estatus=estatus,Comentarios=descripcion)
+		Autorizacion.objects.filter(comprobante_id=id).update(estatus=estatus,Comentarios=descripcion)
 		return HttpResponseRedirect('/invoice/')
 	
 	try:
@@ -31,9 +31,9 @@ def detalle(request, id):
 		fullevento = Evento.objects.filter(proveedor_id=proveedor.id)
 		motivo = Motivos.objects.all()
 		if tipouser.tipo == TipoUsuario.MAC:
-			autorizacion = Autorizacion.objects.all().filter(Estatus__in='A',TipoAprobacion='1')
+			autorizacion = Autorizacion.objects.all().filter(estatus__in='A',tipoAprobacion='1')
 		if tipouser.tipo == TipoUsuario.PEMEX:
-			autorizacion = Autorizacion.objects.all().filter(Estatus__in='Y',TipoAprobacion='1')		
+			autorizacion = Autorizacion.objects.all().filter(estatus__in='Y',tipoAprobacion='1')		
 
 		return render_to_response('invoices/detalles.html',RequestContext(request,locals()))
 	except Exception, e:
@@ -114,25 +114,25 @@ def invoices(request):
 	comptipo = ComprobanteTipo.objects.filter(comprobante__in=[comp.id for comp in comprobante])
 
 	if tipouser.tipo == TipoUsuario.MAC:
-		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R'],TipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobante])
+		autorizacion = Autorizacion.objects.all().filter(estatus__in=['E','R'],tipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobante])
 	if tipouser.tipo == TipoUsuario.PEMEX:
-		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['Y','P'],TipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobante])
+		autorizacion = Autorizacion.objects.all().filter(estatus__in=['Y','P'],tipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobante])
 	if tipouser.tipo == TipoUsuario.ECARESOFT:
-		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='2')
+		autorizacion = Autorizacion.objects.all().filter(estatus__in=['E','R','A','P'],tipoAprobacion='2')
 	if tipouser.tipo == TipoUsuario.SUPERUSER:
-		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['E','R','A','P'],TipoAprobacion='2')
+		autorizacion = Autorizacion.objects.all().filter(estatus__in=['E','R','A','P'],tipoAprobacion='2')
 
 	if request.POST:
 		inicio = request.POST.get("daterange").split(" - ")[0]
 		fin = request.POST.get("daterange").split(" - ")[1]
 		if tipouser.tipo == TipoUsuario.MAC:
-			autorizacion = autorizacion.filter(FechaSolicitud__range=[inicio, fin])
+			autorizacion = autorizacion.filter(fechaSolicitud__range=[inicio, fin])
 		if tipouser.tipo == TipoUsuario.PEMEX:
-			autorizacion = autorizacion.filter(FechaSolicitud__range=[inicio, fin])
+			autorizacion = autorizacion.filter(fechaSolicitud__range=[inicio, fin])
 		if tipouser.tipo == TipoUsuario.ECARESOFT:
-			autorizacion = autorizacion.filter(FechaSolicitud__range=[inicio, fin])
+			autorizacion = autorizacion.filter(fechaSolicitud__range=[inicio, fin])
 		if tipouser.tipo == TipoUsuario.SUPERUSER:
-			autorizacion = autorizacion.filter(FechaSolicitud__range=[inicio, fin])	
+			autorizacion = autorizacion.filter(fechaSolicitud__range=[inicio, fin])	
     	return render_to_response('invoices/invoices.html',RequestContext(request,locals()))
 
 @login_required
@@ -149,12 +149,12 @@ def historial(request):
 	comptipo = ComprobanteTipo.objects.filter(comprobante__in=[comp.id for comp in comprobante])
 
 	if tipouser.tipo == TipoUsuario.MAC:
-		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['A','X','Y','N','P'],TipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobante])
+		autorizacion = Autorizacion.objects.all().filter(estatus__in=['A','X','Y','N','P'],tipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobante])
 	if tipouser.tipo == TipoUsuario.PEMEX:
-		autorizacion = Autorizacion.objects.all().filter(Estatus__in=['X'],TipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobante])
+		autorizacion = Autorizacion.objects.all().filter(estatus__in=['X'],tipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobante])
 	if tipouser.tipo == TipoUsuario.ECARESOFT:
-		autorizacion = Autorizacion.objects.all().filter(TipoAprobacion='2',)
+		autorizacion = Autorizacion.objects.all().filter(tipoAprobacion='2',)
 	if tipouser.tipo == TipoUsuario.SUPERUSER:
-		autorizacion = Autorizacion.objects.all().filter(TipoAprobacion='2')
+		autorizacion = Autorizacion.objects.all().filter(tipoAprobacion='2')
 
 	return render_to_response('invoices/historial.html',RequestContext(request,locals()))
