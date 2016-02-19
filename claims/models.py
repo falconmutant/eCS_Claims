@@ -121,12 +121,13 @@ class Evento(models.Model):
    numEvento = models.CharField(max_length=255)
    fechaAdm = models.DateTimeField()
    fechaAlta = models.DateTimeField()
+   fechaPrimerCargo = models.DateTimeField(null=True)
    cedula = models.CharField(max_length=50)
    nommedico = models.CharField(max_length=255)
    tipo = models.CharField(choices=EVENT_TIPO, max_length=1)
    estatus = models.CharField(choices= EVENT_ESTATUS, max_length=1)
    proveedor = models.ForeignKey(Proveedor)
-   total = models.DecimalField(max_digits=7, decimal_places=2)
+   total = models.DecimalField(max_digits=12, decimal_places=2)
    
 class Paciente(models.Model):
    curp = models.CharField(max_length=18, null=False)
@@ -177,11 +178,11 @@ class Cargo(models.Model):
    sistema = models.CharField(max_length=255)
    sistemaCodigo = models.CharField(max_length=255)
    cantidad = models.PositiveSmallIntegerField()
-   precio = models.DecimalField(max_digits=7, decimal_places=2)
-   subtotal = models.DecimalField(max_digits=7, decimal_places=2)
-   iva = models.DecimalField(max_digits=7, decimal_places=2)
-   descuento = models.DecimalField(max_digits=7, decimal_places=2)
-   total = models.DecimalField(max_digits=7, decimal_places=2)
+   precio = models.DecimalField(max_digits=12, decimal_places=2)
+   subtotal = models.DecimalField(max_digits=12, decimal_places=2)
+   iva = models.DecimalField(max_digits=12, decimal_places=2)
+   descuento = models.DecimalField(max_digits=12, decimal_places=2)
+   total = models.DecimalField(max_digits=12, decimal_places=2)
 
 
 class CargosDx(models.Model):

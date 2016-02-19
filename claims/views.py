@@ -229,9 +229,9 @@ class EventosView(ProveedorView):
                         evento.delete()
                         return Response(response, status=status.HTTP_200_OK)
                     cargosDxSerial.save()
-        autorizacion= Autorizacion.objects.create(Estatus="R", 
-            FechaSolicitud=datetime.datetime.now(), TipoAprobacion="1",
-            Sistema=request.user,evento_id=evento.id)
+        autorizacion= Autorizacion.objects.create(estatus="R", 
+            fechaSolicitud=datetime.datetime.now(), tipoAprobacion="1",
+            sistema=request.user,evento_id=evento.id)
         
         response = {
             'msj': 'Evento creado',
@@ -258,9 +258,9 @@ class EventoDetailView(EventoView):
         evento_json = EventoSerializer(evento).data
         autObj=Autorizacion.objects.get(evento=evento)
         claim_json={}
-	claim_json['Estatus']=autObj.Estatus #Autorizacion.objects.get(evento=evento).Estatus
-        claim_json['Display']=autObj.get_Estatus_display() #Autorizacion.objects.get(evento=evento).get_Estatus_display()
-        if autObj.Estatus == "X":
+	claim_json['estatus']=autObj.estatus #Autorizacion.objects.get(evento=evento).estatus
+        claim_json['Display']=autObj.get_estatus_display() #Autorizacion.objects.get(evento=evento).get_estatus_display()
+        if autObj.estatus == "X":
 	#     x=1
 	    claim_json['Motivo']=Motivos.objects.get(id=autObj.motivo_id).motivo
 	else:
