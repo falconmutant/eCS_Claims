@@ -152,7 +152,13 @@
                   <label class="col-md-1 control-label">Primer Cargo</label>
                   <div class="col-xs-4">
                     <div class="input-icon">
-                      <input class="input-error form-control" type="text" value="{{detail.fechaPrimerCargo}}" disabled>
+                      {% for date in detail.fechaprimerpago %}
+                          <input class="input-error form-control" type="text" value="{{detail.fechaprimerpago}}" disabled>
+                      {% empty %}
+                          <input class="input-error form-control" type="text" value="N/D" disabled>
+                      {% endfor %}
+                        
+
                     </div>
                   </div>
                   <label class="col-md-1 control-label">Total</label>
