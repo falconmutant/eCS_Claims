@@ -58,7 +58,7 @@ def select_app(request, format=None):
 class AppHomeView(AppView):
     def get(self, request, app_id, format=None):
         app = self.get_app(app_id)
-        return render(request, 'home.html', {'app': app})
+        return render(request, 'app/home.html', {'app': app})
 
 class AppResetKeyView(AppView):
     def get(self, request, app_id, format=None):
@@ -67,10 +67,10 @@ class AppResetKeyView(AppView):
         show = request.GET.get('show', '')
         key = app.get_key() if show == 'yes' else ''
 
-        return render(request, 'reset.html', {'app':app, 'key': key})
+        return render(request, 'app/reset.html', {'app':app, 'key': key})
 
     def post(self, request, app_id, format=None):
         app = self.get_app(app_id)
         key = secret_key_gen()
         app.set_key(key)
-        return render(request, 'reset.html', {'app':app, 'key':key})
+        return render(request, 'app/reset.html', {'app':app, 'key':key})

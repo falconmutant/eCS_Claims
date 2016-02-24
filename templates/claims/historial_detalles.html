@@ -149,16 +149,14 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-md-1 control-label">Primer Cargo</label>
+                  <label class="col-md-1 control-label">Inicio de Captura</label>
                   <div class="col-xs-4">
                     <div class="input-icon">
-                      {% for date in detail.fechaprimerpago %}
-                          <input class="input-error form-control" type="text" value="{{detail.fechaprimerpago}}" disabled>
-                      {% empty %}
+                      {% if detail.fechaPrimerCargo != Null %}
+                          <input class="input-error form-control" type="text" value="{{detail.fechaPrimerCargo}}" disabled>
+                      {% else %}
                           <input class="input-error form-control" type="text" value="N/D" disabled>
-                      {% endfor %}
-                        
-
+                      {% endif %}
                     </div>
                   </div>
                   <label class="col-md-1 control-label">Total</label>

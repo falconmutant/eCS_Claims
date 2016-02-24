@@ -54,7 +54,7 @@
               <label class="col-md-3 control-label">Rango de Fechas</label>
               <div class="col-xs-4">
                 <div class="input-icon">
-                  <input type="text" name="daterange" class="input-error form-control" value="{{inicio}}-{{fin}}" />
+                  <input type="text" name="daterange" class="input-error form-control" value="{{start}}-{{end}}" />
                 </div>
               </div>
           </div>
@@ -75,42 +75,42 @@
             </tr>
           </thead>
           <tbody id="tb">
-            {% for aut in autorizacion %}
-              {% for co in comprobante %}
-                {% if aut.comprobante_id == co.id %}
+            {% for auths in auth %}
+              {% for vouchers in voucher %}
+                {% if auths.comprobante_id == vouchers.id %}
                   <tr>
-                    <td>{{co.fecha}}</td>
-                    <td>{{co.folio}}</td>
-                    {% for ci in cliente %}
-                      {% if co.emisor_id == ci.id %}
-                        <td>{{ci.nombre}}</td>
-                        <td>{{ci.municipio}}</td>
+                    <td>{{vouchers.fecha}}</td>
+                    <td>{{vouchers.folio}}</td>
+                    {% for companys in company %}
+                      {% if vouchers.emisor_id == companys.id %}
+                        <td>{{companys.nombre}}</td>
+                        <td>{{companys.municipio}}</td>
                       {% endif %}
                     {% endfor %}
-                    <td>{{co.total}}</td>
-                    {% for level in comptipo %}
-                        <td>{{ level.get_tipo_display }}</td>
+                    <td>{{vouchers.total}}</td>
+                    {% for typeVouchers in typeVocuher %}
+                        <td>{{ typeVouchers.get_tipo_display }}</td>
                     {% empty %}
                         <td>Pendiente</td>
                     {% endfor %}
                     
                     <th>
-                      <a style="margin-left:0 !important;" class="a-details" href="{{ settings.APP_URL }}/detalle_invoices/{{co.id}}/">
+                      <a style="margin-left:0 !important;" class="a-details" href="{{ settings.APP_URL }}/detalle_invoices/{{vouchers.id}}/">
                         <i class="fa fa-eye"></i>
                       </a>
                     </th>
-                    {% for ci in cliente %}
-                      {% if co.emisor_id == ci.id %}
-	                      {% with co.fecha|date:"Y" as anio %}
-	                      {% with co.fecha|date:"m" as mes %}
-                        {% with "cfdi/"|add:ci.rfc|add:"/"|add:anio|add:"/"|add:mes|add:"/" as ruta %}
+                    {% for companys in company %}
+                      {% if vouchers.emisor_id == companys.id %}
+	                      {% with vouchers.fecha|date:"Y" as anio %}
+	                      {% with vouchers.fecha|date:"m" as mes %}
+                        {% with "cfdi/"|add:companys.rfc|add:"/"|add:anio|add:"/"|add:mes|add:"/" as ruta %}
                           <th>
-                            <a style="margin-left:0 !important;" target="_blank" class="a-details" href="{% static ruta|add:co.file_xml %}">
+                            <a style="margin-left:0 !important;" target="_blank" class="a-details" href="{% static ruta|add:vouchers.file_xml %}">
                               <i class="fa fa-file-excel-o"></i>
                             </a>
                           </th>
 			                      <th>
-                            <a style="margin-left:0 !important;" target="_blank" class="a-details" href="{% static ruta|add:co.file_pdf %}">
+                            <a style="margin-left:0 !important;" target="_blank" class="a-details" href="{% static ruta|add:vouchers.file_pdf %}">
                               <i class="fa fa-file-pdf-o"></i>
                             </a>
                           </th>
@@ -135,6 +135,7 @@
   <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
   <script type="text/javascript">
     $(document).ready(function(){
+      console.log('{{bug}}');
       $('input[name="daterange"]').daterangepicker(
         {
             locale: {
@@ -154,8 +155,8 @@
               showMonthAfterYear: false,
               yearSuffix: ''
             },
-            startDate: '{{inicio}}',
-            endDate: '{{fin}}'
+            startDate: '{{start}}',
+            endDate: '{{end}}'
         });
       $('.applyBtn').css('display','none');
       $('.cancelBtn').css('display','none');

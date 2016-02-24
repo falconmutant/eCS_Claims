@@ -74,7 +74,10 @@ def logged_in(request):
 
 @login_required
 def registration(request):
-	nombre_user = request.user.get_full_name()
+	user = info(request)
+	user_type = user.type()
+	user_name = user.name()
+	permission = user.permission(user_type)
 	tipos = TipoUsuario.TIPO_USER
 	localidad = Localidad.objects.all()
 	if request.POST:
@@ -114,7 +117,10 @@ def registration(request):
 
 @login_required
 def localitys(request):
-	nombre_user = request.user.get_full_name()
+	user = info(request)
+	user_type = user.type()
+	user_name = user.name()
+	permission = user.permission(user_type)
 	if request.POST:
 		code = request.POST.get('codigo')
 		locality = request.POST.get('localidad')
@@ -129,7 +135,10 @@ def localitys(request):
 
 @login_required
 def reasons(request):
-	nombre_user = request.user.get_full_name()
+	user = info(request)
+	user_type = user.type()
+	user_name = user.name()
+	permission = user.permission(user_type)
 	motivos = Motivos.objects.all()
 	return render_to_response('settings/motivos.html',RequestContext(request,locals()))
 
@@ -141,6 +150,10 @@ def erace(request):
 
 
 def permisos(request):
+	user = info(request)
+	user_type = user.type()
+	user_name = user.name()
+	permission = user.permission(user_type)
 	reportes = Query.objects.all()
 	PemexPermisos = Permiso.objects.filter(usuario=TipoUsuario.PEMEX)
 	MacPermisos = Permiso.objects.filter(usuario=TipoUsuario.MAC)
@@ -181,4 +194,51 @@ def save_permission(request):
 			content_type="application/json"
 		)
 
+def save_ligar(request):
+    if request.method == 'POST':
+        evento = int(request.POST.get('evento'))
+        comprobante = int(request.POST.get('comprobante'))
+        CE = ComprobanteEvento.objects.filter(evento=evento, comprobante=comprobante)
+        Almacenar = True
+        for EventVoucher in CE:
+        	EventVoucher.delete()
+        	Almacenar = False
+        if Almacenar:
+        	liga = ComprobanteEvento(evento=evento, comprobante=comprobante)
+        	liga.save()
+        response_data = {}
+        response_data['result'] = 'Create post successful!'
+        return HttpResponse(
+            json.dumps(response_data),
+            content_type="application/json"
+        )
+    else:
+        return HttpResponse(
+            json.dumps({"nothing to see": "this isn't happening"}),
+            content_type="application/json"
+        )
+
+def save_level(request):
+    if request.method == 'POST':
+    	x = datetime.datetime.now()
+    	if x.month < 10:
+    		fecha = "%s-0%s-%s"% (x.year, x.month, x.day)
+    	else:
+    		fecha = "%s-%s-%s"% (x.year, x.month, x.day)
+    	comprobante = int(request.POST.get('comprobante'))
+        tipo = request.POST.get('tipo')
+
+        level = ComprobanteTipo(tipo=tipo,fecha=fecha,usuario=request.user.id,comprobante=comprobante)
+        level.save()
+        response_data = {}
+        response_data['result'] = 'Create post successful!'
+        return HttpResponse(
+            json.dumps(response_data),
+            content_type="application/json"
+        )
+    else:
+        return HttpResponse(
+            json.dumps({"nothing to see": "this isn't happening"}),
+            content_type="application/json"
+        )
 

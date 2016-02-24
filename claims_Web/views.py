@@ -1,9 +1,7 @@
-import json
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
-from django.contrib import auth
 from .utils import Method
 from settings.utils import info
 from claims.models import TipoUsuario

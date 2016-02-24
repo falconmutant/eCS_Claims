@@ -62,7 +62,7 @@
             <label class="col-md-2 control-label">Proveedor</label>
             <div class="col-xs-8">
               <div class="input-icon">
-                <input class="input-error form-control" type="text" value="{{emisor.nombre}}" disabled>
+                <input class="input-error form-control" type="text" value="{{company.nombre}}" disabled>
               </div>
             </div>
           </div>
@@ -70,13 +70,13 @@
             <label class="col-md-2 control-label">RFC</label>
             <div class="col-xs-3">
               <div class="input-icon">
-                <input class="input-error form-control" type="text" value="{{emisor.rfc}}" disabled>
+                <input class="input-error form-control" type="text" value="{{company.rfc}}" disabled>
               </div>
             </div>
             <label class="col-md-2 control-label">Folio</label>
             <div class="col-xs-3">
               <div class="input-icon">
-                <input class="input-error form-control" type="text" value="{{detalle.folio}}" disabled>
+                <input class="input-error form-control" type="text" value="{{detail.folio}}" disabled>
               </div>
             </div>
           </div>
@@ -84,13 +84,13 @@
             <label class="col-md-2 control-label">Fecha</label>
             <div class="col-xs-3">
               <div class="input-icon">
-                <input class="input-error form-control" type="text" value="{{detalle.fecha}}" disabled>
+                <input class="input-error form-control" type="text" value="{{detail.fecha}}" disabled>
               </div>
             </div>
             <label class="col-md-2 control-label">Sub Total</label>
             <div class="col-xs-3">
               <div class="input-icon">
-                <input class="input-error form-control" type="text" value="{{detalle.subtotal}}" disabled>
+                <input class="input-error form-control" type="text" value="{{detail.subtotal}}" disabled>
               </div>
             </div>
           </div>
@@ -104,7 +104,7 @@
             <label class="col-md-2 control-label">Total de Factura</label>
             <div class="col-xs-3">
               <div class="input-icon">
-                <input class="input-error form-control" type="text" value="{{detalle.total}}" disabled>
+                <input class="input-error form-control" type="text" value="{{detail.total}}" disabled>
               </div>
             </div>
           </div>
@@ -124,12 +124,12 @@
               </tr>
             </thead>
             <tbody>
-              {% for co in conceptos %}
+              {% for concepts in concept %}
                 <tr>
-                  <td>{{co.cantidad}}</td>
-                  <td>{{co.unidad}}</td>
-                  <td>{{co.descripcion}}</td>
-                  <td>{{co.importe}}</td>
+                  <td>{{concepts.cantidad}}</td>
+                  <td>{{concepts.unidad}}</td>
+                  <td>{{concepts.descripcion}}</td>
+                  <td>{{concepts.importe}}</td>
                 </tr>
               {% endfor %}
             </tbody>
@@ -149,19 +149,19 @@
               </tr>
             </thead>
             <tbody>
-              {% for CompEvent in CE %}
-                {% for event in fullevento %}
-                  {% if event.id == CompEvent.evento %}
+              {% for eventVouchers in eventVoucher %}
+                {% for allevents in allevent %}
+                  {% if allevents.id == eventVouchers.evento %}
                     <tr>
-                      <td>{{event.numEvento}}</td>
-                      <td>{{event.folioAut}}</td>
-                      {% for pac in paciente %}
-                        {% if pac.evento_id == event.id %}
-                          <td>{{pac.nombre}}</td>
+                      <td>{{allevents.numEvento}}</td>
+                      <td>{{allevents.folioAut}}</td>
+                      {% for patients in patient %}
+                        {% if patients.evento_id == allevents.id %}
+                          <td>{{patients.nombre}}</td>
                         {% endif %}
                       {% endfor %}
                       <td></td>
-                      <td>{{event.total}}</td>
+                      <td>{{allevents.total}}</td>
                     </tr>
                   {% endif %}
                 {% endfor %}
@@ -178,12 +178,6 @@
   <script>
     $(document).ready(function() {
         console.log('{{bug}}');
-        console.log('{{bug2}}');
-        console.log('{{bug3}}');
-        console.log('{{bug4}}');
-        console.log('{{bug5}}');
-        console.log('{{bug6}}');
-        console.log('{{bugerror}}');
         var table2 = $('#tabletools2').dataTable({
             "language": {
                 "lengthMenu": "_MENU_",

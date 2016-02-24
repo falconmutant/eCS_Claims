@@ -17,6 +17,7 @@ from explorer.models import Query, QueryLog, Permiso
 from claims.models import TipoUsuario
 from explorer import app_settings
 from explorer.forms import QueryForm
+from settings.utils import info
 from explorer.utils import url_get_rows,\
     url_get_query_id,\
     url_get_log_id,\
@@ -77,8 +78,12 @@ def change_permission(f):
 class ExplorerContextMixin(object):
 
     def gen_ctx(self):
+        user = info(self.request)
         return {'can_view': app_settings.EXPLORER_PERMISSION_VIEW(self.request.user),
-                'can_change': app_settings.EXPLORER_PERMISSION_CHANGE(self.request.user)}
+                'can_change': app_settings.EXPLORER_PERMISSION_CHANGE(self.request.user),
+                'user_type': user.type(),
+                'user_name': user.name(),
+                'permission': user.permission(user.type())}
 
     def get_context_data(self, **kwargs):
         ctx = super(ExplorerContextMixin, self).get_context_data(**kwargs)

@@ -60,33 +60,33 @@
             </tr>
           </thead>
           <tbody id="tb">
-            {% for aut in autorizacion %}
-              {% for co in comprobante %}
-                {% if aut.comprobante_id == co.id %}
+            {% for auths in auth %}
+              {% for vouchers in voucher %}
+                {% if auths.comprobante_id == vouchers.id %}
                   <tr>
-                    <td>{{co.fecha}}</td>
-                    <td>{{co.folio}}</td>
-                    {% for ci in cliente %}
-                      {% if co.emisor_id == ci.id %}
-                        <td>{{ci.nombre}}</td>
-                        <td>{{ci.municipio}}</td>
+                    <td>{{vouchers.fecha}}</td>
+                    <td>{{vouchers.folio}}</td>
+                    {% for companys in company %}
+                      {% if vouchers.emisor_id == companys.id %}
+                        <td>{{companys.nombre}}</td>
+                        <td>{{companys.municipio}}</td>
                       {% endif %}
                     {% endfor %}
-                    <td>{{aut.get_estatus_display}}</td>
+                    <td>{{auths.get_estatus_display}}</td>
                     
-                    <td>{{co.total}}</td>
-                    {% for ci in cliente %}
-                      {% if co.emisor_id == ci.id %}
-                        {% with co.fecha|date:"Y" as anio %}
-                        {% with co.fecha|date:"m" as mes %}
-                        {% with "cfdi/"|add:ci.rfc|add:"/"|add:anio|add:"/"|add:mes|add:"/" as ruta %}
+                    <td>{{vouchers.total}}</td>
+                    {% for companys in company %}
+                      {% if vouchers.emisor_id == companys.id %}
+                        {% with vouchers.fecha|date:"Y" as anio %}
+                        {% with vouchers.fecha|date:"m" as mes %}
+                        {% with "cfdi/"|add:companys.rfc|add:"/"|add:anio|add:"/"|add:mes|add:"/" as ruta %}
                           <th>
-                            <a style="margin-left:0 !important;" class="a-details" href="{% static ruta|add:co.file_xml %}">
+                            <a style="margin-left:0 !important;" class="a-details" href="{% static ruta|add:vouchers.file_xml %}">
                               <i class="fa fa-file-excel-o"></i>
                             </a>
                           </th>
                             <th>
-                            <a style="margin-left:0 !important;" class="a-details" href="{% static ruta|add:co.file_pdf %}">
+                            <a style="margin-left:0 !important;" class="a-details" href="{% static ruta|add:vouchers.file_pdf %}">
                               <i class="fa fa-file-pdf-o"></i>
                             </a>
                           </th>
@@ -105,3 +105,6 @@
     </div>
   </div>
 {% endblock header %}
+{% block javascript %}
+<script>console.log('{{bug}}');</script>
+{% endblock javascript %}

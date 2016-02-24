@@ -1,160 +1,106 @@
-import json
 from django.http import HttpResponseRedirect, HttpResponse
-from django.shortcuts import render_to_response, get_object_or_404, get_list_or_404
+from django.shortcuts import render_to_response
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from invoices_Web.models import *
-from django.contrib import auth
-from claims.models import *
-import datetime
-from django.db.models import Count
+from .utils import Methods
+from settings.utils import info
+from claims.models import TipoUsuario
 
-@login_required
-def detalle(request, id):
-	nombre_user = request.user.get_full_name()
-	tipouser = get_object_or_404(TipoUsuario,user_id=request.user.id)
-	if request.POST:
-		estatus = request.POST.get('estatus')
-		descripcion = request.POST.get('descripcion')
-		Autorizacion.objects.filter(comprobante_id=id).update(estatus=estatus,Comentarios=descripcion)
-		return HttpResponseRedirect('/invoice/')
-	
-	try:
-		detalle = get_object_or_404(Comprobante, id=id)
-		conceptos = Conceptos.objects.filter(comprobante_id=detalle.id)
-		emisor = get_object_or_404(Emisor, id=detalle.emisor_id)
-		proveedor = get_object_or_404(Proveedor, rfc=emisor.rfc)
-		CE = ComprobanteEvento.objects.all().filter(comprobante=id)
-		evento = Evento.objects.filter(proveedor_id=proveedor.id).exclude(id__in=[CompEvent.evento for CompEvent in CE])
-		paciente =  Paciente.objects.all().filter(evento_id__in=[event2.id for event2 in evento])
-		tax = get_object_or_404(Impuesto,comprobante_id=detalle.id)
-		fullevento = Evento.objects.filter(proveedor_id=proveedor.id)
-		motivo = Motivos.objects.all()
-		if tipouser.tipo == TipoUsuario.MAC:
-			autorizacion = Autorizacion.objects.all().filter(estatus__in='A',tipoAprobacion='1')
-		if tipouser.tipo == TipoUsuario.PEMEX:
-			autorizacion = Autorizacion.objects.all().filter(estatus__in='Y',tipoAprobacion='1')		
-
-		return render_to_response('invoices/detalles.html',RequestContext(request,locals()))
-	except Exception, e:
-		bugerror = e
-		return render_to_response('invoices/detalles.html',RequestContext(request,locals()))
-
-def save_ligar(request):
-    if request.method == 'POST':
-        evento = int(request.POST.get('evento'))
-        comprobante = int(request.POST.get('comprobante'))
-        CE = ComprobanteEvento.objects.filter(evento=evento, comprobante=comprobante)
-        Almacenar = True
-        for EventVoucher in CE:
-        	EventVoucher.delete()
-        	Almacenar = False
-        if Almacenar:
-        	liga = ComprobanteEvento(evento=evento, comprobante=comprobante)
-        	liga.save()
-        response_data = {}
-        response_data['result'] = 'Create post successful!'
-        return HttpResponse(
-            json.dumps(response_data),
-            content_type="application/json"
-        )
-    else:
-        return HttpResponse(
-            json.dumps({"nothing to see": "this isn't happening"}),
-            content_type="application/json"
-        )
-
-def save_level(request):
-    if request.method == 'POST':
-    	x = datetime.datetime.now()
-    	if x.month < 10:
-    		fecha = "%s-0%s-%s"% (x.year, x.month, x.day)
-    	else:
-    		fecha = "%s-%s-%s"% (x.year, x.month, x.day)
-    	comprobante = int(request.POST.get('comprobante'))
-        tipo = request.POST.get('tipo')
-
-        level = ComprobanteTipo(tipo=tipo,fecha=fecha,usuario=request.user.id,comprobante=comprobante)
-        level.save()
-        response_data = {}
-        response_data['result'] = 'Create post successful!'
-        return HttpResponse(
-            json.dumps(response_data),
-            content_type="application/json"
-        )
-    else:
-        return HttpResponse(
-            json.dumps({"nothing to see": "this isn't happening"}),
-            content_type="application/json"
-        )
-
-
-
+invoice = Methods()
+message_success=0
+message_error=0
 
 @login_required
 def invoices(request):
-	x = datetime.datetime.now()
-	if x.month < 10:
-		inicio = "%s-0%s-%s"% (x.year, x.month, x.day)
-		fin = "%s-0%s-%s"% (x.year, x.month, x.day)
-	else:
-		inicio = "%s-%s-%s"% (x.year, x.month, x.day)
-		fin = "%s-%s-%s"% (x.year, x.month, x.day)
+	try:
+		user = info(request)
+		user_type = user.type()
+		user_name = user.name()
+		start,end = user.date()
+		permission = user.permission(user_type)
+		success = message_success
+		error = message_error
+		global message_success
+		message_success = 0
+		global message_error
+		message_error = 0
+		if user.type() == TipoUsuario.MAC or user.type() == TipoUsuario.PEMEX:
+			locality = invoice.get_locality_user(user.id())
+			provider = invoice.get_providers_locality(locality)
+			company = invoice.get_company_provider(provider)
+			voucher = invoice.get_voucher_company(company)
+			typeVoucher = invoice.get_typeVoucher_voucher(voucher)
+			auth = invoice.get_auth_type(user.type(),'invoice',voucher)
+		elif user.type() == TipoUsuario.ECARESOFT or user.type() == TipoUsuario.SUPERUSER:
+			auth = invoice.get_auth_type(user.type(),'history','')
+			voucher = invoice.get_voucher_auth(auth)
+			company = invoice.get_company_voucher(voucher)
+			typeVoucher = invoice.get_typeVoucher_voucher(voucher)
+		if request.POST:
+			invoice.set_date(request.POST.get("daterange").split(" - ")[0],request.POST.get("daterange").split(" - ")[1])
+			auth = invoice.get_auth_filter(auth,'date','')
+			start,end = invoice.get_date()
+		return render_to_response('invoices/invoices.html',RequestContext(request,locals()))
+	except Exception, e:
+		bug = e
+		return render_to_response('404.html',RequestContext(request,locals()))
 
-	nombre_user = request.user.get_full_name()
-	tipouser = get_object_or_404(TipoUsuario,user_id=request.user.id)
+@login_required
+def detalle(request, id):
+	try:
+		user = info(request)
+		user_type = user.type()
+		user_name = user.name()
+		permission = user.permission(user_type)
+		detail = invoice.get_voucher_object(id)
+		concept = invoice.get_concepts_voucher(id)
+		company = invoice.get_company_voucher(id)
+		provider = invoice.get_provider_company(company.rfc)
+		eventVoucher = invoice.get_eventVoucher_voucher(id)
+		event = invoice.get_event_provider_exclude(provider.id,eventVoucher)
+		patient = invoice.get_patient_event(event)
+		tax = invoice.get_tax_voucher(id)
+		allevent = invoice.get_event_provider(provider.id)
+		cause = invoice.get_cause()
+		auth = invoice.get_auth_user(user.type())
 
-
-	id_localidad = UsuarioLocalidad.objects.filter(usuario_id=request.user.id)
-	localidad = Localidad.objects.filter(id__in=[locality_ids.localidad_id for locality_ids in id_localidad])
-	proveedor = Proveedor.objects.filter(localidad__in=[locality.nombre for locality in localidad])
-	emisor = Emisor.objects.filter(rfc__in=[provider.rfc for provider in proveedor])
-	comprobante = Comprobante.objects.filter(emisor_id__in=[trans.id for trans in emisor])
-	cliente = Emisor.objects.filter(id__in=[invoice.emisor_id for invoice in comprobante])
-	comptipo = ComprobanteTipo.objects.filter(comprobante__in=[comp.id for comp in comprobante])
-
-	if tipouser.tipo == TipoUsuario.MAC:
-		autorizacion = Autorizacion.objects.all().filter(estatus__in=['E','R'],tipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobante])
-	if tipouser.tipo == TipoUsuario.PEMEX:
-		autorizacion = Autorizacion.objects.all().filter(estatus__in=['Y','P'],tipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobante])
-	if tipouser.tipo == TipoUsuario.ECARESOFT:
-		autorizacion = Autorizacion.objects.all().filter(estatus__in=['E','R','A','P'],tipoAprobacion='2')
-	if tipouser.tipo == TipoUsuario.SUPERUSER:
-		autorizacion = Autorizacion.objects.all().filter(estatus__in=['E','R','A','P'],tipoAprobacion='2')
-
-	if request.POST:
-		inicio = request.POST.get("daterange").split(" - ")[0]
-		fin = request.POST.get("daterange").split(" - ")[1]
-		if tipouser.tipo == TipoUsuario.MAC:
-			autorizacion = autorizacion.filter(fechaSolicitud__range=[inicio, fin])
-		if tipouser.tipo == TipoUsuario.PEMEX:
-			autorizacion = autorizacion.filter(fechaSolicitud__range=[inicio, fin])
-		if tipouser.tipo == TipoUsuario.ECARESOFT:
-			autorizacion = autorizacion.filter(fechaSolicitud__range=[inicio, fin])
-		if tipouser.tipo == TipoUsuario.SUPERUSER:
-			autorizacion = autorizacion.filter(fechaSolicitud__range=[inicio, fin])	
-    	return render_to_response('invoices/invoices.html',RequestContext(request,locals()))
+		if request.POST:
+			status = request.POST.get('estatus')
+			description = request.POST.get('descripcion')
+			cause = request.POST.get('motivo')
+			invoice.set_auth_status(id,status,description,cause)
+			global message_success
+			message_success = 1
+			global message_error
+			message_error = 1
+			return HttpResponseRedirect('/invoice/')
+				
+		return render_to_response('invoices/detalles.html',RequestContext(request,locals()))
+	except Exception, e:
+		bug = e
+		return render_to_response('404.html',RequestContext(request,locals()))
 
 @login_required
 def historial(request):
-	nombre_user = request.user.get_full_name()
-	tipouser = get_object_or_404(TipoUsuario,user_id=request.user.id)
-
-	id_localidad = UsuarioLocalidad.objects.filter(usuario_id=request.user.id)
-	localidad = Localidad.objects.filter(id__in=[locality_ids.localidad_id for locality_ids in id_localidad])
-	proveedor = Proveedor.objects.filter(localidad__in=[locality.nombre for locality in localidad])
-	emisor = Emisor.objects.filter(rfc__in=[provider.rfc for provider in proveedor])
-	comprobante = Comprobante.objects.filter(emisor_id__in=[trans.id for trans in emisor])
-	cliente = Emisor.objects.filter(id__in=[invoice.emisor_id for invoice in comprobante])
-	comptipo = ComprobanteTipo.objects.filter(comprobante__in=[comp.id for comp in comprobante])
-
-	if tipouser.tipo == TipoUsuario.MAC:
-		autorizacion = Autorizacion.objects.all().filter(estatus__in=['A','X','Y','N','P'],tipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobante])
-	if tipouser.tipo == TipoUsuario.PEMEX:
-		autorizacion = Autorizacion.objects.all().filter(estatus__in=['X'],tipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in comprobante])
-	if tipouser.tipo == TipoUsuario.ECARESOFT:
-		autorizacion = Autorizacion.objects.all().filter(tipoAprobacion='2',)
-	if tipouser.tipo == TipoUsuario.SUPERUSER:
-		autorizacion = Autorizacion.objects.all().filter(tipoAprobacion='2')
-
-	return render_to_response('invoices/historial.html',RequestContext(request,locals()))
+	try:
+		user = info(request)
+		user_type = user.type()
+		user_name = user.name()
+		permission = user.permission(user_type)
+		if user.type() == TipoUsuario.MAC or user.type() == TipoUsuario.PEMEX:
+			locality = invoice.get_locality_user(user.id())
+			provider = invoice.get_providers_locality(locality)
+			company = invoice.get_company_provider(provider)
+			voucher = invoice.get_voucher_company(company)
+			typeVoucher = invoice.get_typeVoucher_voucher(voucher)
+			auth = invoice.get_auth_type(user.type(),'history',voucher)
+		elif user.type() == TipoUsuario.ECARESOFT or user.type() == TipoUsuario.SUPERUSER:
+			auth = invoice.get_auth_type(user.type(),'history','')
+			voucher = invoice.get_voucher_auth(auth)
+			company = invoice.get_company_voucher(voucher)
+			typeVoucher = invoice.get_typeVoucher_voucher(voucher)
+		return render_to_response('invoices/historial.html',RequestContext(request,locals()))
+	except Exception, e:
+		bug = e
+		return render_to_response('404.html',RequestContext(request,locals()))
