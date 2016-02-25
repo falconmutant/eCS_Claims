@@ -21,7 +21,8 @@ class ProveedorView(APIView):
 
     def get_create_prov(self, rfc, request):
         try:
-            prov = Proveedor.objects.get(rfc=rfc)
+            prov_data = request.data.get('Proveedor')
+            prov = Proveedor.objects.get(rfc=rfc,localidad=prov_data.get('localidad'))
         except Proveedor.DoesNotExist:
             provSerial = ProveedorSerializer(data=request.data.get('Proveedor'))
             errors = {}
