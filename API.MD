@@ -35,7 +35,7 @@ Enviar un reclamo desde las aplicaciones autorizadas a la plataforma
 <tr><td> medico </td><td> String </td><td> Nombre del medico responsable del evento </td></tr>
 <tr><td> tipo *</td><td> String, “C”, “A”, “H”</td><td> Tipo de evento: <b>C</b>onsulta, <b>A</b>mbulatoriom <b>H</b>ospitalizacion </td></tr>
 <tr><td> estatus *</td><td> String, “A”, “C”</td><td> Estatus del evento: <b>A</b>bierto, <b>C</b>errado </td></tr>
-<tr><td> eventoIdCumulus *</td><td> String No requerido</td><td> Evento id generado por Cumulus </td></tr>
+<tr><td> eventoIdCumulus </td><td> String</td><td> Evento id generado por Cumulus </td></tr>
 <tr><td colspan="3"> Paciente </td></tr>
 <tr><td> curp *</td><td> String </td><td> CURP del Paciente</td></tr>
 <tr><td> fichaEmp *</td><td> String </td><td> Ficha del empleado [PEMEX] </td></tr>
