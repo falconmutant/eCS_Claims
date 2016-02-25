@@ -109,12 +109,14 @@ JSON Ejemplo
     "numEvento": "1",
     "fechaAdm": "2016-01-06T13:37:56",
     "fechaAlta": "2016-01-06T13:41:01",
+    "fechaPrimerCargo": "2016-01-06T13:41:01",
     "folioAut": "EC0000000005",
     "total": 0,
     "estatus": "C",
     "cedula": "684097",
     "medico": "LUIS ANTONIO TORRES  FACUNDO",
-    "tipo": "H"
+    "tipo": "H",
+    "eventoIdCumulus": "0"
   },
   "Medicos": [
     {
