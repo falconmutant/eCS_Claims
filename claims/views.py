@@ -92,7 +92,6 @@ class EventosView(ProveedorView):
 
     def post(self, request, rfc, format=None):
         proveedor = self.get_create_prov(rfc, request)
-        
         request_data = request.data.copy()
         eventoData = request_data.get('Cuenta')
         eventoData['proveedor'] = proveedor.id

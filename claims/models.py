@@ -128,6 +128,7 @@ class Evento(models.Model):
    estatus = models.CharField(choices= EVENT_ESTATUS, max_length=1)
    proveedor = models.ForeignKey(Proveedor)
    total = models.DecimalField(max_digits=12, decimal_places=2)
+   eventoIdCumulus = models.CharField(max_length=255,null=True,default=0)
    
 class Paciente(models.Model):
    curp = models.CharField(max_length=18, null=False)
