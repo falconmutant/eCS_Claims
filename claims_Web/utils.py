@@ -1,6 +1,12 @@
 from claims.models import *
 from django.shortcuts import get_object_or_404, get_list_or_404
 from django.contrib import auth
+import httplib2 as http
+import json
+try:
+	from urlparse import urlparse
+except ImportError:
+	from urllib.parse import urlparse
 
 class Method:
 
@@ -71,6 +77,32 @@ class Method:
 			)
 		return AUTH_ESTATUS_TEMPLATE
 
+	def get_attachment(self,patientCurp,idCumulus):
+		headers = {
+		    'Content-Type': 'application/json; charset=UTF-8',
+		    'Authorization': 'Token bdc83da3790dc45f272344255e079edff0b4ca60'
+		}
+
+		uri = 'http://gerri.club:9080'
+		path = '/pacientes/'+patientCurp+'/eventos/'+str(idCumulus)
+
+		target = urlparse(uri+path)
+		method = 'GET'
+		body = ''
+
+		h = http.Http()
+		# If you need authentication some example:
+
+		response, content = h.request(
+		        target.geturl(),
+		        method,
+		        body,
+		        headers)
+
+		# assume that content is a json reply
+		# parse content with the json module
+		return json.loads(content)
+
 	def get_provider_event(self,event):
 		return Proveedor.objects.filter(id__in=[events.proveedor_id for events in event])
 
@@ -133,6 +165,7 @@ class Method:
 
 	def set_auth_status(self,id,status,comment,cause):
 		Autorizacion.objects.filter(evento_id=id).update(estatus=status,comentarios=comment,motivo_id=cause)
+
 
 #try:
 #			if estatus == 'Y':

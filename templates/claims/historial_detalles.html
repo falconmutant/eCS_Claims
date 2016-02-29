@@ -101,7 +101,7 @@
                       <input class="input-error form-control" type="text" value="{{patient.numEmpresa}}" disabled>
                     </div>
                   </div>
-                  <label class="col-md-1 control-label">Folio Autorización</label>
+                  <label class="col-md-1 control-label">Folio Medinet</label>
                   <div class="col-xs-4">
                     <div class="input-icon">
                       <input class="input-error form-control" type="text" value="{{detail.folioAut}}" disabled>
@@ -290,6 +290,42 @@
 
 {% block javascript %}
   <script>
+  $(document).ready(function(){
+    var table3 = $('#tabletools3').dataTable({
+        "language": {
+            "lengthMenu": "_MENU_",
+            "sProcessing":     "Procesando...",
+            "sZeroRecords":    "No se encontraron resultados",
+            "sEmptyTable":     "No existen archivos adjuntos para este Estado de Cuenta",
+            "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+            "sInfoPostFix":    "",
+            "sUrl":            "",
+            "sInfoThousands":  ",",
+            "sLoadingRecords": "Cargando...",
+            "oPaginate": {
+                "sFirst":    "Primero",
+                "sLast":     "Último",
+                "sNext":     "Siguiente",
+                "sPrevious": "Anterior"
+            },
+            "oAria": {
+                "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+            }
+        }
+      });
+      $('.dataTables_filter input').attr('placeholder','Buscar');
+      $('#example_length').hide();
+
+      //DOM Manipulation to move datatable elements integrate to panel
+      $('.panel-ctrls').append($('.dataTables_filter').addClass("pull-right")).find("label").addClass("panel-ctrls-center");
+      $('.panel-ctrls').append("<i class='separator'></i>");
+      $('.panel-ctrls').append($('.dataTables_length').addClass("pull-left")).find("label").addClass("panel-ctrls-center");
+
+      $('.dataTables_paginate>ul.pagination').addClass("pull-right m0");
+    });
     console.log('{{bug}}');
     $('#modal').on('click',function(){
       $('#modal-form').modal('show'); 
@@ -310,6 +346,7 @@
         }
       }
     }
+
   </script>
 {% endblock javascript %}
 
@@ -319,14 +356,28 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="myModalLabel">Autorizar</h4>
+          <h4 class="modal-title" id="myModalLabel">ADJUNTOS</h4>
         </div>
         <div class="modal-body">
-          
+          <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="tabletools3">
+            <thead>
+              <tr>
+                <th>Adjunto</th>
+                <th>Descargar</th>
+              </tr>
+            </thead>
+            <tbody id="tb">
+              {% for attachments in attachment %}
+                <tr>
+                  <td>{{attachments.nombre}}</td>
+                  <td><a href="https://148.244.75.41:6443/eCareSoftWeb/file?uuid={{attachments.uuid}}"><i class="fa fa-eye"></i></a></td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
         </div>
         <div id="btnmodal" class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-          <input type="submit" class="btn btn-default" value="Actualizar">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
     </div>

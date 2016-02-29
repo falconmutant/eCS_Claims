@@ -50,6 +50,7 @@ DX_ESTATUS = (
 
 AUTH_ESTATUS =(
 ('R', 'Recibido'),
+('A', 'Validado PEMEX'),
 ('A', 'Aceptado PEMEX'),
 ('X', 'Rechazado PEMEX'),
 ('Y', 'Aceptado MAC'),
@@ -87,13 +88,27 @@ class Proveedor(models.Model):
       return "%s - %s" % (self.rfc, self.localidad)
 
 class TipoUsuario(models.Model):
+   MACSUPERVISOR = 'MS'
+   MACCOORDINADOR = 'MC'
+   MACNACIONAL = 'MN'
    MAC = 'M'
    PEMEX = 'P'
+   PEMEXAUXILIAR = 'PA'
+   PEMEXSUPERVISOR = 'PS'
+   PEMEXCOORDINADOR = 'PC'
+   PEMEXNACIONAL = 'PN'
    ECARESOFT = 'E'
    SUPERUSER = 'S'
    TIPO_USER = (
       (MAC,'MAC'),
       (PEMEX,'PEMEX'),
+      (MACSUPERVISOR,'MAC SUPERVISOR'),
+      (MACCOORDINADOR,'MAC COORDINADOR'),
+      (MACNACIONAL,'MAC COORDINADOR NACIONAL'),
+      (PEMEXAUXILIAR,' AUXILIAR PEMEX'),
+      (PEMEXSUPERVISOR,' SUPERVISOR SECTORIAL PEMEX'),
+      (PEMEXCOORDINADOR,' COORDINADOR ZONA PEMEX'),
+      (PEMEXNACIONAL,' COORDINADOR NACIONAL PEMEX'),
       (ECARESOFT,'ECARESOFT'),
       (SUPERUSER,'SUPER USER'),
    )

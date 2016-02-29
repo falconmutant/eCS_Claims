@@ -65,6 +65,8 @@ def detalle(request, id):
 		cause = claim.get_cause()
 		procedure = claim.get_process_event_medic(id,medic)
 		auth_type = claim.get_choice_auth(user.type())
+		data_attachment = claim.get_attachment('ROMC950720MNLDRL19','13')
+		attachment = data_attachment.pop('adjuntos',[])
 		if request.POST:
 			status = request.POST.get('estatus')
 			description = request.POST.get('descripcion')
@@ -121,6 +123,8 @@ def detalle_historial(request, id):
 		cause = claim.get_cause()
 		procedure = claim.get_process_event_medic(id,medic)
 		auth_type = claim.get_choice_auth(user.type())
+		data_attachment = claim.get_attachment(patient.curp,detail.eventoIdCumulus)
+		attachment = data_attachment.pop('adjuntos',[])
 		return render_to_response('claims/historial_detalles.html',RequestContext(request,locals()))
 	except Exception, e:
 		bug = e
