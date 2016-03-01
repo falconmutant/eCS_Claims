@@ -3,6 +3,7 @@ from django.shortcuts import get_object_or_404, get_list_or_404
 from django.contrib import auth
 import httplib2 as http
 import json
+from settings.external import *
 try:
 	from urlparse import urlparse
 except ImportError:
@@ -83,7 +84,7 @@ class Method:
 		    'Authorization': 'Token bdc83da3790dc45f272344255e079edff0b4ca60'
 		}
 
-		uri = 'http://gerri.club:9080'
+		uri = Cumulus
 		path = '/pacientes/'+patientCurp+'/eventos/'+str(idCumulus)
 
 		target = urlparse(uri+path)
