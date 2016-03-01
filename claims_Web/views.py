@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from .utils import Method
 from settings.utils import info
+from settings.external import *
 from claims.models import TipoUsuario
 
 claim = Method()
@@ -67,6 +68,7 @@ def detalle(request, id):
 		auth_type = claim.get_choice_auth(user.type())
 		data_attachment = claim.get_attachment('ROMC950720MNLDRL19','13')
 		attachment = data_attachment.pop('adjuntos',[])
+		urlCirrus = Cirrus+'/file?uuid='+attachment.uuid
 		if request.POST:
 			status = request.POST.get('estatus')
 			description = request.POST.get('descripcion')

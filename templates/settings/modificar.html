@@ -48,7 +48,7 @@
         <a href="{{ settings.APP_URL }}/lista_usuarios/">Usuarios</a>
       </li>
       <li>
-        <a href="">Registro</a>
+        <a href="">Modificar</a>
       </li>
     </ul>
   </div>
@@ -63,13 +63,13 @@
               <label class="col-md-2 control-label">Nombre</label>
               <div class="col-xs-4">
                 <div class="input-icon">
-                  <input name="nombre" class="input-error form-control" required>
+                  <input name="nombre" class="input-error form-control" value="{{username.first_name}}">
                 </div>
               </div>
               <label class="col-md-2 control-label">Apellidos</label>
               <div class="col-xs-4">
                 <div class="input-icon">
-                  <input name="apellidos" class="input-error form-control" required>
+                  <input name="apellidos" class="input-error form-control" value="{{username.last_name}}">
                 </div>
               </div>
             </div>
@@ -80,7 +80,11 @@
                   <select name="tipo" class="input-error form-control" required>
                     <option></option>
                     {% for types in tipos %}
-                    <option value="{{types.0}}">{{types.1}}</option>
+                      {% if types.0 == typeUser.tipo %}
+                        <option selected="selected" value="{{types.0}}">{{types.1}}</option>
+                      {% else %}
+                        <option value="{{types.0}}">{{types.1}}</option>
+                      {% endif %}
                     {% endfor %}
                   </select>
                 </div>
@@ -88,10 +92,16 @@
               <label class="col-md-2 control-label">Localidad</label>
               <div class="col-xs-4">
                 <div class="input-icon">
-                  <select name="localidad[]" multiple="multiple" id="localidad" data-placeholder="Selecciona las localidades" class="chosen-select input-error form-control">
+                  <select name="localidad[]" multiple="multiple" data-placeholder="Selecciona las localidades" class="chosen-select input-error form-control">
                     <option></option>
                     {% for locality in localidad %}
-                      <option value="{{locality.id}}">{{locality.nombre}}</option>
+                      {% for localityUsers in localityUser %}
+                        {% if locality.id == localityUsers.localidad_id %}
+                          <option selected="selected" value="{{locality.id}}">{{locality.nombre}}</option>
+                        {% else %}
+                          <option value="{{locality.id}}">{{locality.nombre}}</option>
+                        {% endif %}
+                      {% endfor %}
                     {% endfor %}
                   </select>
                 </div>
@@ -101,13 +111,13 @@
               <label class="col-md-2 control-label">Correo</label>
               <div class="col-xs-4">
                 <div class="input-icon">
-                  <input name="correo" class="input-error form-control">
+                  <input name="correo" class="input-error form-control" value="{{username.email}}">
                 </div>
               </div>
               <label class="col-md-2 control-label">Celular</label>
               <div class="col-xs-4">
                 <div class="input-icon">
-                  <input name="celular" class="input-error form-control">
+                  <input name="celular" class="input-error form-control" value="{{typeUser.celular}}">
                 </div>
               </div>
             </div>
@@ -130,7 +140,7 @@
               <label class="col-md-2 control-label">Usuario</label>
               <div class="col-xs-4">
                 <div class="input-icon">
-                  <input name="user" class="input-error form-control" required>
+                  <input name="user" class="input-error form-control" value="{{username.username}}">
                 </div>
               </div>
               <label class="col-md-2 control-label">Contraseña</label>
@@ -141,7 +151,7 @@
               </div>
             </div>
           <hr />
-          <input type="submit" class="right btn btn-default" value="Crear">
+          <input type="submit" class="right btn btn-default" value="Modificar">
         </form>
       </section>
     </div>

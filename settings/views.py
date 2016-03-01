@@ -72,6 +72,63 @@ def logged_in(request):
 	
 	return render_to_response('pantallas.html',RequestContext(request,locals()))
 
+
+@login_required
+def usuario_detail(request,id):
+	user = info(request)
+	user_type = user.type()
+	user_name = user.name()
+	permission = user.permission(user_type)
+	username = get_object_or_404(User,id=id)
+	typeUser = get_object_or_404(TipoUsuario,user_id=id)
+	localityUser = UsuarioLocalidad.objects.filter(usuario_id=id)
+	tipos = TipoUsuario.TIPO_USER
+	localidad = Localidad.objects.all()
+	if request.POST:
+		first_name = request.POST.get("nombre")
+		last_name = request.POST.get("apellidos")
+		locality = request.POST.get("localidad[]")
+		user_type = request.POST.get('tipo')
+		email = request.POST.get('correo')
+		cellphone = request.POST.get('celular')
+		wp = request.POST.get('whatsapp')
+		if wp != 'Y':
+			wp='N'
+		tg = request.POST.get('telegram')
+		if tg != 'Y':
+			tg='N'
+		sms = request.POST.get('sms')
+		if sms != 'Y':
+			sms='N'
+		username = request.POST.get('user')
+		password = request.POST.get('pass')
+		user = User.objects.filter(id=id).update(username=username, email=email, password=password)
+		user.first_name = first_name
+		user.last_name = last_name
+		if user_type=='S':
+			user.is_staff = True
+		user.save()
+		usertipo = TipoUsuario.objects.filter(usuario_id=id).update(user_id=user.id,tipo=user_type,email=email,celular=cellphone,whatsapp=wp,telegram=tg,sms=sms,tgcontacto='')
+		usertipo.save()
+		bug = locality
+		userlocality = UsuarioLocalidad.objects.filter(usuario_id=id).update(usuario_id=user.id,localidad_id=int(locality))
+		userlocality.save()
+		message_success = 1
+		return render_to_response('settings/registro.html',RequestContext(request,locals()))
+
+	return render_to_response('settings/modificar.html',RequestContext(request,locals()))
+
+
+
+@login_required
+def list_users(request):
+	user = info(request)
+	user_type = user.type()
+	user_name = user.name()
+	permission = user.permission(user_type)
+	username = User.objects.all()
+	return render_to_response('settings/usuarios.html',RequestContext(request,locals()))
+
 @login_required
 def registration(request):
 	user = info(request)
