@@ -125,8 +125,11 @@ def detalle_historial(request, id):
 		cause = claim.get_cause()
 		procedure = claim.get_process_event_medic(id,medic)
 		auth_type = claim.get_choice_auth(user.type())
-		data_attachment = claim.get_attachment(patient.curp,detail.eventoIdCumulus)
-		attachment = data_attachment.pop('adjuntos',[])
+		try:
+			data_attachment = claim.get_attachment(patient.curp,detail.eventoIdCumulus)
+			attachment = data_attachment.pop('adjuntos',[])
+		except Exception, e:
+			return render_to_response('claims/historial_detalles.html',RequestContext(request,locals()))
 		return render_to_response('claims/historial_detalles.html',RequestContext(request,locals()))
 	except Exception, e:
 		bug = e
