@@ -44,7 +44,7 @@ class TimbreFiscal(models.Model):
 
 class Comprobante(models.Model):
 	version = models.CharField(max_length=5, null=False)
-	serie = models.CharField(max_length=2, null=False)
+	serie = models.CharField(max_length=255, null=False)
 	folio = models.CharField(max_length=255, null=False)
 	fecha = models.DateTimeField()
 	sello = models.TextField()
@@ -52,7 +52,7 @@ class Comprobante(models.Model):
 	numCertificado = models.CharField(max_length=255, null=False)
 	certificado = models.TextField()
 	subtotal = models.DecimalField(max_digits=10, decimal_places=2)
-	tipocambio = models.CharField(max_length=2, null=False)
+	tipocambio = models.CharField(max_length=255, null=False)
 	moneda = models.CharField(max_length=3, null=False)
 	total = models.DecimalField(max_digits=10, decimal_places=2)
 	tipocomprobante = models.CharField(max_length=255, null=False)
