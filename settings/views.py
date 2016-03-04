@@ -75,50 +75,71 @@ def logged_in(request):
 
 @login_required
 def usuario_detail(request,id):
-	user = info(request)
-	user_type = user.type()
-	user_name = user.name()
-	permission = user.permission(user_type)
-	username = get_object_or_404(User,id=id)
-	typeUser = get_object_or_404(TipoUsuario,user_id=id)
-	localityUser = UsuarioLocalidad.objects.filter(usuario_id=id)
-	tipos = TipoUsuario.TIPO_USER
-	localidad = Localidad.objects.all()
-	if request.POST:
-		first_name = request.POST.get("nombre")
-		last_name = request.POST.get("apellidos")
-		locality = request.POST.get("localidad[]")
-		user_type = request.POST.get('tipo')
-		email = request.POST.get('correo')
-		cellphone = request.POST.get('celular')
-		wp = request.POST.get('whatsapp')
-		if wp != 'Y':
-			wp='N'
-		tg = request.POST.get('telegram')
-		if tg != 'Y':
-			tg='N'
-		sms = request.POST.get('sms')
-		if sms != 'Y':
-			sms='N'
-		username = request.POST.get('user')
-		password = request.POST.get('pass')
-		user = User.objects.filter(id=id).update(username=username, email=email, password=password)
-		user.first_name = first_name
-		user.last_name = last_name
-		if user_type=='S':
-			user.is_staff = True
-		user.save()
-		usertipo = TipoUsuario.objects.filter(usuario_id=id).update(user_id=user.id,tipo=user_type,email=email,celular=cellphone,whatsapp=wp,telegram=tg,sms=sms,tgcontacto='')
-		usertipo.save()
-		bug = locality
-		userlocality = UsuarioLocalidad.objects.filter(usuario_id=id).update(usuario_id=user.id,localidad_id=int(locality))
-		userlocality.save()
-		message_success = 1
-		return render_to_response('settings/registro.html',RequestContext(request,locals()))
+	try:
+		user = info(request)
+		user_type = user.type()
+		user_name = user.name()
+		permission = user.permission(user_type)
+		username = get_object_or_404(User,id=id)
+		typeUser = get_object_or_404(TipoUsuario,user_id=id)
+		localityUser = UsuarioLocalidad.objects.filter(usuario_id=id)
+		tipos = TipoUsuario.TIPO_USER
+		subTypePmx = TipoUsuario.PEMEX_USER
+		subTypeMac = TipoUsuario.MAC_USER
+		localidad = Localidad.objects.all()
+		typepmx = TipoUsuario.PEMEX
+		typemac = TipoUsuario.MAC
+		if typeUser.tipo == TipoUsuario.MAC:
+			subtipo = TipoUsuario.MAC_USER
+		if typeUser.tipo == TipoUsuario.PEMEX:
+			subtipo = TipoUsuario.PEMEX_USER
+		if request.POST:
+			UsuarioLocalidad.objects.filter(usuario_id=id).delete()
+			User.objects.filter(id=id).delete()
+			TipoUsuario.objects.filter(user_id=id).delete()
+			first_name = request.POST.get("nombre")
+			last_name = request.POST.get("apellidos")
+			locality = request.POST.get("local")
+			user_type = request.POST.get('tipo')
+			user_subtype = request.POST.get('subtipo')
+			email = request.POST.get('correo')
+			cellphone = request.POST.get('celular')
+			wp = request.POST.get('whatsapp')
+			if wp != 'Y':
+				wp='N'
+			tg = request.POST.get('telegram')
+			if tg != 'Y':
+				tg='N'
+			sms = request.POST.get('sms')
+			if sms != 'Y':
+				sms='N'
+			username = request.POST.get('user')
+			password = request.POST.get('pass')
+			user = User.objects.create_user(username, email, password)
+			user.first_name = first_name
+			user.last_name = last_name
+			if user_type=='S':
+				user.is_staff = True
+			user.save()
+			usertipo = TipoUsuario(user_id=user.id,tipo=user_type,subtipo=user_subtype,email=email,celular=cellphone,whatsapp=wp,telegram=tg,sms=sms,tgcontacto='')
+			usertipo.save()
+			try:
+				localitys = locality.split(",")
 
-	return render_to_response('settings/modificar.html',RequestContext(request,locals()))
-
-
+				for user_localitys in localitys:
+					userlocality = UsuarioLocalidad(usuario_id=user.id,localidad_id=int(user_localitys))
+					userlocality.save()
+				message_success = 1
+				return HttpResponseRedirect('/lista_usuarios/')
+			except Exception, e:
+				userlocality = UsuarioLocalidad(usuario_id=user.id,localidad_id=int(locality))
+				userlocality.save()
+				message_success = 1
+				return HttpResponseRedirect('/lista_usuarios/')
+		return render_to_response('settings/modificar.html',RequestContext(request,locals()))
+	except Exception, e:
+		bug = e
+		return render_to_response('404.html',RequestContext(request,locals()))
 
 @login_required
 def list_users(request):
