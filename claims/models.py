@@ -88,32 +88,37 @@ class Proveedor(models.Model):
       return "%s - %s" % (self.rfc, self.localidad)
 
 class TipoUsuario(models.Model):
-   MACSUPERVISOR = 'MS'
-   MACCOORDINADOR = 'MC'
-   MACNACIONAL = 'MN'
+   MACSUPERVISOR = 'S'
+   MACCOORDINADOR = 'C'
+   MACNACIONAL = 'N'
    MAC = 'M'
    PEMEX = 'P'
-   PEMEXAUXILIAR = 'PA'
-   PEMEXSUPERVISOR = 'PS'
-   PEMEXCOORDINADOR = 'PC'
-   PEMEXNACIONAL = 'PN'
+   PEMEXAUXILIAR = 'A'
+   PEMEXSUPERVISOR = 'S'
+   PEMEXCOORDINADOR = 'C'
+   PEMEXNACIONAL = 'N'
    ECARESOFT = 'E'
    SUPERUSER = 'S'
+   MAC_USER = (
+      (MACSUPERVISOR,'SUPERVISOR'),
+      (MACCOORDINADOR,'COORDINADOR'),
+      (MACNACIONAL,'COORDINADOR NACIONAL'),
+   )
+   PEMEX_USER = (
+      (PEMEXAUXILIAR,' AUXILIAR'),
+      (PEMEXSUPERVISOR,' SUPERVISOR MEDICO SECTORIAL'),
+      (PEMEXCOORDINADOR,' COORDINADOR ZONA'),
+      (PEMEXNACIONAL,' COORDINADOR NACIONAL'),
+   )
    TIPO_USER = (
       (MAC,'MAC'),
       (PEMEX,'PEMEX'),
-      (MACSUPERVISOR,'MAC SUPERVISOR'),
-      (MACCOORDINADOR,'MAC COORDINADOR'),
-      (MACNACIONAL,'MAC COORDINADOR NACIONAL'),
-      (PEMEXAUXILIAR,' AUXILIAR PEMEX'),
-      (PEMEXSUPERVISOR,' SUPERVISOR SECTORIAL PEMEX'),
-      (PEMEXCOORDINADOR,' COORDINADOR ZONA PEMEX'),
-      (PEMEXNACIONAL,' COORDINADOR NACIONAL PEMEX'),
       (ECARESOFT,'ECARESOFT'),
       (SUPERUSER,'SUPER USER'),
    )
    user = models.ForeignKey(User)
    tipo = models.CharField(choices=TIPO_USER,max_length=1)
+   subtipo = models.CharField(max_length=1)
    phone_regex = RegexValidator(regex=r'^\+?1?\d{13}$', message="Numero debe ingresarse en formato internacional: '+521999999'. 14 digitos en total.")
    email = models.EmailField(max_length=70,blank=True)
    celular = models.CharField(max_length=14, validators=[phone_regex], blank=True) 

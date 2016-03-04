@@ -136,12 +136,17 @@ def registration(request):
 	user_name = user.name()
 	permission = user.permission(user_type)
 	tipos = TipoUsuario.TIPO_USER
+	subTypePmx = TipoUsuario.PEMEX_USER
+	subTypeMac = TipoUsuario.MAC_USER
 	localidad = Localidad.objects.all()
+	typepmx = TipoUsuario.PEMEX
+	typemac = TipoUsuario.MAC
 	if request.POST:
 		first_name = request.POST.get("nombre")
 		last_name = request.POST.get("apellidos")
-		locality = request.POST.get("localidad[]")
+		locality = request.POST.get("local")
 		user_type = request.POST.get('tipo')
+		user_subtype = request.POST.get('subtipo')
 		email = request.POST.get('correo')
 		cellphone = request.POST.get('celular')
 		wp = request.POST.get('whatsapp')
@@ -161,13 +166,20 @@ def registration(request):
 		if user_type=='S':
 			user.is_staff = True
 		user.save()
-		usertipo = TipoUsuario(user_id=user.id,tipo=user_type,email=email,celular=cellphone,whatsapp=wp,telegram=tg,sms=sms,tgcontacto='')
+		usertipo = TipoUsuario(user_id=user.id,tipo=user_type,subtipo=user_subtype,email=email,celular=cellphone,whatsapp=wp,telegram=tg,sms=sms,tgcontacto='')
 		usertipo.save()
-		bug = locality
-		userlocality = UsuarioLocalidad(usuario_id=user.id,localidad_id=int(locality))
-		userlocality.save()
-		message_success = 1
-		return render_to_response('settings/registro.html',RequestContext(request,locals()))
+		try:
+			localitys = locality.split(",")
+			for user_localitys in localitys:
+				userlocality = UsuarioLocalidad(usuario_id=user.id,localidad_id=int(user_localitys))
+				userlocality.save()
+			message_success = 1
+			return render_to_response('settings/registro.html',RequestContext(request,locals()))
+		except Exception, e:
+			userlocality = UsuarioLocalidad(usuario_id=user.id,localidad_id=int(locality))
+			userlocality.save()
+			message_success = 1
+			return render_to_response('settings/registro.html',RequestContext(request,locals()))
 
 
 	return render_to_response('settings/registro.html',RequestContext(request,locals()))
