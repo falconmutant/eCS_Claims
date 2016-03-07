@@ -14,6 +14,9 @@ class info:
 
 	def type(self):
 		return get_object_or_404(TipoUsuario,user_id=self.request.user.id).tipo
+
+	def subType(self):
+		return get_object_or_404(TipoUsuario,user_id=self.request.user.id).subtipo
 	
 	def date(self):
 		datenow = datetime.datetime.now()
@@ -25,8 +28,8 @@ class info:
 			self.end = "%s-%s-%s"% (x.year, x.month, x.day)
 		return self.start,self.end
 
-	def permission(self,typeUser):
+	def permission(self,typeUser,subTypeUser):
 		permission = False
-		if typeUser == TipoUsuario.ECARESOFT or typeUser == TipoUsuario.SUPERUSER:
+		if typeUser == TipoUsuario.ECARESOFT or typeUser == TipoUsuario.SUPERUSER or subTypeUser == TipoUsuario.PEMEXNACIONAL or subTypeUser == TipoUsuario.MACNACIONAL:
 			permission = True
 		return permission

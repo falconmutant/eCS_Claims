@@ -24,18 +24,22 @@ class Methods:
 	def get_typeVoucher_voucher(self,voucher):
 		return ComprobanteTipo.objects.filter(comprobante__in=[vouchers.id for vouchers in voucher])
 
-	def get_auth_type(self,usertype,typeVoucher,voucher):
+	def get_auth_type(self,usertype,userSubType,typeVoucher,voucher):
 		auth={}
 		if usertype == TipoUsuario.MAC:
-			if typeVoucher == 'history':
+			if typeVoucher == 'history' or userSubType == TipoUsuario.MACNACIONAL:
 				auth = Autorizacion.objects.all().filter(estatus__in=['A','X','Y','N','P'],tipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in voucher])
 			else:
 				auth = Autorizacion.objects.filter(estatus__in=['E','R'],tipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in voucher])
 		elif usertype == TipoUsuario.PEMEX:
-			if typeVoucher == 'history':
-				auth = Autorizacion.objects.all().filter(estatus__in=['X'],tipoAprobacion='2',evento_id__in=[vouchers.id for vouchers in voucher])
+			if eventype == 'history':
+				auth = Autorizacion.objects.all().filter(estatus__in=['X'],tipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in voucher])
+			elif userSubType == TipoUsuario.PEMEXNACIONAL:
+				auth = Autorizacion.objects.all().filter(estatus__in=['V','A','X','P'],tipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in voucher])
+			elif userSubType == TipoUsuario.PEMEXAUXILIAR:
+				auth = Autorizacion.objects.filter(estatus__in=['Y','P'],tipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in voucher])
 			else:
-				auth = Autorizacion.objects.filter(estatus__in=['Y','P'],tipoAprobacion='2',evento_id__in=[vouchers.id for vouchers in voucher])
+				auth = Autorizacion.objects.filter(estatus__in=['V','Y','P'],tipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in voucher])
 		elif usertype == TipoUsuario.ECARESOFT:
 			auth = Autorizacion.objects.filter(estatus__in=['E','R','A','P'],tipoAprobacion='2')
 		elif usertype == TipoUsuario.SUPERUSER:

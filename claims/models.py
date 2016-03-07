@@ -50,7 +50,7 @@ DX_ESTATUS = (
 
 AUTH_ESTATUS =(
 ('R', 'Recibido'),
-('A', 'Validado PEMEX'),
+('V', 'Validado PEMEX'),
 ('A', 'Aceptado PEMEX'),
 ('X', 'Rechazado PEMEX'),
 ('Y', 'Aceptado MAC'),

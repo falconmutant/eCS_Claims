@@ -83,7 +83,7 @@ class ExplorerContextMixin(object):
                 'can_change': app_settings.EXPLORER_PERMISSION_CHANGE(self.request.user),
                 'user_type': user.type(),
                 'user_name': user.name(),
-                'permission': user.permission(user.type())}
+                'permission': user.permission(user_type,user.subType())}
 
     def get_context_data(self, **kwargs):
         ctx = super(ExplorerContextMixin, self).get_context_data(**kwargs)

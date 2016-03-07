@@ -18,7 +18,7 @@ def invoices(request):
 		user_type = user.type()
 		user_name = user.name()
 		start,end = user.date()
-		permission = user.permission(user_type)
+		permission = user.permission(user_type,user.subType())
 		success = message_success
 		error = message_error
 		global message_success
@@ -31,9 +31,9 @@ def invoices(request):
 			company = invoice.get_company_provider(provider)
 			voucher = invoice.get_voucher_company(company)
 			typeVoucher = invoice.get_typeVoucher_voucher(voucher)
-			auth = invoice.get_auth_type(user.type(),'invoice',voucher)
+			auth = invoice.get_auth_type(user.type(),user.subType(),'invoice',voucher)
 		elif user.type() == TipoUsuario.ECARESOFT or user.type() == TipoUsuario.SUPERUSER:
-			auth = invoice.get_auth_type(user.type(),'history','')
+			auth = invoice.get_auth_type(user.type(),'','history','')
 			voucher = invoice.get_voucher_auth(auth)
 			company = invoice.get_company_voucher(voucher)
 			typeVoucher = invoice.get_typeVoucher_voucher(voucher)
@@ -52,7 +52,7 @@ def detalle(request, id):
 		user = info(request)
 		user_type = user.type()
 		user_name = user.name()
-		permission = user.permission(user_type)
+		permission = user.permission(user_type,user.subType())
 		detail = invoice.get_voucher_object(id)
 		concept = invoice.get_concepts_voucher(id)
 		company = invoice.get_company_voucher(id)
@@ -87,16 +87,16 @@ def historial(request):
 		user = info(request)
 		user_type = user.type()
 		user_name = user.name()
-		permission = user.permission(user_type)
+		permission = user.permission(user_type,user.subType())
 		if user.type() == TipoUsuario.MAC or user.type() == TipoUsuario.PEMEX:
 			locality = invoice.get_locality_user(user.id())
 			provider = invoice.get_providers_locality(locality)
 			company = invoice.get_company_provider(provider)
 			voucher = invoice.get_voucher_company(company)
 			typeVoucher = invoice.get_typeVoucher_voucher(voucher)
-			auth = invoice.get_auth_type(user.type(),'history',voucher)
+			auth = invoice.get_auth_type(user.type(),user.subType(),'history',voucher)
 		elif user.type() == TipoUsuario.ECARESOFT or user.type() == TipoUsuario.SUPERUSER:
-			auth = invoice.get_auth_type(user.type(),'history','')
+			auth = invoice.get_auth_type(user.type(),'','history','')
 			voucher = invoice.get_voucher_auth(auth)
 			company = invoice.get_company_voucher(voucher)
 			typeVoucher = invoice.get_typeVoucher_voucher(voucher)

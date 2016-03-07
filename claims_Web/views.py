@@ -17,7 +17,7 @@ def claims(request):
 	user_type = user.type()
 	user_name = user.name()
 	start,end = user.date()
-	permission = user.permission(user_type)
+	permission = user.permission(user_type,user.subType())
 	success = message_success
 	error = message_error
 	global message_success
@@ -31,10 +31,10 @@ def claims(request):
 			provider= claim.get_providers_locality(locality)
 			event = claim.get_event_provider(provider)
 			patient = claim.get_patient_event(event)
-			auth = claim.get_auth_type(user.type(),'claims',event)
+			auth = claim.get_auth_type(user.type(),user.subType(),'claims',event)
 
 		elif user.type() == TipoUsuario.ECARESOFT or user.type() == TipoUsuario.SUPERUSER:
-			auth = claim.get_auth_type(user.type(),'claims','')
+			auth = claim.get_auth_type(user.type(),'','claims','')
 			event = claim.get_event_auth(auth)
 			patient = claim.get_patient_event(event)
 			provider = claim.get_provider_event(event)
@@ -55,7 +55,7 @@ def detalle(request, id):
 	user = info(request)
 	user_type = user.type()
 	user_name = user.name()
-	permission = user.permission(user_type)
+	permission = user.permission(user_type,user.subType())
 	try:
 		detail = claim.get_event_object(id)
 		patient = claim.get_patient_event(id)
@@ -66,9 +66,12 @@ def detalle(request, id):
 		cause = claim.get_cause()
 		procedure = claim.get_process_event_medic(id,medic)
 		auth_type = claim.get_choice_auth(user.type())
-		data_attachment = claim.get_attachment('ROMC950720MNLDRL19','13')
-		attachment = data_attachment.pop('adjuntos',[])
-		urlCirrus = Cirrus+'/file?uuid='+attachment.uuid
+		try:
+			data_attachment = claim.get_attachment(patient.curp,detail.eventoIdCumulus)
+			attachment = data_attachment.pop('adjuntos',[])
+		except Exception, e:
+			return render_to_response('claims/historial_detalles.html',RequestContext(request,locals()))
+		return render_to_response('claims/historial_detalles.html',RequestContext(request,locals()))
 		if request.POST:
 			status = request.POST.get('estatus')
 			description = request.POST.get('descripcion')
@@ -89,7 +92,7 @@ def historial(request):
 	user = info(request)
 	user_type = user.type()
 	user_name = user.name()
-	permission = user.permission(user_type)
+	permission = user.permission(user_type,user.subType())
 	try:
 		if user.type() == TipoUsuario.MAC or user.type() == TipoUsuario.PEMEX:
 			locality = claim.get_locality_user(user.id())
@@ -97,9 +100,9 @@ def historial(request):
 			event = claim.get_event_provider(provider)
 			patient = claim.get_patient_event(event)
 			charge = claim.get_process_event(event)
-			auth = claim.get_auth_type(user.type(),'history',event)
+			auth = claim.get_auth_type(user.type(),user.subType(),'history',event)
 		elif user.type() == TipoUsuario.ECARESOFT or user.type() == TipoUsuario.SUPERUSER:
-			auth = claim.get_auth_type(user.type(),'history','')
+			auth = claim.get_auth_type(user.type(),'','history','')
 			event = claim.get_event_auth(auth)
 			patient = claim.get_patient_event(event)
 			provider = claim.get_provider_event(event)
@@ -114,7 +117,7 @@ def detalle_historial(request, id):
 	user = info(request)
 	user_type = user.type()
 	user_name = user.name()
-	permission = user.permission(user_type)
+	permission = user.permission(user_type,user.subType())
 	try:
 		detail = claim.get_event_object(id)
 		patient = claim.get_patient_event(id)

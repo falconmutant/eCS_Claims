@@ -26,7 +26,7 @@ def logged_in(request):
 	user = info(request)
 	user_type = user.type()
 	user_name = user.name()
-	permission = user.permission(user_type)
+	permission = user.permission(user_type,user.subType())
 
 	total_claims = Autorizacion.objects.all().filter(tipoAprobacion='1').count()
 	falta_claims = Autorizacion.objects.all().filter(estatus__in=['E','R'],tipoAprobacion='1').count()
@@ -79,7 +79,7 @@ def usuario_detail(request,id):
 		user = info(request)
 		user_type = user.type()
 		user_name = user.name()
-		permission = user.permission(user_type)
+		permission = user.permission(user_type,user.subType())
 		username = get_object_or_404(User,id=id)
 		typeUser = get_object_or_404(TipoUsuario,user_id=id)
 		localityUser = UsuarioLocalidad.objects.filter(usuario_id=id)
@@ -146,7 +146,7 @@ def list_users(request):
 	user = info(request)
 	user_type = user.type()
 	user_name = user.name()
-	permission = user.permission(user_type)
+	permission = user.permission(user_type,user.subType())
 	username = User.objects.all()
 	return render_to_response('settings/usuarios.html',RequestContext(request,locals()))
 
@@ -155,7 +155,7 @@ def registration(request):
 	user = info(request)
 	user_type = user.type()
 	user_name = user.name()
-	permission = user.permission(user_type)
+	permission = user.permission(user_type,user.subType())
 	tipos = TipoUsuario.TIPO_USER
 	subTypePmx = TipoUsuario.PEMEX_USER
 	subTypeMac = TipoUsuario.MAC_USER
@@ -210,7 +210,7 @@ def localitys(request):
 	user = info(request)
 	user_type = user.type()
 	user_name = user.name()
-	permission = user.permission(user_type)
+	permission = user.permission(user_type,user.subType())
 	if request.POST:
 		code = request.POST.get('codigo')
 		locality = request.POST.get('localidad')
@@ -228,7 +228,7 @@ def reasons(request):
 	user = info(request)
 	user_type = user.type()
 	user_name = user.name()
-	permission = user.permission(user_type)
+	permission = user.permission(user_type,user.subType())
 	motivos = Motivos.objects.all()
 	return render_to_response('settings/motivos.html',RequestContext(request,locals()))
 
@@ -243,7 +243,7 @@ def permisos(request):
 	user = info(request)
 	user_type = user.type()
 	user_name = user.name()
-	permission = user.permission(user_type)
+	permission = user.permission(user_type,user.subType())
 	reportes = Query.objects.all()
 	PemexPermisos = Permiso.objects.filter(usuario=TipoUsuario.PEMEX)
 	MacPermisos = Permiso.objects.filter(usuario=TipoUsuario.MAC)

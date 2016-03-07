@@ -32,18 +32,22 @@ class Method:
 	def get_process_event(self,eventid):
 		return Procedimiento.objects.filter(evento_id__in=[event.id for event in eventid])
 
-	def get_auth_type(self,usertype,eventype,event):
+	def get_auth_type(self,usertype,userSubType,eventype,event):
 		auth={}
 		if usertype == TipoUsuario.MAC:
-			if eventype == 'history':
+			if eventype == 'history' or userSubType == TipoUsuario.MACNACIONAL:
 				auth = Autorizacion.objects.all().filter(estatus__in=['A','X','Y','N','P'],tipoAprobacion='1',evento_id__in=[events.id for events in event])
 			else:
 				auth = Autorizacion.objects.filter(estatus__in=['E','R'],tipoAprobacion='1',evento_id__in=[events.id for events in event])
 		elif usertype == TipoUsuario.PEMEX:
 			if eventype == 'history':
 				auth = Autorizacion.objects.all().filter(estatus__in=['X'],tipoAprobacion='1',evento_id__in=[events.id for events in event])
-			else:
+			elif userSubType == TipoUsuario.PEMEXNACIONAL:
+				auth = Autorizacion.objects.all().filter(estatus__in=['V','A','X','P'],tipoAprobacion='1',evento_id__in=[events.id for events in event])
+			elif userSubType == TipoUsuario.PEMEXAUXILIAR:
 				auth = Autorizacion.objects.filter(estatus__in=['Y','P'],tipoAprobacion='1',evento_id__in=[events.id for events in event])
+			else:
+				auth = Autorizacion.objects.filter(estatus__in=['V','Y','P'],tipoAprobacion='1',evento_id__in=[events.id for events in event])
 		elif usertype == TipoUsuario.ECARESOFT:
 			auth = Autorizacion.objects.filter(estatus__in=['E','R','A','P'],tipoAprobacion='1')
 		elif usertype == TipoUsuario.SUPERUSER:
