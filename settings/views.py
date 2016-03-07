@@ -162,6 +162,8 @@ def registration(request):
 	localidad = Localidad.objects.all()
 	typepmx = TipoUsuario.PEMEX
 	typemac = TipoUsuario.MAC
+	subtypepmx = TipoUsuario.PEMEXNACIONAL
+	subtypemac = TipoUsuario.MACNACIONAL
 	if request.POST:
 		first_name = request.POST.get("nombre")
 		last_name = request.POST.get("apellidos")
@@ -184,24 +186,23 @@ def registration(request):
 		user = User.objects.create_user(username, email, password)
 		user.first_name = first_name
 		user.last_name = last_name
-		if user_type=='S':
+		if user_type==TipoUsuario.SUPERUSER:
 			user.is_staff = True
 		user.save()
 		usertipo = TipoUsuario(user_id=user.id,tipo=user_type,subtipo=user_subtype,email=email,celular=cellphone,whatsapp=wp,telegram=tg,sms=sms,tgcontacto='')
 		usertipo.save()
-		try:
-			localitys = locality.split(",")
-			for user_localitys in localitys:
-				userlocality = UsuarioLocalidad(usuario_id=user.id,localidad_id=int(user_localitys))
-				userlocality.save()
-			message_success = 1
-			return render_to_response('settings/registro.html',RequestContext(request,locals()))
-		except Exception, e:
-			userlocality = UsuarioLocalidad(usuario_id=user.id,localidad_id=int(locality))
-			userlocality.save()
-			message_success = 1
-			return render_to_response('settings/registro.html',RequestContext(request,locals()))
-
+		if user_type != TipoUsuario.SUPERUSER or user_type != TipoUsuario.ECARESOFT:
+			if user_subtype != TipoUsuario.MACNACIONAL or user_subtype != TipoUsuario.PEMEXNACIONAL:
+				try:
+					localitys = locality.split(",")
+					for user_localitys in localitys:
+						userlocality = UsuarioLocalidad(usuario_id=user.id,localidad_id=int(user_localitys))
+						userlocality.save()
+					message_success = 1
+				except Exception, e:
+					userlocality = UsuarioLocalidad(usuario_id=user.id,localidad_id=int(locality))
+					userlocality.save()
+					message_success = 1
 
 	return render_to_response('settings/registro.html',RequestContext(request,locals()))
 

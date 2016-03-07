@@ -189,6 +189,9 @@
           placeholder: "Selecciona las localidades",
         });
       }
+      if (value == '{{subtypemac}}' && value == '{{subtypepmx}}'){
+        $('#localidad').prop('disabled',true);
+      }
     }
 
     function tipo_user(value){ 
@@ -216,7 +219,7 @@
         $('#subtipo').prop('disabled',true);
         $('#localidad').prop('disabled',true);
         $('#subtipo option').remove();
-        append_subtypes('Q','');
+        document.getElementById('subtipo').value='Q';
       }
     }
     console.log('{{bug}}');

@@ -36,7 +36,7 @@ class Method:
 		auth={}
 		if usertype == TipoUsuario.MAC:
 			if eventype == 'history' or userSubType == TipoUsuario.MACNACIONAL:
-				auth = Autorizacion.objects.all().filter(estatus__in=['A','X','Y','N','P'],tipoAprobacion='1',evento_id__in=[events.id for events in event])
+				auth = Autorizacion.objects.all().filter(estatus__in=['R','A','X','Y','N','P'],tipoAprobacion='1',evento_id__in=[events.id for events in event])
 			else:
 				auth = Autorizacion.objects.filter(estatus__in=['E','R'],tipoAprobacion='1',evento_id__in=[events.id for events in event])
 		elif usertype == TipoUsuario.PEMEX:
