@@ -123,18 +123,21 @@ def usuario_detail(request,id):
 			user.save()
 			usertipo = TipoUsuario(user_id=user.id,tipo=user_type,subtipo=user_subtype,email=email,celular=cellphone,whatsapp=wp,telegram=tg,sms=sms,tgcontacto='')
 			usertipo.save()
-			try:
-				localitys = locality.split(",")
+			if user_type != 'S':
+				try:
+					localitys = locality.split(",")
 
-				for user_localitys in localitys:
-					userlocality = UsuarioLocalidad(usuario_id=user.id,localidad_id=int(user_localitys))
+					for user_localitys in localitys:
+						userlocality = UsuarioLocalidad(usuario_id=user.id,localidad_id=int(user_localitys))
+						userlocality.save()
+					message_success = 1
+					return HttpResponseRedirect('/lista_usuarios/')
+				except Exception, e:
+					userlocality = UsuarioLocalidad(usuario_id=user.id,localidad_id=int(locality))
 					userlocality.save()
-				message_success = 1
-				return HttpResponseRedirect('/lista_usuarios/')
-			except Exception, e:
-				userlocality = UsuarioLocalidad(usuario_id=user.id,localidad_id=int(locality))
-				userlocality.save()
-				message_success = 1
+					message_success = 1
+					return HttpResponseRedirect('/lista_usuarios/')
+			else:
 				return HttpResponseRedirect('/lista_usuarios/')
 		return render_to_response('settings/modificar.html',RequestContext(request,locals()))
 	except Exception, e:
