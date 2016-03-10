@@ -32,7 +32,7 @@ class Methods:
 			else:
 				auth = Autorizacion.objects.filter(estatus__in=['E','R'],tipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in voucher])
 		elif usertype == TipoUsuario.PEMEX:
-			if eventype == 'history':
+			if typeVoucher == 'history':
 				auth = Autorizacion.objects.all().filter(estatus__in=['X'],tipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in voucher])
 			elif userSubType == TipoUsuario.PEMEXNACIONAL:
 				auth = Autorizacion.objects.all().filter(estatus__in=['V','A','X','P'],tipoAprobacion='2',comprobante_id__in=[vouchers.id for vouchers in voucher])
