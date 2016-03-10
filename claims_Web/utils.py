@@ -45,9 +45,9 @@ class Method:
 			elif userSubType == TipoUsuario.PEMEXNACIONAL:
 				auth = Autorizacion.objects.all().filter(estatus__in=['V','A','X','P'],tipoAprobacion='1',evento_id__in=[events.id for events in event])
 			elif userSubType == TipoUsuario.PEMEXAUXILIAR:
-				auth = Autorizacion.objects.filter(estatus__in=['Y','P'],tipoAprobacion='1',evento_id__in=[events.id for events in event])
+				auth = Autorizacion.objects.filter(estatus__in=['R','Y','P'],tipoAprobacion='1',evento_id__in=[events.id for events in event])
 			else:
-				auth = Autorizacion.objects.filter(estatus__in=['V','Y','P'],tipoAprobacion='1',evento_id__in=[events.id for events in event])
+				auth = Autorizacion.objects.filter(estatus__in=['R','V','Y','P'],tipoAprobacion='1',evento_id__in=[events.id for events in event])
 		elif usertype == TipoUsuario.ECARESOFT:
 			auth = Autorizacion.objects.filter(estatus__in=['E','R','A','P'],tipoAprobacion='1')
 		elif usertype == TipoUsuario.SUPERUSER:
