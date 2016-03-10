@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+  eCS Claims
+{% endblock title %}
+
+{% block css %}
+  <link type="text/css" href="{% static "css/pnotify.css" %}" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+  <style type="text/css">
+    #footer {
+        padding: 4em 0 6em 0;
+        text-align: center;
+    }
+    #footer .copyright {
+        color: #999;
+        font-size: 0.9em;
+        line-height: 1em;
+        margin: 2em 0 0 0;
+        padding: 0;
+        text-align: center;
+    }
+    #footer .copyright li {
+        display: inline-block;
+        list-style: none;
+        margin-left: 1em;
+        padding-left: 1em;
+    }
+    .a-details,.a-details:hover{
+      font-size: 15px;
+      margin-left: 85%;
+      border: none !important;
+    }
+  </style>
+{% endblock css %}
+
+{% block header %}
+  <div id="jCrumbs" class="breadCrumb module">
+    <ul>
+      <li>
+        <a href="/logged_in/"><i class="glyphicon glyphicon-home"></i></a>
+      </li>
+      <li>
+        <a href="">Pemex</a>
+      </li>
+      <li>
+        <a href="{{ settings.APP_URL }}/facturacion/">Facturación</a>
+      </li>
+      <li>
+        <a href="">Nuevo Lote</a>
+      </li>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="12u">
+      <section class="box">
+        <center><h3>Nuevo Lote de Facturas</h3></center>
+        <hr>
+        
+      </section>
+    </div>
+  </div>
+{% endblock header %}
+{% block javascript %}
+  <script type="text/javascript" src="{% static "js/pnotify.min.js" %}"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      console.log('{{bug}}');
+    });
+  </script>
+  {% if success == 1 %}
+    <script>
+      $(document).ready(function(){
+        new PNotify({
+                title: 'Exito',
+                text: 'El reclamo seleccionado se actualizo con exito!',
+                type: 'success',
+                styling: 'fontawesome'
+              });
+      });
+    </script>
+  {% endif %}
+  {% if error == 1 %}
+    <script>
+      $(document).ready(function(){
+        new PNotify({
+                title: 'Error',
+                text: 'No se envio notificación a los usuarios!',
+                type: 'error',
+                styling: 'fontawesome'
+              });
+      });
+    </script>
+  {% endif %}
+{% endblock javascript %}

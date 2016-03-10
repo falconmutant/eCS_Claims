@@ -336,3 +336,6 @@ def save_level(request):
             content_type="application/json"
         )
 
+def facturacion(request):
+	return render_to_response('facturacion/facturacion.html',RequestContext(request,locals()))
+

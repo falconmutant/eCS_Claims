@@ -60,13 +60,13 @@
           <center><h3>Registro Usuario Nuevo</h3></center>
           <hr />
             <div class="form-group">
-              <label class="col-md-2 control-label">Nombre</label>
+              <label class="col-md-2 control-label">Nombre *</label>
               <div class="col-xs-4">
                 <div class="input-icon">
                   <input name="nombre" class="input-error form-control" required>
                 </div>
               </div>
-              <label class="col-md-2 control-label">Apellidos</label>
+              <label class="col-md-2 control-label">Apellidos *</label>
               <div class="col-xs-4">
                 <div class="input-icon">
                   <input name="apellidos" class="input-error form-control" required>
@@ -74,7 +74,7 @@
               </div>
             </div>
             <div class="form-group">
-              <label class="col-md-2 control-label">Tipo Usuario</label>
+              <label class="col-md-2 control-label">Tipo Usuario *</label>
               <div class="col-xs-4">
                 <div class="input-icon">
                   <select name="tipo" id="tipo" onchange="tipo_user(this);" class="input-error form-control" required>
@@ -108,10 +108,10 @@
                 </div>
               </div>
               
-              <label class="col-md-2 control-label">Correo</label>
+              <label class="col-md-2 control-label">Correo *</label>
               <div class="col-xs-4">
                 <div class="input-icon">
-                  <input name="correo" class="input-error form-control">
+                  <input name="correo" type="email" class="input-error form-control" required>
                 </div>
               </div>
             </div>
@@ -137,13 +137,13 @@
             </div>
           <hr />
             <div class="form-group">
-              <label class="col-md-2 control-label">Usuario</label>
+              <label class="col-md-2 control-label">Usuario *</label>
               <div class="col-xs-4">
                 <div class="input-icon">
                   <input name="user" class="input-error form-control" required>
                 </div>
               </div>
-              <label class="col-md-2 control-label">Contraseña</label>
+              <label class="col-md-2 control-label">Contraseña *</label>
               <div class="col-xs-4">
                 <div class="input-icon">
                   <input type="password"name="pass" class="input-error form-control" required>

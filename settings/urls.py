@@ -18,5 +18,6 @@ urlpatterns = patterns('',
 	url(r'^motivos/$', 'settings.views.reasons'),
 	url(r'^logic/$', 'settings.views.erace'),
 	url(r'^ligar/$', 'settings.views.save_ligar'),
-	url(r'^save_level/$', 'settings.views.save_level')
+	url(r'^save_level/$', 'settings.views.save_level'),
+	url(r'^facturacion/$', 'settings.views.facturacion')
 )
