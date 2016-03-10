@@ -199,6 +199,9 @@
           placeholder: "Selecciona las localidades",
         });
       }
+      if (value == '{{subtypemac}}' && value == '{{subtypepmx}}'){
+        $('#localidad').prop('disabled',true);
+      }
     }
 
     function tipo_user(value){ 

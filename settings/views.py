@@ -123,7 +123,7 @@ def usuario_detail(request,id):
 			user.save()
 			usertipo = TipoUsuario(user_id=user.id,tipo=user_type,subtipo=user_subtype,email=email,celular=cellphone,whatsapp=wp,telegram=tg,sms=sms,tgcontacto='')
 			usertipo.save()
-			if user_type != 'S':
+			if user_type != 'S' and user_subtype != 'N':
 				try:
 					localitys = locality.split(",")
 
