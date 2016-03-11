@@ -145,6 +145,7 @@ class Evento(models.Model):
    cedula = models.CharField(max_length=50)
    nommedico = models.CharField(max_length=255)
    tipo = models.CharField(choices=EVENT_TIPO, max_length=1)
+   tipoFolio = models.CharField(max_length=255,null=True)
    estatus = models.CharField(choices= EVENT_ESTATUS, max_length=1)
    proveedor = models.ForeignKey(Proveedor)
    total = models.DecimalField(max_digits=12, decimal_places=2)
