@@ -156,6 +156,7 @@ class Paciente(models.Model):
    numCod = models.CharField(max_length=2, null=False)
    numEmpresa = models.CharField(max_length=6, null=False)
    nombre = models.CharField(max_length=255, null=False)
+   folioVigencia = models.CharField(max_length=255, null=False)
    evento = models.ForeignKey(Evento)
 
 class Medico(models.Model):
